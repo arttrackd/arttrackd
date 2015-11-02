@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  password_digest: MyString
+  public_profile: false
+  time_zone: MyString
+  hourly_rate: 9.99
+
+two:
+  name: MyString
+  email: MyString
+  password_digest: MyString
+  public_profile: false
+  time_zone: MyString
+  hourly_rate: 9.99

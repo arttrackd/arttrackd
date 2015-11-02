@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @sales_goal.user_id %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @sales_goal.amount %>
+</p>
+
+<p>
+  <strong>Length of time:</strong>
+  <%= @sales_goal.length_of_time %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @sales_goal.start_time %>
+</p>
+
+<p>
+  <strong>Success:</strong>
+  <%= @sales_goal.success %>
+</p>
+
+<%= link_to 'Edit', edit_sales_goal_path(@sales_goal) %> |
+<%= link_to 'Back', sales_goals_path %>

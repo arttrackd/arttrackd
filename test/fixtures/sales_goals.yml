@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  amount: 9.99
+  length_of_time: MyString
+  start_time: 2015-11-02
+  success: false
+
+two:
+  user_id: 1
+  amount: 9.99
+  length_of_time: MyString
+  start_time: 2015-11-02
+  success: false
