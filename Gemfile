@@ -25,11 +25,7 @@ gem 'turbolinks'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-<<<<<<< HEAD
 gem 'bcrypt', '~> 3.1.7'
-=======
- gem 'bcrypt', '~> 3.1.7'
->>>>>>> 52de2e77b82e0e68a01e3503a584cb6fb442f4a6
 
 # Use Unicorn as the app server
 # gem 'unicorn'
