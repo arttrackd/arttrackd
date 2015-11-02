@@ -40,6 +40,9 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bourbon (4.2.6)
+      sass (~> 3.4)
+      thor (~> 0.19)
     builder (3.2.2)
     byebug (6.0.2)
     coffee-rails (4.1.0)
@@ -52,6 +55,8 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
+    faker (1.5.0)
+      i18n (~> 0.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     i18n (0.7.0)
@@ -67,6 +72,9 @@ GEM
     mime-types (2.6.2)
     mini_portile (0.6.2)
     minitest (5.8.2)
+    neat (1.7.2)
+      bourbon (>= 4.0)
+      sass (>= 3.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     pg (0.18.3)
@@ -144,9 +152,15 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+<<<<<<< HEAD
+=======
+  bourbon
+>>>>>>> 786b0e44a4a399447747cef3937367ba1c8fe7f7
   byebug
   coffee-rails (~> 4.1.0)
+  faker
   jquery-rails
+  neat
   pg
   puma
   rails (= 4.2.4)
