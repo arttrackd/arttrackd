@@ -14,6 +14,12 @@
 <p>
   <%= @user.time_zone %>
 </p>
+
+<p>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+</p>
+
 </div>
 <table class="user-projects">
   <thead>
@@ -39,36 +45,9 @@
   </tbody>
 </table>
 
-<p>
+<div class="goals">
   <% @user.sales_goals.each do |goals| %>
-    Goal: <%= goals.amount %> <br />
+    Goal: $<%= goals.amount %> <br />
     For: <%= goals.length_of_time %>
   <% end %>
-</p>
-
-<table class="time-table">
-  <thead>
-    <tr>
-      <th>Project</th>
-      <th>Start Time</th>
-      <th>Stop Time</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-<% @user.projects.each do |project| %>
-  <% project.time_entries.each do |time| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= time.start_time %> </td>
-        <td><%= time.stop_time %> </td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<div class="navigation">
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
 </div>
