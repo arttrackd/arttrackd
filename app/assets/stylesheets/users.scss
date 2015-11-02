@@ -1,3 +1,24 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.julie{
+  width: 100px;
+  length: 125px;
+  border-radius: 25px;
+  position:absolute;
+}
+.user-information{
+  padding-left: 110px;
+  float: left;
+}
+
+.navigation{
+position: absolute;
+padding-top: 105px;
+}
+
+.user-projects {
+padding-left: .6em;
+border: 1px solid black
+
+}
