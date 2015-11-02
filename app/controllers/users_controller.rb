@@ -1,12 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
+  before_action :require_login, except: :new
 
-  # GET /users
-  def index
-    @users = User.all
-  end
-
-  # GET /users/1
   def show
   end
 
@@ -22,7 +17,6 @@ class UsersController < ApplicationController
   # POST /users
   def create
     @user = User.new(user_params)
-
     if @user.save
       redirect_to @user, notice: 'User was successfully created.'
     else

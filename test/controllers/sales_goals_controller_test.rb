@@ -3,6 +3,8 @@ require 'test_helper'
 class SalesGoalsControllerTest < ActionController::TestCase
   setup do
     @sales_goal = sales_goals(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

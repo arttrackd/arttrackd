@@ -1,4 +1,5 @@
 class TimeEntriesController < ApplicationController
+  before_action :require_login
   before_action :set_time_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /time_entries
@@ -53,6 +54,6 @@ class TimeEntriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def time_entry_params
-      params.require(:time_entry).permit(:project_id, :start_time, :stop_time, :date)
+      params.require(:time_entry).permit(:project_id, :start_time, :date)
     end
 end

@@ -3,6 +3,8 @@ require 'test_helper'
 class ProjectsControllerTest < ActionController::TestCase
   setup do
     @project = projects(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
