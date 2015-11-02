@@ -152,10 +152,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
-<<<<<<< HEAD
-=======
   bourbon
->>>>>>> 786b0e44a4a399447747cef3937367ba1c8fe7f7
   byebug
   coffee-rails (~> 4.1.0)
   faker

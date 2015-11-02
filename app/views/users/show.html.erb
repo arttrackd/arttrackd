@@ -1,34 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @user.name %>
+  <%= @user.name.upcase %>
 </p>
 
 <p>
-  <strong>Email:</strong>
   <%= @user.email %>
 </p>
 
 <p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
-
-<p>
-  <strong>Public profile:</strong>
-  <%= @user.public_profile %>
-</p>
-
-<p>
-  <strong>Time zone:</strong>
   <%= @user.time_zone %>
 </p>
 
-<p>
-  <strong>Hourly rate:</strong>
-  <%= @user.hourly_rate %>
-</p>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
