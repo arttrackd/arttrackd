@@ -1,4 +1,5 @@
 class SalesGoalsController < ApplicationController
+  before_action :require_login
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
 
   # GET /sales_goals
@@ -53,6 +54,6 @@ class SalesGoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sales_goal_params
-      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time, :success)
+      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time)
     end
 end

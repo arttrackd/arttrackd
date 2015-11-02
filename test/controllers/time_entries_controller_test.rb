@@ -3,6 +3,8 @@ require 'test_helper'
 class TimeEntriesControllerTest < ActionController::TestCase
   setup do
     @time_entry = time_entries(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

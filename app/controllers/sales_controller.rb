@@ -1,4 +1,5 @@
 class SalesController < ApplicationController
+  before_action :require_login
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
 
   # GET /sales
@@ -53,6 +54,6 @@ class SalesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sale_params
-      params.require(:sale).permit(:project_id, :gross, :net, :date)
+      params.require(:sale).permit(:project_id, :gross, :date)
     end
 end

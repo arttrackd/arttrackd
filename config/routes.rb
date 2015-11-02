@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  root 'session#new'
+  root    'users#dashboard'
 
-  get     'login'   =>  'session#new'
-  post    'login'   =>  'session#create'
-  delete  'logout'  =>  'session#destroy'
+  get     'login'      =>  'session#new'
+  post    'login'      =>  'session#create'
+  delete  'logout'     =>  'session#destroy'
+  get     'dashboard'  =>  'users#dashboard'
+  get     'signup'     =>  'users#new'
+
+
+
 
   resources :time_entries
   resources :sales_goals

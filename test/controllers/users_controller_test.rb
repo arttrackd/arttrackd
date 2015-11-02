@@ -3,12 +3,13 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
+    session[:user_id] = @user.id
   end
 
-  test "should get index" do
-    get :index
+  test "should get dashboard" do
+    get :dashboard
+
     assert_response :success
-    assert_not_nil assigns(:users)
   end
 
   test "should get new" do
@@ -18,8 +19,13 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
+<<<<<<< HEAD
       post :create, user: { email: 'email@email.com', hourly_rate: 12.32, name: 'bob', password: 'password', public_profile: false, time_zone: "Eastern Time (US & Canada)" }
     end
+=======
+    post :create, user: { email: 'email@email.com', hourly_rate: 12.32, name: 'bob', password: 'password', public_profile: false, time_zone: "Eastern Time (US & Canada)" }
+  end
+>>>>>>> 96c8669e241e81ce19f932a76ed5ef51ed970540
 
     assert_redirected_to user_path(assigns(:user))
   end
