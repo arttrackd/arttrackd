@@ -26,19 +26,18 @@
     <tr>
       <th>Name of Piece</th>
       <th>Description</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
-<% @user.projects.each do |project| %>
+<% @user.projects.first(5).each do |project| %>
       <tr>
         <td><%= project.name %></td>
         <td><%= project.description %> </td>
       </tr>
-      <% project.sales.each do |sales| %>
+      <% project.sales.each do |sale| %>
         <tr>
-          <td>$<%= sales.gross %></td>
-          <td>Sold on: <%= sales.date %> </td>
+          <td>$<%= sale.gross %></td>
+          <td>Sold on: <%= sale.date %> </td>
         </tr>
       <% end %>
     <% end %>
@@ -47,7 +46,9 @@
 
 <div class="goals">
   <% @user.sales_goals.each do |goals| %>
-    Goal: $<%= goals.amount %> <br />
-    For: <%= goals.length_of_time %>
+    <div>
+      <p>Goal of: <%= number_to_currency(goals.amount.round) %>
+      for the next: <%= goals.length_of_time %></p>
+    </div>
   <% end %>
 </div>
