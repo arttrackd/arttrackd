@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  root    'users#dashboard'
+  root    'session#new'
 
   get     'login'      =>  'session#new'
   post    'login'      =>  'session#create'
   delete  'logout'     =>  'session#destroy'
-  get     'dashboard'  =>  'users#dashboard'
   get     'signup'     =>  'users#new'
 
 

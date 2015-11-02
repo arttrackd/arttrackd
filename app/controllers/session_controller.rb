@@ -1,16 +1,16 @@
 class SessionController < ApplicationController
 
   def new
-   redirect_to dashboard_path if logged_in?
+   redirect_to dashboard_user_path(session[:user_id]) if logged_in?
   end
 
   def create
 
-    @user = User.find_by_email(params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
+    @user = User.find_by_email(params[:email])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:success] = 'Welcome!'
-      redirect_to dashboard_path
+      redirect_to dashboard_user_path(@user.id)
     else
       flash[:error] = 'Invalid email/password combination'
       redirect_to login_path

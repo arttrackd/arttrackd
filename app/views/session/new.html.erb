@@ -1,15 +1,15 @@
 <h1>Log In!</h1>
 
-<%= form_for(:session, url: login_path) do |f| %>
+<%= form_tag login_path do %>
   <p>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
   </p>
 
   <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
   </p>
 
-<%= f.submit 'Log In' %>
+  <%= submit_tag 'Log In' %>
 <% end %>
