@@ -1,6 +1,19 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#projects-column{
+  @include span-columns(4);
+  background-color: #F3F2F5;
+}
+
+.dashboard-right{
+  @include span-columns(8);
+}
+
+.random-stats{
+  margin-top: 5%;
+}
+
 .julie{
   width: 100px;
   length: 125px;
