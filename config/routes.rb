@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'dashboard' => 'users#dashboard'
   root 'users#dashboard'
 
-  post 'login' -> 'session#create'
-  delete 'logout' -> 'session#destroy'
+  get 'login' => 'session#new'
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
+
+  get 'signup' => 'users#new'
 
   resources :time_entries
   resources :sales_goals

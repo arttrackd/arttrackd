@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102180548) do
+ActiveRecord::Schema.define(version: 20151102202102) do
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(version: 20151102180548) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.boolean  "public_profile"
-    t.string   "time_zone"
-    t.decimal  "hourly_rate"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.boolean  "public_profile",  default: false
+    t.string   "time_zone",       default: "Eastern Time (US & Canada)"
+    t.decimal  "hourly_rate",     default: 20.0
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
 end
