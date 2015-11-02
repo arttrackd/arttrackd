@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'users#dashboard'
 
-  post 'login' -> 'session#create'
-  delete 'logout' -> 'session#destroy'
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
 
   resources :time_entries
   resources :sales_goals
