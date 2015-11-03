@@ -37,8 +37,9 @@ projects = Project.all
   Sale.create!(project_id: projects.sample.id, gross: gross_sale, net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2), date: Faker::Date.backward(rand(1..100)))
 end
 
+length_in_unit = ["days","months","weeks","years"]
 10.times do
-  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: "30 days", start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
+  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: (Faker::Number.between(0, 31).to_s + " " + length_in_unit.sample), start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
 end
 
 200.times do
