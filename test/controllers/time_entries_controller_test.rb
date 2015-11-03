@@ -13,17 +13,27 @@ class TimeEntriesControllerTest < ActionController::TestCase
     assert_not_nil assigns(:time_entries)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create time_entry" do
+  test "clock_in should start a new time_entry" do
+    project = projects(:one)
     assert_difference('TimeEntry.count') do
-      post :create, time_entry: { date: @time_entry.date, project_id: @time_entry.project_id, start_time: @time_entry.start_time, stop_time: @time_entry.stop_time }
+      post :clock_in, time_entry: { project_id: project.id}
     end
 
-    assert_redirected_to time_entry_path(assigns(:time_entry))
+    assert TimeEntry.where('project_id = ?', project.id).last.stop_time == nil
+    assert_redirected_to project_path(project.id)
+  end
+
+  test "clock_out should complete the last project time_entry" do
+    project = projects(:one)
+    assert_difference('TimeEntry.count') do
+      post :clock_in, time_entry: { project_id: project.id}
+    end
+
+    patch :clock_out, time_entry: { project_id: project.id}
+
+    assert TimeEntry.where('project_id = ?', project.id).last.stop_time != nil
+
+    assert_redirected_to project_path(project.id)
   end
 
   test "should show time_entry" do

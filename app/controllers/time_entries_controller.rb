@@ -15,19 +15,8 @@ class TimeEntriesController < ApplicationController
   def show
   end
 
-  # GET /time_entries/new
-  def new
-
-  end
-
   # GET /time_entries/1/edit
   def edit
-  end
-
-  # POST /time_entries
-  def create
-    @time_entry = TimeEntry.create(time_entry_params)
-    redirect_to time_entries_path, notice: 'Time entry was successfully started.'
   end
 
   # PATCH/PUT /time_entries/1
@@ -53,7 +42,7 @@ class TimeEntriesController < ApplicationController
   end
 
   def clock_out
-    @time_entry = TimeEntry.where('project_id = ?', params[:project_id]).last
+    @time_entry = TimeEntry.where('project_id = ?', params[:time_entry][:project_id]).last
     if @time_entry.stop_time
       redirect_to project_path(@time_entry.project_id),
         alert: 'You must clock in first!'

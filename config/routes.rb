@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :time_entries do
+  resources :time_entries, except: [:new, :create] do
     collection do
       post  'clock_in'
       patch 'clock_out'
