@@ -1,61 +1,83 @@
+
 <p id="notice"><%= notice %></p>
 <%= image_tag asset_url('julie_placeholder.jpg'), class: "julie" %>
-<div class="user-information">
-<p>
-  <strong>Name:</strong>
-  <%= @user.name.upcase %>
-</p>
 
-<p>
-  <strong>E-mail:</strong>
-  <%= @user.email %>
-</p>
+<ul class="accordion-tabs-minimal">
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link is-active">User Information</a>
+    <div class="tab-content">
+      <div class="user-information">
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name.upcase %>
+      </p>
 
-<p>
-  <%= @user.time_zone %>
-</p>
+      <p>
+        <strong>E-mail:</strong>
+        <%= @user.email %>
+      </p>
 
-<p>
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-</p>
+      <p>
+        <%= @user.time_zone %>
+      </p>
 
-</div>
-<table class="user-projects">
-  <thead>
-    <tr>
-      <th>Name of Piece</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @user.projects.first(5).each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.description %> </td>
-      </tr>
-      <%if project.sales.length > 0 %>
-        <% project.sales.each do |sale| %>
-          <tr>
-            <td>$<%= sale.gross %></td>
-            <td>Sold on: <%= sale.date %> </td>
-          </tr>
-        <% end %>
-      <% else %>
-            <tr>
-              <td>Email for details</td>
-              <td>Avalible for purchase</td>
-            </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<div class="goals">
-  <% @user.sales_goals.each do |goals| %>
-    <div>
-      <p>Goal of: <%= number_to_currency(goals.amount.round) %>
-      for the next: <%= goals.length_of_time %></p>
+      <p>
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back', users_path %>
+      </p>
+      </div>
     </div>
-  <% end %>
-</div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">Goals</a>
+    <div class="tab-content">
+      <div class="goals">
+        <% @user.sales_goals.each do |goals| %>
+          <div>
+            <p>Goal of: <%= number_to_currency(goals.amount.round) %>
+            for the next: <%= goals.length_of_time %></p>
+          </div>
+        <% end %>
+      </div>    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">Projects</a>
+    <div class="tab-content">
+      <table class="user-projects">
+        <thead>
+          <tr>
+            <th>Name of Piece</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% @user.projects.first(5).each do |project| %>
+            <tr>
+              <td><%= project.name %></td>
+              <td><%= project.description %> </td>
+            </tr>
+            <%if project.sales.length > 0 %>
+              <% project.sales.each do |sale| %>
+                <tr>
+                  <td>$<%= sale.gross %></td>
+                  <td>Sold on: <%= sale.date %> </td>
+                </tr>
+              <% end %>
+            <% else %>
+                  <tr>
+                    <td>Email for details</td>
+                    <td>Avalible for purchase</td>
+                  </tr>
+            <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">Last Item</a>
+    <div class="tab-content">
+      <p>I'm awesome</p>
+    </div>
+  </li>
+</ul>
