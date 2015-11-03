@@ -27,7 +27,6 @@ class TimeEntriesController < ApplicationController
   # POST /time_entries
   def create
     @time_entry = TimeEntry.create(time_entry_params)
-
     redirect_to time_entries_path, notice: 'Time entry was successfully started.'
   end
 
@@ -54,12 +53,17 @@ class TimeEntriesController < ApplicationController
   end
 
   def clock_out
-    @time_entry = TimeEntry.last
-    start = @time_entry.start_time
-    @time_entry.update(stop_time: Time.zone.now,
-    date: Time.zone.now.to_date,
-    total_time: (Time.zone.now - start).round)
-    redirect_to project_path(@time_entry.project_id), notice: 'TimeEntry was successfully saved.'
+    @time_entry = TimeEntry.where('project_id = ?', params[:project_id]).last
+    if @time_entry.stop_time
+      redirect_to project_path(@time_entry.project_id),
+        alert: 'You must clock in first!'
+    else
+      start = @time_entry.start_time
+      @time_entry.update(stop_time: Time.zone.now,
+      date: Time.zone.now.to_date,
+      total_time: (Time.zone.now - start).round)
+      redirect_to project_path(@time_entry.project_id), notice: 'Time entry was successfully saved.'
+    end
   end
 
   private
