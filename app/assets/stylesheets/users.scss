@@ -8,6 +8,7 @@
 
 .dashboard-right{
   @include span-columns(8);
+  background-color: purple;
 }
 
 .random-stats{
