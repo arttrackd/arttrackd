@@ -47,6 +47,49 @@ class SalesGoalsController < ApplicationController
   end
 
   private
+  
+    def success_on_show # We're going to need to pass success a length of time and use that instead of sales_goals.all
+      @user = @sales_goal.user
+      @projects = @user.projects
+      @sales = []
+      @g = []
+      @projects.each do |p|
+        @sales += p.sales
+      end
+      @sales.each do |s|
+        @g << s.gross
+      end
+      @g = @g.reduce(:+)
+      if @g >= @user.sales_goals.all.sum('amount')
+        success = true
+        @user.save
+      else
+        success = false
+        @user.save
+      end
+    end
+
+    def success_on_show # We're going to need to pass success a length of time and use that instead of sales_goals.all
+      @user = @sales_goal.user
+      @projects = @user.projects
+      @sales = []
+      @g = []
+      @projects.each do |p|
+        @sales += p.sales
+      end
+      @sales.each do |s|
+        @g << s.gross
+      end
+      @g = @g.reduce(:+)
+      if @g >= @user.sales_goals.all.sum('amount')
+        success = true
+        @user.save
+      else
+        success = false
+        @user.save
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_goal
       @sales_goal = SalesGoal.find(params[:id])

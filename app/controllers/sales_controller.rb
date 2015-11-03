@@ -1,7 +1,7 @@
 class SalesController < ApplicationController
   before_action :require_login
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-
+  after_action :net, only: :create #Write this method once we have expenses tables
   # GET /sales
   def index
     @sales = Sale.limit(50)
@@ -47,6 +47,11 @@ class SalesController < ApplicationController
   end
 
   private
+
+    def net
+      return true
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
       @sale = Sale.find(params[:id])
