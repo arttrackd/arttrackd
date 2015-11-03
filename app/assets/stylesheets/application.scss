@@ -21,3 +21,18 @@
 .container{
   @include outer-container(90%);
 }
+
+.page-wrap {
+  @include outer-container(100%);
+}
+
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+
+.site-footer{
+  @include row();
+  height: 100px;
+  background-color: pink;
+}

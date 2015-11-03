@@ -1,7 +1,7 @@
 class SalesGoalsController < ApplicationController
   before_action :require_login
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
-
+  before_action :success, only: [:index, :show]
   # GET /sales_goals
   def index
     @sales_goals = SalesGoal.all

@@ -23,8 +23,15 @@
       <% if flash[:success] %>
         <div class="success"><%= flash[:success] %></div>
       <% end %>
+      <div class="page-wrap">
+
       <%= link_to "Log out", logout_path, method: :delete %>
       <%= yield %>
+
+      </div>
+      <footer class="site-footer">
+        Awesome footer here!
+      </footer>
   </div>
 
   </body>
