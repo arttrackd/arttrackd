@@ -29,18 +29,6 @@
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link">Goals</a>
-    <div class="tab-content">
-      <div class="goals">
-        <% @user.sales_goals.each do |goals| %>
-          <div>
-            <p>Goal of: <%= number_to_currency(goals.amount.round) %>
-            for the next: <%= goals.length_of_time %></p>
-          </div>
-        <% end %>
-      </div>    </div>
-  </li>
-  <li class="tab-header-and-content">
     <a href="#" class="tab-link">Projects</a>
     <div class="tab-content">
       <table class="user-projects">
