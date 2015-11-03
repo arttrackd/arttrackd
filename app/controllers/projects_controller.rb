@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.where('user_id = ?', session[:user_id])
   end
 
   # GET /projects/1
