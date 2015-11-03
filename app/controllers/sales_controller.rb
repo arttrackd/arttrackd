@@ -4,7 +4,7 @@ class SalesController < ApplicationController
 
   # GET /sales
   def index
-    @sales = Sale.all
+    @sales = Sale.limit(50)
   end
 
   # GET /sales/1

@@ -13,17 +13,17 @@ Project.create!(user_id: 1, name: "LiesOnFire", description: "An eternal piece d
 Project.create!(user_id: 2, name: "ASfhasfga", description: "Some stuff with some things and yeah just like that")
 Project.create!(user_id: 3, name: "Cheeseburger", description: "You forgot the pie")
 
-Sale.create!(project_id: 1, gross: 500.23, net: 245.87, date: DateTime.strptime("09/01/2009 17:00", "%m/%d/%Y %H:%M"))
-Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: DateTime.strptime("12/01/2010 17:00", "%m/%d/%Y %H:%M"))
-Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: DateTime.strptime("03/01/2012 17:00", "%m/%d/%Y %H:%M"))
+Sale.create!(project_id: 1, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
+Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
+Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
-SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
-SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
-SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
+SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.now - rand(1..990).days, success: true)
+SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: true)
+SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: true)
 
-TimeEntry.create!(project_id: 1, start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), stop_time: DateTime.strptime("03/03/2000 17:00", "%m/%d/%Y %H:%M"), date: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M") )
-TimeEntry.create!(project_id: 2, start_time: DateTime.strptime("03/03/2000 17:00", "%m/%d/%Y %H:%M"), stop_time: DateTime.strptime("04/04/2000 17:00", "%m/%d/%Y %H:%M"), date: DateTime.strptime("03/03/2000 17:00", "%m/%d/%Y %H:%M") )
-TimeEntry.create!(project_id: 3, start_time: DateTime.strptime("04/04/2000 17:00", "%m/%d/%Y %H:%M"), stop_time: DateTime.strptime("05/05/2000 17:00", "%m/%d/%Y %H:%M"), date: DateTime.strptime("04/04/2000 17:00", "%m/%d/%Y %H:%M") )
+TimeEntry.create!(project_id: 1, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
+TimeEntry.create!(project_id: 2, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
+TimeEntry.create!(project_id: 3, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
 
 
 150.times do
@@ -37,8 +37,9 @@ projects = Project.all
   Sale.create!(project_id: projects.sample.id, gross: gross_sale, net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2), date: Faker::Date.backward(rand(1..100)))
 end
 
+length_in_unit = ["days","months","weeks","years"]
 10.times do
-  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: "30 days", start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
+  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: (Faker::Number.between(0, 31).to_s + " " + length_in_unit.sample), start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
 end
 
 200.times do
