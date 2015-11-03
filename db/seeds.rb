@@ -33,7 +33,7 @@ end
 projects = Project.all
 
 100.times do
-  gross_sale = Faker::Number.between(100, 100000000) / 100.00
+  gross_sale = Faker::Number.between(100, 100000) / 100.00
   Sale.create!(project_id: projects.sample.id, gross: gross_sale, net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2), date: Faker::Date.backward(rand(1..100)))
 end
 
