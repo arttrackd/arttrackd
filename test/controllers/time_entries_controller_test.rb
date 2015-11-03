@@ -16,24 +16,39 @@ class TimeEntriesControllerTest < ActionController::TestCase
   test "clock_in should start a new time_entry" do
     project = projects(:one)
     assert_difference('TimeEntry.count') do
-      post :clock_in, time_entry: { project_id: project.id}
+      post :clock_in, time_entry: {project_id: project.id}
     end
 
     assert TimeEntry.where('project_id = ?', project.id).last.stop_time == nil
     assert_redirected_to project_path(project.id)
   end
 
-  test "clock_out should complete the last project time_entry" do
+  test "clock_out should complete the time entry for that project" do
     project = projects(:one)
-    assert_difference('TimeEntry.count') do
-      post :clock_in, time_entry: { project_id: project.id}
-    end
 
-    patch :clock_out, time_entry: { project_id: project.id}
+    post :clock_in, time_entry: {project_id: project.id}
+
+    post :clock_in, time_entry: {project_id: projects(:two).id}
+
+    patch :clock_out, time_entry: {project_id: project.id}
 
     assert TimeEntry.where('project_id = ?', project.id).last.stop_time != nil
 
     assert_redirected_to project_path(project.id)
+  end
+
+  test "can't clock out without clocking in first" do
+    project = projects(:one)
+
+    post :clock_in, time_entry: {project_id: project.id}
+    patch :clock_out, time_entry: {project_id: project.id}
+
+    last_entry = TimeEntry.where('project_id = ?', project.id).last
+
+    patch :clock_out, time_entry: {project_id: project.id}
+
+    assert_redirected_to project_path(project.id)
+    assert last_entry.stop_time == TimeEntry.where('project_id = ?', project.id).last.stop_time
   end
 
   test "should show time_entry" do
