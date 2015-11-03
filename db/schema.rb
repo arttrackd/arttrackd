@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102202102) do
+ActiveRecord::Schema.define(version: 20151103152256) do
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151102202102) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time     "total_time"
   end
 
   add_index "time_entries", ["project_id"], name: "index_time_entries_on_project_id"

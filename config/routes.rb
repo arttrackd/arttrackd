@@ -9,7 +9,12 @@ Rails.application.routes.draw do
 
 
 
-  resources :time_entries
+  resources :time_entries do
+    collection do
+      post  'clock_in'
+      patch 'clock_out'
+    end
+  end
   resources :sales_goals
   resources :sales
   resources :projects

@@ -15,8 +15,9 @@
   <%= @project.description %>
 </p>
 
-<%= link_to 'Clock In', clock_in_entries_path, method: :post, id: "clock-in" %> |
-<%= link_to 'Clock Out', clock_out_entries_path, method: :patch, id: "clock-out" %>
+<%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
+<%= link_to 'Clock Out', clock_out_time_entries_path, method: :patch, id: "clock-out" %>
 
+<p> You have worked on this project for: <%=
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
