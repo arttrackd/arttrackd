@@ -9,8 +9,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @time_entries = TimeEntry.where('project_id = ?', @project.id)
-    
+    @project_time = @project.get_time
   end
 
   # GET /projects/new

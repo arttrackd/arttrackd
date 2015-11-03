@@ -4,7 +4,8 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries
   def index
-    @time_entries = TimeEntry.all
+    @project = Project.find(params[:id])
+    @time_entries = TimeEntry.where('project_id = ?', @project.id)
     @time_entries_day = @time_entries.where('date > ?', Time.current - 29.hours)
     @time_entries_week = @time_entries.where('date > ?', 1.week.ago)
     @time_entries_month = @time_entries.where('date > ?', 1.month.ago)
@@ -27,13 +28,13 @@ class TimeEntriesController < ApplicationController
   def create
     @time_entry = TimeEntry.create(time_entry_params)
 
-    redirect_to time_entries_path, notice: 'TimeEntry was successfully created.'
+    redirect_to time_entries_path, notice: 'Time entry was successfully started.'
   end
 
   # PATCH/PUT /time_entries/1
   def update
     if @time_entry.update(time_entry_params)
-      redirect_to @time_entry, notice: 'TimeEntry was successfully updated.'
+      redirect_to @time_entry, notice: 'Time entry was successfully updated.'
     else
       render :edit
     end
@@ -42,15 +43,14 @@ class TimeEntriesController < ApplicationController
   # DELETE /time_entries/1
   def destroy
     @time_entry.destroy
-    redirect_to time_entries_url, notice: 'TimeEntry was successfully destroyed.'
+    redirect_to time_entries_url, notice: 'Time entry was successfully destroyed.'
   end
 
   def clock_in
     @time_entry = TimeEntry.new(time_entry_params)
     @time_entry.start_time = Time.zone.now
     @time_entry.save
-    flash[:notice] = "Time time_entry started"
-    redirect_to time_entries_path
+    redirect_to project_path(@time_entry.project_id), notice: "Time entry started"
   end
 
   def clock_out
@@ -59,7 +59,7 @@ class TimeEntriesController < ApplicationController
     @time_entry.update(stop_time: Time.zone.now,
     date: Time.zone.now.to_date,
     total_time: (Time.zone.now - start).round)
-    redirect_to time_entries_path, notice: 'TimeEntry was successfully saved.'
+    redirect_to project_path(@time_entry.project_id), notice: 'TimeEntry was successfully saved.'
   end
 
   private

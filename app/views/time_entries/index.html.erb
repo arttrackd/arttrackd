@@ -1,4 +1,7 @@
-<h2> Time Entries From All Time!</h2>
+<h2> Time Entries For <%= @project.name %>!</h2>
+
+You've worked on Stim for
+<%= distance_of_time_in_words(@time_entries_day.sum('total_time'), 0, except: :seconds) %> today
 <table>
   <thead>
     <tr>
@@ -15,7 +18,9 @@
       <tr>
         <td><%= time_entry.start_time %></td>
         <td><%= time_entry.stop_time %></td>
-        <td><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></td>
+        <% if time_entry.start_time && time_entry.stop_time %>
+          <td><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></td>
+        <% end %>
         <td><%= time_entry.date %></td>
         <td><%= link_to 'Show', time_entry %></td>
         <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>

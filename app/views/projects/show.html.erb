@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>User:</strong>
   <%= @project.user_id %>
@@ -18,6 +16,15 @@
 <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
 <%= link_to 'Clock Out', clock_out_time_entries_path, method: :patch, id: "clock-out" %>
 
-<p> You have worked on this project for: <%=
+<p>
+  You have worked on this project for
+  <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %>
+</p>
+
+<p>
+  View your time entries for this project
+  <%= link_to 'here', time_entries_path(id: @project.id) %>
+
+</p>
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

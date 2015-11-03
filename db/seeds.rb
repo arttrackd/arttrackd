@@ -21,10 +21,6 @@ SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_t
 SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: true)
 SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: true)
 
-TimeEntry.create!(project_id: 1, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
-TimeEntry.create!(project_id: 2, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
-TimeEntry.create!(project_id: 3, start_time: DateTime.now - rand(1..990).days, stop_time: DateTime.now + rand(1..990).days, date: Date.today + rand(1...31).days )
-
 
 150.times do
   Project.create!(user_id: [1,2,3].sample, name: Faker::App.name, description: Faker::Company.bs)
@@ -45,5 +41,5 @@ end
 200.times do
   start = Faker::Time.backward(rand(1..100))
   stop = Faker::Time.between(start, DateTime.now)
-  TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, date: start.to_date )
+  TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, total_time: Time.parse(stop - start), date: start.to_date )
 end
