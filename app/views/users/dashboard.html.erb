@@ -1,34 +1,36 @@
-<div id="projects-column">
-  <h1>Listing Your Projects</h1>
-    <% @projects.each do |project| %>
-      <ul>
-        <li>
-          <%= project.name %>
-          <%= link_to 'Show', project %>
-          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to 'Edit', edit_project_path(project) %>
-        </li>
-      </ul>
-    <% end %>
-    <%= link_to 'Your profile', user_path(session[:user_id]) %>
-</div>
-
-<div class="dashboard-right">
-
-  <div class="new-project">
-    <h1> Create a new project </h1>
-    <div class="form-group">
-      <%= form_tag new_project_path, method: :get do %>
-        <p>
-          <%= text_field_tag :name, nil, placeholder: "Project Name" %>
-          <%= submit_tag "Create" %>
-        </p>
+<div class="outer-container">
+  <div id="projects-column">
+    <h1>Listing Your Projects</h1>
+      <% @projects.each do |project| %>
+        <ul>
+          <li>
+            <%= project.name %>
+            <%= link_to 'Show', project %>
+            <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Edit', edit_project_path(project) %>
+          </li>
+        </ul>
       <% end %>
-    </div>
+
   </div>
 
-  <div class="random-stats">
-    <h1> Random Stats </h1>
-    <%= image_tag("http://i.imgur.com/doeDfCM.png") %>
+  <div class="dashboard-right">
+
+    <div class="new-project">
+      <h1> Create a new project </h1>
+      <div class="form-group">
+        <%= form_tag new_project_path, method: :get do %>
+          <p>
+            <%= text_field_tag :name, nil, placeholder: "Project Name" %>
+            <%= submit_tag "Create" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="random-stats">
+      <h1> Random Stats </h1>
+      <%= image_tag("http://i.imgur.com/doeDfCM.png") %>
+    </div>
   </div>
 </div>
