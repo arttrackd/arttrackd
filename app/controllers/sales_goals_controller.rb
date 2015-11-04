@@ -1,11 +1,11 @@
 class SalesGoalsController < ApplicationController
   before_action :require_login
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
-  before_action :success_on_show, only: :show
-  before_action :success_on_index, only: :index
   before_action :validate_user, only: [:show, :edit, :update, :destroy]
+
   # GET /sales_goals
   def index
+    @goals = SalesGoal.where('user_id = ?', @current_user.id)
   end
 
   # GET /sales_goals/1
@@ -24,7 +24,7 @@ class SalesGoalsController < ApplicationController
   # POST /sales_goals
   def create
     @sales_goal = SalesGoal.new(sales_goal_params)
-
+    @sales_goal.user = @current_user
     if @sales_goal.save
       redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
     else
@@ -48,63 +48,6 @@ class SalesGoalsController < ApplicationController
   end
 
   private
-
-    def success_on_index # We're going to need to pass success a length of time and use that instead of sales_goals.all
-      @user = User.find(session[:user_id])
-      @goals = SalesGoal.where('user_id = ?', @user.id)
-      @goals.each do |sg|
-        @projects = @user.projects
-        @sales = []
-        @gross = []
-        @projects.each do |project|
-          @sales += project.sales
-        end
-        @sales.each do |s|
-          @gross << s.gross
-        end
-        if @gross.count > 0
-          @gross = @gross.reduce(:+)
-          if @gross >= @user.sales_goals.sum('amount') && @user.sales_goals.sum('amount') != 0
-            sg.success = true
-            @user.save
-          else
-            sg.success = false
-            @user.save
-          end
-        else
-          sg.success = false
-          @user.save
-        end
-      end
-    end
-
-    def success_on_show # We're going to need to pass success a length of time and use that instead of sales_goals.all
-      @user = @sales_goal.user
-      redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
-      @projects = @user.projects
-      @sales = []
-      @gross = []
-      @projects.each do |project|
-        @sales += project.sales
-      end
-      @sales.each do |s|
-        @gross << s.gross
-      end
-      @gross = @gross.reduce(:+)
-      if @gross
-        if @gross >= @user.sales_goals.sum('amount') && @user.sales_goals.sum('amount') != 0
-          @sales_goal.success = true
-          @user.save
-        else
-          @sales_goal.success = false
-          @user.save
-        end
-      else
-        @sales_goal.success = false
-        @user.save
-      end
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_goal
       begin

@@ -9,12 +9,12 @@
   <strong>Gross:</strong>
   <%= @sale.gross %>
 </p>
-
-<p>
-  <strong>Net:</strong>
-  <%= @sale.net %>
-</p>
-
+<% if @sale.net %>
+  <p>
+    <strong>Net:</strong>
+    <%= @sale.net %>
+  </p>
+<% end %>
 <p>
   <strong>Date:</strong>
   <%= @sale.date %>

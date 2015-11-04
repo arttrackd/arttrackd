@@ -2,6 +2,7 @@ class SalesController < ApplicationController
   before_action :require_login
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
   after_action :net, only: :create #Write this method once we have expenses tables
+  after_action :update_goals, only: [:create, :update, :destroy]
   # GET /sales
   def index
     @user = User.find(session[:user_id])
@@ -71,5 +72,9 @@ class SalesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def sale_params
       params.require(:sale).permit(:project_id, :gross, :date)
+    end
+
+    def update_goals
+      SalesGoal.update_goals(@current_user.id)
     end
 end
