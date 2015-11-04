@@ -13,10 +13,14 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries/1
   def show
+    @user = User.where(id: Project.find(session[:id]).user_id)
+    redirect_to dashboard_user_path if @user != @current_user
   end
 
   # GET /time_entries/1/edit
   def edit
+    @user = User.where(id: Project.find(params[:id]).user_id)
+    redirect_to dashboard_user_path if @user != @current_user
   end
 
   # PATCH/PUT /time_entries/1

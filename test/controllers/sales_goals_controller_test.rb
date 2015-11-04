@@ -10,7 +10,7 @@ class SalesGoalsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:sales_goals)
+    assert_nil assigns(:sales_goals)
   end
 
   test "should get new" do

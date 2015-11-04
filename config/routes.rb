@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   post    'login'      =>  'session#create'
   delete  'logout'     =>  'session#destroy'
   get     'signup'     =>  'users#new'
+  get     'profile'    =>  'users#profile'
 
 
 
-
-  resources :time_entries, except: [:new, :create] do
+  resources :time_entries, except: [:new, :create, :index] do
     collection do
       post  'clock_in'
       patch 'clock_out'
+      get '/' => 'users#dashboard'
     end
   end
   resources :sales_goals

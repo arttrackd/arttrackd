@@ -2,9 +2,17 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
   before_action :require_login, except: :new
 
-  def show
+  def profile
+    @user = @current_user
   end
 
+  def index
+    redirect_to profile_path
+  end
+  
+  def show
+    redirect_to profile_path
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -12,6 +20,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    redirect_to dashboard_user_path if @user != @current_user
   end
 
   # POST /users
