@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     collection do
       post  'clock_in'
       patch 'clock_out'
-      get '/' => 'users#dashboard'
     end
   end
   resources :sales_goals
