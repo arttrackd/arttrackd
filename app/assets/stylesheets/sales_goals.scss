@@ -1,3 +1,23 @@
 // Place all the styles related to the sales_goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.goal-amount{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.goal-length_of_time{
+  @include span-columns(4);
+}
+
+.goal-start-time{
+  @include span-columns(4);
+}
+.goal-success{
+  @include span-columns(4);
+}
+
+.goal-edit{
+  @include span-columns(12);
+}

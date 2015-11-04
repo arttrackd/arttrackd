@@ -18,6 +18,7 @@
  @import "time_entries";
  @import "projects";
  @import "sales";
+ @import "sales_goals";
 
 .container{
   @include outer-container(90%);
