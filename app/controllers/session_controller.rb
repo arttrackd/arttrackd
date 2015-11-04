@@ -10,7 +10,7 @@ class SessionController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:success] = 'Welcome!'
-      redirect_to dashboard_user_path(@user.id)
+      redirect_to dashboard_user_path(session[:user_id])
     else
       flash[:error] = 'Invalid email/password combination'
       redirect_to login_path

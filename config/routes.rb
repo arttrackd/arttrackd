@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete  'logout'     =>  'session#destroy'
   get     'signup'     =>  'users#new'
   get     'search'     =>  'projects#search'
+  get     'profile'    =>  'users#profile'
 
 
 

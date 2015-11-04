@@ -10,7 +10,7 @@ class SalesGoalsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:sales_goals)
+    assert_nil assigns(:sales_goals)
   end
 
   test "should get new" do
@@ -20,7 +20,7 @@ class SalesGoalsControllerTest < ActionController::TestCase
 
   test "should create sales_goal" do
     assert_difference('SalesGoal.count') do
-      post :create, sales_goal: { amount: @sales_goal.amount, length_of_time: @sales_goal.length_of_time, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }
+      post :create, sales_goal: { amount: 1000, length_of_time: @sales_goal.length_of_time, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }
     end
 
     assert_redirected_to sales_goal_path(assigns(:sales_goal))
