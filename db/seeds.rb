@@ -24,9 +24,9 @@ Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - ran
 Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
 # SalesGoal.create(user_id: 1, amount: 500, length_of_time: "1 day", start_time: "2012-01-03")
-SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.now - rand(1..990).days, success: true)
-SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: true)
-SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: true)
+SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.now - rand(1..990).days, success: false)
+SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: false)
+SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: false)
 
 150.times do
   Project.create!(user_id: [1,2,3].sample, name: Faker::App.name, description: Faker::Company.bs)
@@ -41,7 +41,7 @@ end
 
 length_in_unit = ["days","months","weeks","years"]
 10.times do
-  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: (Faker::Number.between(0, 31).to_s + " " + length_in_unit.sample), start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"), success: true)
+  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: (Faker::Number.between(1, 31).to_s + " " + length_in_unit.sample), start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"))
 end
 
 200.times do

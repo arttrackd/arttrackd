@@ -5,11 +5,15 @@ class TimeEntriesController < ApplicationController
 
   # GET /time_entries
   def index
-    @project = Project.find(params[:id])
-    @time_entries = TimeEntry.where('project_id = ?', @project.id)
-    @time_entries_day = @time_entries.where('date > ?', Time.current - 1.day)
-    @time_entries_week = @time_entries.where('date > ?', 1.week.ago)
-    @time_entries_month = @time_entries.where('date > ?', 1.month.ago)
+    if params[:id]
+      @project = Project.find(params[:id])
+      @time_entries = TimeEntry.where('project_id = ?', @project.id)
+      @time_entries_day = @time_entries.where('date > ?', Time.current - 1.day)
+      @time_entries_week = @time_entries.where('date > ?', 1.week.ago)
+      @time_entries_month = @time_entries.where('date > ?', 1.month.ago)
+    else
+      redirect_to dashboard_user_path(@current_user.id), notice: "You must specify a project to view time entries."
+    end
   end
 
   # GET /time_entries/1

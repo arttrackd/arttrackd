@@ -1,34 +1,59 @@
-<div id="projects-column">
-  <h1>Listing Your Projects</h1>
-    <% @projects.each do |project| %>
-      <ul>
-        <li>
-          <%= project.name %>
-          <%= link_to 'Show', project %>
-          <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%= link_to 'Edit', edit_project_path(project) %>
-        </li>
-      </ul>
-    <% end %>
-    <%= link_to 'Your profile', user_path(session[:user_id]) %>
-</div>
-
-<div class="dashboard-right">
-
-  <div class="new-project">
-    <h1> Create a new project </h1>
-    <div class="form-group">
-      <%= form_tag new_project_path, method: :get do %>
-        <p>
-          <%= text_field_tag :name, nil, placeholder: "Project Name" %>
-          <%= submit_tag "Create" %>
-        </p>
-      <% end %>
-    </div>
+<div class="outer-container">
+  <div class="dashboard-projects-column">
+    <h1>Your Projects</h1>
+      <div class="dashboard-names">
+        <% @projects.each do |project| %>
+          <%= project.name %></br>
+          <div class="dashboard-column">
+            <div class="dashboard-block dashboard-block-3">
+              <%= link_to 'Edit', edit_project_path(project) %>
+            </div>
+            <div class="dashboard-block dashboard-block-3">
+              <%= link_to 'Show', project %>
+            </div>
+            <div class="dashboard-block dashboard-block-3">
+              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div></br>
+        <% end %>
+      </div>
   </div>
 
-  <div class="random-stats">
-    <h1> Random Stats </h1>
-    <%= image_tag("http://i.imgur.com/doeDfCM.png") %>
+  <div class="dashboard-right">
+    <div class="dashboard-column">
+      <h1> Create a new project </h1>
+      <div class="form-group">
+        <%= form_tag new_project_path, method: :get do %>
+          <p>
+            <%= text_field_tag :name, nil, placeholder: "Project Name" %>
+            <%= submit_tag "Create" %>
+          </p>
+        <% end %>
+      </div>
+
+      <div class="dashboard-goals">
+        <h1> Your Goals </h1>
+        <div class="dashboard-names">
+          <% @goals.each do |sales_goal| %>
+            Goal Amount: <%= number_to_currency(sales_goal.amount) %></br>
+            <% if sales_goal.success %>
+              Achieved
+            <% else %>
+              Not yet achieved
+            <% end %>
+          <div class="dashboard-column">
+            <div class="dashboard-block dashboard-block-5">
+              <%= link_to 'Show', sales_goal %>
+            </div>
+            <div class="dashboard-block dashboard-block-5">
+              <%= link_to 'Edit', edit_sales_goal_path(sales_goal) %>
+            </div>
+            <div class="dashboard-block dashboard-block-5">
+              <%= link_to 'Destroy', sales_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+          </div></br>
+        <% end %>
+    </div>
+  </div>
   </div>
 </div>

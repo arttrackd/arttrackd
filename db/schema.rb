@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151103152256) do
+ActiveRecord::Schema.define(version: 20151104172242) do
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 20151103152256) do
     t.decimal  "amount"
     t.string   "length_of_time"
     t.date     "start_time"
-    t.boolean  "success"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.boolean  "success",        default: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"

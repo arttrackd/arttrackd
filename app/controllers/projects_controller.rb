@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
-
+    @project.user = @current_user
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
@@ -54,7 +54,11 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      @project = Project.find(params[:id])
+      begin
+        @project = Project.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that project."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
