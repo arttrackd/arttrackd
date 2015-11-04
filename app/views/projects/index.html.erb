@@ -1,30 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <h1>Listing Projects</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.user_id %></td>
-        <td><%= project.name %></td>
-        <td><%= project.description %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% @projects.each do |project| %>
+  <div class="index-name"><%= project.name %></div>
+  <div class="index-1col"></div>
+  <div class="index-desc"><%= project.description %></div>
+    <div class"index-sales">
+      <div class="index-gross">
+        <%project.sales.each do |sale| %>
+        <%= sale.gross %>
+      <% end  %></div>
+      <div class="index-saledate">
+        <%project.sales.each do |sale| %>
+        <%= sale.date %>
+      <br>
+      <% end %>
+      </div>
+    </div>
+  <div class="index-edit">
+    <%= link_to 'Show', project %>
+    <%= link_to 'Edit', edit_project_path(project) %>
+    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>
 
 <br>
 

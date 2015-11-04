@@ -16,7 +16,7 @@
  @import "neat";
  @import "users";
  @import "time_entries";
-
+ @import "projects";
 
 .container{
   @include outer-container(90%);

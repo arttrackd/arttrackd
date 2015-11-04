@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post    'login'      =>  'session#create'
   delete  'logout'     =>  'session#destroy'
   get     'signup'     =>  'users#new'
-
+  get     'search'     =>  'projects#search'
 
 
 
