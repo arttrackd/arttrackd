@@ -16,7 +16,12 @@
  @import "neat";
  @import "users";
  @import "time_entries";
+ @import "projects";
+ @import "sales";
 
+h1{
+  font-family: $helvetica;
+}
 
 .container{
   @include outer-container(90%);
@@ -35,6 +40,7 @@
   @include row();
   height: 100px;
   background-color: pink;
+  clear: both;
 }
 
 header.navigation {

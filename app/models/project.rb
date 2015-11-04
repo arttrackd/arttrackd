@@ -8,4 +8,8 @@ class Project < ActiveRecord::Base
     project_time_entries = TimeEntry.where('project_id = ?', id)
     project_time_entries.sum('total_time')
   end
+
+  def search
+  end
+  
 end

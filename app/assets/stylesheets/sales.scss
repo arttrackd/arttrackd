@@ -1,3 +1,23 @@
 // Place all the styles related to the sales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.sales-name{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.sales-gross{
+  @include span-columns(4);
+}
+
+.sales-net{
+  @include span-columns(4);
+}
+.sales-date{
+  @include span-columns(4);
+}
+
+.sales-edit{
+  @include span-columns(12);
+}

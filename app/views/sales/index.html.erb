@@ -1,31 +1,22 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Sales</h1>
+<% @sales.each do |sale| %>
+  <div class="sales-name"><%= sale.project.name %></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Project</th>
-      <th>Gross</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class"sales-sales">
+    <div class="sales-gross"> Gross sale: $<%= sale.gross %></div>
+    <div class="sales-net"> Net sale: $<%= sale.net %></div>
+    <div class="sales-date">  Sale date: <%= sale.date %></div>
+  </div>
 
-  <tbody>
-    <% @sales.each do |sale| %>
-      <tr>
-        <td><%= sale.project_id %></td>
-        <td><%= sale.gross %></td>
-        <td><%= sale.date %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="sales-edit">
+    <%= link_to 'Show', sale %>
+    <%= link_to 'Edit', edit_sale_path(sale) %>
+    <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br>
+<% end %>
 
-<br>
+
+</br>
 
 <%= link_to 'New Sale', new_sale_path %>

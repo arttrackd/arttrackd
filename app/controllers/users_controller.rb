@@ -51,10 +51,13 @@ class UsersController < ApplicationController
   def dashboard
     user = User.find(params[:id])
     redirect_to dashboard_user_path(session[:user_id]) unless user == @current_user
+
+    @goals = SalesGoal.where('user_id = ?', @user.id)
     @projects = Project.where('user_id = ?', @user.id)
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       begin
