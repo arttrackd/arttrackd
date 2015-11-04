@@ -61,7 +61,11 @@ class SalesController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
-      @sale = Sale.find(params[:id])
+      begin
+        @sale = Sale.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that sale."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

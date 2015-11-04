@@ -7,6 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <%= render 'layouts/navbar' %>
     <div class="container">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
@@ -24,14 +25,8 @@
         <div class="success"><%= flash[:success] %></div>
       <% end %>
       <div class="page-wrap">
-      <%= render 'layouts/navbar' %>
-      <%= link_to "Log out", logout_path, method: :delete %>
-      <%= yield %>
-
+        <%= yield %>
       </div>
-      <footer class="site-footer">
-        Awesome footer here!
-      </footer>
   </div>
 
   </body>

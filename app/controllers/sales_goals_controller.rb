@@ -109,7 +109,11 @@ class SalesGoalsController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_goal
-      @sales_goal = SalesGoal.find(params[:id])
+      begin
+        @sales_goal = SalesGoal.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that goal."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
