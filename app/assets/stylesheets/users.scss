@@ -18,7 +18,6 @@
 .dashboard-names{
   @include span-columns(12);
   padding: 1em;
-  font-size: 1.4em;
 }
 
 .dashboard-block-3 {
@@ -29,7 +28,6 @@
 .dashboard-column{
   @include span-columns(12);
   padding: 1em;
-  font-size: .8em;
 }
 
 .dashboard-block{

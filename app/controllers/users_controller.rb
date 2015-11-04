@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
   # GET /users/new
   def new
+    redirect_to dashboard_user_path(session[:user_id]) if logged_in?
     @user = User.new
   end
 
