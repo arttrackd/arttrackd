@@ -5,25 +5,32 @@
 <h1>Listing Projects</h1>
 <% @projects.each do |project| %>
   <div class="index-name"><%= project.name %></div>
-  <div class="index-1col"></div>
+  <div class="index-1col">|</div>
   <div class="index-desc"><%= project.description %></div>
+
+  <% if project.sales.length > 0 %>
     <div class"index-sales">
       <div class="index-gross">
         <%project.sales.each do |sale| %>
-        <%= sale.gross %>
-      <% end  %></div>
+         $<%= sale.gross %></br>
+      <% end  %>
+     </div>
       <div class="index-saledate">
         <%project.sales.each do |sale| %>
-        <%= sale.date %>
-      <br>
+        <%= sale.date %></br>
       <% end %>
       </div>
     </div>
+  <% else %>
+    <div class="index-instock">In Stock</div>
+    <div class="index-tbd">Price TBD</div>
+  <% end %>
   <div class="index-edit">
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
+  <br>
 <% end %>
 
 <br>

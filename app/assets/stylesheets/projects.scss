@@ -4,21 +4,29 @@
 .index-name{
   @include span-columns(12);
   @include omega();
-
+  font-size: 260%;
 }
 .index-1col{
-  @include span-columns(1);
 }
 .index-desc{
-  @include span-columns(6);
+  @include span-columns(7);
 }
 
 .index-gross{
   @include span-columns(2);
 }
 .index-salesdate{
+  @include span-columns(3);
+}
+.index-instock{
+  @include span-columns(2);
+}
+.index-tbd{
   @include span-columns(2);
 }
 .index-edit{
+  @include span-columns(12);
+
+  background-color: skyblue;
 
 }
