@@ -1,7 +1,7 @@
 class SessionController < ApplicationController
 
   def new
-   redirect_to dashboard_user_path(session[:user_id])(session[:user_id]) if logged_in?
+   redirect_to dashboard_user_path(session[:user_id]) if logged_in?
   end
 
   def create
