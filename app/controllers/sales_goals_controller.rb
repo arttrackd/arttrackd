@@ -9,7 +9,7 @@ class SalesGoalsController < ApplicationController
 
   # GET /sales_goals/1
   def show
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # GET /sales_goals/new
@@ -20,7 +20,7 @@ class SalesGoalsController < ApplicationController
   # GET /sales_goals/1/edit
   def edit
     @user = @sales_goal.user
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # POST /sales_goals
@@ -82,7 +82,7 @@ class SalesGoalsController < ApplicationController
 
     def success_on_show # We're going to need to pass success a length of time and use that instead of sales_goals.all
       @user = @sales_goal.user
-      redirect_to dashboard_user_path if @user != @current_user
+      redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
       @projects = @user.projects
       @sales = []
       @gross = []

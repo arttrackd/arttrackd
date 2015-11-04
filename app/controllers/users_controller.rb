@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def index
     redirect_to profile_path
   end
-  
+
   def show
     redirect_to profile_path
   end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # POST /users

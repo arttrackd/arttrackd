@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   # GET /sales
   def index
     @user = User.find(session[:user_id])
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
     @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
   end
@@ -13,7 +13,7 @@ class SalesController < ApplicationController
   # GET /sales/1
   def show
     @user = @sale.project.user
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # GET /sales/new
@@ -24,7 +24,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @user = @sale.project.user
-    redirect_to dashboard_user_path if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # POST /sales
