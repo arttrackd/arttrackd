@@ -3,13 +3,13 @@ class SalesGoalsController < ApplicationController
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
   before_action :success_on_show, only: :show
   before_action :success_on_index, only: :index
+  before_action :validate_user, only: [:show, :edit, :update, :destroy]
   # GET /sales_goals
   def index
   end
 
   # GET /sales_goals/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # GET /sales_goals/new
@@ -19,8 +19,6 @@ class SalesGoalsController < ApplicationController
 
   # GET /sales_goals/1/edit
   def edit
-    @user = @sales_goal.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # POST /sales_goals
@@ -119,5 +117,10 @@ class SalesGoalsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def sales_goal_params
       params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time)
+    end
+
+    def validate_user
+      user = @sales_goal.user
+      redirect_to dashboard_user_path(@current_user.id) unless user == @current_user
     end
 end
