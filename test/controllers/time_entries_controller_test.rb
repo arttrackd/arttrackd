@@ -8,7 +8,7 @@ class TimeEntriesControllerTest < ActionController::TestCase
   end
 
   test "should get index" do
-    get :index, id: projects(:one).id
+    get :index, id: users(:one).id
     assert_response :success
     assert_not_nil assigns(:time_entries)
   end
