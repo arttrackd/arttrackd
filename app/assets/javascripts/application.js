@@ -31,7 +31,6 @@ $(document).ready(function () {
       event.preventDefault();
     }
   });
-  
   var menuToggle = $('#js-mobile-menu').unbind();
   $('#js-navigation-menu').removeClass("show");
 

@@ -4,6 +4,7 @@ class SalesController < ApplicationController
   after_action :net, only: :create #Write this method once we have expenses tables
   # GET /sales
   def index
+    @project = Project.all
     @user = User.find(session[:user_id])
     redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
     @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
