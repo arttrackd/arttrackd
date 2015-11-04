@@ -4,11 +4,13 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where('user_id = ?', session[:user_id])
+    @projects = Project.where(user_id: @current_user.id)
   end
 
   # GET /projects/1
   def show
+    @user = @project.user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
     @project_time = @project.get_time
   end
 
@@ -19,6 +21,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    @user = @project.user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
   end
 
   # POST /projects

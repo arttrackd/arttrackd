@@ -1,12 +1,13 @@
 class TimeEntriesController < ApplicationController
   before_action :require_login
   before_action :set_time_entry, only: [:show, :edit, :update, :destroy]
+  before_action :validate_user, except: [:index, :clock_in, :clock_out]
 
   # GET /time_entries
   def index
     @project = Project.find(params[:id])
     @time_entries = TimeEntry.where('project_id = ?', @project.id)
-    @time_entries_day = @time_entries.where('date > ?', Time.current - 29.hours)
+    @time_entries_day = @time_entries.where('date > ?', Time.current - 1.day)
     @time_entries_week = @time_entries.where('date > ?', 1.week.ago)
     @time_entries_month = @time_entries.where('date > ?', 1.month.ago)
   end
@@ -64,5 +65,10 @@ class TimeEntriesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def time_entry_params
       params.require(:time_entry).permit(:start_time, :stop_time, :total_time, :date, :project_id)
+    end
+
+    def validate_user
+      user = @time_entry.project.user
+      redirect_to dashboard_user_path(session[:user_id]) unless user == @current_user
     end
 end

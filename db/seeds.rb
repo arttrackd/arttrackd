@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.create(name: "Julie", email: "julie@email.com", password: "password")
+User.create(name: "Angela", email: "angela@email.com", password: "password")
 User.create!(name: "Phil", email: "Phil_is_awesome@yeah.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Kevin", email: "kevin@hotmail.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Dead", email: "DeamonKiller@hunter.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
@@ -15,8 +16,9 @@ Project.create!(user_id: 1, name: "LiesOnFire", description: "An eternal piece d
 Project.create!(user_id: 2, name: "ASfhasfga", description: "Some stuff with some things and yeah just like that")
 Project.create!(user_id: 3, name: "Cheeseburger", description: "You forgot the pie")
 
-# Sale.create!(project_id: 1, gross: 100, date: "03/01/2012 17:00", "%m/%d/%Y %H:%M")
-# Sale.create!(project_id: 1, gross: 600, date: "04/02/2012 17:00", "%m/%d/%Y %H:%M")
+
+Sale.create(project_id: 1, gross: 100, date: Date.today - rand(1..990).days)
+Sale.create(project_id: 1, gross: 600, date: Date.today - rand(1..990).days)
 Sale.create!(project_id: 1, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
 Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
 Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
