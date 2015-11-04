@@ -1,12 +1,14 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .index-name{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
 .index-1col{
+  color: white;
 }
 .index-desc{
   @include span-columns(7);
@@ -26,7 +28,4 @@
 }
 .index-edit{
   @include span-columns(12);
-
-  background-color: skyblue;
-
 }

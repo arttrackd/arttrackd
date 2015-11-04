@@ -17,6 +17,7 @@
  @import "users";
  @import "time_entries";
  @import "projects";
+ @import "sales";
 
 .container{
   @include outer-container(90%);
