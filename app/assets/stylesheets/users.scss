@@ -1,18 +1,54 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#projects-column{
+.outer-container{
+  @include span-columns(12);
+}
+
+.dashboard-column > div{
+  padding-bottom: 1;
+}
+
+.dashboard-projects-column{
+  @include span-columns(4 of 12);
+  border: .1em solid black;
+  padding: 1em;
+}
+
+.dashboard-names{
+  @include span-columns(12);
+  padding: 1em;
+  font-size: 1.4em;
+}
+
+.dashboard-block-3 {
   @include span-columns(4);
-  background-color: #F3F2F5;
+  @include omega(5n);
+}
+
+.dashboard-column{
+  @include span-columns(12);
+  padding: 1em;
+  font-size: .8em;
+}
+
+.dashboard-block{
 }
 
 .dashboard-right{
   @include span-columns(8);
-  background-color: purple;
+  border: .1em solid black;
+  padding: 1em;
 }
 
-.random-stats{
+.dashboard-block-5 {
+  @include span-columns(2);
+  @include omega(3n);
+}
+
+.dashboard-goals{
   margin-top: 5%;
+  border-top: .1em solid black;
 }
 
 .julie{

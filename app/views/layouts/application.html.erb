@@ -24,9 +24,9 @@
         <div class="success"><%= flash[:success] %></div>
       <% end %>
       <div class="page-wrap">
-      <%= render 'layouts/navbar' %>
-      <%= link_to "Log out", logout_path, method: :delete %>
-      <%= yield %>
+        <%= render 'layouts/navbar' %>
+        <%= link_to "Log out", logout_path, method: :delete %>
+        <%= yield %>
 
       </div>
       <footer class="site-footer">

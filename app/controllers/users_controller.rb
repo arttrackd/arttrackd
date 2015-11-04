@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
   before_action :require_login, except: :new
+  before_action :success_on_index, only: :dashboard
 
   def profile
     @user = @current_user
@@ -51,10 +52,42 @@ class UsersController < ApplicationController
   def dashboard
     @user = User.find(session[:user_id])
     redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+
+    @goals = SalesGoal.where('user_id = ?', @user.id)
     @projects = Project.where('user_id = ?', @user.id)
   end
 
   private
+
+    def success_on_index # We're going to need to pass success a length of time and use that instead of sales_goals.all
+      @user = User.find(session[:user_id])
+      @goals = SalesGoal.where('user_id = ?', @user.id)
+      @goals.each do |sg|
+        @projects = @user.projects
+        @sales = []
+        @gross = []
+        @projects.each do |project|
+          @sales += project.sales
+        end
+        @sales.each do |s|
+          @gross << s.gross
+        end
+        if @gross.count > 0
+          @gross = @gross.reduce(:+)
+          if @gross >= @user.sales_goals.sum('amount') && @user.sales_goals.sum('amount') != 0
+            sg.success = true
+            @user.save
+          else
+            sg.success = false
+            @user.save
+          end
+        else
+          sg.success = false
+          @user.save
+        end
+      end
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       begin
