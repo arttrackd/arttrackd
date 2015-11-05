@@ -25,7 +25,7 @@
 .project-index-gross{
   @include span-columns(2);
 }
-.project-index-salesdate{
+.project-index-saledate{
   @include span-columns(3);
 }
 
@@ -87,4 +87,8 @@ h1 {
     background-color: #006300;
     float: right;
   }
+}
+
+.project-index-row{
+  @include row();
 }
