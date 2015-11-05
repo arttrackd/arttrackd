@@ -12,15 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
+    <%= f.hidden_field :project_id, value: params[:project_id] %>
   </div>
   <div class="field">
-    <%= f.label :gross %><br>
+    <%= f.label :gross, value: "Sale Amount" %><br>
     <%= f.text_field :gross %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
+    <%= f.label :date, value: "Sale Date" %><br>
     <%= f.date_select :date %>
   </div>
   <div class="actions">

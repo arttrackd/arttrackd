@@ -1,9 +1,8 @@
-<p id="notice"><%= notice %></p>
 
-  <div class="show-sales-goal-amount">Goal: <%= number_to_currency(@sales_goal.amount) %></div>
-  <div class="show-sales-goal-length">Duration: <%= @sales_goal.length_of_time %></div>
-  <div class="show-sales-goal-start-time">Started: <%= @sales_goal.start_time %></div>
-  <div class="show-sales-goal-success">Achieved: <%= @sales_goal.success %></div>
+<div class="show-sales-goal-amount">Goal: <%= number_to_currency(@sales_goal.amount) %></div>
+<div class="show-sales-goal-length">Duration: <%= @sales_goal.length_of_time %></div>
+<div class="show-sales-goal-start-time">Started: <%= @sales_goal.start_time %></div>
+<div class="show-sales-goal-success">Achieved: <%= @sales_goal.success %></div>
 
 <div class="edit-back">
   <%= link_to 'Edit', edit_sales_goal_path(@sales_goal) %> |

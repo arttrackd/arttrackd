@@ -1,26 +1,19 @@
 
-<p id="notice"><%= notice %></p>
-<%= image_tag asset_url('julie_placeholder.jpg'), class: "julie" %>
-
+<div class="profile-image-column">
+  <%= image_tag asset_url('track.png'), class: "profile-image" %>
+</div>
 <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
     <a href="#" class="tab-link is-active">User Information</a>
     <div class="tab-content">
       <div class="user-information">
-      <p>
-        <strong>Name:</strong>
-        <%= @user.name.upcase %>
-      </p>
-
-      <p>
-        <strong>E-mail:</strong>
-        <%= @user.email %>
-      </p>
-
-      <p>
-        <%= @user.time_zone %>
-      </p>
-
+        <div class="profile-middle-column">
+          <h1><%= @user.name %></h1>
+          <h2><%= @user.email %></h2>
+          <h2><%= @user.time_zone %></h2>
+          <h2><%= number_to_currency(@user.hourly_rate) %>/hour</h2>
+          <h3><%= link_to 'Edit', edit_user_path(@user) %></h3>
+        </div>
       <p class="edit-back">
         <%= link_to 'Edit', edit_user_path(@user) %> |
         <%= link_to 'Back', users_path %>
@@ -29,23 +22,14 @@
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link">Projects</a>
+    <a href="#" class="tab-link">Stats</a>
     <div class="tab-content">
-      <table class="user-projects">
-        <thead>
-          <tr>
-            <th>Projects I've worked on</th
-          </tr>
-        </thead>
-        <tbody>
-          <% @projects.each do |project| %>
-            <tr>
-              <td><%= project.name %></td>
-              <td><%= project.description %> </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="profile-right-column">
+        <p>Number of sales: <%= @sales.count %></p>
+        <p>Number of projects: <%= @user.projects.count %></p>
+        <p>Number of sales goals: <%= @user.sales_goals.count %></p>
+        <p>Number of sales goals reached: <%= @user.sales_goals.where(success: true).count %></p>
+      </div>
     </div>
   </li>
 </ul>

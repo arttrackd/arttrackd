@@ -14,7 +14,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_response :success
+    assert_redirected_to dashboard_user_path(session[:user_id])
   end
 
   test "should create user" do
