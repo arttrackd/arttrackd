@@ -48,3 +48,48 @@
 .show-project-description{
   @include span-columns(6);
 }
+
+h1 {
+  font-family: American Typewriter;
+  font-size: 35pt;
+}
+
+.project-index-edit {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
+}
+
+.index-goal-amount {
+  font-family: Baskerville;
+}
+
+.gd {
+  margin-top: 5px; margin-bottom: 5px;
+  display: inline-block;
+}
+
+.link-to-new-project {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #006300;
+    float: right;
+  }
+}
