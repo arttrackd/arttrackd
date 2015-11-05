@@ -1,34 +1,35 @@
+ <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
+
 <h1>Listing Projects</h1>
+
 <% @projects.each do |project| %>
   <div class="project-index-name"><%= project.name %></div>
-  <div class="project-index-1col">|</div>
-  <div class="project-index-desc"><%= project.description %></div>
+  <div class="project-index-desc gd"><%= project.description %></div>
 
   <% if project.sales.length > 0 %>
     <div class"project-index-sales">
-      <div class="project-index-gross">
+      <div class="project-index-gross gd">
         <%project.sales.each do |sale| %>
          <%= number_to_currency(sale.gross) %></br>
       <% end  %>
      </div>
-      <div class="project-index-saledate">
+      <div class="project-index-saledate gd">
         <%project.sales.each do |sale| %>
         <%= sale.date %></br>
       <% end %>
       </div>
     </div>
   <% else %>
-    <div class="project-index-instock">In Stock</div>
-    <div class="project-index-tbd">Price TBD</div>
+  <div class"project-index-sales">
+    <div class="project-index-gross gd">In Stock</div>
+    <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value(project))%></div>
+  </div>
   <% end %>
   <div class="project-index-edit">
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
+  <hr />
   <br>
 <% end %>
-
-<br>
-
-<%= link_to 'New Project', new_project_path %>
