@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Project:</strong>
+  <%= @project_cost.project_id %>
+</p>
+
+<p>
+  <strong>Cost type:</strong>
+  <%= @project_cost.cost_type %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @project_cost.amount %>
+</p>
+
+<%= link_to 'Edit', edit_project_cost_path(@project_cost) %> |
+<%= link_to 'Back', project_costs_path %>
