@@ -12,8 +12,26 @@
   font-size: 200%;
 }
 .time-in-words{
-  
+
 }
 .index-time-entry-edit{
 
+}
+
+.show-time-entry-project{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.show-time-entry-start-time{
+  @include span-columns(12);
+  font-size: 80%;
+}
+
+.show-time-entry-stop-time{
+  @include span-columns(12);
+}
+.show-time-entry-date{
+  font-size: 50%;
 }
