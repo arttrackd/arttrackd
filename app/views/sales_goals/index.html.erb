@@ -2,8 +2,7 @@
 
 <h1>Listing Sale Goals</h1>
 <% @goals.each do |goal| %>
-  <% end_time = goal.start_time + eval(goal.length_of_time.tr(' ','.')) %>
-  <% active = end_time >= Date.today %>
+  <% active = goal.end_time >= Date.today %>
   <div class="goal-index-amount">Goal: <%= number_to_currency(goal.amount) %></div>
 
   <div class"goal-index-details">
@@ -11,7 +10,7 @@
     <div class="goal-index-start-time gd"> Started: <%= goal.start_time %></div>
     <div class="goal-index-end-time gd">
       <%= active ? "Ends" : "Ended" %>:
-      <%= end_time %>
+      <%= goal.end_time %>
     </div>
     <div class="goal-index-success gd">
       <% if goal.success %>

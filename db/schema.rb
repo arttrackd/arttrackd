@@ -100,8 +100,7 @@ ActiveRecord::Schema.define(version: 20151105201020) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "sales_channel_id"
-    t.string   "end_time"
-    t.string   "date"
+    t.date     "end_time"
   end
 
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"

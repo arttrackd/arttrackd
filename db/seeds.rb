@@ -23,11 +23,6 @@ Sale.create!(project_id: 1, gross: 500.23, net: 245.87, date: Date.today - rand(
 Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
 Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
-# SalesGoal.create(user_id: 1, amount: 500, length_of_time: "1 day", start_time: "2012-01-03")
-SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.now - rand(1..990).days, success: false)
-SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: false)
-SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: false)
-
 150.times do
   Project.create!(user_id: [1,2,3].sample, name: Faker::App.name, description: Faker::Company.bs)
 end
@@ -36,12 +31,18 @@ projects = Project.all
 
 100.times do
   gross_sale = Faker::Number.between(100, 100000) / 100.00
-  Sale.create!(project_id: projects.sample.id, gross: gross_sale, net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2), date: Faker::Date.backward(rand(1..100)))
+  Sale.create!(project_id: projects.sample.id, gross: gross_sale,
+      net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2),
+      date: Faker::Date.backward(rand(1..100)))
 end
 
 length_in_unit = ["days","months","weeks","years"]
 10.times do
-  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000), length_of_time: (Faker::Number.between(1, 31).to_s + " " + length_in_unit.sample), start_time: DateTime.strptime("02/02/2000 17:00", "%m/%d/%Y %H:%M"))
+  start = DateTime.now - rand(1..90).days
+  stop = start + rand(1..60).days
+  SalesGoal.create!(user_id: [1,2,3].sample, amount: Faker::Number.between(0, 10000),
+    length_of_time: (Faker::Number.between(1, 31).to_s + " " + length_in_unit.sample),
+    start_time: start, end_time: stop)
 end
 
 200.times do
