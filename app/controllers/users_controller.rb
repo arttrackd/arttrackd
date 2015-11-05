@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
-  before_action :require_login, except: :new
+  before_action :require_login, except: [:new, :create]
 
   def profile
     @user = @current_user
