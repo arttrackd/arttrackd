@@ -1,23 +1,23 @@
 // Place all the styles related to the sales controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.index-sales-name{
+.sales-index-name{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
 
-.index-sales-gross{
+.sales-index-gross{
   @include span-columns(4);
 }
 
-.index-sales-net{
+.sales-index-net{
 }
-.index-sales-date{
+.sales-index-date{
   @include span-columns(8);
 }
 
-.index-sales-edit{
+.sales-index-edit{
   @include span-columns(12);
 }
 
@@ -37,7 +37,7 @@ h1 {
   font-size: 35pt;
 }
 
-.index-sales-edit {
+.sales-index-edit {
   a {
     color: white;
     font-family: American Typewriter;
@@ -52,7 +52,7 @@ h1 {
   }
 }
 
-.index-sales-gross {
+.sales-index-gross {
   padding-left: 15px;
   font-family: Baskerville;
 }
@@ -78,7 +78,7 @@ h1 {
   }
 }
 
-.index-sales-edit {
+.sales-index-edit {
   a {
     color: white;
     font-family: American Typewriter;

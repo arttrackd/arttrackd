@@ -1,12 +1,12 @@
 // Place all the styles related to the time_entries controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.index-time-entry-start-time{
+.time-entry-index-start-time{
   @include span-columns(12);
   @include omega();
   font-size: 200%;
 }
-.index-time-entry-stop-time{
+.time-entry-index-stop-time{
   @include span-columns(12);
   @include omega();
   font-size: 200%;
@@ -14,25 +14,25 @@
 .time-in-words{
 
 }
-.index-time-entry-edit{
+.time-entry-index-edit{
 
 }
 
-.show-time-entry-project{
+.time-entry-show-project{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
 
-.show-time-entry-start-time{
+.time-entry-show-start-time{
   @include span-columns(12);
   font-size: 80%;
 }
 
-.show-time-entry-stop-time{
+.time-entry-show-stop-time{
   @include span-columns(12);
 }
-.show-time-entry-date{
+.time-entry-show-date{
   font-size: 50%;
 }
 
@@ -41,7 +41,7 @@ h1 {
   font-size: 35pt;
 }
 
-.index-time-entry-edit {
+.time-entry-index-edit {
   a {
     color: white;
     font-family: American Typewriter;
