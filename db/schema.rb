@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105195455) do
+ActiveRecord::Schema.define(version: 20151105201020) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -100,6 +100,8 @@ ActiveRecord::Schema.define(version: 20151105195455) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "sales_channel_id"
+    t.string   "end_time"
+    t.string   "date"
   end
 
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"

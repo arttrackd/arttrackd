@@ -4,7 +4,8 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where(user_id: @current_user.id)
+    # @projects = Project.joins(:sales).where(projects: {user_id: @current_user.id})
+    @projects = Project.where(user: @current_user)
   end
 
   # GET /projects/1

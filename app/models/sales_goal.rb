@@ -10,7 +10,7 @@ class SalesGoal < ActiveRecord::Base
     goals.each do |goal|
       #Finds all sales within the sales goal start/end dates
       start_date = goal.start_time
-      end_date = start_date + eval(goal.length_of_time.tr(' ','.'))
+      end_date = goal.end_time
 
       applicable_sales = sales.select{|sale| sale.date.between?(start_date, end_date)}
 
