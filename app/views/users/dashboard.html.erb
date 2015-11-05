@@ -57,7 +57,7 @@
   </div>
 
   <div class="dashboard-goals">
-    <h1> Your Goals </h1>
+    <h1><%= link_to 'Your Goals', sales_goals_path %></h1>
     <div class="dashboard-names">
       <% @goals.each do |sales_goal| %>
         <h2>Goal Amount: <%= number_to_currency(sales_goal.amount) %></br>
@@ -70,5 +70,6 @@
         <%= link_to 'Show', sales_goal %> <%= link_to 'Edit', edit_sales_goal_path(sales_goal) %> <%= link_to 'Destroy', sales_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div></br>
     <% end %>
+    <h3><%= link_to '. . .', sales_goals_path %></h3></li>
   </div>
 </div>

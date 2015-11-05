@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = @current_user
+    @sales = Sale.where(project_id: Project.where(user_id: @user.id))
   end
 
   def index

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+    <%= f.number_field :amount %>
   </div>
   <div class="field">
     <%= f.label :length_of_time %><br>
@@ -22,10 +22,6 @@
   <div class="field">
     <%= f.label :start_time %><br>
     <%= f.date_select :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :success %><br>
-    <%= f.check_box :success %>
   </div>
   <div class="actions">
     <%= f.submit %>

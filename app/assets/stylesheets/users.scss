@@ -2,11 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .container{
-
+  @include outer-container(90%);
 }
 
 .outer-container{
   @include span-columns(12);
+}
+
+.profile-image-column{
+  @include span-columns(3);
+  padding-top: 2em;
+}
+
+.profile-middle-column{
+  @include span-columns(4);
+  padding-top: 3em;
+}
+
+.profile-right-column{
+  @include span-columns(5);
+  padding-top: 3em;
 }
 
 .dashboard-projects-column{
@@ -60,16 +75,13 @@
 
 .dashboard-goals{
   margin-top: 5%;
-  border-top: .1em solid black;
+  border-top: .1em solid white;
 }
 
-.julie{
-  width: 100px;
-  length: 125px;
-  border-radius: 25px;
+.profile-image{
+  max-width: 100%;
+  border-radius: 1px;
 }
-
-
 
 .accordion-tabs-minimal {
   $base-border-color: gainsboro !default;
