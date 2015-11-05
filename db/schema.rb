@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105194824) do
+ActiveRecord::Schema.define(version: 20151105195455) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20151105194824) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "business_expenses", ["user_id"], name: "index_business_expenses_on_user_id"
+
   create_table "material_purchases", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -32,6 +34,8 @@ ActiveRecord::Schema.define(version: 20151105194824) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "material_purchases", ["user_id"], name: "index_material_purchases_on_user_id"
 
   create_table "material_uses", force: :cascade do |t|
     t.integer  "material_purchase_id"
@@ -43,6 +47,9 @@ ActiveRecord::Schema.define(version: 20151105194824) do
     t.datetime "updated_at",           null: false
   end
 
+  add_index "material_uses", ["material_purchase_id"], name: "index_material_uses_on_material_purchase_id"
+  add_index "material_uses", ["project_id"], name: "index_material_uses_on_project_id"
+
   create_table "project_costs", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "cost_type"
@@ -50,6 +57,8 @@ ActiveRecord::Schema.define(version: 20151105194824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "project_costs", ["project_id"], name: "index_project_costs_on_project_id"
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -79,6 +88,8 @@ ActiveRecord::Schema.define(version: 20151105194824) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  add_index "sales_channels", ["sale_id"], name: "index_sales_channels_on_sale_id"
 
   create_table "sales_goals", force: :cascade do |t|
     t.integer  "user_id"
