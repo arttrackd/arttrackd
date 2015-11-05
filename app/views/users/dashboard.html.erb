@@ -1,59 +1,74 @@
-<div class="outer-container">
-  <div class="dashboard-projects-column">
-    <h1>Your Projects</h1>
+<div class="dashboard-projects-column">
+  <h1><%= link_to 'Your Projects', projects_path %></h1>
+  <h3><%= link_to 'Create New Project', new_project_path %></h3>
+    <div class="dashboard-names">
+      <% @projects.each do |project| %>
+        <h2><%= project.name %></h2>
+        <div class="dashboard-column">
+          <%= link_to 'Edit', edit_project_path(project) %> <%= link_to 'Show', project %> <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div></br>
+      <% end %>
+      <h3><%= link_to '. . .', projects_path %></h3></li>
+    </div>
+
+    <h1><%= link_to 'Your Sales', sales_path %></h1>
       <div class="dashboard-names">
-        <% @projects.each do |project| %>
-          <%= project.name %></br>
+        <% @sales.each do |sale| %>
+          <h2><%= sale.project.name %>: <%= number_to_currency(sale.gross) %></h2>
           <div class="dashboard-column">
-            <div class="dashboard-block dashboard-block-3">
-              <%= link_to 'Edit', edit_project_path(project) %>
-            </div>
-            <div class="dashboard-block dashboard-block-3">
-              <%= link_to 'Show', project %>
-            </div>
-            <div class="dashboard-block dashboard-block-3">
-              <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
+            <%= link_to 'Show', sale %>
           </div></br>
         <% end %>
+        <h3><%= link_to '. . .', sales_path %></h3></li>
       </div>
+
+      <h1><%= link_to 'Your Goals', sales_goals_path %></h1>
+      <h3><%= link_to 'Create New Goal', new_sales_goal_path %></h3>
+      <div class="dashboard-names">
+        <% @goals.each do |sales_goal| %>
+          <h2>Goal Amount: <%= number_to_currency(sales_goal.amount) %></br>
+          <% if sales_goal.success %>
+            Achieved
+          <% else %>
+            Not yet achieved
+          <% end %></h2>
+        <div class="dashboard-column">
+          <%= link_to 'Show', sales_goal %> <%= link_to 'Edit', edit_sales_goal_path(sales_goal) %> <%= link_to 'Destroy', sales_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div></br>
+      <% end %>
+      <h3><%= link_to '. . .', sales_goals_path %></h3></li>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="dashboard-right">
+  <h1> Create a new project </h1>
+  <div class="form-group">
+    <%= form_tag new_project_path, method: :get do %>
+      <p>
+        <%= text_field_tag :name, nil, placeholder: "Project Name" %>
+        <%= submit_tag "Create" %>
+      </p>
+    <% end %>
   </div>
 
-  <div class="dashboard-right">
-    <div class="dashboard-column">
-      <h1> Create a new project </h1>
-      <div class="form-group">
-        <%= form_tag new_project_path, method: :get do %>
-          <p>
-            <%= text_field_tag :name, nil, placeholder: "Project Name" %>
-            <%= submit_tag "Create" %>
-          </p>
-        <% end %>
-      </div>
-
-      <div class="dashboard-goals">
-        <h1> Your Goals </h1>
-        <div class="dashboard-names">
-          <% @goals.each do |sales_goal| %>
-            Goal Amount: <%= number_to_currency(sales_goal.amount) %></br>
-            <% if sales_goal.success %>
-              Achieved
-            <% else %>
-              Not yet achieved
-            <% end %>
-          <div class="dashboard-column">
-            <div class="dashboard-block dashboard-block-5">
-              <%= link_to 'Show', sales_goal %>
-            </div>
-            <div class="dashboard-block dashboard-block-5">
-              <%= link_to 'Edit', edit_sales_goal_path(sales_goal) %>
-            </div>
-            <div class="dashboard-block dashboard-block-5">
-              <%= link_to 'Destroy', sales_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div></br>
-        <% end %>
-      </div>
-    </div>
+  <div class="dashboard-goals">
+    <h1> Your Goals </h1>
+    <div class="dashboard-names">
+      <% @goals.each do |sales_goal| %>
+        <h2>Goal Amount: <%= number_to_currency(sales_goal.amount) %></br>
+        <% if sales_goal.success %>
+          Achieved
+        <% else %>
+          Not yet achieved
+        <% end %></h2>
+      <div class="dashboard-column">
+        <%= link_to 'Show', sales_goal %> <%= link_to 'Edit', edit_sales_goal_path(sales_goal) %> <%= link_to 'Destroy', sales_goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div></br>
+    <% end %>
   </div>
 </div>
