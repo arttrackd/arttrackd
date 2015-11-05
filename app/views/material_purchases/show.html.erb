@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @material_purchase.user_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @material_purchase.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @material_purchase.description %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @material_purchase.cost %>
+</p>
+
+<p>
+  <strong>Units:</strong>
+  <%= @material_purchase.units %>
+</p>
+
+<%= link_to 'Edit', edit_material_purchase_path(@material_purchase) %> |
+<%= link_to 'Back', material_purchases_path %>

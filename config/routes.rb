@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :project_costs
+  resources :material_uses
+  resources :material_purchases
+  resources :sales_channels
+  resources :business_expenses
   root    'session#new'
 
   get     'login'      =>  'session#new'

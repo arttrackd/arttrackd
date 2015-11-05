@@ -11,7 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151104172242) do
+ActiveRecord::Schema.define(version: 20151105194824) do
+
+  create_table "business_expenses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "amount"
+    t.boolean  "recurring"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "material_purchases", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "cost"
+    t.decimal  "units"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "material_uses", force: :cascade do |t|
+    t.integer  "material_purchase_id"
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.decimal  "units"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "project_costs", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "cost_type"
+    t.decimal  "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,14 +72,23 @@ ActiveRecord::Schema.define(version: 20151104172242) do
 
   add_index "sales", ["project_id"], name: "index_sales_on_project_id"
 
+  create_table "sales_channels", force: :cascade do |t|
+    t.integer  "sale_id"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "sales_goals", force: :cascade do |t|
     t.integer  "user_id"
     t.decimal  "amount"
     t.string   "length_of_time"
     t.date     "start_time"
-    t.boolean  "success",        default: false
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.boolean  "success",          default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "sales_channel_id"
   end
 
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"
