@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 20151104172242) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.time     "total_time"
+    t.integer  "total_time"
   end
 
   add_index "time_entries", ["project_id"], name: "index_time_entries_on_project_id"
