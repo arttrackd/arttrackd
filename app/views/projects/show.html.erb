@@ -1,24 +1,21 @@
 
-  <div class="show-project-name"> <%= @project.name %></div>
-  <br>
-  <div class="show-project-description"><%= @project.description %></div>
+<div class="show-project-name"> <%= @project.name %></div>
+<br>
+<div class="show-project-description"><%= @project.description %></div>
 
-  <div class="show-time">
-  <p class="clock-in-clock-out">
-  <p>
+<div class="show-time">
+<div class="clock-in-clock-out">
     <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
     <%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @project.id}), method: :patch, id: "clock-out" %>
-  </p>
+</div
   <% if @project_time > 0 %>
     You have worked on this project for
     <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %>
-
-      <p>
-        View your time entries for this project;
-        <div class="link-to-new-time-entry"><%= link_to 'here', time_entries_path(id: @project.id) %></div>
-      </p>
-    <% else %>
+    <p>
+      View your time entries for this project;
+      <div class="link-to-new-time-entry"><%= link_to 'here', time_entries_path(id: @project.id) %></div>
+    </p>
+  <% else %>
       You have not worked on this project yet.
-    <% end%>
-
+  <% end%>
 </div>
