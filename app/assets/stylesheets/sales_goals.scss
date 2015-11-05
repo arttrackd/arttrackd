@@ -37,3 +37,7 @@
 .show-sales-goal-success{
   @include span-columns(3);
 }
+
+.link-to-new-goal{
+  @include span-columns(12);
+}
