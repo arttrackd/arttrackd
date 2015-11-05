@@ -28,12 +28,7 @@
 .project-index-salesdate{
   @include span-columns(3);
 }
-.project-index-instock{
-  @include span-columns(2);
-}
-.project-index-tbd{
-  @include span-columns(2);
-}
+
 .project-index-edit{
   @include span-columns(12);
 }
