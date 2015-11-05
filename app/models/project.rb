@@ -9,11 +9,15 @@ class Project < ActiveRecord::Base
     project_time_entries.sum('total_time')
   end
 
-  def search
+  def estimated_value(project)
+    (project.user.hourly_rate * project.get_time)/360
   end
 
   def estimated_value(project)
     (project.user.hourly_rate * project.get_time)/360
+  end
+  
+  def search
   end
 
 end
