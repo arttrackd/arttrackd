@@ -15,5 +15,5 @@ class Project < ActiveRecord::Base
 
   def search
   end
-  
+
 end
