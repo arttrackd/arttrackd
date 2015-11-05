@@ -46,6 +46,6 @@ end
 
 200.times do
   start = Faker::Time.backward(rand(1..100))
-  stop = Faker::Time.between(start, DateTime.now)
-  TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, total_time: stop - start, date: start.to_date )
+  stop = start + (rand(1..10)).hours
+  TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, total_time: stop.to_i - start.to_i, date: start.to_date )
 end
