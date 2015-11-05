@@ -34,29 +34,15 @@
       <table class="user-projects">
         <thead>
           <tr>
-            <th>Name of Piece</th>
-            <th>Description</th>
+            <th>Projects I've worked on</th
           </tr>
         </thead>
         <tbody>
-      <% @user.projects.first(5).each do |project| %>
+          <% @projects.each do |project| %>
             <tr>
               <td><%= project.name %></td>
               <td><%= project.description %> </td>
             </tr>
-            <%if project.sales.length > 0 %>
-              <% project.sales.each do |sale| %>
-                <tr>
-                  <td>$<%= sale.gross %></td>
-                  <td>Sold on: <%= sale.date %> </td>
-                </tr>
-              <% end %>
-            <% else %>
-                  <tr>
-                    <td>Email for details</td>
-                    <td>Avalible for purchase</td>
-                  </tr>
-            <% end %>
           <% end %>
         </tbody>
       </table>

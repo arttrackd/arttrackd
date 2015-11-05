@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def profile
     @user = @current_user
+    @projects = Project.where(user: @user).limit(5)
   end
 
   def index
@@ -27,7 +28,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user, notice: 'User was successfully created.'
+      session[:user_id] = @user.id
+      redirect_to profile_path, notice: 'User was successfully created.'
     else
       render :new
     end
@@ -36,7 +38,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to profile_path, notice: 'User was successfully updated.'
     else
       render :edit
     end

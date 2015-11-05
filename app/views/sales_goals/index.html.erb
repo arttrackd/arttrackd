@@ -1,23 +1,34 @@
 <p id="notice"><%= notice %></p>
+<div class="new-goal"><%= link_to 'New Sales goal', new_sales_goal_path %></div>
 
 <h1>Listing Sale Goals</h1>
 <% @goals.each do |goal| %>
+  <% end_time = goal.start_time + eval(goal.length_of_time.tr(' ','.')) %>
+  <% active = end_time >= Date.today %>
   <div class="goal-amount">Goal: <%= number_to_currency(goal.amount) %></div>
 
   <div class"goal-details">
-    <div class="goal-length_of_time"> Duration: <%= goal.length_of_time %></div>
-    <div class="goal-start-time"> Started: <%= goal.start_time %></div>
-    <div class="goal-success">Achieved: <%= goal.success %></div>
+    <div class="goal-length-of-time gd"> Duration: <%= goal.length_of_time %></div>
+    <div class="goal-start-time gd"> Started: <%= goal.start_time %></div>
+    <div class="goal-end-time gd">
+      <%= active ? "Ends" : "Ended" %>:
+      <%= end_time %>
+    </div>
+    <div class="goal-success gd">
+      <% if goal.success %>
+        ACHIEVED!
+      <% else %>
+        <%= active ? "Not yet achieved" : "Did not achieve" %>
+      <% end %>
+    </div>
   </div>
 
   <div class="goal-edit">
     <%= link_to 'Show', goal %>
     <%= link_to 'Edit', edit_sales_goal_path(goal) %>
     <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+  </div><hr />
   <br>
 <% end %>
 
 </br>
-
-<%= link_to 'New Sales goal', new_sales_goal_path %>
