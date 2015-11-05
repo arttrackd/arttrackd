@@ -1,13 +1,12 @@
-
-<div class="profile-image-column">
-  <%= image_tag asset_url('track.png'), class: "profile-image" %>
-</div>
 <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
     <a href="#" class="tab-link is-active">User Information</a>
     <div class="tab-content">
       <div class="user-information">
         <div class="profile-middle-column">
+          <div class="profile-image-column">
+            <%= image_tag asset_url('track.png'), class: "profile-image" %>
+          </div>
           <h1><%= @user.name %></h1>
           <h2><%= @user.email %></h2>
           <h2><%= @user.time_zone %></h2>
