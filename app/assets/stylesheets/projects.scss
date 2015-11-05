@@ -2,30 +2,94 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.index-name{
+.project-index-name{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
-.index-1col{
+
+.show-project-name{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.project-index-1col{
   color: white;
 }
-.index-desc{
+.project-index-desc{
   @include span-columns(7);
 }
 
-.index-gross{
+
+.project-index-gross{
   @include span-columns(2);
 }
-.index-salesdate{
+.project-index-salesdate{
   @include span-columns(3);
 }
-.index-instock{
+.project-index-instock{
   @include span-columns(2);
 }
-.index-tbd{
+.project-index-tbd{
   @include span-columns(2);
 }
-.index-edit{
+.project-index-edit{
   @include span-columns(12);
+}
+
+.show-time{
+  @include span-columns(6);
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  padding-left: 4%;
+}
+
+.show-project-description{
+  @include span-columns(6);
+}
+
+h1 {
+  font-family: American Typewriter;
+  font-size: 35pt;
+}
+
+.project-index-edit {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
+}
+
+.index-goal-amount {
+  font-family: Baskerville;
+}
+
+.gd {
+  margin-top: 5px; margin-bottom: 5px;
+  display: inline-block;
+}
+
+.link-to-new-project {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #006300;
+    float: right;
+  }
 }

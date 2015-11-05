@@ -1,31 +1,18 @@
-<h2> Time Entries For <%= @project.name %>!</h2>
-
-You've worked on Stim for
-<%= distance_of_time_in_words(@time_entries_day.sum('total_time'), 0, except: :seconds) %> today
-<table>
-  <thead>
-    <tr>
-      <th>Start time</th>
-      <th>Stop time</th>
-      <th>Total time</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @time_entries.each do |time_entry| %>
-      <tr>
-        <td><%= time_entry.start_time %></td>
-        <td><%= time_entry.stop_time %></td>
-        <% if time_entry.start_time && time_entry.stop_time %>
-          <td><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></td>
-        <% end %>
-        <td><%= time_entry.date %></td>
-        <td><%= link_to 'Show', time_entry %></td>
-        <td><%= link_to 'Edit', edit_time_entry_path(time_entry) %></td>
-        <td><%= link_to 'Destroy', time_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<p id="notice"><%= notice %></p>
+<div class="link-to-new-time-entry"><%= link_to 'New Sales goal', new_sales_goal_path %></div>
+<h1>Listing Time Entries</h1>
+<% @time_entries.each do |time_entry| %>
+  <div class="index-time-entry-start-time">Start: <%= time_entry.start_time %></div>
+    <div class="index-time-entry-stop-time"> Stop: <%= time_entry.stop_time %></div>
+  </br>
+    <% if time_entry.start_time && time_entry.stop_time %>
+      <div class="time-in-words"><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></div>
     <% end %>
-  </tbody>
-</table>
+
+  <div class="index-time-entry-edit">
+    <%= link_to 'Show', time_entry %>
+    <%= link_to 'Edit', edit_time_entry_path(time_entry) %>
+    <%= link_to 'Destroy', time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div><hr >
+  <br>
+<% end %>

@@ -1,23 +1,135 @@
 // Place all the styles related to the sales_goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.goal-amount{
+.index-goal-amount{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
 
-.goal-length_of_time{
-  @include span-columns(4);
+.index-goal-length-of-time{
+  @include span-columns(3);
 }
 
-.goal-start-time{
-  @include span-columns(4);
+.index-goal-start-time{
+  @include span-columns(3);
 }
-.goal-success{
-  @include span-columns(4);
+.index-goal-success{
+  @include span-columns(3);
+}
+.index-goal-end-time{
+  @include span-columns(3);
 }
 
-.goal-edit{
+.index-goal-edit{
   @include span-columns(12);
+}
+.show-sales-goal-amount{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.show-sales-goal-length{
+  @include span-columns(4);
+}
+
+.show-sales-goal-start-time{
+  @include span-columns(4);
+}
+.show-sales-goal-success{
+  @include span-columns(3);
+}
+
+.link-to-new-goal{
+  @include span-columns(12);
+}
+
+h1 {
+  font-family: American Typewriter;
+  font-size: 35pt;
+}
+
+.index-goal-edit {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
+}
+
+.index-goal-amount {
+  font-family: Baskerville;
+}
+
+.gd {
+  margin-top: 5px; margin-bottom: 5px;
+  display: inline-block;
+}
+
+.new-goal {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #006300;
+    float: right;
+  }
+}
+
+h1 {
+  font-family: American Typewriter;
+  font-size: 35pt;
+}
+
+.show-goal-edit {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
+}
+
+.show-goal-amount {
+  font-family: Baskerville;
+}
+
+.gd {
+  margin-top: 5px; margin-bottom: 5px;
+  display: inline-block;
+}
+
+.edit-back {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
 }
