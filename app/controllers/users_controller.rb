@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = @current_user
     @projects = Project.where(user: @user).limit(5)
     @sales = Sale.where(project_id: Project.where(user_id: @user.id))
-
   end
 
   def index
