@@ -6,37 +6,38 @@
 <% @projects.each do |project| %>
   <div class="project-index-name"><%= project.name %></div>
   <div class="project-index-desc gd"><%= project.description %></div>
+  <br />
 
   <% if project.sales.length > 0 %>
     <div class"project-index-sales">
-      <div class="project-index-gross gd">
-        <%project.sales.each do |sale| %>
-         <%= number_to_currency(sale.gross) %></br>
-      <% end  %>
-     </div>
-      <div class="project-index-saledate gd">
-        <%project.sales.each do |sale| %>
-        <%= sale.date %></br>
+      <% project.sales.each do |sale| %>
+        <div class = "project-index-row">
+          <div class="project-index-desc gd"> </div>
+          <div class="project-index-gross gd">
+            <%= number_to_currency(sale.gross) %>
+          </div>
+          <div class="project-index-saledate gd">
+            <%= sale.date %></br>
+          </div>
+        </div>
       <% end %>
-      </div>
     </div>
   <% else %>
+
     <div class"project-index-sales">
-      <div class="project-index-gross gd">In Stock</div>
-      <div class="project-index-saledate gd">
-        Estimated Value:
-        <br>
-        <%= number_to_currency(project.estimated_value(project))%>
+      <div class = "project-index-row">
+        <div class="project-index-desc gd"> </div>
+        <div class="project-index-gross gd">In Stock</div>
+        <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value(project))%></div>
       </div>
     </div>
-
   <% end %>
+
   <div class="project-index-edit">
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
-<hr />
   <br>
-
+  <hr />
 <% end %>
