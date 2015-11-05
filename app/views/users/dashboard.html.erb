@@ -5,7 +5,7 @@
       <% @projects.each do |project| %>
         <h2><%= project.name %></h2>
         <div class="dashboard-column">
-          <%= link_to 'Edit', edit_project_path(project) %> <%= link_to 'Show', project %> <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Mark as Sold', new_sale_path %> <%= link_to 'Edit', edit_project_path(project) %> <%= link_to 'Show', project %> <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div></br>
       <% end %>
       <h3><%= link_to '. . .', projects_path %></h3></li>
