@@ -21,7 +21,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_difference('User.count') do
       post :create, user: { email: 'email@email.com', hourly_rate: 12.32, name: 'bob', password: 'password', public_profile: false, time_zone: "Eastern Time (US & Canada)" }
     end
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to profile_path
   end
 
   test "should show user" do
@@ -36,7 +36,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should update user" do
     patch :update, id: @user, user: { email: @user.email, hourly_rate: @user.hourly_rate, name: @user.name, password_digest: @user.password_digest, public_profile: @user.public_profile, time_zone: @user.time_zone }
-    assert_redirected_to user_path(assigns(:user))
+    assert_redirected_to profile_path
   end
 
   test "should destroy user" do
