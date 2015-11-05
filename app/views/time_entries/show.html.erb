@@ -1,12 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-  <div class="show-time-entry-project"><%= @time_entry.project.name %>
-
-  <div class="show-time-entry-start-time">Start time: <%= @time_entry.start_time %>
-
-  <div class="show-time-entry-stop-time">Stop time: <%= @time_entry.stop_time %>
-
-  <div class="show-time-entry-date"><%= @time_entry.date %>
+<div class="show-time-entry-project"><%= @time_entry.project.name %>
+<div class="show-time-entry-start-time">Start time: <%= @time_entry.start_time %>
+<div class="show-time-entry-stop-time">Stop time: <%= @time_entry.stop_time %>
+<div class="show-time-entry-date"><%= @time_entry.date %>
 
 <div class="edit-back">
   <%= link_to 'Edit', edit_time_entry_path(@time_entry) %> |

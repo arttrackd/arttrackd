@@ -1,10 +1,6 @@
-<p id="notice"><%= notice %></p>
+<div class="show-project-name"> <%= @sale.project.name %></div>
+<div class="show-sale-gross">Sold for: <%= number_to_currency(@sale.gross) %></div>
+<div class="show-sale-date">Sold on: <%= @sale.date %></div>
 
-  <div class="show-project-name"> <%= @sale.project.name %></div>
-
-  <div class="show-sale-gross">Sold for: <%= number_to_currency(@sale.gross) %></div>
-
-  <div class="show-sale-date">Sold on: <%= @sale.date %></div>
-
-  <%= link_to 'Edit', edit_sale_path(@sale) %> |
-  <%= link_to 'Back', sales_path %>
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>
