@@ -44,19 +44,7 @@
               <td><%= project.name %></td>
               <td><%= project.description %> </td>
             </tr>
-            <%if project.sales.length > 0 %>
-              <% project.sales.each do |sale| %>
-                <tr>
-                  <td>$<%= sale.gross %></td>
-                  <td>Sold on: <%= sale.date %> </td>
-                </tr>
-              <% end %>
-            <% else %>
-                  <tr>
-                    <td>Email for details</td>
-                    <td>Avalible for purchase</td>
-                  </tr>
-            <% end %>
+            
           <% end %>
         </tbody>
       </table>
