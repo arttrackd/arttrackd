@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
 
-
-<h1>Listing Projects</h1>
 <% @projects.each do |project| %>
   <div class="project-index-name"><%= project.name %></div>
   <div class="project-index-desc gd"><%= project.description %></div>

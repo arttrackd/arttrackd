@@ -14,7 +14,7 @@ class SalesControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, project_id: projects(:one).id
     assert_response :success
   end
 

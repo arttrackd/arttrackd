@@ -15,18 +15,23 @@ class SalesController < ApplicationController
   # GET /sales/1
   def show
     @user = @sale.project.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
   end
 
   # GET /sales/new
   def new
-    @sale = Sale.new
+    if params[:project_id]
+      @project_name = Project.find(params[:project_id]).name
+      @sale = Sale.new
+    else
+      redirect_to dashboard_user_path(session[:user_id]), notice: "You must mark a project as sold to create a sale."
+    end
   end
 
   # GET /sales/1/edit
   def edit
     @user = @sale.project.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
   end
 
   # POST /sales
