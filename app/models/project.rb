@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
     (project.user.hourly_rate * project.get_time)/360
   end
 
+
   def search
   end
 
