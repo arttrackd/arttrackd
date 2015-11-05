@@ -2,15 +2,15 @@
 
 <h1>Listing Sale Goals</h1>
 <% @goals.each do |goal| %>
-  <div class="goal-amount">Goal: <%= number_to_currency(goal.amount) %></div>
+  <div class="index-goal-amount">Goal: <%= number_to_currency(goal.amount) %></div>
 
-  <div class"goal-details">
-    <div class="goal-length_of_time"> Duration: <%= goal.length_of_time %></div>
-    <div class="goal-start-time"> Started: <%= goal.start_time %></div>
-    <div class="goal-success">Achieved: <%= goal.success %></div>
+  <div class"index-goal-details">
+    <div class="index-goal-length_of_time"> Duration: <%= goal.length_of_time %></div>
+    <div class="index-goal-start-time"> Started: <%= goal.start_time %></div>
+    <div class="index-goal-success">Achieved: <%= goal.success %></div>
   </div>
 
-  <div class="goal-edit">
+  <div class="index-goal-edit">
     <%= link_to 'Show', goal %>
     <%= link_to 'Edit', edit_sales_goal_path(goal) %>
     <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
