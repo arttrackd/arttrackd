@@ -1,4 +1,5 @@
 class BusinessExpensesController < ApplicationController
+  before_action :require_login
   before_action :set_business_expense, only: [:show, :edit, :update, :destroy]
 
   # GET /business_expenses

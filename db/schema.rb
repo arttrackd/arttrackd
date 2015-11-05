@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105195455) do
+ActiveRecord::Schema.define(version: 20151105203021) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20151105195455) do
     t.boolean  "recurring"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "duration"
   end
 
   add_index "business_expenses", ["user_id"], name: "index_business_expenses_on_user_id"

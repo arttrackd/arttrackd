@@ -1,4 +1,5 @@
 class ProjectCostsController < ApplicationController
+  before_action :require_login
   before_action :set_project_cost, only: [:show, :edit, :update, :destroy]
 
   # GET /project_costs
