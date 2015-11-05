@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
 $(document).ready(function () {
   $(".dashboard-projects-column").height($(document).height());
 
