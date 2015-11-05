@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def profile
     @user = @current_user
     @projects = Project.where(user: @user).limit(5)
+    @sales = Sale.where(project_id: Project.where(user_id: @user.id))
+
   end
 
   def index
@@ -16,6 +18,7 @@ class UsersController < ApplicationController
   end
   # GET /users/new
   def new
+    redirect_to dashboard_user_path(session[:user_id]) if logged_in?
     @user = User.new
   end
 
@@ -51,11 +54,11 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    user = User.find(params[:id])
-    redirect_to dashboard_user_path(session[:user_id]) unless user == @current_user
-
-    @goals = SalesGoal.where('user_id = ?', @user.id)
-    @projects = Project.where('user_id = ?', @user.id)
+    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
+    @goals = SalesGoal.where('user_id = ?', @user.id).limit(5)
+    @projects = Project.where('user_id = ?', @user.id).limit(5)
+    @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(5)
+    render :layout => 'dashboard_layout'
   end
 
   private
