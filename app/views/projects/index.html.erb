@@ -21,11 +21,14 @@
       </div>
     </div>
   <% else %>
-
     <div class"project-index-sales">
-    <div class="project-index-gross gd">In Stock</div>
-    <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value(project))%></div>
-</div>
+      <div class="project-index-gross gd">In Stock</div>
+      <div class="project-index-saledate gd">
+        Estimated Value:
+        <br>
+        <%= number_to_currency(project.estimated_value(project))%>
+      </div>
+    </div>
 
   <% end %>
   <div class="project-index-edit">
@@ -33,6 +36,7 @@
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
-  <hr />
+<hr />
   <br>
+
 <% end %>
