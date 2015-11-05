@@ -1,29 +1,47 @@
 // Place all the styles related to the sales_goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.goal-amount{
+.index-goal-amount{
   @include span-columns(12);
   @include omega();
   font-size: 260%;
 }
 
-.goal-length_of_time{
+.index-goal-length-of-time{
   @include span-columns(3);
 }
 
-.goal-start-time{
+.index-goal-start-time{
+  @include span-columns(3);
+}
+.index-goal-success{
+  @include span-columns(3);
+}
+.index-goal-end-time{
   @include span-columns(3);
 }
 
-.goal-end-time{
-  @include span-columns(3)
+.index-goal-edit{
+  @include span-columns(12);
+}
+.show-sales-goal-amount{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
 }
 
-.goal-success{
+.show-sales-goal-length{
+  @include span-columns(4);
+}
+
+.show-sales-goal-start-time{
+  @include span-columns(4);
+}
+.show-sales-goal-success{
   @include span-columns(3);
 }
 
-.goal-edit{
+.link-to-new-goal{
   @include span-columns(12);
 }
 
@@ -32,7 +50,7 @@ h1 {
   font-size: 35pt;
 }
 
-.goal-edit {
+.index-goal-edit {
   a {
     color: white;
     font-family: American Typewriter;
@@ -47,7 +65,7 @@ h1 {
   }
 }
 
-.goal-amount {
+.index-goal-amount {
   font-family: Baskerville;
 }
 

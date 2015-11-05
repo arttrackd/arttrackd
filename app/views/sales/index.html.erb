@@ -1,14 +1,13 @@
 <h1>Listing Sales</h1>
 <% @sales.each do |sale| %>
-  <div class="sales-name"><%= sale.project.name %></div>
+  <div class="index-sales-name"><%= sale.project.name %></div>
 
-  <div class"sales-sales">
-    <div class="sales-gross"> Gross sale: $<%= sale.gross %></div>
-    <div class="sales-net"> Net sale: $<%= sale.net %></div>
-    <div class="sales-date">  Sale date: <%= sale.date %></div>
+  <div class"index-sales-sales">
+    <div class="index-sales-gross"> Sold for: <%= number_to_currency(sale.gross) %></div>
+    <div class="index-sales-date">  Sale date: <%= sale.date %></div>
   </div>
 
-  <div class="sales-edit">
+  <div class="index-sales-edit">
     <%= link_to 'Show', sale %>
     <%= link_to 'Edit', edit_sale_path(sale) %>
     <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %>
