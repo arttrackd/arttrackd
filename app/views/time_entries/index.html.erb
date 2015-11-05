@@ -1,14 +1,14 @@
 
 <h1>Listing Time Entries</h1>
 <% @time_entries.each do |time_entry| %>
-  <div class="index-time-entry-start-time">Start: <%= time_entry.start_time %></div>
-    <div class="index-time-entry-stop-time"> Stop: <%= time_entry.stop_time %></div>
+  <div class="time-entry-index-start-time">Start: <%= time_entry.start_time %></div>
+    <div class="time-entry-index-stop-time"> Stop: <%= time_entry.stop_time %></div>
   </br>
     <% if time_entry.start_time && time_entry.stop_time %>
       <div class="time-in-words"><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></div>
     <% end %>
 
-  <div class="index-time-entry-edit">
+  <div class="time-entry-index-edit">
     <%= link_to 'Show', time_entry %>
     <%= link_to 'Edit', edit_time_entry_path(time_entry) %>
     <%= link_to 'Destroy', time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>

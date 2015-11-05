@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 33281c65f9de4d7bbc2c4fc5c59f16e280c2a7d1
-<div class="show-sales-goal-amount">Goal: <%= number_to_currency(@sales_goal.amount) %></div>
-<div class="show-sales-goal-length">Duration: <%= @sales_goal.length_of_time %></div>
-<div class="show-sales-goal-start-time">Started: <%= @sales_goal.start_time %></div>
-<div class="show-sales-goal-success">Achieved: <%= @sales_goal.success %></div>
+<div class="goal-show-amount">Goal: <%= number_to_currency(@sales_goal.amount) %></div>
+<div class="goal-show-length">Duration: <%= @sales_goal.length_of_time %></div>
+<div class="goal-show-start-time">Started: <%= @sales_goal.start_time %></div>
+<div class="goal-show-success">Achieved: <%= @sales_goal.success %></div>
 
 <div class="edit-back">
   <%= link_to 'Edit', edit_sales_goal_path(@sales_goal) %> |

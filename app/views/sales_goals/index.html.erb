@@ -4,16 +4,16 @@
 <% @goals.each do |goal| %>
   <% end_time = goal.start_time + eval(goal.length_of_time.tr(' ','.')) %>
   <% active = end_time >= Date.today %>
-  <div class="index-goal-amount">Goal: <%= number_to_currency(goal.amount) %></div>
+  <div class="goal-index-amount">Goal: <%= number_to_currency(goal.amount) %></div>
 
-  <div class"index-goal-details">
-    <div class="index-goal-length-of-time gd"> Duration: <%= goal.length_of_time %></div>
-    <div class="index-goal-start-time gd"> Started: <%= goal.start_time %></div>
-    <div class="index-goal-end-time gd">
+  <div class"goal-index-details">
+    <div class="goal-index-length-of-time gd"> Duration: <%= goal.length_of_time %></div>
+    <div class="goal-index-start-time gd"> Started: <%= goal.start_time %></div>
+    <div class="goal-index-end-time gd">
       <%= active ? "Ends" : "Ended" %>:
       <%= end_time %>
     </div>
-    <div class="index-goal-success gd">
+    <div class="goal-index-success gd">
       <% if goal.success %>
         ACHIEVED!
       <% else %>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="index-goal-edit">
+  <div class="goal-index-edit">
     <%= link_to 'Show', goal %>
     <%= link_to 'Edit', edit_sales_goal_path(goal) %>
     <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
