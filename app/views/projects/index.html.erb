@@ -1,5 +1,6 @@
  <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
 
+
 <h1>Listing Projects</h1>
 
 <% @projects.each do |project| %>
@@ -20,11 +21,12 @@
       </div>
     </div>
   <% else %>
-  <div class"project-index-sales">
 
+    <div class"project-index-sales">
     <div class="project-index-gross gd">In Stock</div>
     <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value(project))%></div>
 </div>
+
   <% end %>
   <div class="project-index-edit">
     <%= link_to 'Show', project %>

@@ -11,8 +11,6 @@ class ProjectTest < ActiveSupport::TestCase
     entry1 = TimeEntry.create!(project_id: project.id, start_time: start,
         stop_time: stop, total_time: stop.to_i - start.to_i, date: Date.today)
 
-    # entry1 = TimeEntry.create!(project_id: project.id, date: Date.today)
-
     start = DateTime.now - 8.hours
     stop = DateTime.now
 
