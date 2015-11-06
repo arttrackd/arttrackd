@@ -1,35 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="link-to-new-business-expense"><%= link_to 'New Business Expense', new_business_expense_path %></div>
+ <h1>Listing Business Expenses</h1>
 
-<h1>Listing Business Expenses</h1>
+ <% @business_expenses.each do |business_expense| %>
+  <div class="business-index-name"><%= business_expense.name %></div>
+  <br>
+  <div class="business-index-desc"><%= business_expense.description %></div>
+  <div class="business-index-amount">Amount: <%= number_to_currency(business_expense.amount) %></div>
+  <div class="business-index-recurring">Recurring: <%= business_expense.recurring %></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Recurring</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @business_expenses.each do |business_expense| %>
-      <tr>
-        <td><%= business_expense.user_id %></td>
-        <td><%= business_expense.name %></td>
-        <td><%= business_expense.description %></td>
-        <td><%= business_expense.amount %></td>
-        <td><%= business_expense.recurring %></td>
-        <td><%= link_to 'Show', business_expense %></td>
-        <td><%= link_to 'Edit', edit_business_expense_path(business_expense) %></td>
-        <td><%= link_to 'Destroy', business_expense, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Business expense', new_business_expense_path %>
+  <div class="business-index-edit">
+    <%= link_to 'Show', business_expense %>
+    <%= link_to 'Edit', edit_business_expense_path(business_expense) %>
+    <%= link_to 'Destroy', business_expense, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br>
+  <hr />
+<% end %>
