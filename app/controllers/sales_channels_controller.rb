@@ -9,7 +9,7 @@ class SalesChannelsController < ApplicationController
 
   # GET /sales_channels/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.sale.project.user != @current_user
   end
 
   # GET /sales_channels/new
@@ -19,13 +19,13 @@ class SalesChannelsController < ApplicationController
 
   # GET /sales_channels/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.sale.project.user != @current_user
   end
 
   # POST /sales_channels
   def create
     @sales_channel = SalesChannel.new(sales_channel_params)
-    @sales_channel.user = @current_user
+    @sales_channel.sale.project.user = @current_user
     if @sales_channel.save
       redirect_to @sales_channel, notice: 'Sales channel was successfully created.'
     else

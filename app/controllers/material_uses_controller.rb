@@ -25,7 +25,7 @@ class MaterialUsesController < ApplicationController
   # POST /material_uses
   def create
     @material_use = MaterialUse.new(material_use_params)
-    @material_use.user = @current_user
+    @material_use.material_purchase.user = @current_user
     if @material_use.save
       redirect_to @material_use, notice: 'Material use was successfully created.'
     else
