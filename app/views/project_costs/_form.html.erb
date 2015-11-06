@@ -12,16 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
+    <%= f.hidden_field :project_id, value: @project_cost.project_id %>
   </div>
   <div class="field">
     <%= f.label :cost_type %><br>
-    <%= f.text_field :cost_type %>
+    <%= f.text_field :cost_type, value: @project_cost.cost_type || "" %>
   </div>
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
+    <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: @project_cost.amount || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

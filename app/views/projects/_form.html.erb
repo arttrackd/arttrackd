@@ -10,14 +10,16 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="field">
+    <%= f.hidden_field :user_id, value: @project.user_id || "" %>
+  </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, value: params[:name] || "" %>
+    <%= f.text_field :name, value: @project.name || "" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, value: params[:description] || "" %>
+    <%= f.text_area :description, value: @project.description || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

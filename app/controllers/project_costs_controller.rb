@@ -4,11 +4,12 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs
   def index
-    @project_costs = ProjectCost.all
+    @project_costs = ProjectCost.where(project_id: Project.where(user_id: @current_user.id))
   end
 
   # GET /project_costs/1
   def show
+    redirect_to dashboard_user_path(session[:user_id]) if @project_cost.project.user != @current_user
   end
 
   # GET /project_costs/new
@@ -18,12 +19,13 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs/1/edit
   def edit
+    redirect_to dashboard_user_path(session[:user_id]) if @project_cost.project.user != @current_user
   end
 
   # POST /project_costs
   def create
     @project_cost = ProjectCost.new(project_cost_params)
-
+    @project_cost.user = @current_user
     if @project_cost.save
       redirect_to @project_cost, notice: 'Project cost was successfully created.'
     else
@@ -49,7 +51,11 @@ class ProjectCostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project_cost
-      @project_cost = ProjectCost.find(params[:id])
+      begin
+        @project_cost = ProjectCost.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

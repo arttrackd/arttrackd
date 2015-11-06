@@ -38,7 +38,7 @@ MaterialUse.create!(material_purchase_id: 1, project_id: 1, name: "Canvas", desc
 ProjectCost.create!(project_id: 1, cost_type: "Shipping and handling", amount: 12)
 
 150.times do
-  Project.create!(user_id: [1,2,3].sample, name: Faker::App.name, description: Faker::Company.bs)
+  Project.create!(user_id: [1,2,3,4,5].sample, name: Faker::App.name, description: Faker::Company.bs)
 end
 
 projects = Project.all
@@ -69,14 +69,14 @@ end
   BusinessExpense.create!(user_id: [1,2,3,4,5].sample, name: Faker::Address.city_suffix + " bill", description: Faker::Address.city_suffix, amount: Faker::Number.between(0, 10000), recurring: true, duration: (Faker::Number.between(1, 31).to_s + " " + length_in_unit.sample))
 end
 
-100.times do
+500.times do
   MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, cost: Faker::Number.between(0, 10000), units: Faker::Number.between(0, 10000))
 end
 
-100.times do
+500.times do
   MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, units: Faker::Number.between(0, 1000))
 end
 
 100.times do
-  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Number.between(0, 10000), amount: Faker::Number.between(0, 10000))
+  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Commerce.product_name, amount: Faker::Number.between(0, 10000))
 end
