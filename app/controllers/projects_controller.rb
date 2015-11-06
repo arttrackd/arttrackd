@@ -10,8 +10,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @user = @project.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
     @project_time = @project.total_time
   end
 
@@ -22,8 +21,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    @user = @project.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
   end
 
   # POST /projects
@@ -50,6 +48,12 @@ class ProjectsController < ApplicationController
   def destroy
     @project.destroy
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
+  end
+
+  def search
+    if params[:search]
+      @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
+    end
   end
 
   private

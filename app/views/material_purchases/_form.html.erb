@@ -12,24 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, value: @material_purchase.user_id || "" %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, value: @material_purchase.name || "" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, value: @material_purchase.description || "" %>
   </div>
   <div class="field">
     <%= f.label :cost %><br>
-    <%= f.text_field :cost %>
+    <%= f.number_field :cost, :class => 'text_field', :step => 0.01, value: @material_purchase.cost || "" %>
   </div>
   <div class="field">
     <%= f.label :units %><br>
-    <%= f.text_field :units %>
+    <%= f.number_field :units, :class => 'text_field', :step => 'any', value: @material_purchase.units || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

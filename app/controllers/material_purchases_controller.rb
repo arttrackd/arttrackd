@@ -1,13 +1,15 @@
 class MaterialPurchasesController < ApplicationController
+  before_action :require_login
   before_action :set_material_purchase, only: [:show, :edit, :update, :destroy]
 
   # GET /material_purchases
   def index
-    @material_purchases = MaterialPurchase.all
+    @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
   end
 
   # GET /material_purchases/1
   def show
+    redirect_to dashboard_user_path(session[:user_id]) if @material_purchase.user != @current_user
   end
 
   # GET /material_purchases/new
@@ -17,12 +19,13 @@ class MaterialPurchasesController < ApplicationController
 
   # GET /material_purchases/1/edit
   def edit
+    redirect_to dashboard_user_path(session[:user_id]) if @material_purchase.user != @current_user
   end
 
   # POST /material_purchases
   def create
     @material_purchase = MaterialPurchase.new(material_purchase_params)
-
+    @material_purchase.user = @current_user
     if @material_purchase.save
       redirect_to @material_purchase, notice: 'Material purchase was successfully created.'
     else
@@ -48,7 +51,11 @@ class MaterialPurchasesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_material_purchase
-      @material_purchase = MaterialPurchase.find(params[:id])
+      begin
+        @material_purchase = MaterialPurchase.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

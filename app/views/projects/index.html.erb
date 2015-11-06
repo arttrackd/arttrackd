@@ -1,4 +1,9 @@
- <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
+
+<%= form_tag search_projects_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search"%>
+<% end %>
+<div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
  <h1>Listing Projects</h1>
 
 <% @projects.each do |project| %>
@@ -33,6 +38,7 @@
   <% end %>
 
   <div class="project-index-edit">
+    <%= link_to 'Mark as Sold', new_sale_path(project_id: project.id) %>
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>

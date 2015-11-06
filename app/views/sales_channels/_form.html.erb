@@ -12,12 +12,15 @@
   <% end %>
 
   <div class="field">
+    <%= f.hidden_field :user_id, value: @sales_channel.user_id || params[:user_id] %>
+  </div>
+  <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, value: @sales_channel.name || "" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, value: @sales_channel.description || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

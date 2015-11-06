@@ -3,6 +3,8 @@ require 'test_helper'
 class BusinessExpensesControllerTest < ActionController::TestCase
   setup do
     @business_expense = business_expenses(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

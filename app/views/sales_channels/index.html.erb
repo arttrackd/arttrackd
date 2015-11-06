@@ -1,29 +1,16 @@
-<p id="notice"><%= notice %></p>
-
+<div class="link-to-new-sales-channel"><%= link_to 'New Sales channel', new_sales_channel_path %></div>
 <h1>Listing Sales Channels</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @sales_channels.each do |sales_channel| %>
+  <div class="sales-channel-index-name"><%= sales_channel.name %></div>
+  <div class="sales-channel-index-description"><%= sales_channel.description %></div>
+  <br />
 
-  <tbody>
-    <% @sales_channels.each do |sales_channel| %>
-      <tr>
-        <td><%= sales_channel.name %></td>
-        <td><%= sales_channel.description %></td>
-        <td><%= link_to 'Show', sales_channel %></td>
-        <td><%= link_to 'Edit', edit_sales_channel_path(sales_channel) %></td>
-        <td><%= link_to 'Destroy', sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Sales channel', new_sales_channel_path %>
+  <div class="sales-channel-index-edit">
+    <%= link_to 'Show', sales_channel %>
+    <%= link_to 'Edit', edit_sales_channel_path(sales_channel) %>
+    <%= link_to 'Destroy', sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br />
+  <hr />
+<% end %>

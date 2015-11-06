@@ -12,20 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
+    <%= f.hidden_field :project_id, value: @time_entry.project_id || "" %>
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
+    <%= f.datetime_select :start_time, value: @time_entry.start_time || "" %>
   </div>
   <div class="field">
     <%= f.label :stop_time %><br>
-    <%= f.datetime_select :stop_time %>
+    <%= f.datetime_select :stop_time, value: @time_entry.stop_time || "" %>
   </div>
   <div class="field">
     <%= f.label :date %><br>
-    <%= f.date_select :date %>
+    <%= f.date_select :date, value: @time_entry.date || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

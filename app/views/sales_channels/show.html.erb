@@ -1,12 +1,8 @@
-<p>
-  <strong>Name:</strong>
-  <%= @sales_channel.name %>
-</p>
+<div class="sales-channel-index-name"><%= @sales_channel.name %></div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @sales_channel.description %>
-</p>
+<div class="sales-channel-index-description"><%= @sales_channel.description %></div>
 
-<%= link_to 'Edit', edit_sales_channel_path(@sales_channel) %> |
-<%= link_to 'Back', sales_channels_path %>
+<div class="edit-back">
+  <%= link_to 'Edit', edit_sales_channel_path(@sales_channel) %> |
+  <%= link_to 'Back', sales_channels_path %>
+</div>

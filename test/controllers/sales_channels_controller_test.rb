@@ -2,7 +2,10 @@ require 'test_helper'
 
 class SalesChannelsControllerTest < ActionController::TestCase
   setup do
+    @sale = sales(:one)
     @sales_channel = sales_channels(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

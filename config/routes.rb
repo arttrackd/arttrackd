@@ -4,16 +4,15 @@ Rails.application.routes.draw do
   resources :material_purchases
   resources :sales_channels
   resources :business_expenses
-  root      'session#new'
 
-  get     'login'        =>  'session#new'
-  post    'login'        =>  'session#create'
-  delete  'logout'       =>  'session#destroy'
-  get     'signup'       =>  'users#new'
-  get     'search'       =>  'projects#search'
-  get     'profile'      =>  'users#profile'
-  get     'data' => 'users#data', :defaults => { :format => 'json' }
-  get     'users/graph'
+  root      'session#new'
+  get       'login'      =>  'session#new'
+  post      'login'      =>  'session#create'
+  delete    'logout'     =>  'session#destroy'
+  get       'signup'     =>  'users#new'
+  get       'search'     =>  'projects#search'
+  get       'profile'    =>  'users#profile'
+
 
 
   resources :time_entries, except: [:new, :create] do
@@ -22,9 +21,38 @@ Rails.application.routes.draw do
       patch 'clock_out'
     end
   end
+  resources :project_costs do
+    collection do
+      get 'search'
+    end
+  end
+  resources :material_uses
+  resources :material_purchases do
+    collection do
+      get 'search'
+    end
+  end
+  resources :sales_channels do
+    collection do
+      get 'search'
+    end
+  end
+  resources :business_expenses do
+    collection do
+      get 'search'
+    end
+  end
   resources :sales_goals
-  resources :sales
-  resources :projects
+  resources :sales do
+    collection do
+      get 'search'
+    end
+  end
+  resources :projects do
+    collection do
+      get 'search'
+    end
+  end
   resources :users do
     member do
       get 'dashboard'

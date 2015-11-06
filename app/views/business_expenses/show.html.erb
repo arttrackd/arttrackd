@@ -1,29 +1,11 @@
-<p id="notice"><%= notice %></p>
+  <div class="business-show-name"><%= @business_expense.name %></div>
+  <br>
 
-<p>
-  <strong>User:</strong>
-  <%= @business_expense.user_id %>
-</p>
+  <div class="business-show-description gd"><%= @business_expense.description %></div>
+  <div class="business-show-amount gd">Amount: <%= number_to_currency(@business_expense.amount) %> </div>
+  <div class="business-show-recurring gd">Recurring: <%= @business_expense.recurring %></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @business_expense.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @business_expense.description %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @business_expense.amount %>
-</p>
-
-<p>
-  <strong>Recurring:</strong>
-  <%= @business_expense.recurring %>
-</p>
-
-<%= link_to 'Edit', edit_business_expense_path(@business_expense) %> |
-<%= link_to 'Back', business_expenses_path %>
+<div class="edit-back">
+  <%= link_to 'Edit', edit_business_expense_path(@business_expense) %> |
+  <%= link_to 'Back', business_expenses_path %>
+</div>

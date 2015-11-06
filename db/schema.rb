@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20151106220924) do
 
+
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -21,6 +22,7 @@ ActiveRecord::Schema.define(version: 20151106220924) do
     t.boolean  "recurring"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "duration"
   end
 
   add_index "business_expenses", ["user_id"], name: "index_business_expenses_on_user_id"
