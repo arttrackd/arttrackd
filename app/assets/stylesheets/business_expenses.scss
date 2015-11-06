@@ -17,6 +17,7 @@
 }
 .business-index-recurring{
   @include span-columns(3);
+  @include omega();
 }
 
 .business-show-name{

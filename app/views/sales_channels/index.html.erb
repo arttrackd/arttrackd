@@ -1,15 +1,16 @@
-
-<h1>Listing Sales Channels</h1>
 <div class="link-to-new-sales-channel"><%= link_to 'New Sales channel', new_sales_channel_path %></div>
+<h1>Listing Sales Channels</h1>
 
 <% @sales_channels.each do |sales_channel| %>
   <div class="sales-channel-index-name"><%= sales_channel.name %></div>
   <div class="sales-channel-index-description"><%= sales_channel.description %></div>
-
+  <br />
 
   <div class="sales-channel-index-edit">
     <%= link_to 'Show', sales_channel %>
     <%= link_to 'Edit', edit_sales_channel_path(sales_channel) %>
     <%= link_to 'Destroy', sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
+  <br />
+  <hr />
 <% end %>

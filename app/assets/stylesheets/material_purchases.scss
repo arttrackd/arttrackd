@@ -9,7 +9,7 @@
 }
 
 .material-index-description{
-  @include span-columns(6);
+  @include span-columns(7);
 }
 
 .material-index-cost{
@@ -17,6 +17,7 @@
 }
 .material-index-units{
   @include span-columns(3);
+  @include omega();
 }
 
 .material-show-name{
@@ -61,9 +62,6 @@ h1 {
   }
 }
 
-.material-goal-amount {
-  font-family: Baskerville;
-}
 
 .gd {
   margin-top: 5px; margin-bottom: 5px;

@@ -6,14 +6,15 @@
 }
 
 .project-cost-index-project-id{
-  @include span-columns(6);
+  @include span-columns(7);
 }
 
-.project-cost-index-type{
-  @include span-columns(2);
+.project-cost-index-cost-type{
+  @include span-columns(3);
 }
 .project-cost-index-amount{
-  @include span-columns(3);
+  @include span-columns(2);
+  @include omega();
 }
 
 .project-cost-show-name{
