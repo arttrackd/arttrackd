@@ -5,8 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create(name: "Julie", email: "julie@email.com", password: "password")
-User.create(name: "Angela", email: "angela@email.com", password: "password")
 User.create!(name: "Phil", email: "Phil_is_awesome@yeah.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Kevin", email: "kevin@hotmail.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Dead", email: "DeamonKiller@hunter.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
@@ -73,7 +71,7 @@ end
   MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, cost: Faker::Number.between(0, 10000), units: Faker::Number.between(0, 10000))
 end
 
-500.times do
+100.times do
   MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, units: Faker::Number.between(0, 1000))
 end
 

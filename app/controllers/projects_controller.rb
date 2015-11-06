@@ -49,6 +49,12 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
+  def search
+    if params[:search]
+      @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project

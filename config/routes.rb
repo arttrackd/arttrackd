@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  resources :project_costs
-  resources :material_uses
-  resources :material_purchases
-  resources :sales_channels
-  resources :business_expenses
+
   root    'session#new'
 
   get     'login'      =>  'session#new'
@@ -21,9 +17,38 @@ Rails.application.routes.draw do
       patch 'clock_out'
     end
   end
+  resources :project_costs do
+    collection do
+      get 'search'
+    end
+  end
+  resources :material_uses
+  resources :material_purchases do
+    collection do
+      get 'search'
+    end
+  end
+  resources :sales_channels do
+    collection do
+      get 'search'
+    end
+  end
+  resources :business_expenses do
+    collection do
+      get 'search'
+    end
+  end
   resources :sales_goals
-  resources :sales
-  resources :projects
+  resources :sales do
+    collection do
+      get 'search'
+    end
+  end
+  resources :projects do
+    collection do
+      get 'search'
+    end
+  end
   resources :users do
     member do
       get 'dashboard'
