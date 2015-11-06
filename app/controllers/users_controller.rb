@@ -60,6 +60,17 @@ class UsersController < ApplicationController
     render :layout => 'dashboard_layout'
   end
 
+  def data
+    sales = Sale.limit(5)
+    respond_to do |format|
+      format.json {
+        render :json => sales.map{|sale| sale.gross}
+      }
+    end
+  end
+
+  def graph
+  end
   private
 
     # Use callbacks to share common setup or constraints between actions.
