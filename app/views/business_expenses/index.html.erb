@@ -8,6 +8,7 @@
   <div class="business-index-amount gd">Amount: <%= number_to_currency(business_expense.amount) %></div>
   <div class="business-index-recurring gd">Recurring: <%= business_expense.recurring %></div>
 
+
   <div class="business-index-edit">
     <%= link_to 'Show', business_expense %>
     <%= link_to 'Edit', edit_business_expense_path(business_expense) %>

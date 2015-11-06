@@ -3,6 +3,8 @@ require 'test_helper'
 class MaterialPurchasesControllerTest < ActionController::TestCase
   setup do
     @material_purchase = material_purchases(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do

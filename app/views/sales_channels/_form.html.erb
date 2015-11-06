@@ -12,16 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :sale_id %><br>
-    <%= f.number_field :sale_id %>
+    <%= f.hidden_field :sale_id, value: @sales_channel.sale_id || "" %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, value: @sales_channel.name || "" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, value: @sales_channel.description || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

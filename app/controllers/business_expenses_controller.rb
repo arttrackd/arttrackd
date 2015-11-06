@@ -1,13 +1,15 @@
 class BusinessExpensesController < ApplicationController
+  before_action :require_login
   before_action :set_business_expense, only: [:show, :edit, :update, :destroy]
 
   # GET /business_expenses
   def index
-    @business_expenses = BusinessExpense.all
+    @business_expenses = BusinessExpense.where(user_id: @current_user.id)
   end
 
   # GET /business_expenses/1
   def show
+    redirect_to dashboard_user_path(session[:user_id]) if @business_expense.user != @current_user
   end
 
   # GET /business_expenses/new
@@ -17,12 +19,13 @@ class BusinessExpensesController < ApplicationController
 
   # GET /business_expenses/1/edit
   def edit
+    redirect_to dashboard_user_path(session[:user_id]) if @business_expense.user != @current_user
   end
 
   # POST /business_expenses
   def create
     @business_expense = BusinessExpense.new(business_expense_params)
-
+    @business_expense.user = @current_user
     if @business_expense.save
       redirect_to @business_expense, notice: 'Business expense was successfully created.'
     else
@@ -48,7 +51,11 @@ class BusinessExpensesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_business_expense
-      @business_expense = BusinessExpense.find(params[:id])
+      begin
+        @business_expense = BusinessExpense.find(params[:id])
+      rescue
+        redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
+      end
     end
 
     # Only allow a trusted parameter "white list" through.

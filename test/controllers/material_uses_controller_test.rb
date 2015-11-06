@@ -2,7 +2,11 @@ require 'test_helper'
 
 class MaterialUsesControllerTest < ActionController::TestCase
   setup do
+    @project = projects(:one)
+    @material_purchase = material_purchases(:one)
     @material_use = material_uses(:one)
+    @user = users(:one)
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
@@ -18,7 +22,7 @@ class MaterialUsesControllerTest < ActionController::TestCase
 
   test "should create material_use" do
     assert_difference('MaterialUse.count') do
-      post :create, material_use: { description: @material_use.description, material_purchase_id: @material_use.material_purchase_id, name: @material_use.name, project_id: @material_use.project_id, units: @material_use.units }
+      post :create, material_use: { description: @material_use.description, material_purchase_id: 1, name: @material_use.name, project_id: 1, units: 1 }
     end
 
     assert_redirected_to material_use_path(assigns(:material_use))
