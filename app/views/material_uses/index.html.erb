@@ -1,35 +1,16 @@
-<p id="notice"><%= notice %></p>
 
 <h1>Listing Material Uses</h1>
+<div class="link-to-new-material-use"><%= link_to 'New Material use', new_material_use_path %></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Material purchase</th>
-      <th>Project</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Units</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<% @material_uses.each do |material_use| %>
 
-  <tbody>
-    <% @material_uses.each do |material_use| %>
-      <tr>
-        <td><%= material_use.material_purchase_id %></td>
-        <td><%= material_use.project_id %></td>
-        <td><%= material_use.name %></td>
-        <td><%= material_use.description %></td>
-        <td><%= material_use.units %></td>
-        <td><%= link_to 'Show', material_use %></td>
-        <td><%= link_to 'Edit', edit_material_use_path(material_use) %></td>
-        <td><%= link_to 'Destroy', material_use, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="material-use-index-name"><%= material_use.name %></div>
+  <div class="material-use-index-description"><%= material_use.description %></div>
+  <div class="material-use-index-units">Units: <%= material_use.units %></div>
 
-<br>
-
-<%= link_to 'New Material use', new_material_use_path %>
+  <div class="material-use-index-edit">
+    <%= link_to 'Show', material_use %>
+    <%= link_to 'Edit', edit_material_use_path(material_use) %>
+    <%= link_to 'Destroy', material_use, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>

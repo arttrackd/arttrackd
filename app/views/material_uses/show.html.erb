@@ -1,29 +1,10 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Material purchase:</strong>
-  <%= @material_use.material_purchase_id %>
-</p>
 
-<p>
-  <strong>Project:</strong>
-  <%= @material_use.project_id %>
-</p>
+<div class="material-use-index-name"><%= @material_use.name %></div>
+<div class="material-use-index-description"><%= @material_use.description %></div>
+<div class="material-use-index-units">Units: <%= @material_use.units %></div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @material_use.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @material_use.description %>
-</p>
-
-<p>
-  <strong>Units:</strong>
-  <%= @material_use.units %>
-</p>
-
-<%= link_to 'Edit', edit_material_use_path(@material_use) %> |
-<%= link_to 'Back', material_uses_path %>
+<div class="edit-back">
+  <%= link_to 'Edit', edit_material_use_path(@material_use) %> |
+  <%= link_to 'Back', material_uses_path %>
+</div>
