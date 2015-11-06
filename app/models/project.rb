@@ -4,13 +4,13 @@ class Project < ActiveRecord::Base
   has_many :sales
   validates :name, presence: true
 
-  def get_time
-    project_time_entries = TimeEntry.where('project_id = ?', id)
-    project_time_entries.sum('total_time')
+  def total_time
+    # Set a default value for time entry total_time field later
+    time_entries.reduce(0.0){|sum, t| sum + (t.total_time || 0)}
   end
 
-  def estimated_value(project)
-    project.user.hourly_rate * project.get_time/360
+  def estimated_value
+    user.hourly_rate * total_time/360
   end
 
 

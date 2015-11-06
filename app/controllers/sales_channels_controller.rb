@@ -53,6 +53,6 @@ class SalesChannelsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sales_channel_params
-      params.require(:sales_channel).permit(:sale_id, :name, :description)
+      params.require(:sales_channel).permit(:name, :description)
     end
 end

@@ -18,6 +18,6 @@ class ProjectTest < ActiveSupport::TestCase
         stop_time: stop, total_time: stop.to_i - start.to_i, date: Date.today)
 
     expected_time = entry1.total_time + entry2.total_time
-    assert_equal expected_time, project.get_time
+    assert_equal expected_time, project.total_time
   end
 end

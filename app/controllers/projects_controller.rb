@@ -5,14 +5,14 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     # @projects = Project.joins(:sales).where(projects: {user_id: @current_user.id})
-    @projects = Project.where(user: @current_user)
+    @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
   end
 
   # GET /projects/1
   def show
     @user = @project.user
     redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
-    @project_time = @project.get_time
+    @project_time = @project.total_time
   end
 
   # GET /projects/new
