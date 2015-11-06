@@ -1,7 +1,7 @@
 
-<%= form_tag search_projects_path, method: :get do %>
+<%= form_tag projects_path, method: :get do %>
   <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "Search"%>
+  <%= submit_tag "Search", name: nil%>
 <% end %>
 <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
  <h1>Listing Projects</h1>

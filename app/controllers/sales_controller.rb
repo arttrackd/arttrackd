@@ -8,8 +8,9 @@ class SalesController < ApplicationController
     @project = Project.all
     @user = User.find(session[:user_id])
     redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
-    @sale = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
+
+    @sale = Sale.search(params[:search])
   end
 
   # GET /sales/1
@@ -60,15 +61,15 @@ class SalesController < ApplicationController
     redirect_to sales_url, notice: 'Sale was successfully destroyed.'
   end
 
-  def search
-    if params[:search]
-    @sale = Sale.where("date LIKE ?", "%#{params[:search]}%")
-    # sales = Sale.where("date LIKE ?", "%#{params[:search]}%")
-    # projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-    # mix = sale + project
-    # @sale = sales.select{|sale| sale.date sale.project.name}
-    end
-  end
+  # def search
+  #   if params[:search]
+  #   @sale = Sale.where("date LIKE ?", "%#{params[:search]}%")
+  #   # sales = Sale.where("date LIKE ?", "%#{params[:search]}%")
+  #   # projects = Project.where("name LIKE ?", "%#{params[:search]}%")
+  #   # mix = sale + project
+  #   # @sale = sales.select{|sale| sale.date sale.project.name}
+  #   end
+  # end
 
   private
 

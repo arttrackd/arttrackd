@@ -13,4 +13,11 @@ class Project < ActiveRecord::Base
     (project.user.hourly_rate * project.get_time)/360
   end
 
+  def self.search(search)
+    if search
+      @projects = Project.where("name LIKE ?", "%#{search}%")
+    else
+      find(:all)
+    end
+  end
 end

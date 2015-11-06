@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.where(user_id: @current_user.id)
+    @projects = Project.search(params[:search])
   end
 
   # GET /projects/1
@@ -51,11 +51,11 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
-  def search
-    if params[:search]
-      @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-    end
-  end
+  # def search
+  #   if params[:search]
+  #     @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
