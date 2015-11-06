@@ -1,3 +1,82 @@
-// Place all the styles related to the project_costs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project-cost-index-name{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.project-cost-index-project-id{
+  @include span-columns(7);
+}
+
+.project-cost-index-cost-type{
+  @include span-columns(3);
+}
+.project-cost-index-amount{
+  @include span-columns(2);
+  @include omega();
+}
+
+.project-cost-show-name{
+  @include span-columns(12);
+  @include omega();
+  font-size: 260%;
+}
+
+.project-cost-show-project-id{
+  @include span-columns(6);
+}
+
+.project-cost-show-cost{
+  @include span-columns(2);
+}
+
+.project-cost-show-amount{
+  @include span-columns(3);
+}
+
+.project-cost-index-edit{
+  @include span-columns(12);
+}
+
+h1 {
+  font-family: American Typewriter;
+  font-size: 35pt;
+}
+
+.project-cost-index-edit {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #333;
+  }
+}
+
+
+.gd {
+  margin-top: 5px; margin-bottom: 5px;
+  display: inline-block;
+}
+
+.link-to-new-project-cost {
+  a {
+    color: white;
+    font-family: American Typewriter;
+    font-weight: lighter;
+    display: inline-block;
+    text-decoration: none;
+    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-color: #006300;
+    float: right;
+  }
+}

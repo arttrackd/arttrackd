@@ -24,7 +24,7 @@ class SalesController < ApplicationController
       @project_name = Project.find(params[:project_id]).name
       @sale = Sale.new
     else
-      redirect_to dashboard_user_path(session[:user_id]), notice: "You must mark a project as sold to create a sale."
+      redirect_to dashboard_user_path(session[:user_id]), notice: "You must mark a project as sold to create a sale record."
     end
   end
 
@@ -39,7 +39,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
 
     if @sale.save
-      redirect_to @sale, notice: 'Sale was successfully created.'
+      redirect_to @sale, notice: 'Sale record was successfully created.'
     else
       render :new
     end
@@ -48,7 +48,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   def update
     if @sale.update(sale_params)
-      redirect_to @sale, notice: 'Sale was successfully updated.'
+      redirect_to @sale, notice: 'Sale record was successfully updated.'
     else
       render :edit
     end
@@ -57,7 +57,7 @@ class SalesController < ApplicationController
   # DELETE /sales/1
   def destroy
     @sale.destroy
-    redirect_to sales_url, notice: 'Sale was successfully destroyed.'
+    redirect_to sales_url, notice: 'Sale record was successfully destroyed.'
   end
 
   def search
@@ -81,13 +81,13 @@ class SalesController < ApplicationController
       begin
         @sale = Sale.find(params[:id])
       rescue
-        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that sale."
+        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that sale record."
       end
     end
 
     # Only allow a trusted parameter "white list" through.
     def sale_params
-      params.require(:sale).permit(:project_id, :gross, :date)
+      params.require(:sale).permit(:sales_channel_id, :project_id, :gross, :date)
     end
 
     def update_goals
