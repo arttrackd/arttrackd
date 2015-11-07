@@ -9,7 +9,7 @@ class SalesController < ApplicationController
     if params[:search]
       @sales = Sale.search(params[:search])
     else
-      @sales = Sale.where(project: Project.where(user_id: @current_user.id))
+      @sales = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
     end
   end
 

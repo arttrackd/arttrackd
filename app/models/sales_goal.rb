@@ -18,7 +18,7 @@ class SalesGoal < ActiveRecord::Base
   end
 
   def self.applicable_sales(user_id, goal)
-    sales = Sale.joins(:project).where('projects.user_id' => user_id)
+    sales = Sale.joins(:project).where('projects.user_id' => user_id).includes(:sales_channel)
     start_date = goal.start_time
     end_date = goal.end_time
 
