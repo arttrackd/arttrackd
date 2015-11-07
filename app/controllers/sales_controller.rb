@@ -5,10 +5,7 @@ class SalesController < ApplicationController
   after_action :update_goals, only: [:create, :update, :destroy]
   # GET /sales
   def index
-    @project = Project.all
-    @user = User.find(session[:user_id])
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
-    @sale = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
+    @sales = Sale.where(project: Project.where(user: @current_user)).limit(50)
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
   end
 

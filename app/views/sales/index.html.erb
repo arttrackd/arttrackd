@@ -2,17 +2,17 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search"%>
 <% end %>
-<% if @sale %>
+<% if @sales %>
   <div class="link-to-new-sale"><%= link_to 'New Sale', new_sale_path %></div>
 
   <h1>Listing Sales</h1>
-  <% @sale.each do |sale| %>
+  <% @sales.each do |sale| %>
     <div class="sales-index-name"><%= sale.project.name %></div>
     <div class"sales-index-sales">
       <div class="sales-index-gross gd"> Sold for: <%= number_to_currency(sale.gross) %></div>
       <div class="sales-index-date gd">  Sale date: <%= sale.date %></div>
-      <% if @sales.sales_channel %>
-        <div class="sale-index-date gd">Sold at: <%= @sale.sales_channel %></div>
+      <% if sale.sales_channel %>
+        <div class="sale-index-date gd">Sold at: <%= sale.sales_channel.name %></div>
       <% else %>
       <% end %>
     </div>

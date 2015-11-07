@@ -17,18 +17,18 @@ Project.create!(user_id: 2, name: "ASfhasfga", description: "Some stuff with som
 Project.create!(user_id: 3, name: "Cheeseburger", description: "You forgot the pie")
 
 
-Sale.create(project_id: 1, gross: 100, date: Date.today - rand(1..990).days)
-Sale.create(project_id: 1, gross: 600, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 1, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
+Sale.create(project_id: 1, sales_channel_id: 1, gross: 100, date: Date.today - rand(1..990).days)
+Sale.create(project_id: 1, sales_channel_id: 1, gross: 600, date: Date.today - rand(1..990).days)
+Sale.create!(project_id: 1, sales_channel_id: 2, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
+Sale.create!(project_id: 2, sales_channel_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
+Sale.create!(project_id: 3, sales_channel_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
 
 SalesGoal.create!(user_id: 1, amount: 1000.00, length_of_time: "3 days", start_time: DateTime.now - rand(1..990).days, success: false)
 SalesGoal.create!(user_id: 2, amount: 100000.00, length_of_time: "3 weeks", start_time: DateTime.now - rand(1..990).days, success: false)
 SalesGoal.create!(user_id: 3, amount: 1000000.00, length_of_time: "21 days", start_time: DateTime.now - rand(1..990).days, success: false)
 
-SalesChannel.create!(sale_id: 1, name: "Super Festival", description: "Circus Tents")
+SalesChannel.create!(name: "Super Festival", description: "Circus Tents")
 
 BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month")
 
@@ -49,7 +49,7 @@ material_purchases = MaterialPurchase.all
 
 100.times do
   gross_sale = Faker::Number.between(100, 100000) / 100.00
-  Sale.create!(project_id: projects.sample.id, gross: gross_sale,
+  Sale.create!(project_id: projects.sample.id, sales_channel_id: rand(1..7), gross: gross_sale,
       net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2),
       date: Faker::Date.backward(rand(1..100)))
 end
@@ -69,8 +69,11 @@ end
   TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, total_time: stop.to_i - start.to_i, date: start.to_date )
 end
 
-10.times do
-  SalesChannel.create!(sale_id: sales.sample.id, name: Faker::App.name, description: Faker::Address.street_address)
+channels = ["Web Store", "Personal Reference", "B&M Store", "The Van", "Gallery", "Down by the River", "Festival Booth" ]
+x = 0
+7.times do
+  SalesChannel.create!(name: channels[x], description: Faker::Address.street_address)
+  x += 1
 end
 
 50.times do

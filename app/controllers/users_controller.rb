@@ -54,12 +54,11 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
-    @goals = SalesGoal.where('user_id = ?', @user.id).limit(5)
-    @goal = SalesGoal.last
+    @goals = SalesGoal.where(user: @user).limit(5)
+    @goal = SalesGoal.where(user: @user).last
     @percent_completion = SalesGoal.percent_completion(@goal)
     @projects = Project.where('user_id = ?', @user.id).limit(5)
     @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(5)
-    render :layout => 'dashboard_layout'
   end
 
   private

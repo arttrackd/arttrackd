@@ -13,7 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151106220924) do
 
-
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name"
