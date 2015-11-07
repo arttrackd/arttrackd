@@ -4,7 +4,11 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs
   def index
-    @project_costs = ProjectCost.where(project_id: Project.where(user_id: @current_user.id))
+    if params[:search]
+      @project_costs = ProjectCost.search(params[:search])
+    else
+      @project_costs = ProjectCost.where(project_id: Project.where(user_id: @current_user.id))
+    end
   end
 
   # GET /project_costs/1

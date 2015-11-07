@@ -1,3 +1,7 @@
+<%= form_tag project_costs_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil%>
+<% end %>
 <div class="link-to-new-project-cost"><%= link_to 'New Project cost', new_project_cost_path %></div>
 <h1>Listing Project Costs</h1>
 
