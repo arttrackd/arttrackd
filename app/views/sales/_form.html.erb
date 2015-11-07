@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :sales_channel_id, value: "Sales Channel" %><br>
-    <%= f.collection_select(:sales_channel_id, SalesChannel.all, :id, :name) %>
+    <%= f.collection_select(:sales_channel_id, @sales_channels, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

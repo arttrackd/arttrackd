@@ -23,6 +23,7 @@ class SalesController < ApplicationController
     if params[:project_id]
       @project_name = Project.find(params[:project_id]).name
       @sale = Sale.new
+      @sales_channels = SalesChannel.where(user_id: @current_user.id)
     else
       redirect_to dashboard_user_path(session[:user_id]), notice: "You must mark a project as sold to create a sale record."
     end
@@ -31,6 +32,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
+    @sales_channels = SalesChannel.where(user_id: @current_user.id)
   end
 
   # POST /sales

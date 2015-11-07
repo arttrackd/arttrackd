@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :time_entries
   has_many :sales
   has_many :material_uses
+  has_many :project_costs
   validates :name, presence: true
   accepts_nested_attributes_for :material_uses, reject_if: :all_blank, allow_destroy: :true
 
