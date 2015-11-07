@@ -1,3 +1,7 @@
+<%= form_tag material_purchases_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil%>
+<% end %>
 <div class="link-to-new-material-purchase"><%= link_to 'New Material purchase', new_material_purchase_path %></div>
 <h1>Listing Material Purchases</h1>
 

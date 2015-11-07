@@ -4,7 +4,11 @@ class MaterialPurchasesController < ApplicationController
 
   # GET /material_purchases
   def index
-    @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
+    if params[:search]
+      @material_purchases = MaterialPurchase.search(params[:search])
+    else
+      @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
+    end
   end
 
   # GET /material_purchases/1
