@@ -2,6 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :time_entries
   has_many :sales
+  has_many :material_uses
   validates :name, presence: true
 
   def total_time
