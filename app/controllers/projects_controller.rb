@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @project.material_uses.build 
+    @project.material_uses.build
   end
 
   # GET /projects/1/edit
@@ -54,12 +54,6 @@ class ProjectsController < ApplicationController
     @project.destroy
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
-
-  # def search
-  #   if params[:search]
-  #     @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-  #   end
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

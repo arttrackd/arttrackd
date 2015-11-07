@@ -7,7 +7,8 @@ class SalesController < ApplicationController
   def index
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
     if params[:search]
-      @sales = Sale.search(params[:search])
+      q = "%#{params[:search]}%"
+      @sales = Sale.search(q)
     else
       @sales = Sale.where(project: Project.where(user_id: @current_user.id))
     end

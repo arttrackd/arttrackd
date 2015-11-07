@@ -4,11 +4,10 @@ class Sale < ActiveRecord::Base
   validates :gross, presence: true
   validates :date, presence: true
 
-  def self.search(search)
-    # @user = User.find(session[:user_id])
-    if search
-      return Sale.where("date LIKE ?", "%#{search}%")
-    end
+  def self.search(q)
+    @sales = Sale.where("date LIKE ?", q)
+    @sales += Sale.where(project_id: Project.where("name LIKE ?", q))
+    return @sales
   end
 end
 # @sale = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
