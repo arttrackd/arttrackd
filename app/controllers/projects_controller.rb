@@ -21,12 +21,13 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
-    @project.material_uses.build 
+    @project.material_uses.build
   end
 
   # GET /projects/1/edit
   def edit
     redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
+    @project.material_uses.build 
   end
 
   # POST /projects

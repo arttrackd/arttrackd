@@ -21,9 +21,10 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, value: @project.description || "" %>
   </div>
-
-
   <br>
+
+  <div><h4> Materials: </h4></div>
+
   <%= f.fields_for :material_uses do |ff| %>
 
   <div class="field">
@@ -44,6 +45,7 @@
     <%= ff.label :units %><br>
     <%= ff.number_field :units%>
   </div>
+<hr />
   <% end %>
   <div class="actions">
     <%= f.submit %>
