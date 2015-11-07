@@ -11,14 +11,21 @@
   @include span-columns(4);
 }
 
-.sales-index-net{
-}
 .sales-index-date{
-  @include span-columns(8);
+  @include span-columns(4);
 }
+.sales-index-channel{
+  @include span-columns(4);
+  @include omega();
 
+}
+.sale-index-available{
+  @include span-columns(12);
+  @include omega();
+}
 .sales-index-edit{
   @include span-columns(12);
+  @include omega();
 }
 
 .show-sale-gross{
