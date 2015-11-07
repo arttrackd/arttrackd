@@ -11,7 +11,7 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.hidden_field :user_id, value: @project.user_id || "" %>
+    <%= f.hidden_field :user_id, value: @project.user_id || @current_user.id %>
   </div>
   <div class="field">
     <%= f.label :name %><br>
@@ -21,6 +21,30 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, value: @project.description || "" %>
   </div>
+
+
+  <br>
+  <%= f.fields_for :material_uses do |ff| %>
+
+  <div class="field">
+    <%= ff.hidden_field :material_purchase_id %>
+  </div>
+  <div class="field">
+    <%= ff.hidden_field :project_id %>
+  </div>
+  <div class="field">
+    <%= ff.label :name %><br>
+    <%= ff.text_field :name %>
+  </div>
+  <div class="field">
+    <%= ff.label :description %><br>
+    <%= ff.text_area :description%>
+  </div>
+  <div class="field">
+    <%= ff.label :units %><br>
+    <%= ff.number_field :units%>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

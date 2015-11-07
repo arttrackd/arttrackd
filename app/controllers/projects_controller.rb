@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.material_uses.build 
   end
 
   # GET /projects/1/edit
@@ -72,6 +73,7 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:user_id, :name, :description)
+      params.require(:project).permit(:user_id, :name, :description,
+      material_uses_attributes: [:material_purchase_id, :project_id, :name, :description,  :units])
     end
 end

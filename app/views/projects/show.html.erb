@@ -18,7 +18,16 @@
   <% else %>
       You have not worked on this project yet.
   <% end%>
+</div>
 
+<div>
+  <div class="project-show-name"> Materials </div>
+  <% @project.material_uses.each do |material| %>
+    <div class="project-show-material-name"><%= material.name %></div>
+    <div class="project-show-material-description"><%= material.description %></div>
+    <div class="project-show-material-units">Units: <%= material.units %></div>
+    <br />
+  <% end %>
 </div>
 <div class="edit-back">
   <%= link_to 'Mark as Sold', new_sale_path(project_id: @project.id) %> |
