@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :user_id, value: @material_purchase.user_id || "" %>
+    <%= f.hidden_field :user_id, value: @material_purchase.user_id || @current_user.id %>
   </div>
   <div class="field">
     <%= f.label :name %><br>

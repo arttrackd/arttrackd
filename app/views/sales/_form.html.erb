@@ -12,10 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.hidden_field :project_id, value: @sale.project_id || "" %>
-  </div>
-  <div class="field">
-    <%= f.hidden_field :sales_channel_id, value: @sale.sales_channel_id || "" %>
+    <%= f.hidden_field :project_id, value: @sale.project_id || params[:project_id] %>
   </div>
   <div class="field">
     <%= f.label :gross, value: "Sale Amount" %><br>
@@ -24,6 +21,10 @@
   <div class="field">
     <%= f.label :date, value: "Sale Date" %><br>
     <%= f.date_select :date, value: @sale.date || "" %>
+  </div>
+  <div class="field">
+    <%= f.label :sales_channel_id, value: "Sales Channel" %><br>
+    <%= f.collection_select(:sales_channel_id, SalesChannel.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>

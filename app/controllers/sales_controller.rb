@@ -15,8 +15,7 @@ class SalesController < ApplicationController
 
   # GET /sales/1
   def show
-    @user = @sale.project.user
-    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
+    redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
   end
 
   # GET /sales/new
@@ -31,8 +30,7 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
-    @user = @sale.project.user
-    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
+    redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
   end
 
   # POST /sales
