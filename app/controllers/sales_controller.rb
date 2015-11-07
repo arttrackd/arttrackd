@@ -7,15 +7,9 @@ class SalesController < ApplicationController
   def index
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
     if params[:search]
-      @project = Project.all
-      @user = User.find(session[:user_id])
-      redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
       @sales = Sale.search(params[:search])
     else
-      @project = Project.all
-      @user = User.find(session[:user_id])
-      redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
-      @sales = Sale.where(project_id: Project.where(user_id: @current_user.id))
+      @sales = Sale.where(project: Project.where(user_id: @current_user.id))
     end
   end
 

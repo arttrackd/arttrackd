@@ -5,7 +5,8 @@ class SalesChannelsControllerTest < ActionController::TestCase
     @sale = sales(:one)
     @sales_channel = sales_channels(:one)
     @user = users(:one)
-    session[:user_id] = @user.id
+    session[:user_id] = @sales_channel.user_id
+
   end
 
   test "should get index" do
