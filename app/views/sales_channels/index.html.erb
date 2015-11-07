@@ -1,3 +1,7 @@
+<%= form_tag sales_channels_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil%>
+<% end %>
 <div class="link-to-new-sales-channel"><%= link_to 'New Sales channel', new_sales_channel_path %></div>
 <h1>Listing Sales Channels</h1>
 

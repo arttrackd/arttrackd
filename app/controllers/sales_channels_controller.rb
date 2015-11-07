@@ -4,7 +4,11 @@ class SalesChannelsController < ApplicationController
 
   # GET /sales_channels
   def index
-    @sales_channels = SalesChannel.where(sale_id: Sale.where(project_id: Project.where(user_id: @current_user.id)))
+    if params[:search]
+      @sales_channels = SalesChannel.search(params[:search])
+    else
+      @sales_channels = SalesChannel.all
+    end
   end
 
   # GET /sales_channels/1
