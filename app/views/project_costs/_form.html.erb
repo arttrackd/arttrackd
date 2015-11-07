@@ -20,7 +20,7 @@
   </div>
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: @project_cost.amount || "" %>
+    <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: number_to_currency(@project_cost.amount) || "" %>
   </div>
   <div class="actions">
     <%= f.submit %>

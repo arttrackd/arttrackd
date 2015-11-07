@@ -3,7 +3,7 @@
 <div class="sale-show-gross">Sold for: <%= number_to_currency(@sale.gross) %></div>
 <div class="sale-show-date">Sold on: <%= @sale.date %></div>
 <% if @sale.sales_channel %>
-  <div class="sale-show-date">Sold at: <%= @sale.sales_channel %></div>
+  <div class="sale-show-date">Sold at: <%= @sale.sales_channel.name %></div>
   <div class="edit-back">
 <% else %>
   <div class="edit-back">
