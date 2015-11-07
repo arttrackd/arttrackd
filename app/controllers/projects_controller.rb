@@ -14,8 +14,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    @user = @project.user
-    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
     @project_time = @project.total_time
   end
 

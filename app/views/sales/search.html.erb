@@ -12,6 +12,10 @@
     <div class"sales-index-sales">
       <div class="sales-index-gross gd"> Sold for: <%= number_to_currency(sale.gross) %></div>
       <div class="sales-index-date gd">  Sale date: <%= sale.date %></div>
+      <% if @sales.sales_channel %>
+        <div class="sale-index-date gd">Sold at: <%= @sale.sales_channel %></div>
+      <% else %>
+      <% end %>
     </div>
 
     <div class="sales-index-edit">

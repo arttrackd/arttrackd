@@ -19,13 +19,12 @@
  @import "projects";
  @import "sales";
  @import "sales_goals";
+ @import "dashboard";
  @import "business_expenses";
  @import "material_purchases";
  @import "material_uses";
  @import "project_costs";
  @import "sales_channels";
-
- @import "dashboard";
 
 h1{
   font-family: $helvetica;

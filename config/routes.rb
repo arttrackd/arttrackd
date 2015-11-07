@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get     'users/graph'
 
 
+
   resources :time_entries, except: [:new, :create] do
     collection do
       post  'clock_in'

@@ -38,6 +38,7 @@
   <% end %>
 
   <div class="project-index-edit">
+    <%= link_to 'Mark as Sold', new_sale_path(project_id: project.id) %>
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
     <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
