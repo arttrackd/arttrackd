@@ -24,29 +24,46 @@
   <br>
 
   <div><h4> Materials: </h4></div>
-
-  <%= f.fields_for :material_uses do |ff| %>
-
-  <div class="field">
-    <%= ff.hidden_field :material_purchase_id %>
-  </div>
-  <div class="field">
-    <%= ff.hidden_field :project_id %>
-  </div>
-  <div class="field">
-    <%= ff.label :name %><br>
-    <%= ff.text_field :name %>
-  </div>
-  <div class="field">
-    <%= ff.label :description %><br>
-    <%= ff.text_area :description%>
-  </div>
-  <div class="field">
-    <%= ff.label :units %><br>
-    <%= ff.number_field :units%>
-  </div>
-<hr />
+  <div class="material-form">
+    <%= f.fields_for :material_uses do |ff| %>
+    <div class="field">
+      <%= ff.hidden_field :material_purchase_id %>
+    </div>
+    <div class="field">
+      <%= ff.hidden_field :project_id %>
+    </div>
+    <div class="field">
+      <%= ff.label :name %><br>
+      <%= ff.text_field :name %>
+    </div>
+    <div class="field">
+      <%= ff.label :description %><br>
+      <%= ff.text_area :description%>
+    </div>
+    <div class="field">
+      <%= ff.label :units %><br>
+      <%= ff.number_field :units%>
+    </div>
+    <hr />
   <% end %>
+</div>
+
+
+<div><h4> Project Costs: </h4></div>
+<div class="material-form">
+  <%= f.fields_for :project_costs do |fff| %>
+    <div class="field">
+      <%= fff.label :cost_type %><br>
+      <%= fff.text_field :cost_type%>
+    </div>
+    <div class="field">
+      <%= fff.label :amount %><br>
+      <%= fff.number_field :amount%>
+    </div>
+    <hr />
+  <% end %>
+</div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

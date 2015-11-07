@@ -22,12 +22,14 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @project.material_uses.build
+    @project.project_costs.build
   end
 
   # GET /projects/1/edit
   def edit
     redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
-    @project.material_uses.build 
+    @project.material_uses.build
+    @project.project_costs.build
   end
 
   # POST /projects
@@ -75,6 +77,7 @@ class ProjectsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
+      project_costs_attributes: [:cost_type, :amount],
       material_uses_attributes: [:material_purchase_id, :project_id, :name, :description,  :units])
     end
 end
