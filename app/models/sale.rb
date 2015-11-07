@@ -5,11 +5,8 @@ class Sale < ActiveRecord::Base
 
   def self.search(search)
     # @user = User.find(session[:user_id])
-
     if search
       @sale = Sale.where("date LIKE ?", "%#{search}%")
-    else
-      @sale = Sale.all
     end
   end
 end
