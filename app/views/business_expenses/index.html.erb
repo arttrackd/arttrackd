@@ -1,3 +1,7 @@
+<%= form_tag business_expenses_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil%>
+<% end %>
 <div class="link-to-new-business-expense"><%= link_to 'New Business Expense', new_business_expense_path %></div>
  <h1>Listing Business Expenses</h1>
 

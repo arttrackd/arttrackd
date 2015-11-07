@@ -4,7 +4,11 @@ class BusinessExpensesController < ApplicationController
 
   # GET /business_expenses
   def index
-    @business_expenses = BusinessExpense.where(user_id: @current_user.id)
+    if params[:search]
+      @business_expenses = BusinessExpense.search(params[:search])
+    else
+      @business_expenses = BusinessExpense.where(user_id: @current_user.id)
+    end
   end
 
   # GET /business_expenses/1
