@@ -21,7 +21,7 @@ class SalesChannelsControllerTest < ActionController::TestCase
 
   test "should create sales_channel" do
     assert_difference('SalesChannel.count') do
-      post :create, sales_channel: { description: @sales_channel.description, name: @sales_channel.name, sale_id: @sales_channel.sale_id }
+      post :create, sales_channel: { description: @sales_channel.description, name: @sales_channel.name}
     end
 
     assert_redirected_to sales_channel_path(assigns(:sales_channel))
@@ -38,7 +38,7 @@ class SalesChannelsControllerTest < ActionController::TestCase
   end
 
   test "should update sales_channel" do
-    patch :update, id: @sales_channel, sales_channel: { description: @sales_channel.description, name: @sales_channel.name, sale_id: @sales_channel.sale_id }
+    patch :update, id: @sales_channel, sales_channel: { description: @sales_channel.description, name: @sales_channel.name}
     assert_redirected_to sales_channel_path(assigns(:sales_channel))
   end
 

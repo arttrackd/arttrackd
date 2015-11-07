@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151105203021) do
+ActiveRecord::Schema.define(version: 20151106220924) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -76,21 +76,19 @@ ActiveRecord::Schema.define(version: 20151105203021) do
     t.decimal  "gross"
     t.decimal  "net"
     t.date     "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "sales_channel_id"
   end
 
   add_index "sales", ["project_id"], name: "index_sales_on_project_id"
 
   create_table "sales_channels", force: :cascade do |t|
-    t.integer  "sale_id"
     t.string   "name"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
-
-  add_index "sales_channels", ["sale_id"], name: "index_sales_channels_on_sale_id"
 
   create_table "sales_goals", force: :cascade do |t|
     t.integer  "user_id"
@@ -101,6 +99,7 @@ ActiveRecord::Schema.define(version: 20151105203021) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "sales_channel_id"
+    t.date     "end_time"
   end
 
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"

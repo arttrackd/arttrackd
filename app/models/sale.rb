@@ -14,4 +14,4 @@ class Sale < ActiveRecord::Base
   end
 end
 # @sale = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
-@sale = Sale.joins(:project).where("date LIKE ? OR name LIKE ?", "%#{:search}%", "%#{:search}%")
+# @sale = Sale.joins(:project).where("date LIKE ? OR name LIKE ?", "%#{:search}%", "%#{:search}%")

@@ -4,13 +4,19 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.search(params[:search])
+    if params[:search]
+      @projects = Project.search(params[:search])
+    else
+      @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
+    end
+    # @projects = Project.joins(:sales).where(projects: {user_id: @current_user.id})
   end
 
   # GET /projects/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
-    @project_time = @project.get_time
+    @user = @project.user
+    redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
+    @project_time = @project.total_time
   end
 
   # GET /projects/new

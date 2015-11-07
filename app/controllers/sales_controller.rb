@@ -9,7 +9,6 @@ class SalesController < ApplicationController
     @user = User.find(session[:user_id])
     redirect_to dashboard_user_path(session[:user_id]) if @user != @current_user
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
-
     @sale = Sale.search(params[:search])
   end
 
@@ -88,7 +87,7 @@ class SalesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sale_params
-      params.require(:sale).permit(:project_id, :gross, :date)
+      params.require(:sale).permit(:sales_channel_id, :project_id, :gross, :date)
     end
 
     def update_goals

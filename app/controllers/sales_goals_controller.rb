@@ -25,6 +25,7 @@ class SalesGoalsController < ApplicationController
   def create
     @sales_goal = SalesGoal.new(sales_goal_params)
     @sales_goal.user = @current_user
+    @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
     if @sales_goal.save
       redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
     else
