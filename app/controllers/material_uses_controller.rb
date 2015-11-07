@@ -4,7 +4,11 @@ class MaterialUsesController < ApplicationController
 
   # GET /material_uses
   def index
-    @material_uses = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
+    if params[:search]
+      @material_uses = MaterialUse.search(params[:search])
+    else
+      @material_uses = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
+    end
   end
 
   # GET /material_uses/1
