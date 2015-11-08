@@ -7,7 +7,9 @@ class SalesController < ApplicationController
   def index
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
     if params[:search]
-      @sales = Sale.search(params[:search])
+      q = "%#{params[:search]}%"
+      s = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
+      @sales = Sale.search(s, q)
     else
       @sales = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
     end
@@ -23,6 +25,7 @@ class SalesController < ApplicationController
     if params[:project_id]
       @project_name = Project.find(params[:project_id]).name
       @sale = Sale.new
+      @sales_channels = SalesChannel.where(user_id: @current_user.id)
     else
       redirect_to dashboard_user_path(session[:user_id]), notice: "You must mark a project as sold to create a sale record."
     end
@@ -31,6 +34,7 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
+    @sales_channels = SalesChannel.where(user_id: @current_user.id)
   end
 
   # POST /sales
@@ -58,16 +62,6 @@ class SalesController < ApplicationController
     @sale.destroy
     redirect_to sales_url, notice: 'Sale record was successfully destroyed.'
   end
-
-  # def search
-  #   if params[:search]
-  #   @sale = Sale.where("date LIKE ?", "%#{params[:search]}%")
-  #   # sales = Sale.where("date LIKE ?", "%#{params[:search]}%")
-  #   # projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-  #   # mix = sale + project
-  #   # @sale = sales.select{|sale| sale.date sale.project.name}
-  #   end
-  # end
 
   private
 

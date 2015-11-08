@@ -4,16 +4,18 @@
   @include omega();
   font-size: 260%;
 }
+.project-cost-index-project-name{
+  @include span-columns(12);
+  @include omega();
+  font-size: 200%;
 
-.project-cost-index-project-id{
-  @include span-columns(7);
 }
 
 .project-cost-index-cost-type{
-  @include span-columns(3);
+  @include span-columns(6);
 }
 .project-cost-index-amount{
-  @include span-columns(2);
+  @include span-columns(6);
   @include omega();
 }
 

@@ -3,7 +3,10 @@ class Project < ActiveRecord::Base
   has_many :time_entries
   has_many :sales
   has_many :material_uses
+  has_many :project_costs
   validates :name, presence: true
+  accepts_nested_attributes_for :material_uses, reject_if: :all_blank, allow_destroy: :true
+  accepts_nested_attributes_for :project_costs, reject_if: :all_blank, allow_destroy: :true
 
   def total_time
     # Set a default value for time entry total_time field later
@@ -14,7 +17,10 @@ class Project < ActiveRecord::Base
     user.hourly_rate * total_time/3600
   end
 
-  def self.search(search)
-    Project.where("name LIKE ?", "%#{search}%")
+
+  def self.search(p, q)
+    projects = p.where("name LIKE ?", q)
+    projects += p.where("description LIKE ?", q)
+    projects.uniq!
   end
 end

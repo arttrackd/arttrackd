@@ -18,8 +18,28 @@
   <% else %>
       You have not worked on this project yet.
   <% end%>
-
 </div>
+
+<div>
+  <div class="project-show-name"> Materials </div>
+  <% @project.material_uses.each do |material| %>
+    <div class="project-show-material-name"><%= material.name %></div>
+    <div class="project-show-material-description"><%= material.description %></div>
+    <div class="project-show-material-units">Units: <%= material.units %></div>
+    <br />
+  <% end %>
+</div>
+
+
+<div>
+  <div class="project-show-cost-name">Costs unique to your project (Shipping/Handling, Commision, Licensing, Etc.)</div>
+  <% @project.project_costs.each do |cost| %>
+    <div class="project-show-cost-type"><%= cost.cost_type %></div>
+    <div class="project-show-cost-ammount">Cost: <%= number_to_currency(cost.amount) %></div>
+    <br />
+  <% end %>
+</div>
+
 <div class="edit-back">
   <%= link_to 'Mark as Sold', new_sale_path(project_id: @project.id) %> |
   <%= link_to 'Edit', edit_project_path(@project) %> |

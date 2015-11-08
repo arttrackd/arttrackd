@@ -2,7 +2,6 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
-<div class="link-to-new-material-use"><%= link_to 'New Material use', new_material_use_path %></div>
 <h1>Listing Material Uses</h1>
 
 <% @material_uses.each do |material_use| %>

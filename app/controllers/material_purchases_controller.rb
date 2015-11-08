@@ -5,7 +5,9 @@ class MaterialPurchasesController < ApplicationController
   # GET /material_purchases
   def index
     if params[:search]
-      @material_purchases = MaterialPurchase.search(params[:search])
+      q = "%#{params[:search]}%"
+      mp = MaterialPurchase.where(user_id: @current_user.id)
+      @material_purchases = MaterialPurchase.search(mp, q)
     else
       @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
     end

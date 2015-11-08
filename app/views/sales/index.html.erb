@@ -1,5 +1,5 @@
 <%= form_tag sales_path, method: :get do %>
-  <%= label_tag :search, "Search sales by date:" %>
+  <%= label_tag :search, "Search sales:" %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search"%>
 <% end %>
@@ -11,11 +11,13 @@
       <div class="sales-index-gross gd"> Sold for: <%= number_to_currency(sale.gross) %></div>
       <div class="sales-index-date gd">  Sale date: <%= sale.date %></div>
       <br />
+      <div class="sale-index-channel gd">
       <% if sale.sales_channel %>
-        <div class="sale-index-channel gd"> Sold at: <%= sale.sales_channel.name %></div>
+        Sold at: <%= sale.sales_channel.name %>
       <% else %>
-        <div class="sale-index-available gd">Available for purchase</div>
+        Sales channel not specified, <%= link_to 'click to add', edit_sale_path(sale) %>
       <% end %>
+      </div>
     </div>
 
   <div class="sales-index-edit">

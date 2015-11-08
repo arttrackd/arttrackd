@@ -3,9 +3,9 @@ class ProjectCost < ActiveRecord::Base
   validates :cost_type, presence: true
   validates :amount, presence: true
 
-  def self.search(search)
-    if search
-      @project_costs = ProjectCost.where("cost_type LIKE ?", "%#{search}%")
-    end
+  def self.search(pc, q)
+    @project_costs = pc.where("cost_type LIKE ?", q)
+    @project_costs += pc.where(project_id: Project.where("name LIKE ?", q))
+    @project_costs.uniq!
   end
 end

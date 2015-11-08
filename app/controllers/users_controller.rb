@@ -3,9 +3,7 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def profile
-    @user = @current_user
-    @projects = Project.where(user: @user).limit(5)
-    @sales = Sale.where(project_id: Project.where(user_id: @user.id))
+    @sales = Sale.where(project: Project.where(user: @current_user))
   end
 
   def index
@@ -54,11 +52,14 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
-    @goals = SalesGoal.where(user: @user).limit(5)
-    @goal = SalesGoal.where(user: @user).last
-    @percent_completion = SalesGoal.percent_completion(@goal)
     @projects = Project.where('user_id = ?', @user.id).limit(5)
     @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(5)
+    @goals = SalesGoal.where(user: @user).limit(5)
+    @goal = SalesGoal.where(user: @user).last
+    if @user.sales_goals.length > 0
+      @percent_completion = SalesGoal.percent_completion(@goal)
+    else
+    end
   end
 
   private

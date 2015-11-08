@@ -6,12 +6,13 @@ class ProjectsController < ApplicationController
   def index
     
     if params[:search]
-      @projects = Project.search(params[:search])
+      q = "%#{params[:search]}%"
+      p = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
+      @projects = Project.search(p, q)
     else
       @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user).order('name')
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]
     end
-    # @projects = Project.joins(:sales).where(projects: {user_id: @current_user.id})
   end
 
   # GET /projects/1
@@ -23,11 +24,15 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @project.material_uses.build
+    @project.project_costs.build
   end
 
   # GET /projects/1/edit
   def edit
     redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
+    @project.material_uses.build
+    @project.project_costs.build
   end
 
   # POST /projects
@@ -56,12 +61,6 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
-  # def search
-  #   if params[:search]
-  #     @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-  #   end
-  # end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
@@ -74,6 +73,8 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params.require(:project).permit(:user_id, :name, :description)
+      params.require(:project).permit(:user_id, :name, :description,
+      project_costs_attributes: [:id, :cost_type, :amount, :_destroy],
+      material_uses_attributes: [:id, :material_purchase_id, :project_id, :name, :description,  :units, :_destroy])
     end
 end
