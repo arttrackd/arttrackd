@@ -6,6 +6,7 @@
 <h1>Listing Project Costs</h1>
 
 <% @project_costs.each do |project_cost| %>
+  <div class="project-cost-index-project-name"><%= project_cost.project.name %></div>
   <br />
   <div class="project-cost-index-cost-type"><%= project_cost.cost_type %></div>
   <div class="project-cost-index-amount"><%= number_to_currency(project_cost.amount) %></div>
