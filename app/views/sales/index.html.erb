@@ -6,8 +6,7 @@
 <% if @sales %>
   <h1>Listing Sales</h1>
   <% @sales.each do |sale| %>
-    <div class="sales-index-name"><%= sale.project.name %></div>
-
+  <div class="sales-index-name"><%= sale.project.name %></div>
     <div class"sales-index-sales">
       <div class="sales-index-gross gd"> Sold for: <%= number_to_currency(sale.gross) %></div>
       <div class="sales-index-date gd">  Sale date: <%= sale.date %></div>
@@ -19,13 +18,13 @@
       <% end %>
     </div>
 
-    <div class="sales-index-edit">
-      <%= link_to 'Show', sale %>
-      <%= link_to 'Edit', edit_sale_path(sale) %>
-      <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
-    <br>
-    <hr />
+  <div class="sales-index-edit">
+    <%= link_to 'Show', sale %>
+    <%= link_to 'Edit', edit_sale_path(sale) %>
+    <%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br>
+  <hr />
   <% end %>
 <% else %>
 <p> Please enter something to search! </p>
