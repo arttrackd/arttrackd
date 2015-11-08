@@ -66,7 +66,7 @@ end
 end
 
 
-channels = ["Web Store", "Personal Reference", "B&M Store", "The Van", "Gallery", "Down by the River", "Festival Booth" ]
+channels = ["Web Store", "Personal Reference", "B&M Store", "The Van", "Down by the River", "Gallery", "Festival Booth" ]
 x = 0
 7.times do
   SalesChannel.create!(name: channels[x], description: Faker::Address.street_address)
