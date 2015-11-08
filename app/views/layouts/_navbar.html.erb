@@ -31,11 +31,11 @@
               <li><%= link_to 'New Sales Goals', new_sales_goal_path %></li>
               <li><%= link_to 'All Sales Goals', sales_goals_path %></li>
               <li><%= link_to 'Goals Progress', 'javascript:void(0)' %></li>
+              <li><%= link_to 'Achieved Goals', sales_goals_path(success: true) %></li>
             </ul>
           </li>
-          <li class="nav-link nav-space"></li>
-          <li class="nav-link nav-right"><%= link_to 'Profile', user_path(id: session[:user_id]) %></li>
-          <li class="nav-link nav-right"><%= link_to 'Log Out', logout_path, method: :delete %></li>
+            <li class="nav-link"><%= link_to 'Profile', user_path(id: session[:user_id]) %></li>
+            <li class="nav-link"><%= link_to 'Log Out', logout_path, method: :delete %></li>
         <% else %>
           <li class="nav-link"><%= link_to 'ArtTrackd', root_path %></li>
         <% end %>

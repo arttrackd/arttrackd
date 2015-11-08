@@ -12,7 +12,6 @@
   <div class="project-index-name"><%= project.name %></div>
   <div class="project-index-desc gd"><%= project.description %></div>
   <br />
-
   <% if project.sales.length > 0 %>
     <div class"project-index-sales">
       <% project.sales.each do |sale| %>
@@ -38,7 +37,6 @@
       </div>
     </div>
   <% end %>
-
   <div class="project-index-edit">
     <%= link_to 'Mark as Sold', new_sale_path(project_id: project.id) %>
     <%= link_to 'Show', project %>
