@@ -3,8 +3,7 @@ class ProjectCost < ActiveRecord::Base
   validates :cost_type, presence: true
   validates :amount, presence: true
 
-  def self.search(pc, q)
-    project_costs = pc.where(project_id: Project.where("name LIKE ?", q))
-    project_costs.uniq!
+  def self.search(q, user_id)
+    ProjectCost.joins(:project).where("user_id = ? AND name LIKE ?", user_id, q).uniq
   end
 end

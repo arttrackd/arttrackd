@@ -3,9 +3,7 @@ class SalesChannel < ActiveRecord::Base
   has_many :sales
   validates :name, presence: true
 
-  def self.search(sc, q)
-    @sales_channels = sc.where("name LIKE ?", q)
-    @sales_channels += sc.where("description LIKE ?", q)
-    @sales_channels.uniq!
+  def self.search(q, user_id)
+    SalesChannel.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q).uniq
   end
 end
