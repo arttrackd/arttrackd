@@ -2,21 +2,24 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
-<div class="link-to-new-project-cost"><%= link_to 'New Project cost', new_project_cost_path %></div>
 <h1>Listing Project Costs</h1>
 
-<% @projects.each do |p| %>
-  <div class="project-cost-index-project-name"><%= p.name %></div>
+<% @projects.each do |project| %>
+  <div class="project-cost-index-project-name"><%= project.name %></div>
   <br />
-  <% p.project_costs.each do |project_cost| %>
-    <div class="project-cost-index-cost-type"><%= project_cost.cost_type %></div>
-    <div class="project-cost-index-amount"><%= number_to_currency(project_cost.amount) %></div>
+  <% if project.project_costs.length > 0 %>
+    <% project.project_costs.each do |project_cost| %>
+      <div class="project-cost-index-cost-type"><%= project_cost.cost_type %> </div>
+      <div class="project-cost-index-amount"><%= number_to_currency(project_cost.amount) %></div>
 
-    <div class="project-cost-index-edit">
-      <%= link_to 'Show', project_cost %>
-      <%= link_to 'Edit', edit_project_cost_path(project_cost) %>
-      <%= link_to 'Destroy', project_cost, method: :delete, data: { confirm: 'Are you sure?' } %>
-    </div>
+      <div class="project-cost-index-edit">
+        <%= link_to 'Show', project_cost %>
+        <%= link_to 'Edit', edit_project_cost_path(project_cost) %>
+        <%= link_to 'Destroy', project_cost, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    <% end %>
+  <% else %>
+    <div>There are no current projects costs.</div>
   <% end %>
   <br />
   <hr />

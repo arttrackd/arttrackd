@@ -1,8 +1,10 @@
 <div class="new-goal"><%= link_to 'New Sales Goal', new_sales_goal_path %></div>
 
-<h1>Listing Sale Goals</h1>
+<h1 class="goal-active">Listing Active Sale Goals</h1>
 <% @goals.each do |goal| %>
   <% active = goal.end_time >= Date.today %>
+  <% if active %>
+  <br />
   <div class="goal-index-amount">Goal: <%= number_to_currency(goal.amount) %></div>
 
   <div class"goal-index-details">
@@ -28,4 +30,40 @@
   </div>
   <br>
   <hr />
+  <% end %>
+<% end %>
+<br />
+<h1 class="goal-inactive">Listing Inactive Sale Goals</h1>
+<br />
+<% @goals.each do |goal| %>
+  <% active = goal.end_time >= Date.today %>
+  <% if !active %>
+
+  <div class="goal-index-amount">Goal: <%= number_to_currency(goal.amount) %></div>
+
+  <div class"goal-index-details">
+    <div class="goal-index-length-of-time gd"> Duration: <%= goal.length_of_time %></div>
+    <div class="goal-index-start-time gd"> Started: <%= goal.start_time %></div>
+    <div class="goal-index-end-time gd">
+      <%= active ? "Ends" : "Ended" %>:
+      <%= goal.end_time %>
+    </div>
+    <div class="goal-index-success gd">
+      <% if goal.success %>
+        ACHIEVED!
+      <% else %>
+        <%= active ? "Not yet achieved" : "Did not achieve" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="goal-index-edit">
+    <%= link_to 'Show', goal %>
+    <%= link_to 'Edit', edit_sales_goal_path(goal) %>
+    <%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+  <br>
+  <hr />
+
+  <% end %>
 <% end %>
