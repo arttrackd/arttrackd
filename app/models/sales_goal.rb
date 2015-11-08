@@ -32,7 +32,6 @@ class SalesGoal < ActiveRecord::Base
   def self.percent_completion(goal)
     sales = applicable_sales(goal.user_id, goal)
     return sum_of_sales(sales) / goal.amount if sales.length > 0
-
     return 0
   end
 end
