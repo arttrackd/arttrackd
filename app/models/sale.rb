@@ -4,10 +4,11 @@ class Sale < ActiveRecord::Base
   validates :gross, presence: true
   validates :date, presence: true
 
-  def self.search(q)
-    @sales = Sale.where("date LIKE ?", q)
-    @sales += Sale.where(project_id: Project.where("name LIKE ? OR description LIKE ?", q, q))
-    @sales += Sale.where(project_id: Project.where("description LIKE ?", q))
+
+  def self.search(s, q)
+    @sales = s.where("date LIKE ?", q)
+    @sales += s.where(project_id: Project.where("name LIKE ? OR description LIKE ?", q, q))
+    @sales += s.where(project_id: Project.where("description LIKE ?", q))
     return @sales
   end
 end
