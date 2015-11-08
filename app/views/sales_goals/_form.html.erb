@@ -10,25 +10,27 @@
       </ul>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.hidden_field :user_id, value: @current_user.id %>
-  </div>
+
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount, value: @sales_goal.amount || "" %>
+    <%= f.number_field :amount %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :length_of_time %><br>
-    <%= f.text_field :length_of_time, value: @sales_goal.length_of_time || "" %>
+    <%= f.label :start_time, 'Start date' %><br>
+    <%= f.date_select :start_time %>
   </div>
+  <br />
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.date_select :start_time, value: @sales_goal.start_time || "" %>
+    <%= f.label :length_of_time, 'How long?'%><br>
+    <%= number_field_tag :number %>
+    <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %>
   </div>
   <div class="field">
     <%= f.label :sales_channel %><br>
     <%= f.number_field :sales_channel%>
   </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
