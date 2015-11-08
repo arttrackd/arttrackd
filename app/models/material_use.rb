@@ -6,5 +6,7 @@ class MaterialUse < ActiveRecord::Base
 
   def self.search(mu, q)
     @material_uses = mu.where("name LIKE ?", q)
+    @material_uses += mu.where('description LIKE ?', q)
+    @material_uses.uniq!
   end
 end

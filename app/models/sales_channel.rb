@@ -6,5 +6,6 @@ class SalesChannel < ActiveRecord::Base
   def self.search(sc, q)
     @sales_channels = sc.where("name LIKE ?", q)
     @sales_channels += sc.where("description LIKE ?", q)
+    @sales_channels.uniq!
   end
 end

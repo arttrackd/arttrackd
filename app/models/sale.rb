@@ -9,6 +9,6 @@ class Sale < ActiveRecord::Base
     @sales = s.where("date LIKE ?", q)
     @sales += s.where(project_id: Project.where("name LIKE ?", q))
     @sales += s.where(project_id: Project.where("description LIKE ?", q))
-    return @sales
+    @sales.uniq!
   end
 end

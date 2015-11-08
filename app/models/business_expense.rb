@@ -5,5 +5,7 @@ class BusinessExpense < ActiveRecord::Base
 
   def self.search(be, q)
     @business_expense = be.where("name LIKE ?", q)
+    @business_expense += be.where('description LIKE ?', q)
+    @business_expense.uniq!
   end
 end

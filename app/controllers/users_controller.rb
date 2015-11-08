@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def profile
-    @sales = Sale.where(project_id: Project.where(user: @current_user))
+    @sales = Sale.where(project: Project.where(user: @current_user))
   end
 
   def index

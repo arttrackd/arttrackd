@@ -7,5 +7,7 @@ class MaterialPurchase < ActiveRecord::Base
 
   def self.search(mp, q)
     @material_purchases = mp.where("name LIKE ?", q)
+    @material_purchases += mp.where('description LIKE ?', q)
+    @material_purchases.uniq!
   end
 end

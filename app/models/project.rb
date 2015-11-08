@@ -20,5 +20,6 @@ class Project < ActiveRecord::Base
   def self.search(p, q)
     @projects = p.where("name LIKE ?", q)
     @projects += p.where("description LIKE ?", q)
+    @projects.uniq!
   end
 end

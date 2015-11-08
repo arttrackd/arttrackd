@@ -4,20 +4,22 @@
 <% end %>
 <div class="link-to-new-material-purchase"><%= link_to 'New Material Purchase', new_material_purchase_path %></div>
 <h1>Listing Material Purchases</h1>
+<% if @material_purchases %>
+  <% @material_purchases.each do |material_purchase| %>
+    <div class="material-index-name"><%= material_purchase.name %></div>
+    <br />
+    <div class="material-index-description gd"><%= material_purchase.description %></div>
+    <div class="material-index-cost gd">Cost: <%= number_to_currency(material_purchase.cost) %></div>
+    <div class="material-index-units gd">Units: <%= material_purchase.units %></div>
 
-<% @material_purchases.each do |material_purchase| %>
-  <div class="material-index-name"><%= material_purchase.name %></div>
-  <br />
-  <div class="material-index-description gd"><%= material_purchase.description %></div>
-  <div class="material-index-cost gd">Cost: <%= number_to_currency(material_purchase.cost) %></div>
-  <div class="material-index-units gd">Units: <%= material_purchase.units %></div>
+    <div class="material-index-edit">
+      <%= link_to 'Show', material_purchase %>
+      <%= link_to 'Edit', edit_material_purchase_path(material_purchase) %>
+      <%= link_to 'Destroy', material_purchase, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+    <br>
 
-  <div class="material-index-edit">
-    <%= link_to 'Show', material_purchase %>
-    <%= link_to 'Edit', edit_material_purchase_path(material_purchase) %>
-    <%= link_to 'Destroy', material_purchase, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
-  <br>
-
-<hr />
+  <hr />
+  <% end %>
+<% else %>
 <% end %>
