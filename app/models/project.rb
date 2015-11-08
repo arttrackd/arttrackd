@@ -11,12 +11,10 @@ class Project < ActiveRecord::Base
   end
 
   def estimated_value
-    user.hourly_rate * total_time/360
+    user.hourly_rate * total_time/3600
   end
 
   def self.search(search)
-    if search
-      @projects = Project.where("name LIKE ?", "%#{search}%")
-    end
+    Project.where("name LIKE ?", "%#{search}%")
   end
 end

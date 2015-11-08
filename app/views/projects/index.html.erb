@@ -3,11 +3,12 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
+
 <div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
- <h1>Listing Projects</h1>
+<h1>Listing Projects</h1>
 
 <% @projects.each do |project| %>
-  <div class="project-index-name"><%= project.name %> <%= project.user.name%></div>
+  <div class="project-index-name"><%= project.name %></div>
   <div class="project-index-desc gd"><%= project.description %></div>
   <br />
 
@@ -17,16 +18,16 @@
         <div class = "project-index-row">
           <div class="project-index-desc gd"> </div>
           <div class="project-index-gross gd">
-            <%= number_to_currency(sale.gross) %>
+            Sold for: <%= number_to_currency(sale.gross) %>
           </div>
           <div class="project-index-saledate gd">
-            <%= sale.date %></br>
+            <%= sale.date.strftime("%B %d, %Y") %></br>
           </div>
         </div>
       <% end %>
     </div>
-  <% else %>
 
+  <% else %>
 
     <div class"project-index-sales">
       <div class = "project-index-row">
