@@ -20,7 +20,7 @@ class SalesGoalsControllerTest < ActionController::TestCase
 
   test "should create sales_goal" do
     assert_difference('SalesGoal.count') do
-      post :create, sales_goal: { amount: 1000, length_of_time: @sales_goal.length_of_time, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }
+      post :create, {number: 3, units: "days", sales_goal: { amount: 1000, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }}
     end
 
     assert_redirected_to sales_goal_path(assigns(:sales_goal))
@@ -37,7 +37,7 @@ class SalesGoalsControllerTest < ActionController::TestCase
   end
 
   test "should update sales_goal" do
-    patch :update, id: @sales_goal, sales_goal: { amount: @sales_goal.amount, length_of_time: @sales_goal.length_of_time, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }
+    patch :update, {number: 3, units: "days", id: @sales_goal, sales_goal: { amount: @sales_goal.amount, start_time: @sales_goal.start_time, success: @sales_goal.success, user_id: @sales_goal.user_id }}
     assert_redirected_to sales_goal_path(assigns(:sales_goal))
   end
 
