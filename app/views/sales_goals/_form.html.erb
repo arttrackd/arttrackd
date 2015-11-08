@@ -25,6 +25,10 @@
     <%= f.label :start_time %><br>
     <%= f.date_select :start_time, value: @sales_goal.start_time || "" %>
   </div>
+  <div class="field">
+    <%= f.label :sales_channel %><br>
+    <%= f.number_field :sales_channel%>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
