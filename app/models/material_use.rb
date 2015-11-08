@@ -4,9 +4,7 @@ class MaterialUse < ActiveRecord::Base
   validates :name, presence: true
   validates :units, presence: true
 
-  def self.search(search)
-    if search
-      @material_uses = MaterialUse.where("name LIKE ?", "%#{search}%")
-    end
+  def self.search(mu, q)
+    @material_uses = mu.where("name LIKE ?", q)
   end
 end

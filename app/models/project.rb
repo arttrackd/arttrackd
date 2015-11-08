@@ -17,9 +17,7 @@ class Project < ActiveRecord::Base
     user.hourly_rate * total_time/360
   end
 
-  def self.search(search)
-    if search
-      @projects = Project.where("name LIKE ?", "%#{search}%")
-    end
+  def self.search(p, q)
+    @projects = p.where("name LIKE ?", q)
   end
 end
