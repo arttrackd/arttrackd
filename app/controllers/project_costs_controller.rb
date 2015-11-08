@@ -5,7 +5,8 @@ class ProjectCostsController < ApplicationController
   # GET /project_costs
   def index
     if params[:search]
-      @project_costs = ProjectCost.search(params[:search])
+      q = "%#{params[:search]}%"
+      @project_costs = ProjectCost.search(q)
     else
       @project_costs = ProjectCost.where(project_id: Project.where(user_id: @current_user.id))
     end

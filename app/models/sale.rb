@@ -6,7 +6,8 @@ class Sale < ActiveRecord::Base
 
   def self.search(q)
     @sales = Sale.where("date LIKE ?", q)
-    @sales += Sale.where(project_id: Project.where("name LIKE ?", q))
+    @sales += Sale.where(project_id: Project.where("name LIKE ? OR description LIKE ?", q, q))
+    @sales += Sale.where(project_id: Project.where("description LIKE ?", q))
     return @sales
   end
 end
