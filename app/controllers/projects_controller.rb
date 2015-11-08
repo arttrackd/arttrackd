@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     if params[:search]
-      @projects = Project.search(params[:search])
+      @projects = Project.where(user: @current_user).search(params[:search])
     else
       @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]

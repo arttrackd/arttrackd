@@ -2,15 +2,15 @@
   <%= image_tag asset_url('track.png'), class: "profile-image" %>
 </div>
 <div class="profile-middle-column">
-  <h1><%= @user.name %></h1>
-  <h2><%= @user.email %></h2>
-  <h2><%= @user.time_zone %></h2>
-  <h2><%= number_to_currency(@user.hourly_rate) %>/hour</h2>
-  <h3><%= link_to 'Edit', edit_user_path(@user) %></h3>
+  <h1><%= @current_user.name %></h1>
+  <h2><%= @current_user.email %></h2>
+  <h2><%= @current_user.time_zone %></h2>
+  <h2><%= number_to_currency(@current_user.hourly_rate) %>/hour</h2>
+  <h3><%= link_to 'Edit', edit_user_path(@current_user) %></h3>
 </div>
 <div class="profile-right-column">
   <p>Number of sales: <%= @sales.count %></p>
-  <p>Number of projects: <%= @user.projects.count %></p>
-  <p>Number of sales goals: <%= @user.sales_goals.count %></p>
-  <p>Number of sales goals reached: <%= @user.sales_goals.where(success: true).count %></p>
+  <p>Number of projects: <%= @current_user.projects.count %></p>
+  <p>Number of sales goals: <%= @current_user.sales_goals.count %></p>
+  <p>Number of sales goals reached: <%= @current_user.sales_goals.where(success: true).count %></p>
 </div>
