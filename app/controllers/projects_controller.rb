@@ -12,7 +12,6 @@ class ProjectsController < ApplicationController
       @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]
     end
-    # @projects = Project.joins(:sales).where(projects: {user_id: @current_user.id})
   end
 
   # GET /projects/1

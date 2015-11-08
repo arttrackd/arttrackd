@@ -7,10 +7,8 @@ class Sale < ActiveRecord::Base
 
   def self.search(s, q)
     @sales = s.where("date LIKE ?", q)
-    @sales += s.where(project_id: Project.where("name LIKE ? OR description LIKE ?", q, q))
+    @sales += s.where(project_id: Project.where("name LIKE ?", q))
     @sales += s.where(project_id: Project.where("description LIKE ?", q))
     return @sales
   end
 end
-# @sale = Sale.where(project_id: Project.where(user_id: @user.id)).limit(50)
-# @sale = Sale.joins(:project).where("date LIKE ? OR name LIKE ?", "%#{:search}%", "%#{:search}%")
