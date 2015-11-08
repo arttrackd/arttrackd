@@ -8,7 +8,7 @@ class BusinessExpensesController < ApplicationController
       q = "%#{params[:search]}%"
       @business_expenses = BusinessExpense.search(q, @current_user.id)
     else
-      @business_expenses = BusinessExpense.where(user: @current_user)
+      @business_expenses = BusinessExpense.where(user: @current_user).order(:name)
     end
   end
 

@@ -9,7 +9,7 @@ class MaterialPurchasesController < ApplicationController
       mp = MaterialPurchase.where(user_id: @current_user.id)
       @material_purchases = MaterialPurchase.search(mp, q)
     else
-      @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
+      @material_purchases = MaterialPurchase.where(user_id: @current_user.id).order(:name)
     end
   end
 

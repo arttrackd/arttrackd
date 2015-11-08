@@ -9,7 +9,7 @@ class SalesChannelsController < ApplicationController
       sc = @sales_channels = SalesChannel.where(user: @current_user)
       @sales_channels = SalesChannel.search(sc, q)
     else
-      @sales_channels = SalesChannel.where(user: @current_user)
+      @sales_channels = SalesChannel.where(user: @current_user).order(:name)
     end
 
   end

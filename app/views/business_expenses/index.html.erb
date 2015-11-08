@@ -6,7 +6,7 @@
  <h1>Listing Business Expenses</h1>
 <% if @business_expenses %>
    <% @business_expenses.each do |business_expense| %>
-    <div class="business-index-name"><%= business_expense.name %></div>
+    <div class="business-index-name"><%= business_expense.name.capitalize %></div>
     <br />
     <div class="business-index-description gd"><%= business_expense.description %></div>
     <div class="business-index-amount gd">Amount: <%= number_to_currency(business_expense.amount) %></div>
