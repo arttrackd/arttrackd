@@ -62,16 +62,6 @@ class SalesController < ApplicationController
     redirect_to sales_url, notice: 'Sale record was successfully destroyed.'
   end
 
-  # def search
-  #   if params[:search]
-  #   @sale = Sale.where("date LIKE ?", "%#{params[:search]}%")
-  #   # sales = Sale.where("date LIKE ?", "%#{params[:search]}%")
-  #   # projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-  #   # mix = sale + project
-  #   # @sale = sales.select{|sale| sale.date sale.project.name}
-  #   end
-  # end
-
   private
 
     def net
