@@ -30,7 +30,9 @@ class SalesGoalsController < ApplicationController
   def create
     @sales_goal = SalesGoal.new(sales_goal_params)
     @sales_goal.user = @current_user
-    @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
+    unless params[:number].blank?
+      @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
+    end
     if @sales_goal.save
       redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
     else
@@ -40,6 +42,7 @@ class SalesGoalsController < ApplicationController
 
   # PATCH/PUT /sales_goals/1
   def update
+    @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
     if @sales_goal.update(sales_goal_params)
       redirect_to @sales_goal, notice: 'Sales goal was successfully updated.'
     else
@@ -65,6 +68,7 @@ class SalesGoalsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sales_goal_params
+      params[:sales_goal][:length_of_time] = "#{params[:number]} #{params[:units]}"
       params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time)
     end
 

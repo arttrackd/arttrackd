@@ -11,7 +11,9 @@ class SalesController < ApplicationController
       s = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
       @sales = Sale.search(s, q)
     else
-      @sales = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
+      @sales = Sale.includes(:sales_channel, :project).joins(:project)
+          .where(projects: {user_id: @current_user.id})
+          .order(date: :desc)
     end
   end
 
