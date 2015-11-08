@@ -24,14 +24,8 @@
   <br>
 
   <div><h4> Materials: </h4></div>
-  <div class="material-form">
-    <%= f.fields_for :material_uses do |ff| %>
-    <div class="field">
-      <%= ff.hidden_field :material_purchase_id %>
-    </div>
-    <div class="field">
-      <%= ff.hidden_field :project_id %>
-    </div>
+<div class="material-form">
+  <%= f.fields_for :material_uses do |ff| %>
     <div class="field">
       <%= ff.label :name %><br>
       <%= ff.text_field :name %>

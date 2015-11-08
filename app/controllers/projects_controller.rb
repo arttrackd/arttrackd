@@ -58,11 +58,6 @@ class ProjectsController < ApplicationController
     redirect_to projects_url, notice: 'Project was successfully destroyed.'
   end
 
-  # def search
-  #   if params[:search]
-  #     @projects = Project.where("name LIKE ?", "%#{params[:search]}%")
-  #   end
-  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -77,7 +72,7 @@ class ProjectsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
-      project_costs_attributes: [:id, :cost_type, :amount],
-      material_uses_attributes: [:id, :material_purchase_id, :project_id, :name, :description,  :units])
+      project_costs_attributes: [:id, :cost_type, :amount, :_destroy],
+      material_uses_attributes: [:id, :material_purchase_id, :project_id, :name, :description,  :units, :_destroy])
     end
 end
