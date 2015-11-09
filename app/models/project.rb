@@ -18,8 +18,8 @@ class Project < ActiveRecord::Base
   end
 
 
-  def self.search(p, q)
+  def self.search(q)
     search =  "%#{q}%"
-    p.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
+    Project.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
   end
 end

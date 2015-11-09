@@ -7,6 +7,6 @@ class MaterialPurchase < ActiveRecord::Base
 
   def self.search(q)
     q = "%#{q}%"
-    MaterialPurchase.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q,).uniq.order(:name)
+    MaterialPurchase.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q,).order(:name)
   end
 end

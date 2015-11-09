@@ -61,6 +61,10 @@ class TimeEntriesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def time_entry_scope
+      TimeEntry.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_time_entry
       @time_entry = TimeEntry.find(params[:id])

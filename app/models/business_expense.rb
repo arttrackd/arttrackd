@@ -5,6 +5,6 @@ class BusinessExpense < ActiveRecord::Base
 
   def self.search(q)
     q = "%#{q}%"
-    BusinessExpense.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q).uniq
+    BusinessExpense.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q)
   end
 end
