@@ -30,7 +30,7 @@ BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly r
 
 MaterialPurchase.create!(user_id: 1, name: "Canvas", description: "3 canvases for paintings", cost: 30, units: 3)
 
-MaterialUse.create!(material_purchase_id: 1, project_id: 1, name: "Canvas", description: "1 canvas", units: 1)
+MaterialUse.create!(material_purchase_id: 1, project_id: 1, name: "Canvas", description: "1 canvas", units: 1, user_id: 1)
 
 ProjectCost.create!(project_id: 1, cost_type: "Shipping and handling", amount: 12)
 
@@ -44,7 +44,9 @@ material_purchases = MaterialPurchase.all
 
 100.times do
   gross_sale = Faker::Number.between(100, 100000) / 100.00
-  Sale.create!(project_id: projects.sample.id, sales_channel_id: rand(1..7), gross: gross_sale,
+  project_id = projects.sample.id
+  user_id = Project.find(project_id).user_id
+  Sale.create!(project_id: project_id, user_id: user_id, sales_channel_id: rand(1..7), gross: gross_sale,
       net: (Faker::Number.between(100, gross_sale * 100.00) / 100.00).round(2),
       date: Faker::Date.backward(rand(1..100)))
 end
@@ -60,7 +62,7 @@ end
 channels = ["Web Store", "Personal Reference", "B&M Store", "The Van", "Down by the River", "Gallery", "Festival Booth" ]
 x = 0
 7.times do
-  SalesChannel.create!(name: channels[x], description: Faker::Address.street_address)
+  SalesChannel.create!(name: channels[x], description: Faker::Address.street_address, user_id: [1,2,3,4,5].sample)
   x += 1
 end
 
@@ -83,7 +85,7 @@ end
 end
 
 100.times do
-  MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, units: Faker::Number.between(0, 1000))
+  MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, name: Faker::Commerce.product_name, description: Faker::Commerce.product_name, units: Faker::Number.between(0, 1000), user_id: [1,2,3,4,5].sample)
 end
 
 100.times do
