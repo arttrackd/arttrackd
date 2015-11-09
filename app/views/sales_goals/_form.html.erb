@@ -27,10 +27,12 @@
     <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %>
   </div>
   <br />
+  <% if :sales_channels %>
   <div class="field">
     <%= f.label :sales_channel %><br>
-    <%= select_tag :sales_channel, options_for_select(["","Web Store", "Personal Reference", "B&M Store", "The Van", "Down by the River", "Gallery", "Festival Booth"])%>
+    <%= f.collection_select(:sales_channel_id, @sales_channels, :id, :name, prompt: true)%>
   </div>
+  <% end %>
   <br />
   <div class="actions">
     <%= f.submit %>

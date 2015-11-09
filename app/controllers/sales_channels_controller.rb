@@ -5,17 +5,15 @@ class SalesChannelsController < ApplicationController
   # GET /sales_channels
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      @sales_channels = SalesChannel.search(q, @current_user.id)
+      @sales_channels = sales_channel_scope.search(params[:search])
     else
-      @sales_channels = SalesChannel.where(user: @current_user).order(:name)
+      @sales_channels = sales_channel_scope.order(:name)
     end
 
   end
 
   # GET /sales_channels/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.user != @current_user
   end
 
   # GET /sales_channels/new
@@ -25,7 +23,6 @@ class SalesChannelsController < ApplicationController
 
   # GET /sales_channels/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @sales_channel.user != @current_user
   end
 
   # POST /sales_channels
@@ -54,10 +51,14 @@ class SalesChannelsController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def sales_channel_scope
+      SalesChannel.where(user_id: @current_user.id)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_channel
       begin
-        @sales_channel = SalesChannel.find(params[:id])
+        @sales_channel = sales_channel_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end

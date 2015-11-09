@@ -15,11 +15,12 @@
       <%= goal.end_time %>
     </div>
     <div class="goal-index-success gd">
-      <% if goal.success %>
-        ACHIEVED!
-      <% else %>
-        <%= active ? "Not yet achieved" : "Did not achieve" %>
-      <% end %>
+      <div class="progress-bar-indication">
+        <% percent_completion = (SalesGoal.percent_completion(goal) * 100).floor %>
+        <span class="meter" style="<%= "width: #{percent_completion}%" %>" >
+          <p><%= percent_completion %>%</p>
+        </span>
+      </div>
     </div>
   </div>
 
@@ -50,11 +51,12 @@
       <%= goal.end_time %>
     </div>
     <div class="goal-index-success gd">
-      <% if goal.success %>
-        ACHIEVED!
-      <% else %>
-        <%= active ? "Not yet achieved" : "Did not achieve" %>
-      <% end %>
+      <div class="progress-bar-indication">
+        <% percent_completion = (SalesGoal.percent_completion(goal) * 100).floor %>
+        <span class="meter" style="<%= "width: #{percent_completion}%" %>" >
+          <p><%= percent_completion %>%</p>
+        </span>
+      </div>
     </div>
   </div>
 

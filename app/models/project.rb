@@ -1,7 +1,7 @@
 class Project < ActiveRecord::Base
   belongs_to :user
   has_many :time_entries
-  has_many :sales
+  has_many :sales, dependent: :restrict_with_error
   has_many :material_uses
   has_many :project_costs
   validates :name, presence: true
@@ -18,8 +18,8 @@ class Project < ActiveRecord::Base
   end
 
 
-  def self.search(p, q)
+  def self.search(q)
     search =  "%#{q}%"
-    p.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
+    Project.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
   end
 end
