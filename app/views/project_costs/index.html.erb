@@ -5,7 +5,7 @@
 <h1>Listing Project Costs</h1>
 
 <% @projects.each do |project| %>
-  <div class="project-cost-index-project-name"><%= project.name %></div>
+  <div class="project-cost-index-project-name">Costs for <%= project.name %>:</div>
   <br />
   <% if project.project_costs.length > 0 %>
     <% project.project_costs.each do |project_cost| %>
@@ -22,4 +22,5 @@
   <% else %>
     <div>There are no current projects costs.</div>
   <% end %>
+  <hr />
 <% end %>
