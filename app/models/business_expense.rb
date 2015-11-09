@@ -3,7 +3,8 @@ class BusinessExpense < ActiveRecord::Base
   validates :name, presence: true
   validates :amount, presence: true
 
-  def self.search(q, user_id)
-    BusinessExpense.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q).uniq
+  def self.search(q)
+    q = "%#{q}%"
+    BusinessExpense.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q).uniq
   end
 end
