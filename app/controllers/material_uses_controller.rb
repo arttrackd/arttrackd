@@ -5,17 +5,14 @@ class MaterialUsesController < ApplicationController
   # GET /material_uses
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      mu = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
-      @material_uses = MaterialUse.search(mu, q)
+      @material_uses = MaterialUse.search(params[:search])
     else
-      @material_uses = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
+      @material_uses = material_use_scope
     end
   end
 
   # GET /material_uses/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @material_use.project.user != @current_user
   end
 
   # GET /material_uses/new
@@ -25,7 +22,6 @@ class MaterialUsesController < ApplicationController
 
   # GET /material_uses/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @material_use.project.user != @current_user
   end
 
   # POST /material_uses
@@ -55,10 +51,14 @@ class MaterialUsesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def material_use_scope
+      MaterialUse.where(user_id: @current_user.id)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_use
       begin
-        @material_use = MaterialUse.find(params[:id])
+        @material_use = material_use_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end

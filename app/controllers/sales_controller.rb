@@ -18,7 +18,6 @@ class SalesController < ApplicationController
 
   # GET /sales/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
   end
 
   # GET /sales/new
@@ -34,7 +33,6 @@ class SalesController < ApplicationController
 
   # GET /sales/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) unless @sale.project.user == @current_user
     @sales_channels = SalesChannel.where(user_id: @current_user.id)
   end
 
@@ -67,7 +65,7 @@ class SalesController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def sale_scope
-      Sale.where(project: Project.where(user: @current_user))
+      Sale.where(user_id: @current_user.id)
     end
 
     def net

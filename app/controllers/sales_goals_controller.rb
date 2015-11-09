@@ -6,10 +6,10 @@ class SalesGoalsController < ApplicationController
   # GET /sales_goals
   def index
     if params[:success]
-      @goals = SalesGoal.order(start_time: :desc).where('user_id = ?', @current_user.id)
+      @goals = sales_goal_scope.order(start_time: :desc)
       @goals = @goals.select{|goal| goal.success == true} if params[:success]
     else
-      @goals = SalesGoal.order(start_time: :desc).where('user_id = ?', @current_user.id)
+      @goals = sales_goal_scope.order(start_time: :desc)
     end
   end
 
@@ -59,12 +59,16 @@ class SalesGoalsController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def sales_goal_scope
+      SalesGoal.where(user_id: @current_user.id)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_sales_goal
       begin
-        @sales_goal = SalesGoal.find(params[:id])
+        @sales_goal = sales_goal_scope.find(params[:id])
       rescue
-        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that goal."
+        redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end
     end
 

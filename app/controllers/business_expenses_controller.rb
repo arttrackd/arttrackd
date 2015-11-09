@@ -5,16 +5,14 @@ class BusinessExpensesController < ApplicationController
   # GET /business_expenses
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      @business_expenses = BusinessExpense.search(q, @current_user.id)
+      @business_expenses = business_expense_scope.search(params[:search])
     else
-      @business_expenses = BusinessExpense.where(user: @current_user).order(:name)
+      @business_expenses = business_expense_scope
     end
   end
 
   # GET /business_expenses/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @business_expense.user != @current_user
   end
 
   # GET /business_expenses/new
@@ -24,7 +22,6 @@ class BusinessExpensesController < ApplicationController
 
   # GET /business_expenses/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @business_expense.user != @current_user
   end
 
   # POST /business_expenses
@@ -54,10 +51,14 @@ class BusinessExpensesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def business_expense_scope
+      BusinessExpense.where(user_id: @current_user.id)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_business_expense
       begin
-        @business_expense = BusinessExpense.find(params[:id])
+        @business_expense = business_expense_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end
