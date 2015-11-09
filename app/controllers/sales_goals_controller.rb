@@ -20,6 +20,7 @@ class SalesGoalsController < ApplicationController
   # GET /sales_goals/new
   def new
     @sales_goal = SalesGoal.new
+    @sales_channels = SalesChannel.where(user_id: @current_user.id)
   end
 
   # GET /sales_goals/1/edit
