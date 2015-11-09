@@ -4,19 +4,11 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs
   def index
-
-    # if params[:search]
-    #   q = "%#{params[:search]}%"
-    #   @projects = ProjectCost.search(q, @current_user.id)
-    # else
-    #   @projects = Project.includes(:project_costs).where(user: @current_user)
-    # end
     if params[:search]
-      pc = project_cost_scope
-      @projects = ProjectCost.search(pc, params[:search])
+      @projects = project_cost_scope.search(params[:search])
       @projects = @projects.where(user_id: @current_user.id)
     else
-      @projects = Project.includes(:project_costs).where(user: @current_user)
+      @projects = project_cost_scope
     end
   end
 
@@ -61,7 +53,7 @@ class ProjectCostsController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def project_cost_scope
-      ProjectCost.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
+      ProjectCost.where(user_id: @current_user.id).pluck(:id))
     end
 
     # Use callbacks to share common setup or constraints between actions.

@@ -5,7 +5,8 @@ class MaterialPurchase < ActiveRecord::Base
   validates :cost, presence: true
   validates :units, presence: true
 
-  def self.search(q, user_id)
-    MaterialPurchase.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q,).uniq.order(:name)
+  def self.search(q)
+    search =  "%#{q}%"
+    MaterialPurchase.where('name LIKE ? OR description LIKE ?', search, search).order(:name)
   end
 end

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_login, except: [:new, :create]
 
   def profile
-    @sales = Sale.where(project: Project.where(user: @current_user))
+    @sales = Sale.where(user_id: @current_user.id)
   end
 
   def index
@@ -53,9 +53,9 @@ class UsersController < ApplicationController
   def dashboard
     redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
     @projects = Project.where('user_id = ?', @user.id).limit(5)
-    @sales = Sale.where(project_id: Project.where(user_id: @user.id)).limit(5)
-    @goals = SalesGoal.where(user: @user).limit(5)
-    @goal = SalesGoal.where(user: @user).last
+    @sales = Sale.where('user_id = ?', @user.id).limit(5)
+    @goals = SalesGoal.where('user_id = ?', @user.id).limit(5)
+    @goal = SalesGoal.where('user_id = ?', @user.id).last
     if @user.sales_goals.length > 0
       @percent_completion = SalesGoal.percent_completion(@goal)
     else
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   private
-    
+
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       begin

@@ -6,10 +6,10 @@ class SalesGoalsController < ApplicationController
   # GET /sales_goals
   def index
     if params[:success]
-      @goals = SalesGoal.order(start_time: :desc).where('user_id = ?', @current_user.id)
+      @goals = sales_goal_scope.order(start_time: :desc)
       @goals = @goals.select{|goal| goal.success == true} if params[:success]
     else
-      @goals = SalesGoal.order(start_time: :desc).where('user_id = ?', @current_user.id)
+      @goals = sales_goal_scope.order(start_time: :desc)
     end
   end
 

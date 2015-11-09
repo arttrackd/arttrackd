@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107182551) do
+ActiveRecord::Schema.define(version: 20151109142415) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151107182551) do
     t.decimal  "units"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "user_id"
   end
 
   add_index "material_uses", ["material_purchase_id"], name: "index_material_uses_on_material_purchase_id"
@@ -57,6 +58,7 @@ ActiveRecord::Schema.define(version: 20151107182551) do
     t.decimal  "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "project_costs", ["project_id"], name: "index_project_costs_on_project_id"
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 20151107182551) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "sales_channel_id"
+    t.integer  "user_id"
   end
 
   add_index "sales", ["project_id"], name: "index_sales_on_project_id"

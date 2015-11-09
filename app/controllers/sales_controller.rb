@@ -65,7 +65,7 @@ class SalesController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def sale_scope
-      Sale.where(project: Project.where(user_id: @current_user.id))
+      Sale.where(user_id: @current_user.id)
     end
 
     def net

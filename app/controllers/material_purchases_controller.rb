@@ -5,10 +5,9 @@ class MaterialPurchasesController < ApplicationController
   # GET /material_purchases
   def index
     if params[:search]
-      mp = material_purchase_scope
-      @material_purchases = MaterialPurchase.search(mp, params[:search])
+      @material_purchases = material_purchase_scope.search(params[:search])
     else
-      @material_purchases = MaterialPurchase.where(user_id: @current_user.id).order(:name)
+      @material_purchases = material_purchase_scope.order(:name)
     end
   end
 

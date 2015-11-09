@@ -5,11 +5,9 @@ class MaterialUsesController < ApplicationController
   # GET /material_uses
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      mu = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
-      @material_uses = MaterialUse.search(mu, q)
+      @material_uses = MaterialUse.search(params[:search])
     else
-      @material_uses = MaterialUse.where(project_id: Project.where(user_id: @current_user.id))
+      @material_uses = material_use_scope
     end
   end
 
@@ -55,7 +53,7 @@ class MaterialUsesController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def material_use_scope
-      MaterialUse.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
+      MaterialUse.where(user_id: @current_user.id)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_use

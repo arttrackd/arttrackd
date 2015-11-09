@@ -5,10 +5,9 @@ class BusinessExpensesController < ApplicationController
   # GET /business_expenses
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      @business_expenses = BusinessExpense.search(q, @current_user.id)
+      @business_expenses = business_expense_scope.search(params[:search])
     else
-      @business_expenses = BusinessExpense.where(user_id: @current_user.id).order(:name)
+      @business_expenses = business_expense_scope
     end
   end
 

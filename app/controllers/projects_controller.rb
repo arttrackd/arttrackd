@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 
     if params[:search]
       p = project_scope.includes(:sales, :user, :time_entries)
-      @projects = Project.search(p, params[:search])
+      @projects = Project.search(params[:search])
     else
       @projects = project_scope.includes(:sales, :user, :time_entries).order('name')
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]
