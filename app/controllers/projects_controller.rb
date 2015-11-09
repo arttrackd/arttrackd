@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
       begin
         @project = project_scope.find(params[:id])
       rescue
-        redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that project."
+        redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end
     end
 
