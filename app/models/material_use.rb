@@ -1,6 +1,7 @@
 class MaterialUse < ActiveRecord::Base
   belongs_to :material_purchase
   belongs_to :project
+  belongs_to :user
   validates :name, presence: true
   validates :units, presence: true
 

@@ -5,7 +5,7 @@ class MaterialUsesController < ApplicationController
   # GET /material_uses
   def index
     if params[:search]
-      @material_uses = MaterialUse.search(params[:search])
+      @material_uses = material_use_scope.search(params[:search])
     else
       @material_uses = material_use_scope
     end

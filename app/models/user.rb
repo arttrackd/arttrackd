@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :projects
   has_many :sales_goals
   has_many :sales_channels
+  has_many :material_uses
+  has_many :project_costs
+  has_many :sales
   has_secure_password
   validates :name, presence: true
   validates :email, presence: true,
