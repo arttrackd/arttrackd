@@ -53,7 +53,10 @@
   <div class="dashboard-column">
     <% if @user.sales_goals.length > 0 %>
       <div id="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-      <div id="dashboard-goal-description"> <%= "#{@goal.amount} in sales by #{@goal.end_time} " %>
+      <div id="dashboard-goal-description">
+        Your most recent goal:
+        <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")} " %>
+      </div>
     <% else %>
       <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
     <% end %>
