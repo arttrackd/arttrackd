@@ -6,11 +6,9 @@ class ProjectCostsController < ApplicationController
   def index
     if params[:search]
       q = "%#{params[:search]}%"
-      @projects = @current_user.projects
-      @project_costs = ProjectCost.search(q, @current_user.id)
+      @projects = ProjectCost.search(q, @current_user.id)
     else
-      @projects = @current_user.projects
-      @project_costs = ProjectCost.where(project_id: Project.where(user_id: @current_user.id))
+      @projects = Project.includes(:project_costs).where(user: @current_user)
     end
   end
 

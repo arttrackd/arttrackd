@@ -4,6 +4,10 @@ class ProjectCost < ActiveRecord::Base
   validates :amount, presence: true
 
   def self.search(q, user_id)
-    ProjectCost.joins(:project).where("user_id = ? AND name LIKE ?", user_id, q).uniq
-  end
+     projects = Project.where("user_id = ? AND name LIKE ?", user_id, q)
+     project_costs = ProjectCost.includes(:project).where("cost_type LIKE ?", q)
+     project_costs = project_costs.select{|cost| cost.project.user_id == user_id}
+     projects += project_costs.map{|cost| cost.project}
+     projects
+   end
 end
