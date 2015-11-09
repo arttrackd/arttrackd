@@ -6,8 +6,7 @@ class MaterialPurchasesController < ApplicationController
   def index
     if params[:search]
       q = "%#{params[:search]}%"
-      mp = MaterialPurchase.where(user_id: @current_user.id)
-      @material_purchases = MaterialPurchase.search(mp, q)
+      @material_purchases = MaterialPurchase.search(q, @current_user.id)
     else
       @material_purchases = MaterialPurchase.where(user_id: @current_user.id).order(:name)
     end

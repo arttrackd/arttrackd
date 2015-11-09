@@ -6,14 +6,11 @@
 }
 
 .material-use-index-description{
-  @include span-columns(7);
+  @include span-columns(6);
 }
 
-.material-use-index-cost{
-  @include span-columns(2);
-}
 .material-use-index-units{
-  @include span-columns(3);
+  @include span-columns(6);
   @include omega();
 }
 

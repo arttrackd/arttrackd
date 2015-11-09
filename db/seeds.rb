@@ -49,15 +49,6 @@ material_purchases = MaterialPurchase.all
       date: Faker::Date.backward(rand(1..100)))
 end
 
-10.times do
-  x = rand(1..90)
-  y = rand(1..60)
-  start = DateTime.now - x.days
-  stop = start + y.days
-  SalesGoal.create!(user_id: [1,2,3,4,5].sample, amount: Faker::Number.between(0, 10000),
-    length_of_time: (x + y).to_s + " days",
-    start_time: start, end_time: stop)
-end
 
 200.times do
   start = Faker::Time.backward(rand(1..100))
@@ -71,6 +62,16 @@ x = 0
 7.times do
   SalesChannel.create!(name: channels[x], description: Faker::Address.street_address)
   x += 1
+end
+
+10.times do
+  x = rand(1..90)
+  y = rand(1..60)
+  start = DateTime.now - x.days
+  stop = start + y.days
+  SalesGoal.create!(user_id: [1,2,3,4,5].sample,sales_channel_id: [1,2,3,4,5,6,7].sample, amount: Faker::Number.between(0, 10000),
+    length_of_time: (x + y).to_s + " days",
+    start_time: start, end_time: stop)
 end
 
 50.times do

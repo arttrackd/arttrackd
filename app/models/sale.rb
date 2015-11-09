@@ -5,10 +5,7 @@ class Sale < ActiveRecord::Base
   validates :date, presence: true
 
 
-  def self.search(s, q)
-    @sales = s.where("date LIKE ?", q)
-    @sales += s.where(project_id: Project.where("name LIKE ?", q))
-    @sales += s.where(project_id: Project.where("description LIKE ?", q))
-    @sales.uniq!
+  def self.search(q, user_id)
+    Sale.joins(:project).where("user_id = ? AND date LIKE ? OR name LIKE ? ", user_id, q, q).uniq
   end
 end
