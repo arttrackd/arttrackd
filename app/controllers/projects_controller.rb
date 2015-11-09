@@ -16,7 +16,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
     @project_time = @project.total_time
   end
 
@@ -29,7 +28,6 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @project.user != @current_user
     @project.material_uses.build
     @project.project_costs.build
   end
@@ -63,7 +61,7 @@ class ProjectsController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def project_scope
-      Project.where(user: @current_user)
+      Project.where(user_id: @current_user.id)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_project

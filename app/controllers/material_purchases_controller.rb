@@ -14,7 +14,6 @@ class MaterialPurchasesController < ApplicationController
 
   # GET /material_purchases/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @material_purchase.user != @current_user
   end
 
   # GET /material_purchases/new
@@ -24,7 +23,6 @@ class MaterialPurchasesController < ApplicationController
 
   # GET /material_purchases/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @material_purchase.user != @current_user
   end
 
   # POST /material_purchases
@@ -56,7 +54,7 @@ class MaterialPurchasesController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def material_purchase_scope
-      MaterialPurchase.where(user: @current_user)
+      MaterialPurchase.where(user_id: @current_user.id)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_purchase
