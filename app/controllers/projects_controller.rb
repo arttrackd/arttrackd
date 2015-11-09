@@ -6,8 +6,7 @@ class ProjectsController < ApplicationController
   def index
 
     if params[:search]
-      p = project_scope.includes(:sales, :user, :time_entries)
-      @projects = Project.search(params[:search])
+      @projects = project_scope.search(params[:search])
     else
       @projects = project_scope.includes(:sales, :user, :time_entries).order('name')
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]

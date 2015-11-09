@@ -89,5 +89,5 @@ end
 end
 
 100.times do
-  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Commerce.product_name, amount: Faker::Number.between(0, 10000))
+  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Commerce.product_name, amount: Faker::Number.between(0, 10000), user_id: [1,2,3,4,5].sample)
 end
