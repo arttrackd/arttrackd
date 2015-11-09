@@ -3,8 +3,10 @@ require 'test_helper'
 class SalesControllerTest < ActionController::TestCase
   setup do
     @sale = sales(:one)
-    @user = users(:one)
-    session[:user_id] = @user.id
+    @current_user = users(:one)
+    @sale.user_id = @current_user.id
+    @sale.save
+    session[:user_id] = @current_user.id
   end
 
   test "should get index" do
