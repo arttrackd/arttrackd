@@ -6,10 +6,9 @@ class BusinessExpensesController < ApplicationController
   def index
     if params[:search]
       q = "%#{params[:search]}%"
-      be = BusinessExpense.where(user_id: @current_user.id)
-      @business_expenses = BusinessExpense.search(be, q)
+      @business_expenses = BusinessExpense.search(q, @current_user.id)
     else
-      @business_expenses = BusinessExpense.where(user_id: @current_user.id)
+      @business_expenses = BusinessExpense.where(user: @current_user)
     end
   end
 
