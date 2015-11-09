@@ -1,6 +1,7 @@
 class Sale < ActiveRecord::Base
   belongs_to :project
   belongs_to :sales_channel
+  belongs_to :user
   validates :gross, presence: true
   validates :date, presence: true
 

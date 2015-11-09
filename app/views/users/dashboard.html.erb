@@ -1,18 +1,16 @@
 <div class="page-wrap">
-  <% if @user.sales_goals.length > 0 %>
-    <div id="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-    <div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time} and you have achieved #{(@percent_completion*100).round}%!" %>
-  <% else %>
-    <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
-  <% end %>
-</div>
-
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div id="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      <div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time} and you have achieved #{(@percent_completion*100).round}%!" %>
+    <% else %>
+      <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+    <% end %>
+      </div>
+  </div>
 <div class="container">
   <div class="cards">
     <div class="card">
-      <div class="card-image">
-        Words
-      </div>
       <div class="card-header">
         <h1><%= link_to 'Your Projects', projects_path %></h1>
       </div>
@@ -25,9 +23,6 @@
     </div>
 
     <div class="card">
-      <div class="card-image">
-
-      </div>
       <div class="card-header">
         <h1><%= link_to 'Your Sales', sales_path %></h1>
       </div>
@@ -39,3 +34,4 @@
       </div>
     </div>
   </div>
+</div>

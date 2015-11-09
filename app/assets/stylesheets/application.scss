@@ -437,7 +437,7 @@ header.navigation {
 }
 
 .card {
-  $base-border-color: gainsboro !default;
+  $base-border-color: #F2F2F2 !default;
   $base-border-radius: 3px !default;
   $base-background-color: white !default;
   $base-spacing: 1.5em !default;
@@ -448,7 +448,7 @@ header.navigation {
   $card-border: 1px solid $card-border-color;
   $card-background: lighten($card-border-color, 10%);
   $card-header-background: $card-background;
-  $card-margin: 1em;
+  $card-margin: 0em;
   $card-image-hover-opacity: 0.7;
   $card-image-hover-color: #F8F2B4;
 
