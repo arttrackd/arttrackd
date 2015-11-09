@@ -14,7 +14,6 @@ class ProjectCostsController < ApplicationController
     if params[:search]
       pc = project_cost_scope
       @projects = ProjectCost.search(pc, params[:search])
-      @projects = @projects.where(user_id: @current_user.id)
     else
       @projects = Project.includes(:project_costs).where(user: @current_user)
     end
