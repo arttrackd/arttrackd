@@ -18,7 +18,8 @@ class Project < ActiveRecord::Base
   end
 
 
-  def self.search(q, user_id)
-    Project.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q).uniq
+  def self.search(p, q)
+    search =  "%#{q}%"
+    p.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
   end
 end

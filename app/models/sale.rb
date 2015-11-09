@@ -4,8 +4,8 @@ class Sale < ActiveRecord::Base
   validates :gross, presence: true
   validates :date, presence: true
 
-
-  def self.search(q, user_id)
-    Sale.joins(:project).where("user_id = ? AND date LIKE ? OR name LIKE ? ", user_id, q, q).uniq
+  def self.search(s, q)
+    search =  "%#{q}%"
+    s.where(project_id: Project.search(Project, q).pluck(:id))
   end
 end

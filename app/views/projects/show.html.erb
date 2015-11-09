@@ -32,7 +32,7 @@
 
 
 <div>
-  <div class="project-show-cost-name">Costs unique to your project (Shipping/Handling, Commision, Licensing, Etc.)</div>
+  <div class="project-show-cost-name">Costs unique to your project (Shipping/Handling, Commission, Licensing, Etc.)</div>
   <% @project.project_costs.each do |cost| %>
     <div class="project-show-cost-type"><%= cost.cost_type %></div>
     <div class="project-show-cost-ammount">Cost: <%= number_to_currency(cost.amount) %></div>

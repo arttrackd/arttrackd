@@ -4,9 +4,17 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs
   def index
+
+    # if params[:search]
+    #   q = "%#{params[:search]}%"
+    #   @projects = ProjectCost.search(q, @current_user.id)
+    # else
+    #   @projects = Project.includes(:project_costs).where(user: @current_user)
+    # end
     if params[:search]
-      q = "%#{params[:search]}%"
-      @projects = ProjectCost.search(q, @current_user.id)
+      pc = project_cost_scope
+      @projects = ProjectCost.search(pc, params[:search])
+      @projects = @projects.where(user_id: @current_user.id)
     else
       @projects = Project.includes(:project_costs).where(user: @current_user)
     end
@@ -14,7 +22,6 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs/1
   def show
-    redirect_to dashboard_user_path(session[:user_id]) if @project_cost.project.user != @current_user
   end
 
   # GET /project_costs/new
@@ -24,7 +31,6 @@ class ProjectCostsController < ApplicationController
 
   # GET /project_costs/1/edit
   def edit
-    redirect_to dashboard_user_path(session[:user_id]) if @project_cost.project.user != @current_user
   end
 
   # POST /project_costs
@@ -53,10 +59,15 @@ class ProjectCostsController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def project_cost_scope
+      ProjectCost.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_project_cost
       begin
-        @project_cost = ProjectCost.find(params[:id])
+        @project_cost = project_cost_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end
