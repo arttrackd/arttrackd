@@ -5,9 +5,8 @@ class MaterialPurchasesController < ApplicationController
   # GET /material_purchases
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      mp = MaterialPurchase.where(user_id: @current_user.id)
-      @material_purchases = MaterialPurchase.search(mp, q)
+      mp = material_purchase_scope
+      @material_purchases = MaterialPurchase.search(mp, params[:search])
     else
       @material_purchases = MaterialPurchase.where(user_id: @current_user.id)
     end
@@ -55,10 +54,14 @@ class MaterialPurchasesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def material_purchase_scope
+      MaterialPurchase.where(user: @current_user)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_purchase
       begin
-        @material_purchase = MaterialPurchase.find(params[:id])
+        @material_purchase = material_purchase_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
       end

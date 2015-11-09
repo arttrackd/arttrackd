@@ -6,8 +6,7 @@ class MaterialPurchase < ActiveRecord::Base
   validates :units, presence: true
 
   def self.search(mp, q)
-    @material_purchases = mp.where("name LIKE ?", q)
-    @material_purchases += mp.where('description LIKE ?', q)
-    @material_purchases.uniq!
+    search =  "%#{q}%"
+    mp.where("name LIKE ? OR description LIKE ?", search, search)
   end
 end

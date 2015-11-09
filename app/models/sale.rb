@@ -6,9 +6,7 @@ class Sale < ActiveRecord::Base
 
 
   def self.search(s, q)
-    @sales = s.where("date LIKE ?", q)
-    @sales += s.where(project_id: Project.where("name LIKE ?", q))
-    @sales += s.where(project_id: Project.where("description LIKE ?", q))
-    @sales.uniq!
+    search =  "%#{q}%"
+    s.where(project_id: Project.search(Project, q).pluck(:id))
   end
 end

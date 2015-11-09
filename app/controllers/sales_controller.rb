@@ -7,9 +7,8 @@ class SalesController < ApplicationController
   def index
     # We need a button to show more, either Ajax or navigate to page of next 50 or all
     if params[:search]
-      q = "%#{params[:search]}%"
       s = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
-      @sales = Sale.search(s, q)
+      @sales = Sale.search(s, params[:search])
     else
       @sales = Sale.includes(:sales_channel, :project).joins(:project).where(projects: {user_id: @current_user.id})
     end
@@ -64,6 +63,10 @@ class SalesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def sale_scope
+      Sale.where(project: Project.where(user: @current_user))
+    end
 
     def net
       return true
@@ -72,7 +75,7 @@ class SalesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_sale
       begin
-        @sale = Sale.find(params[:id])
+        @sale = sale_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that sale record."
       end

@@ -4,13 +4,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    
+
     if params[:search]
-      q = "%#{params[:search]}%"
-      p = Project.includes(:sales, :user, :time_entries).where(user: @current_user)
-      @projects = Project.search(p, q)
+      p = project_scope.includes(:sales, :user, :time_entries)
+      @projects = Project.search(p, params[:search])
     else
-      @projects = Project.includes(:sales, :user, :time_entries).where(user: @current_user).order('name')
+      @projects = project_scope.includes(:sales, :user, :time_entries).order('name')
       @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]
     end
   end
@@ -62,10 +61,14 @@ class ProjectsController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def project_scope
+      Project.where(user: @current_user)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       begin
-        @project = Project.find(params[:id])
+        @project = project_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Could not find that project."
       end
