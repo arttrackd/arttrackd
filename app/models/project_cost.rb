@@ -1,5 +1,6 @@
 class ProjectCost < ActiveRecord::Base
   belongs_to :project
+  belongs_to :user
   validates :cost_type, presence: true
   validates :amount, presence: true
 
