@@ -53,8 +53,11 @@ class ProjectsController < ApplicationController
 
   # DELETE /projects/1
   def destroy
-    @project.destroy
-    redirect_to projects_url, notice: 'Project was successfully destroyed.'
+    if @project.destroy
+      redirect_to projects_url, notice: 'Project was successfully destroyed.'
+    else
+      redirect_to projects_url, notice: 'Project cannot be destroyed.'
+    end
   end
 
   private
