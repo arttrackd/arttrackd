@@ -6,6 +6,6 @@ class MaterialPurchase < ActiveRecord::Base
   validates :units, presence: true
 
   def self.search(q, user_id)
-    MaterialPurchase.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q,).uniq
+    MaterialPurchase.where("user_id = ? AND name LIKE ? OR description LIKE ?", user_id, q, q,).uniq.order(:name)
   end
 end
