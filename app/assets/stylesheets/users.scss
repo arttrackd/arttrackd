@@ -83,6 +83,12 @@
   border-radius: 1px;
 }
 
+#dashboard-goal-description {
+  padding-top: 3%;
+  @include shift(3);
+  font-size: 1.33em;
+}
+
 .accordion-tabs-minimal {
   $base-border-color: gainsboro !default;
   $base-background-color: white !default;
