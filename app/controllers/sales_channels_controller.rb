@@ -5,10 +5,9 @@ class SalesChannelsController < ApplicationController
   # GET /sales_channels
   def index
     if params[:search]
-      q = "%#{params[:search]}%"
-      @sales_channels = SalesChannel.search(q, @current_user.id)
+      @sales_channels = sales_channel_scope.search(params[:search])
     else
-      @sales_channels = SalesChannel.where(user_id: @current_user.id).order(:name)
+      @sales_channels = sales_channel_scope.order(:name)
     end
 
   end
