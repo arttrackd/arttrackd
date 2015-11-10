@@ -21,12 +21,15 @@ class Project < ActiveRecord::Base
     # project = Project.joins(:material_uses).where('material_purchase_id' => material_purchases.id).includes(:material_purchases)
     # project.material_uses.where(material_purchase_id: project.user.material_purchases)
 
-    purchase = material_uses.first.material_purchase
-    cost_per_unit = purchase.cost / purchase.units
-    total_units = material_uses.first.units
-    total = cost_per_unit * total_units
-    total
-    
+    cost = material_uses.map{|x|  x.material_purchase.cost}
+    units = material_uses.map{|x|  x.material_purchase.units}
+
+
+    total_units = material_uses.map {|x| x.units}
+
+    total = (cost.sum/units.sum) * total_units.sum
+    total.to_i
+
   end
 
   def self.search(q)
