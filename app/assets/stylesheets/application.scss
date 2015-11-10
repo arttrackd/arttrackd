@@ -26,7 +26,7 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
-
+//Splash pages
 .some-height-padding{
   padding-top: 0.6em;
   padding-bottom: 0.5em;
@@ -40,7 +40,7 @@
 .background-ghost{
   opacity: 0.75;
 }
-
+//General sitewide stuff
 p{
   font-family: $helvetica;
 }
@@ -94,11 +94,29 @@ h3 > a{
   border: 0.1em solid #5D5D5D;
   border-radius: 1em;
 }
-
+// Sidebar 4 Lyfe
 .sidebar-column{
-  @include span-columns(3 of 12);
+  @include span-columns(2 of 12);
+  background: #354652;
+  height: 100vh;
+  // position: fixed;
+}
+
+.sidebar-center{
+  font-family: $helvetica;
+  font-size: 1em;
   background-color: #354652;
-  margin: 0em;
+  margin: auto;
+  text-align: center;
+  color: #ccc;
+}
+
+.sidebar-center > a{
+  text-decoration: none;
+}
+
+.sidebar-center > a:hover{
+  color: white;
 }
 
 .sidebar-link{
@@ -118,11 +136,64 @@ h3 > a{
   color: white;
 }
 
+.profile-img-padding{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+}
+
+.dashboard-names{
+  @include span-columns(12);
+  padding: 0em 1em 0em 1em;
+}
+
+.dashboard-column{
+  @include span-columns(12);
+  padding: 0em;
+  border-bottom: .1em solid #C9C9C9;
+}
+
+.dashboard-column > a{
+  text-decoration: none;
+  font-size: .7em;
+  color: #5D5D5D;
+  padding-left: 1em;
+}
+
+.dashboard-right{
+  @include span-columns(10);
+  @include omega;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+}
+
+.dashboard-goals{
+  margin-top: 5%;
+  border-top: .1em solid white;
+}
+
+.progress-meter .background {
+  fill: #354652;
+}
+
+.progress-meter .foreground {
+  fill: #6CCD61;
+}
+
+.progress-meter text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
 .highlight-left-border:hover{
   border-left: 0.25em solid #83E6F1;
   background-color: #475E6D;
 }
-
+//Containers
 .container{
   @include outer-container(90%);
 }
@@ -134,7 +205,7 @@ h3 > a{
 .page-wrap {
   @include outer-container(100%);
 }
-
+//Awesome Footer
 .page-wrap:after {
   content: "";
   display: block;
@@ -155,7 +226,7 @@ h3 > a{
   text-decoration: none;
   color: black;
 }
-
+//Bourbon
 header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
@@ -595,7 +666,7 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  margin-bottom: $base-spacing / 2;
+  margin-bottom: 0;
   padding: $base-spacing / 2;
   text-align: center;
 

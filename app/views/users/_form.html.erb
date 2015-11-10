@@ -11,23 +11,23 @@
     </div>
   <% end %>
   <p>
-    <strong><%= f.label :name %></strong><br>
+    <strong><%= f.label :name %></strong>
     <%= f.text_field :name, value: @user.name || "" %>
   </p>
   <p>
-    <strong><%= f.label :email %></strong><br>
+    <strong><%= f.label :email %></strong>
     <%= f.text_field :email, value: @user.email || "" %>
   </p>
   <p>
-    <strong><%= f.label :password %></strong><br>
+    <strong><%= f.label :password %></strong>
     <%= f.password_field :password %>
   </p>
   <p>
-    <strong><%= f.label :hourly_rate %></strong><br>
+    <strong><%= f.label :hourly_rate %></strong>
     <%= f.number_field :hourly_rate, :class => 'text_field', :step => 0.01 %>
   </p>
   <p>
-    <%= f.submit 'Sign Up For ArtTrack!' %>
+    <%= f.submit 'Sign Up For ArtTrack' %>
   </p>
-  <p>For existing users, log in <%= link_to "here!", login_path %></p>
+  <p>For existing users, log in <%= link_to "here", login_path %></p>
 <% end %>

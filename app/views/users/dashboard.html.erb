@@ -1,108 +1,81 @@
-<div class="dashboard-column">
+<div class="dashboard-title">Dashboard</div>
+<div class="cards">
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      </div>
+        <div class="card-copy">
+          <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
+          <p><%="#{(@percent_completion*100).round}%" %></p>
+        </div>
+    <% else %>
+      <div class="card-copy">
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      </div>
+    <% end %>
+  </div>
 
-  <div class="sidebar-column">
-    <div class="page-wrap profile-img-padding">
-      <%= image_tag asset_url('track.png'), class: "profile-image" %>
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      </div>
+        <div class="card-copy">
+          <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
+          <p><%="#{(@percent_completion*100).round}%" %></p>
+        </div>
+    <% else %>
+      <div class="card-copy">
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      </div>
+        <div class="card-copy">
+          <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
+          <p><%="#{(@percent_completion*100).round}%" %></p>
+        </div>
+    <% else %>
+      <div class="card-copy">
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+<div class="cards">
+
+  <div class="card">
+    <div class="card-header">
+      <h1><%= link_to 'My Projects', projects_path %></h1>
     </div>
-    <div class="highlight-left-border">
-      <div class="sidebar-link"><%= link_to 'Dashboard', root_path %></div>
-    </div>
-    <div class="highlight-left-border">
-      <div class="sidebar-link"><%= link_to 'My Goals', sales_goals_path %></div>
-    </div>
-    <div class="highlight-left-border">
-      <div class="sidebar-link"><%= link_to 'My Sales', sales_path %></div>
-    </div>
-    <div class="highlight-left-border sidebar-link">
-      <%= link_to 'My Projects', projects_path %>
+    <div class="card-copy high">
+      <% @projects.each do |project| %>
+        <p><%= link_to project.name, project %></p>
+      <% end %>
+      <p><%= link_to '. . .', projects_path %></p>
     </div>
   </div>
 
-
-  <div class="dashboard-right">
-
-    <div class="cards">
-
-      <div class="card">
-        <% if @user.sales_goals.length > 0 %>
-          <div class="card-image">
-            <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-          </div>
-            <div class="card-copy">
-              <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
-            </div>
-        <% else %>
-          <div class="card-copy">
-            <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="card">
-        <% if @user.sales_goals.length > 0 %>
-          <div class="card-image">
-            <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-          </div>
-            <div class="card-copy">
-              <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
-            </div>
-        <% else %>
-          <div class="card-copy">
-            <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="card">
-        <% if @user.sales_goals.length > 0 %>
-          <div class="card-image">
-            <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-          </div>
-            <div class="card-copy">
-              <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
-            </div>
-        <% else %>
-          <div class="card-copy">
-            <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
-          </div>
-        <% end %>
-      </div>
-
+  <div class="card">
+    <div class="card-header">
+      <h1><%= link_to 'My Sales', sales_path %></h1>
     </div>
-
-
-
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-header">
-          <h1><%= link_to 'My Projects', projects_path %></h1>
-        </div>
-        <div class="card-copy high">
-          <% @projects.each do |project| %>
-            <p><%= link_to project.name, project %></p>
-          <% end %>
-          <p><%= link_to '. . .', projects_path %></p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <h1><%= link_to 'My Sales', sales_path %></h1>
-        </div>
-        <div class="card-copy">
-          <% @sales.each do |sale| %>
-            <p><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></p>
-          <% end %>
-          <p><%= link_to '. . .', sales_path %></p>
-        </div>
-      </div>
-
+    <div class="card-copy">
+      <% @sales.each do |sale| %>
+        <p><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></p>
+      <% end %>
+      <p><%= link_to '. . .', sales_path %></p>
     </div>
-
   </div>
 
 </div>

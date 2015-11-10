@@ -3,6 +3,7 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search"%>
 <% end %>
+
 <% if @sales %>
   <h1>Listing Sales</h1>
   <% @sales.each do |sale| %>
