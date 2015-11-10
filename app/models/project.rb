@@ -17,13 +17,16 @@ class Project < ActiveRecord::Base
     user.hourly_rate * total_time/3600
   end
 
-  def total_material_cost(project)
-    total_units = 0
-    total_cost = 0
-    project.user.material_purchases
-     total_units = total_units + x.material_purchase.units
-     total_cost =  total_cost + x.material_purchase.cost
-     total = total_cost * total_units
+  def total_material_cost
+    # project = Project.joins(:material_uses).where('material_purchase_id' => material_purchases.id).includes(:material_purchases)
+    # project.material_uses.where(material_purchase_id: project.user.material_purchases)
+
+    purchase = material_uses.first.material_purchase
+    cost_per_unit = purchase.cost / purchase.units
+    total_units = material_uses.first.units
+    total = cost_per_unit * total_units
+    total
+    
   end
 
   def self.search(q)

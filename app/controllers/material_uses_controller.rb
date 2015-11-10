@@ -4,6 +4,7 @@ class MaterialUsesController < ApplicationController
 
   # GET /material_uses
   def index
+    @projects = Project.where(user_id: @current_user.id)
     if params[:search]
       @material_uses = material_use_scope.search(params[:search])
     else
