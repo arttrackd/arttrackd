@@ -27,12 +27,27 @@
  @import "sales_channels";
  @import "session";
 
+.some-height-padding{
+  padding-top: 0.6em;
+  padding-bottom: 0.5em;
+}
+
+.smaller-percent{
+  width: 22%;
+  margin: auto;
+}
+
+.background-ghost{
+  opacity: 0.75;
+}
+
 p{
   font-family: $helvetica;
 }
 
 a{
   font-family: $helvetica;
+  color: inherit;
 }
 
 h1{
@@ -613,4 +628,97 @@ $warning-color: #F1DCB2 !default;
 
 .flash-warning {
   @include flash($warning-color);
+}
+
+// Parallax Window
+
+$parallax-window-height: 30em;
+$parallax-background-height: $parallax-window-height * 2;
+
+.parallax-window {
+  max-height: $parallax-window-height * 1.5;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.parallax-static-content {
+  color: black;
+  padding: 8em 0;
+  position: relative;
+  z-index: 9;
+}
+
+.parallax-background {
+  background: url("clay.jpg") repeat;
+  background-position: top;
+  background-size: cover;
+  background-color: beige;
+  height: $parallax-background-height;
+  left: 0;
+  position: absolute;
+  top: - $parallax-window-height / 3;
+  width: 100%;
+}
+
+// Based on http://codepen.io/skeurentjes/
+
+// Image Gradient Overlay
+
+.image-gradient-dynamic {
+  $image-gradient-color-top: white;
+  $transparency-top: 0.9;
+  $image-gradient-color-bottom: green;
+  $transparency-bottom: 0.6;
+  $vertical-angle: 0deg;
+  $image-gradient-color-left: teal;
+  $transparency-left: 0.8;
+  $image-gradient-color-right: yellow;
+  $transparency-right: 0.8;
+  $horizontal-angle: 90deg;
+
+  line-height: 0;
+  position: relative;
+  width: 100%;
+
+  img {
+   height: auto;
+   left: 0;
+   position: relative;
+   top: 0;
+   width: 100%;
+  }
+
+  .copy {
+    @include transform(translate(-50%, -50%));
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    z-index: 999;
+
+    p {
+      color: white;
+      line-height: 1.5em;
+      padding: 1em 2em;
+      position: relative;
+    }
+  }
+
+  .overlay {
+    @include linear-gradient($vertical-angle, transparentize($image-gradient-color-top, $transparency-top),
+      transparentize($image-gradient-color-bottom, $transparency-bottom));
+    display: block;
+    @include position(absolute, 0px 0px 0px 0px);
+
+    &:after {
+      @include linear-gradient($horizontal-angle, transparentize($image-gradient-color-left, $transparency-left),
+        transparentize($image-gradient-color-right, $transparency-right));
+      @include position(absolute, 0px 0px 0px 0px);
+      content: '';
+      display: block;
+    }
+  }
 }
