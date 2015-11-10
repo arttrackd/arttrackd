@@ -33,7 +33,13 @@
       <div class = "project-index-row">
         <div class="project-index-desc gd"> </div>
         <div class="project-index-gross gd">In Stock</div>
-        <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value)%></div>
+        <div class="project-index-saledate gd">Estimated Value: <br>
+          <% if project.material_uses.length > 0 %>
+            <%= number_to_currency(project.estimated_value.to_i)%>
+          <% else %>
+            <%= number_to_currency(project.estimated_value) %>
+          <% end %>
+          </div>
       </div>
     </div>
   <% end %>
@@ -41,7 +47,7 @@
     <%= link_to 'Mark as Sold', new_sale_path(project_id: project.id) %>
     <%= link_to 'Show', project %>
     <%= link_to 'Edit', edit_project_path(project) %>
-    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } unless project.sales.length > 0 %>
   </div>
   <br>
   <hr />

@@ -41,11 +41,22 @@ class ProjectsControllerTest < ActionController::TestCase
     assert_redirected_to project_path(assigns(:project))
   end
 
-  test "should destroy project" do
-    assert_difference('Project.count', -1) do
+  test "projects with sales should not be destroyed" do
+    assert_difference('Project.count', 0) do
       delete :destroy, id: @project
     end
 
     assert_redirected_to projects_path
   end
+
+  test "projects without sales should be destroyed" do
+    assert_difference('Project.count', -1) do
+      @project.sales = []
+      delete :destroy, id: @project
+    end
+
+    assert_redirected_to projects_path
+  end
+
+
 end

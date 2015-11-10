@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :projects
+  has_many :material_purchases
   has_many :material_uses
   has_many :project_costs
   has_many :sales
@@ -18,4 +19,6 @@ class User < ActiveRecord::Base
                         on: :create
                       }
     validates :password, length: { minimum: 8 }, allow_nil: true
+
+
 end
