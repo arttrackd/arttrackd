@@ -17,6 +17,14 @@ class Project < ActiveRecord::Base
     user.hourly_rate * total_time/3600
   end
 
+  def total_material_cost(project)
+    total_units = 0
+    total_cost = 0
+    project.user.material_purchases
+     total_units = total_units + x.material_purchase.units
+     total_cost =  total_cost + x.material_purchase.cost
+     total = total_cost * total_units
+  end
 
   def self.search(q)
     search =  "%#{q}%"

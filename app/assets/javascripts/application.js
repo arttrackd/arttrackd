@@ -14,6 +14,39 @@
 //= require jquery_ujs
 //= require_tree .
 //= require d3
+$(document).ready(function() {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+$(window).scroll(function(e) {
+  if ($("#js-parallax-window").length) {
+    parallax();
+  }
+});
+
+function parallax(){
+  if( $("#js-parallax-window").length > 0 ) {
+    var plxBackground = $("#js-parallax-background");
+    var plxWindow = $("#js-parallax-window");
+
+    var plxWindowTopToPageTop = $(plxWindow).offset().top;
+    var windowTopToPageTop = $(window).scrollTop();
+    var plxWindowTopToWindowTop = plxWindowTopToPageTop - windowTopToPageTop;
+
+    var plxBackgroundTopToPageTop = $(plxBackground).offset().top;
+    var windowInnerHeight = window.innerHeight;
+    var plxBackgroundTopToWindowTop = plxBackgroundTopToPageTop - windowTopToPageTop;
+    var plxBackgroundTopToWindowBottom = windowInnerHeight - plxBackgroundTopToWindowTop;
+    var plxSpeed = 0.35;
+
+    plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
+  }
+}
+
+
+
 
 $(document).ready(function () {
   start();
@@ -94,50 +127,3 @@ $(document).ready(function () {
         meter.transition().delay(250);
       });
 });
-
-
-// D3 Stuff
-//
-
-// function draw(data) {
-//     var color = d3.scale.category20b();
-//     var width = 420,
-//         barHeight = 20;
-//
-//     var x = d3.scale.linear()
-//         .range([0, width])
-//         .domain([0, d3.max(data)]);
-//
-//     var chart = d3.select("#graph")
-//         .attr("width", width)
-//         .attr("height", barHeight * data.length);
-//
-//     var bar = chart.selectAll("g")
-//         .data(data)
-//         .enter().append("g")
-//         .attr("transform", function (d, i) {
-//                   return "translate(0," + i * barHeight + ")";
-//               });
-//
-//     bar.append("rect")
-//         .attr("width", x)
-//         .attr("height", barHeight - 1)
-//         .style("fill", function (d) {
-//                    return color(d)
-//                })
-//
-//     bar.append("text")
-//         .attr("x", function (d) {
-//                   return x(d) - 10;
-//               })
-//         .attr("y", barHeight / 2)
-//         .attr("dy", ".35em")
-//         .style("fill", "white")
-//         .text(function (d) {
-//                   return d;
-//               });
-// }
-//
-// function error() {
-//     console.log("error")
-// }
