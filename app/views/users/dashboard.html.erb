@@ -1,37 +1,84 @@
-<div class="page-wrap">
+
+<div class="cards">
+
   <div class="card">
     <% if @user.sales_goals.length > 0 %>
-      <div id="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-      <div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time} and you have achieved #{(@percent_completion*100).round}%!" %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      </div>
+        <div class="card-copy">
+          <p><div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")} and you have achieved #{(@percent_completion*100).round}%!" %></p></div>
+        </div>
     <% else %>
-      <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      <div class="card-copy">
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      </div>
     <% end %>
-      </div>
   </div>
-<div class="container">
-  <div class="cards">
-    <div class="card">
-      <div class="card-header">
-        <h1><%= link_to 'Your Projects', projects_path %></h1>
-      </div>
-      <div class="card-copy">
-        <% @projects.each do |project| %>
-          <h2><%= link_to project.name, project %></h2>
-        <% end %>
-        <h3><%= link_to '. . .', projects_path %></h3>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h1><%= link_to 'Your Sales', sales_path %></h1>
+
+
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
       </div>
+        <div class="card-copy">
+          <p><div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")} and you have achieved #{(@percent_completion*100).round}%!" %></p></div>
+        </div>
+    <% else %>
       <div class="card-copy">
-        <% @sales.each do |sale| %>
-          <h2><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></h2>
-        <% end %>
-        <h3><%= link_to '. . .', sales_path %></h3>
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
       </div>
+    <% end %>
+  </div>
+
+
+
+  <div class="card">
+    <% if @user.sales_goals.length > 0 %>
+      <div class="card-image">
+        <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
+      </div>
+        <div class="card-copy">
+          <p><div id="dashboard-goal-description">Your most recent goal is <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")} and you have achieved #{(@percent_completion*100).round}%!" %></p></div>
+        </div>
+    <% else %>
+      <div class="card-copy">
+        <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+      </div>
+    <% end %>
+  </div>
+
+</div>
+
+
+
+<div class="cards">
+
+  <div class="card">
+    <div class="card-header">
+      <h1><%= link_to 'Your Projects', projects_path %></h1>
+    </div>
+    <div class="card-copy">
+      <% @projects.each do |project| %>
+        <h2><%= link_to project.name, project %></h2>
+      <% end %>
+      <h3><%= link_to '. . .', projects_path %></h3>
     </div>
   </div>
+
+
+  <div class="card">
+    <div class="card-header">
+      <h1><%= link_to 'Your Sales', sales_path %></h1>
+    </div>
+    <div class="card-copy">
+      <% @sales.each do |sale| %>
+        <h2><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></h2>
+      <% end %>
+      <h3><%= link_to '. . .', sales_path %></h3>
+    </div>
+  </div>
+
 </div>

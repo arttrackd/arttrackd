@@ -1,11 +1,10 @@
 $(function() {
-  var donutGraph = d3.select("#donut-graph");
+  var donutGraph = d3.selectAll(".donut-graph");
   if(donutGraph.length > 0) {
-    var width = 960,
-        height = 500,
+    var width = 240,
+        height = 240,
         twoPi = 2 * Math.PI,
         progress = 0,
-        //total = 1308573, // must be hard-coded if server doesn't report Content-Length
         formatPercent = d3.format(".0%");
 
     var arc = d3.svg.arc()
@@ -13,7 +12,7 @@ $(function() {
         .innerRadius(90)
         .outerRadius(120);
 
-    var svg = d3.select("#donut-graph").append("svg")
+    var svg = d3.selectAll(".donut-graph").append("svg")
         .attr("width", width)
         .attr("height", height)
       .append("g")
@@ -35,7 +34,7 @@ $(function() {
 
 
     var x = donutGraph.attr("data-percentage");
-    var i = d3.interpolate(progress,  x / 1);
+    var i = d3.interpolate(progress, x);
     d3.transition().tween("progress", function() {
       return function(t) {
         progress = i(t);

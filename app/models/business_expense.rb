@@ -4,7 +4,7 @@ class BusinessExpense < ActiveRecord::Base
   validates :amount, presence: true
 
   def self.search(q)
-    search =  "%#{q}%"
-    BusinessExpense.where('name LIKE ? OR description LIKE ?', search, search)
+    q = "%#{q}%"
+    BusinessExpense.where("name LIKE LOWER(?) OR description LIKE LOWER(?)", q, q)
   end
 end

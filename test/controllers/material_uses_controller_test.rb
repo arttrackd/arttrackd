@@ -5,8 +5,10 @@ class MaterialUsesControllerTest < ActionController::TestCase
     @project = projects(:one)
     @material_purchase = material_purchases(:one)
     @material_use = material_uses(:one)
-    @user = users(:one)
-    session[:user_id] = @user.id
+    @current_user = users(:one)
+    @material_use.user_id = @current_user.id
+    @material_use.save
+    session[:user_id] = @current_user.id
   end
 
   test "should get index" do
