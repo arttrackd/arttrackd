@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :dashboard]
   before_action :require_login, except: [:new, :create]
+  layout "dashboard", :only => [:dashboard]
 
   def profile
     @sales = Sale.where(user_id: @current_user.id)

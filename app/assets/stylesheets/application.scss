@@ -26,9 +26,17 @@
  @import "project_costs";
  @import "sales_channels";
 
+p{
+  font-family: $helvetica;
+}
+
+a{
+  font-family: $helvetica;
+}
+
 h1{
   font-family: $helvetica;
-  font-size: 1.3em;
+  font-size: 2em;
   margin-top: .1em;
   margin-bottom: .1em;
   font-weight: normal;
@@ -42,14 +50,19 @@ h1 > a{
 h2{
   font-family: $helvetica;
   font-weight: normal;
-  font-size: 1em;
+  font-size: 1.5em;
   margin-top: .4em;
   margin-bottom: 0em;
 }
 
+h2 > a{
+  text-decoration: none;
+  color: black;
+}
+
 h3{
   font-family: $helvetica;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-top: .1em;
   margin-bottom: .1em;
   color: #5D5D5D;
@@ -62,10 +75,44 @@ h3{
 h3 > a{
   color: #5D5D5D;
   text-decoration: none;
+  border: 0.1em solid #5D5D5D;
+  border-radius: 1em;
+}
+
+.sidebar-column{
+  @include span-columns(3 of 12);
+  background-color: #354652;
+  margin: 0em;
+}
+
+.sidebar-link{
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-bottom: 1em;
+  font-family: $helvetica;
+  font-size: 1em;
+}
+
+.sidebar-link > a{
+  text-decoration: none;
+  color: #ccc;
+}
+
+.sidebar-link > a:hover {
+  color: white;
+}
+
+.highlight-left-border:hover{
+  border-left: 0.25em solid #83E6F1;
+  background-color: #475E6D;
 }
 
 .container{
   @include outer-container(90%);
+}
+
+.blue{
+  background-color: #3DC7DD;
 }
 
 .page-wrap {
@@ -75,18 +122,23 @@ h3 > a{
 .page-wrap:after {
   content: "";
   display: block;
+  border-bottom: 1px solid #475E6D;
 }
 
 .site-footer{
   @include row();
-  padding: 5em;
-  color: #5D5D5D;;
+  padding: 3em;
   clear: both;
   font-family: $helvetica;
   margin-top: 2em;
   text-align: center;
-  font-size: 0.7em;
-  @include background-image(linear-gradient(#F8F8F8, #FFFFFF));
+  font-size: 0.9em;
+  color: #5D5D5D;
+}
+
+.site-footer > a{
+  text-decoration: none;
+  color: black;
 }
 
 header.navigation {
@@ -421,4 +473,144 @@ header.navigation {
       }
     }
   }
+}
+
+// Cards
+
+.cards {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.card {
+  $base-border-color: #F2F2F2 !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $card-border-color: $base-border-color;
+  $card-border: 1px solid $card-border-color;
+  $card-background: lighten($card-border-color, 10%);
+  $card-header-background: $card-background;
+  $card-margin: 0.8em;
+  $card-image-hover-opacity: 0.7;
+  $card-image-hover-color: white;
+
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  @include transition (all 0.2s ease-in-out);
+  background-color: $card-background;
+  border-radius: $base-border-radius;
+  //border: $card-border;
+  //box-shadow: 0 2px 4px darken(black, 10%);
+  margin: 0 $card-margin $base-spacing $card-margin;
+  position: relative;
+
+
+  .card-image {
+    overflow: hidden;
+    height: 150px;
+    max-height: 150px;
+    background-color: $card-image-hover-color;
+
+    img {
+      @include transition (all 0.2s ease-in-out);
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  .card-header {
+    @include transition (all 0.2s ease-in-out);
+    background-color: $card-header-background;
+    //border-bottom: $card-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+  }
+
+  .card-copy {
+    font-size: 1em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+    background-color: #354652;
+    color: white;
+    font-weight: lighter;
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: $card-image-hover-opacity;
+    }
+  }
+
+  &:active {
+    background-color: $card-background;
+
+    .card-header {
+      background-color: $card-background;
+    }
+  }
+}
+
+// Flashes
+
+$base-spacing: 1.5em !default;
+$alert-color: #fff6bf !default;
+$error-color: #fbe3e4 !default;
+$notice-color: #e5edf8 !default;
+$success-color: #e6efc2 !default;
+$warning-color: #F1DCB2 !default;
+
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  text-align: center;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}
+
+.flash-alert {
+  @include flash($alert-color);
+}
+
+.flash-error {
+  @include flash($error-color);
+}
+
+.flash-notice {
+  @include flash($notice-color);
+}
+
+.flash-success {
+  @include flash($success-color);
+}
+
+.flash-warning {
+  @include flash($warning-color);
 }

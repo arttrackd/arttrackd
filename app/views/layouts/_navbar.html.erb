@@ -4,7 +4,7 @@
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if logged_in? %>
-          <li class="nav-link"><%= link_to 'ArtTrackd Home', root_path %></li>
+          <li class="nav-link"><%= link_to 'ArtTrack Home', root_path %></li>
           <li class="nav-link more"><%= link_to 'Projects', 'javascript:void(0)' %>
             <ul class="submenu">
               <li><%= link_to 'New Project', new_project_path %></li>
@@ -34,7 +34,7 @@
             <li class="nav-link"><%= link_to 'Profile', user_path(id: session[:user_id]) %></li>
             <li class="nav-link"><%= link_to 'Log Out', logout_path, method: :delete %></li>
         <% else %>
-          <li class="nav-link"><%= link_to 'ArtTrackd', root_path %></li>
+          <li class="nav-link"><%= link_to 'ArtTrack', root_path %></li>
         <% end %>
       </ul>
     </nav>
