@@ -79,8 +79,40 @@ h3 > a{
   border-radius: 1em;
 }
 
+.sidebar-column{
+  @include span-columns(3 of 12);
+  background-color: #354652;
+  margin: 0em;
+}
+
+.sidebar-link{
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-bottom: 1em;
+  font-family: $helvetica;
+  font-size: 1em;
+}
+
+.sidebar-link > a{
+  text-decoration: none;
+  color: #ccc;
+}
+
+.sidebar-link > a:hover {
+  color: white;
+}
+
+.highlight-left-border:hover{
+  border-left: 0.25em solid #83E6F1;
+  background-color: #475E6D;
+}
+
 .container{
   @include outer-container(90%);
+}
+
+.blue{
+  background-color: #3DC7DD;
 }
 
 .page-wrap {
@@ -90,12 +122,12 @@ h3 > a{
 .page-wrap:after {
   content: "";
   display: block;
+  border-bottom: 1px solid #475E6D;
 }
 
 .site-footer{
   @include row();
-  padding: 5em;
-  border-top: 1px solid gray;
+  padding: 3em;
   clear: both;
   font-family: $helvetica;
   margin-top: 2em;
@@ -463,26 +495,25 @@ header.navigation {
   $card-border: 1px solid $card-border-color;
   $card-background: lighten($card-border-color, 10%);
   $card-header-background: $card-background;
-  $card-margin: 1em;
+  $card-margin: 0.8em;
   $card-image-hover-opacity: 0.7;
-  $card-image-hover-color: #F8F2B4;
+  $card-image-hover-color: white;
 
   @include flex-basis(15em);
   @include flex-grow(1);
   @include transition (all 0.2s ease-in-out);
   background-color: $card-background;
   border-radius: $base-border-radius;
-  border: $card-border;
-  box-shadow: 0 2px 4px darken($base-background-color, 10%);
-  cursor: pointer;
+  //border: $card-border;
+  //box-shadow: 0 2px 4px darken(black, 10%);
   margin: 0 $card-margin $base-spacing $card-margin;
   position: relative;
 
 
   .card-image {
     overflow: hidden;
-    height: 240px;
-    max-height: 240px;
+    height: 150px;
+    max-height: 150px;
     background-color: $card-image-hover-color;
 
     img {
@@ -497,18 +528,24 @@ header.navigation {
   .card-header {
     @include transition (all 0.2s ease-in-out);
     background-color: $card-header-background;
-    border-bottom: $card-border;
+    //border-bottom: $card-border;
     border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
     padding: ($base-spacing / 3) ($base-spacing / 2);
   }
 
   .card-copy {
-    font-size: 0.9em;
+    font-size: 1em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
-
+    background-color: #354652;
+    color: white;
+    font-weight: lighter;
     p {
       margin: 0 0 ($base-spacing / 2);
+    }
+    a {
+      color: white;
+      text-decoration: none;
     }
   }
 

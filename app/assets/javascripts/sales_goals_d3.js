@@ -9,14 +9,14 @@ $(function() {
 
     var arc = d3.svg.arc()
         .startAngle(0)
-        .innerRadius(90)
-        .outerRadius(120);
+        .innerRadius(40)
+        .outerRadius(50);
 
     var svg = d3.selectAll(".donut-graph").append("svg")
         .attr("width", width)
         .attr("height", height)
       .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .attr("transform", "translate(" + width / 2 + "," + height / 3 + ")");
 
     var meter = svg.append("g")
         .attr("class", "progress-meter");
