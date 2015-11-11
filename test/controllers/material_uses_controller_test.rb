@@ -24,7 +24,7 @@ class MaterialUsesControllerTest < ActionController::TestCase
 
   test "should create material_use" do
     assert_difference('MaterialUse.count') do
-      post :create, material_use: { description: @material_use.description, material_purchase_id: 1, name: @material_use.name, project_id: 1, units: 1 }
+      post :create, material_use: { material_purchase_id: 1, name: @material_use.name, project_id: 1, units: 1 }
     end
 
     assert_redirected_to material_use_path(assigns(:material_use))

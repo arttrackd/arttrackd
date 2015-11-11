@@ -1,6 +1,6 @@
 $(function() {
   var donutGraph = d3.selectAll(".donut-graph");
-  if(donutGraph.length > 0) {
+  if(donutGraph[0].length > 0) {
     var width = 240,
         height = 240,
         twoPi = 2 * Math.PI,
@@ -44,68 +44,73 @@ $(function() {
     });
   }
 });
-
-$.ajax({
-  type: "GET",
-  contentType: "application/json; charset=utf-8",
-  url: '/sales_channels/get_data',
-  dataType: 'json',
-  data: "{}",
-  success: function (received_data) {
-    draw_pie(received_data);
-  },
-  error: function (result) {
+$(function(){
+  if (d3.selectAll("#pieChart").length > 0) {
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: '/sales_channels/get_data',
+      dataType: 'json',
+      data: "{}",
+      success: function (received_data) {
+        draw_pie(received_data);
+      },
+      error: function (result) {
+      }
+    });
   }
 });
-//$(function() { draw_pie(5) });
+
 function draw_pie(data_to_draw){
   var pieChart = d3.selectAll("#pieChart");
-  var stuff = pieChart.pieData;
+  if (pieChart[0].length > 0){
+    var stuff = pieChart.pieData;
 
-  var pie = new d3pie("pieChart", {
-    "size": {
-      "canvasHeight": 300,
-      "canvasWidth": 400,
-      "pieOuterRadius": "75%"
-    },
-    "data": {
-      "sortOrder": "value-desc",
-      "content": data_to_draw
-    },
-    "labels": {
-      "outer": {
-        "pieDistance": 20
+    var pie = new d3pie("pieChart", {
+      "size": {
+        "canvasHeight": 300,
+        "canvasWidth": 400,
+        "pieOuterRadius": "75%"
       },
-      "mainLabel": {
-        "fontSize": 16
+      "data": {
+        "sortOrder": "value-desc",
+        "content": data_to_draw
       },
-      "percentage": {
-        "color": "#ffffff",
-        "decimalPlaces": 0
+      "labels": {
+        "outer": {
+          "pieDistance": 20
+        },
+        "mainLabel": {
+          "fontSize": 16
+        },
+        "percentage": {
+          "color": "#ffffff",
+          "decimalPlaces": 0
+        },
+        "value": {
+          "color": "#adadad",
+          "fontSize": 11
+        },
+        "lines": {
+          "enabled": true
+        },
+        "truncation": {
+          "enabled": true
+        }
       },
-      "value": {
-        "color": "#adadad",
-        "fontSize": 11
+      "effects": {
+        "pullOutSegmentOnClick": {
+          "effect": "linear",
+          "speed": 400,
+          "size": 8
+        }
       },
-      "lines": {
-        "enabled": true
-      },
-      "truncation": {
-        "enabled": true
+      "misc": {
+        "gradient": {
+          "enabled": false,
+          "percentage": 100
+        }
       }
-    },
-    "effects": {
-      "pullOutSegmentOnClick": {
-        "effect": "linear",
-        "speed": 400,
-        "size": 8
-      }
-    },
-    "misc": {
-      "gradient": {
-        "enabled": false,
-        "percentage": 100
-      }
-    }
-  });
+    });
+  }
 }

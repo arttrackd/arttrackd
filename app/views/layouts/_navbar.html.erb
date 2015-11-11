@@ -31,8 +31,13 @@
               <li><%= link_to 'All Sales Goals', sales_goals_path %></li>
             </ul>
           </li>
-            <li class="nav-link"><%= link_to 'Profile', user_path(id: session[:user_id]) %></li>
-            <li class="nav-link"><%= link_to 'Log Out', logout_path, method: :delete %></li>
+          <% if clocked_in? %>
+            <div class = "stopwatch-text">I have been working on <%= @current_time_entry.project.name %> for
+            <div class="stopwatch" id="timer" start-time="<%=@current_time_entry.start_time.to_f * 1000 %>"></div>
+            <li class="nav-link" id="clock-out"><%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @current_time_entry.project_id}), method: :patch, id: "clock-out" %></li>
+          <% end %>
+          <li class="nav-link"><%= link_to 'Profile', user_path(id: session[:user_id]) %></li>
+          <li class="nav-link"><%= link_to 'Log Out', logout_path, method: :delete %></li>
         <% else %>
           <li class="nav-link"><%= link_to 'ArtTrack', root_path %></li>
         <% end %>

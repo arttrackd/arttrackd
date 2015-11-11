@@ -73,5 +73,5 @@ $(document).ready(function () {
 
       plxBackground.css('top', - (plxWindowTopToWindowTop * plxSpeed) + 'px');
     }
-  });
+  }
 });
