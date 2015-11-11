@@ -82,7 +82,7 @@ end
 
 500.times do
   units = Faker::Number.between(0, 30)
-  MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, cost: Faker::Number.between(0, 50), units: units, units_remaining: units)
+  MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, cost: Faker::Number.between(16, 50), units: units, units_remaining: units)
 end
 
 100.times do
