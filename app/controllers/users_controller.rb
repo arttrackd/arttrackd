@@ -52,10 +52,9 @@ class UsersController < ApplicationController
   end
 
   def dashboard
-    redirect_to dashboard_user_path(session[:user_id]) unless @user == @current_user
+    redirect_to dashboard_user_path(@user.id) unless @user == @current_user
     @projects = Project.where('user_id = ?', @user.id).limit(5)
     @sales = Sale.where('user_id = ?', @user.id).limit(5)
-    @goals = SalesGoal.where('user_id = ?', @user.id).limit(5)
     @goal = SalesGoal.where('user_id = ?', @user.id).last
     if @user.sales_goals.length > 0
       @percent_completion = SalesGoal.percent_completion(@goal)

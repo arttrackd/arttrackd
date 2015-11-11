@@ -50,6 +50,11 @@ class SalesChannelsController < ApplicationController
     redirect_to sales_channels_url, notice: 'Sales channel was successfully destroyed.'
   end
 
+  def get_data
+    respond_to do |format|
+      format.json {render json: sales_channel_scope.amount_by_channel}
+    end
+  end
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def sales_channel_scope

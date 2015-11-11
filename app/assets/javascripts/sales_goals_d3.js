@@ -44,3 +44,68 @@ $(function() {
     });
   }
 });
+
+$.ajax({
+  type: "GET",
+  contentType: "application/json; charset=utf-8",
+  url: '/sales_channels/get_data',
+  dataType: 'json',
+  data: "{}",
+  success: function (received_data) {
+    draw_pie(received_data);
+  },
+  error: function (result) {
+  }
+});
+//$(function() { draw_pie(5) });
+function draw_pie(data_to_draw){
+  var pieChart = d3.selectAll("#pieChart");
+  var stuff = pieChart.pieData;
+
+  var pie = new d3pie("pieChart", {
+    "size": {
+      "canvasHeight": 300,
+      "canvasWidth": 400,
+      "pieOuterRadius": "75%"
+    },
+    "data": {
+      "sortOrder": "value-desc",
+      "content": data_to_draw
+    },
+    "labels": {
+      "outer": {
+        "pieDistance": 20
+      },
+      "mainLabel": {
+        "fontSize": 16
+      },
+      "percentage": {
+        "color": "#ffffff",
+        "decimalPlaces": 0
+      },
+      "value": {
+        "color": "#adadad",
+        "fontSize": 11
+      },
+      "lines": {
+        "enabled": true
+      },
+      "truncation": {
+        "enabled": true
+      }
+    },
+    "effects": {
+      "pullOutSegmentOnClick": {
+        "effect": "linear",
+        "speed": 400,
+        "size": 8
+      }
+    },
+    "misc": {
+      "gradient": {
+        "enabled": false,
+        "percentage": 100
+      }
+    }
+  });
+}

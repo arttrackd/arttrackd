@@ -27,7 +27,23 @@
           </div>
             <div class="card-copy">
               <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
+              <p></p>
+            </div>
+        <% else %>
+          <div class="card-copy">
+            <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="card">
+        <% if @user.sales_goals.length > 0 %>
+          <div class="card-image">
+
+          </div>
+            <div class="card-copy">
+              <p>Sales by channel</p>
+              <p></p>
             </div>
         <% else %>
           <div class="card-copy">
@@ -43,23 +59,7 @@
           </div>
             <div class="card-copy">
               <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
-            </div>
-        <% else %>
-          <div class="card-copy">
-            <h3><%= link_to 'Add a Sales Goal!', new_sales_goal_path %></h3>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="card">
-        <% if @user.sales_goals.length > 0 %>
-          <div class="card-image">
-            <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
-          </div>
-            <div class="card-copy">
-              <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-              <p><%="#{(@percent_completion*100).round}%" %></p>
+              <p></p>
             </div>
         <% else %>
           <div class="card-copy">
@@ -102,4 +102,5 @@
 
   </div>
 
+<div id="pieChart"></div>
 </div>

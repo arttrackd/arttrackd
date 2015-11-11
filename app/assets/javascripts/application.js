@@ -16,7 +16,6 @@
 //= require d3
 
 $(document).ready(function () {
-  start();
   $(".sidebar-column").height($(document).height());
 
   $('.accordion-tabs-minimal').each(function(index) {
@@ -46,3 +45,4 @@ $(document).ready(function () {
       }
     });
   });
+});

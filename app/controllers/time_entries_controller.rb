@@ -27,6 +27,8 @@ class TimeEntriesController < ApplicationController
   # PATCH/PUT /time_entries/1
   def update
     if @time_entry.update(time_entry_params)
+      @time_entry.total_time = @time_entry.stop_time - @time_entry.start_time.round
+      @time_entry.save
       redirect_to @time_entry, notice: 'Time entry was successfully updated.'
     else
       render :edit

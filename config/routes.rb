@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get     'signup'       =>  'users#new'
   get     'search'       =>  'projects#search'
   get     'profile'      =>  'users#profile'
-  get     'data' => 'users#data', :defaults => { :format => 'json' }
-  get     'users/graph'
 
+  get     'users/graph'
+  get     'sales_channels/get_data' => 'sales_channels#get_data', :defaults => { :format => 'json' }
 
 
   resources :time_entries, except: [:new, :create] do
