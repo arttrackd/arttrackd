@@ -14,22 +14,31 @@ class Project < ActiveRecord::Base
   end
 
   def estimated_value
+    total_expenses
+  end
+
+  def time_expense
     user.hourly_rate * total_time/3600
   end
+
+  def total_expenses
+    total_material_cost + time_expense
+  end
+
 
   def total_material_cost
     # project = Project.joins(:material_uses).where('material_purchase_id' => material_purchases.id).includes(:material_purchases)
     # project.material_uses.where(material_purchase_id: project.user.material_purchases)
+    if material_uses.length > 0
+      cost = material_uses.map{|x|  x.material_purchase.cost}
+      units = material_uses.map{|x|  x.material_purchase.units}
+      total_units = material_uses.map {|x| x.units}
 
-    cost = material_uses.map{|x|  x.material_purchase.cost}
-    units = material_uses.map{|x|  x.material_purchase.units}
-
-
-    total_units = material_uses.map {|x| x.units}
-
-    total = (cost.sum/units.sum) * total_units.sum
-    total.to_i
-
+      total = (cost.sum/units.sum) * total_units.sum
+      total.to_i
+    else
+      0
+    end
   end
 
   def self.search(q)

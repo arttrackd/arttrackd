@@ -27,8 +27,8 @@
 <div class="material-form">
   <%= f.fields_for :material_uses do |ff| %>
     <div class="field">
-      <%= ff.label :material_uses_id, value: "Material" %>
-      <%= ff.collection_select(:id, @current_user.material_uses, :id, :name, prompt: true) %><br>
+      <%= ff.label :material_uses_id, value: "Material" %><br>
+      <%= ff.collection_select(:id, @current_user.material_uses, :id, :name, prompt: "Select Material") %>
     </div>
     <div class="field">
       <%= ff.label :units %><br>

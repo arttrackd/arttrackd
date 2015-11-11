@@ -6,6 +6,12 @@ class MaterialUse < ActiveRecord::Base
   validates :name, presence: true
   validates :units, presence: true
 
+  def material_in_stock
+    materials = MaterialUse.where(user_id: @current_user.id)
+    array_units = materials.map{ |x| {x.id =>x.units.to_i}}
+    
+  end
+
   def self.search(mu, q)
     search =  "%#{q}%"
     material_uses_search = Project.where(id: mu.where("name LIKE LOWER(?)", search).pluck(:project_id)).arel.constraints.reduce(:and)
