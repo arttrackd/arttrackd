@@ -61,7 +61,9 @@ var Stopwatch = function(elem, options) {
   this.start  = start;
 };
 $(function(){
-var work = document.getElementById("timer");
-workTimer = new Stopwatch(work);
-workTimer.start();
+  var work = document.getElementById("timer");
+  if (work) {
+    workTimer = new Stopwatch(work);
+    workTimer.start();
+  }
 });
