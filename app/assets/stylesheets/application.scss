@@ -30,7 +30,23 @@
    padding: 0;
    margin: 0;
  }
+ //Index pages
+ .detail-box{
+   background-color: red;
+ }
+ .title{
+   color: white;
+   font-family: $helvetica;
+   font-size: 2.25em;
+   margin-top: 0.5em;
+   margin-bottom: 1em;
+   margin-left: 0.5em;
+ }
  //Containers
+ .outer-container{
+   @include span-columns(12);
+ }
+
  .container{
    @include outer-container(90%);
  }
@@ -97,19 +113,23 @@ h3{
   font-family: $helvetica;
   font-size: 1em;
   margin-top: .1em;
-  margin-bottom: .1em;
+  margin-bottom: 1em;
   color: #5D5D5D;
   text-decoration: none;
-  padding-left: 0.3em;
-  padding-top: 0.3em;
+  padding-left: 1em;
+  padding-top: 0em;
   font-weight: normal;
 }
 
 h3 > a{
-  color: #5D5D5D;
+  color: #eee;
   text-decoration: none;
-  border: 0.1em solid #5D5D5D;
+  background-color: transparentize(#5D5D5D, 0.3);
   border-radius: 1em;
+  padding-top: 0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.4em;
 }
 // Sidebar 4 Lyfe
 .sidebar-column{
@@ -260,6 +280,7 @@ header.navigation {
   width: 100%;
   z-index: 999;
   position: fixed;
+  text-align: center;
 
   .navigation-wrapper {
     @include clearfix;
@@ -340,7 +361,7 @@ header.navigation {
     background: $navigation-background;
     display: block;
     line-height: $navigation-height;
-    overflow: hidden;
+    overflow: visible;
     padding-right: 0.8em;
     text-align: right;
     width: 100%;
@@ -577,18 +598,18 @@ header.navigation {
 }
 
 .card {
-  $base-border-color: #F2F2F2 !default;
+  $base-border-color: #354652 !default;
   $base-border-radius: 3px !default;
   $base-background-color: white !default;
-  $base-spacing: 1.5em !default;
+  $base-spacing: 1em !default;
   $action-color: #477DCA !default;
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;
   $card-border-color: $base-border-color;
   $card-border: 1px solid $card-border-color;
-  $card-background: lighten($card-border-color, 10%);
+  $card-background: $card-border-color;
   $card-header-background: $card-background;
-  $card-margin: 0.8em;
+  $card-margin: 1em;
   $card-image-hover-opacity: 0.7;
   $card-image-hover-color: white;
 
@@ -601,9 +622,12 @@ header.navigation {
   //box-shadow: 0 2px 4px darken(black, 10%);
   margin: 0 $card-margin $base-spacing $card-margin;
   position: relative;
-
+  min-width: 400px;
+  position: relative;
 
   .card-image {
+    text-align: center;
+    margin: auto;
     overflow: hidden;
     height: 150px;
     max-height: 150px;
@@ -620,7 +644,7 @@ header.navigation {
 
   .card-header {
     @include transition (all 0.2s ease-in-out);
-    background-color: $card-header-background;
+    background-color: white;
     //border-bottom: $card-border;
     border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
@@ -632,7 +656,7 @@ header.navigation {
     padding: ($base-spacing / 2) ($base-spacing / 2);
     background-color: #354652;
     color: white;
-    font-weight: lighter;
+    font-weight: 300;
     p {
       margin: 0 0 ($base-spacing / 2);
     }
