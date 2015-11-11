@@ -15,7 +15,7 @@ class MaterialUse < ActiveRecord::Base
 
   def enough_in_stock
     unless MaterialPurchase.find(material_purchase_id).units_remaining >= self.units
-      errors.add(:units, "You do not have that many units in stock")
+      errors.add(:units, "|| There are only #{MaterialPurchase.find(material_purchase_id).units_remaining} in stock" )
     end
   end
 
