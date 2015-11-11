@@ -25,6 +25,7 @@
  @import "material_uses";
  @import "project_costs";
  @import "sales_channels";
+ @import "session";
 
 p{
   font-family: $helvetica;
@@ -122,7 +123,6 @@ h3 > a{
 .page-wrap:after {
   content: "";
   display: block;
-  border-bottom: 1px solid #475E6D;
 }
 
 .site-footer{
