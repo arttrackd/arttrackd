@@ -4,12 +4,17 @@ class MaterialUse < ActiveRecord::Base
   belongs_to :user
 
   # validates :name, presence: true
-  validates :units, presence: true
+  validates :project,             presence: true
+  validates :user,                presence: true
+  validates :material_purchase,   presence: true
+  validates :units,               presence: true
+
+  delegate :name,                 to: :material_purchase
+  delegate :description,          to: :material_purchase
 
   def material_in_stock
     materials = MaterialUse.where(user_id: @current_user.id)
     array_units = materials.map{ |x| {x.id =>x.units.to_i}}
-
   end
 
   def self.search(mu, q)

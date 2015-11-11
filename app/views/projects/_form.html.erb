@@ -4,9 +4,9 @@
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
       <ul>
-      <% @project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @project.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -24,36 +24,38 @@
   <br>
 
   <div><h4> Materials: </h4></div>
-<div class="material-form">
-  <%= f.fields_for :material_uses do |ff| %>
-    <div class="field">
-      <%= ff.label :material_purchase_id, value: "Material" %><br>
-      <%= ff.select :material_purchase_id, options_for_select(MaterialPurchase.order(:name).where(user_id: @current_user.id).map{|m| [m.name, m.id]}),
-          include_blank: "Select a Material" %> 
-    </div>
-    <div class="field">
-      <%= ff.label :units %><br>
-      <%= ff.number_field :units%>
-    </div>
-    <hr />
-  <% end %>
-</div>
+  <div class="material-form">
+    <%= f.fields_for :material_uses do |ff| %>
+      <div class="field">
+        <%= ff.hidden_field :project_id, value: @project.id  %>
+        <%= ff.hidden_field :user_id, value: @current_user.id  %>
+      </div>
+      <div class="field">
+        <%= ff.label :material_purchase_id, value: "Material" %><br>
+        <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases, :id, :name, {prompt: "Select Material"}) %>
+      </div>
+      <div class="field">
+        <%= ff.label :units %><br>
+        <%= ff.number_field :units %>
+      </div>
+      <hr />
+    <% end %>
+  </div>
 
-
-<div><h4> Project Costs: </h4></div>
-<div class="material-form">
-  <%= f.fields_for :project_costs do |fff| %>
-    <div class="field">
-      <%= fff.label :cost_type %><br>
-      <%= fff.text_field :cost_type%>
-    </div>
-    <div class="field">
-      <%= fff.label :amount %><br>
-      <%= fff.number_field :amount%>
-    </div>
-    <hr />
-  <% end %>
-</div>
+  <div><h4> Project Costs: </h4></div>
+  <div class="material-form">
+    <%= f.fields_for :project_costs do |ff| %>
+      <div class="field">
+        <%= ff.label :cost_type %><br>
+        <%= ff.text_field :cost_type %>
+      </div>
+      <div class="field">
+        <%= ff.label :amount %><br>
+        <%= ff.number_field :amount %>
+      </div>
+      <hr />
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>
