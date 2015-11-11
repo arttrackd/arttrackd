@@ -3,7 +3,7 @@ class MaterialUse < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
 
-  validates :name, presence: true
+  # validates :name, presence: true
   validates :units, presence: true
 
   def material_in_stock
