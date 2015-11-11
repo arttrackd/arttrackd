@@ -7,7 +7,6 @@
       </div>
         <div class="card-copy">
           <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-          <p><%="#{(@percent_completion*100).round}%" %></p>
         </div>
     <% else %>
       <div class="card-copy">
@@ -23,7 +22,6 @@
       </div>
         <div class="card-copy">
           <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-          <p><%="#{(@percent_completion*100).round}%" %></p>
         </div>
     <% else %>
       <div class="card-copy">
@@ -39,7 +37,6 @@
       </div>
         <div class="card-copy">
           <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-          <p><%="#{(@percent_completion*100).round}%" %></p>
         </div>
     <% else %>
       <div class="card-copy">
