@@ -27,8 +27,8 @@
 <div class="material-form">
   <%= f.fields_for :material_uses do |ff| %>
     <div class="field">
-      <%= ff.label :material_uses_id, value: "Material" %><br>
-      <%= ff.collection_select(:id, @current_user.material_uses, :id, :name, prompt: "Select Material") %>
+      <%= ff.label :material_purchase_id, value: "Material" %><br>
+      <%= ff.select :material_purchase_id, options_for_select(MaterialPurchase.order(:name).where(user_id: @current_user.id).map{|m| [m.name, m.id]}) %> 
     </div>
     <div class="field">
       <%= ff.label :units %><br>

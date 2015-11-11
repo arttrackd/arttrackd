@@ -9,7 +9,7 @@ class MaterialUse < ActiveRecord::Base
   def material_in_stock
     materials = MaterialUse.where(user_id: @current_user.id)
     array_units = materials.map{ |x| {x.id =>x.units.to_i}}
-    
+
   end
 
   def self.search(mu, q)
