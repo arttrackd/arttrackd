@@ -32,7 +32,7 @@
       </div>
       <div class="field">
         <%= ff.label :material_purchase_id, value: "Material" %><br>
-        <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases, :id, :name, {prompt: "Select Material"}) %>
+        <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
       </div>
       <div class="field">
         <%= ff.label :units %><br>
