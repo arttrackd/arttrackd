@@ -23,9 +23,7 @@
       <% if flash[:success] %>
         <div class="success"><%= flash[:success] %></div>
       <% end %>
-      <div class="page-wrap blue">
         <%= yield %>
-      </div>
   <%= render 'layouts/awesome_footer' %>
   </body>
 </html>

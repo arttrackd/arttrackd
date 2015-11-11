@@ -3,7 +3,7 @@
   <%= submit_tag "Search", name: nil%>
 <% end %>
 <div class="link-to-new-sales-channel"><%= link_to 'New Sales Channel', new_sales_channel_path %></div>
-<h1>Listing Sales Channels</h1>
+<h1>My Sales Channels</h1>
 
 <% @sales_channels.each do |sales_channel| %>
   <div class="sales-channel-index-name"><%= sales_channel.name %></div>

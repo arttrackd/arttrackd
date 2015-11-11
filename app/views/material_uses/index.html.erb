@@ -2,7 +2,7 @@
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
-<h1>Listing Material Uses</h1>
+<h1>My Material Uses</h1>
 <% @projects.each do |project| %>
  <% if project.material_uses.length > 0 %>
   <div class="project-index-name">Project: <%= project.name %></div>

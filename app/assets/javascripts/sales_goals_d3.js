@@ -1,3 +1,4 @@
+//Donut
 $(function() {
   var donutGraph = d3.selectAll(".donut-graph");
   if(donutGraph[0].length > 0) {
@@ -61,15 +62,15 @@ $(function(){
   }
 });
 
+//Pie
 function draw_pie(data_to_draw){
   var pieChart = d3.selectAll("#pieChart");
   if (pieChart[0].length > 0){
     var stuff = pieChart.pieData;
-
     var pie = new d3pie("pieChart", {
       "size": {
-        "canvasHeight": 300,
-        "canvasWidth": 400,
+        "canvasHeight": 150,
+        "canvasWidth": 300,
         "pieOuterRadius": "75%"
       },
       "data": {
@@ -78,10 +79,10 @@ function draw_pie(data_to_draw){
       },
       "labels": {
         "outer": {
-          "pieDistance": 20
+          "pieDistance": 10
         },
         "mainLabel": {
-          "fontSize": 16
+          "fontSize": 11
         },
         "percentage": {
           "color": "#ffffff",

@@ -19,10 +19,6 @@
     <%= f.text_field :name, value: @material_purchase.name || "" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, value: @material_purchase.description || "" %>
-  </div>
-  <div class="field">
     <%= f.label :cost %><br>
     <%= f.number_field :cost, :class => 'text_field', :step => 0.01, value: @material_purchase.cost || "" %>
   </div>

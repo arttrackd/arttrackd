@@ -2,14 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.container{
-  @include outer-container(90%);
-}
-
-.outer-container{
-  @include span-columns(12);
-}
-
 .profile-image-column{
   @include span-columns(3);
   padding-top: 2em;
@@ -29,6 +21,8 @@
   max-width: 100%;
   border-radius: 1px;
 }
+
+// Accordian Tabs
 
 .accordion-tabs-minimal {
   $base-border-color: gainsboro !default;

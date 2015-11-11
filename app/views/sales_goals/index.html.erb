@@ -1,6 +1,6 @@
 <div class="new-goal"><%= link_to 'New Sales Goal', new_sales_goal_path %></div>
 
-<h1 class="goal-active">Listing Active Sale Goals</h1>
+<h1 class="goal-active">My Active Sale Goals</h1>
 <% @goals.each do |goal| %>
   <% active = goal.end_time >= Date.today %>
   <% if active %>
@@ -35,7 +35,7 @@
   <% end %>
 <% end %>
 <br />
-<h1 class="goal-inactive">Listing Inactive Sale Goals</h1>
+<h1 class="goal-inactive">My Inactive Sale Goals</h1>
 <br />
 <% @goals.each do |goal| %>
   <% active = goal.end_time >= Date.today %>

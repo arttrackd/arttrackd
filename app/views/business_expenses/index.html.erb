@@ -3,7 +3,7 @@
   <%= submit_tag "Search", name: nil%>
 <% end %>
 <div class="link-to-new-business-expense"><%= link_to 'New Business Expense', new_business_expense_path %></div>
- <h1>Listing Business Expenses</h1>
+ <h1>My Business Expenses</h1>
 <% if @business_expenses %>
    <% @business_expenses.each do |business_expense| %>
     <div class="business-index-name"><%= business_expense.name.capitalize %></div>
