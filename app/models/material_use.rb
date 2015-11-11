@@ -10,7 +10,6 @@ class MaterialUse < ActiveRecord::Base
   validates :units,               presence: true
 
   delegate :name,                 to: :material_purchase
-  delegate :description,          to: :material_purchase
 
   def material_in_stock
     materials = MaterialUse.where(user_id: @current_user.id)
