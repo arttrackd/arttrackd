@@ -78,6 +78,6 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
       project_costs_attributes: [:id, :cost_type, :amount, :_destroy],
-      material_uses_attributes: [:id, :material_purchase_id, :project_id, :name, :description,  :units, :_destroy])
+      material_uses_attributes: [:id, :material_purchase_id, :project_id, :user_id, :units, :_destroy])
     end
 end
