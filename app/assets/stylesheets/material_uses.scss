@@ -2,11 +2,12 @@
 .material-use-index-name{
   @include span-columns(12);
   @include omega();
-  font-size: 260%;
+  font-size: 2em;
 }
 
 .material-use-index-description{
   @include span-columns(6);
+  padding-left: 5%;
 }
 
 .material-use-index-units{

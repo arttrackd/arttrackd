@@ -14,7 +14,7 @@ class MaterialUsesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:material_uses)
+    assert_not_nil assigns(:projects)
   end
 
   test "should get new" do
