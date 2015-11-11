@@ -26,12 +26,17 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
+ html, body {
+   padding: 0;
+   margin: 0;
+ }
  //Containers
  .container{
    @include outer-container(90%);
  }
 
  .blue{
+   padding-top: 32px;
    background-color: #3DC7DD;
  }
 
@@ -111,7 +116,7 @@ h3 > a{
   @include span-columns(2 of 12);
   background: #354652;
   height: 100vh;
-  //position: fixed;
+  position: fixed;
 }
 
 .sidebar-center{
@@ -180,6 +185,7 @@ h3 > a{
   padding-right: 1em;
   padding-bottom: 1em;
   padding-left: 1em;
+  float:right;
 }
 
 .dashboard-goals{
@@ -216,10 +222,10 @@ h3 > a{
   padding: 3em;
   clear: both;
   font-family: $helvetica;
-  margin-top: 2em;
   text-align: center;
   font-size: 0.9em;
   color: #5D5D5D;
+  background-color: #3DC7DD;
 }
 
 .site-footer > a{
@@ -253,6 +259,7 @@ header.navigation {
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
+  position: fixed;
 
   .navigation-wrapper {
     @include clearfix;
