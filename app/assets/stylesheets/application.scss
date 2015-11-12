@@ -42,6 +42,11 @@
    margin-bottom: 1em;
    margin-left: 0.5em;
  }
+ .index-icon {
+   height: 1.1em;
+   width: 1.1em;
+   margin-left: 1em;
+ }
  //Containers
  .outer-container{
    @include span-columns(12);
@@ -65,6 +70,11 @@
   padding-bottom: 0.5em;
 }
 
+.login-boxes{
+  text-align: left;
+  padding-left: 5.5em;
+}
+
 .smaller-percent{
   width: 22%;
   margin: auto;
@@ -77,7 +87,6 @@
   opacity: 0.75;
 }
 //General sitewide stuff
-
 p{
   font-family: $helvetica;
 }
@@ -129,11 +138,16 @@ h3 > a{
   color: #eee;
   text-decoration: none;
   background-color: #3DC7DD;
-  border-radius: 1em;
+  border-radius: 0.3em;
   padding-top: 0.3em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-bottom: 0.4em;
+  border: 1px solid #21A6BB;
+}
+
+h3 > a:hover{
+  background-color: #21A6BB;
 }
 // Sidebar 4 Lyfe
 .sidebar-column{
@@ -159,6 +173,13 @@ h3 > a{
 }
 
 .sidebar-center > a:hover{
+  color: white;
+}
+
+.sidebar-icon {
+  height: 1.5em;
+  width: 1.5em;
+  margin-right: 1em;
   color: white;
 }
 
@@ -636,6 +657,21 @@ header.navigation {
   min-width: 400px;
   position: relative;
 
+  .index-card{
+    @include span-columns(12);
+    background-color: white;
+    p{
+      font-family: $helvetica;
+      margin-top: 0em;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .login{
+    background-color: white;
+  }
+
   .card-image {
     text-align: center;
     margin: auto;
@@ -659,7 +695,21 @@ header.navigation {
     //border-bottom: $card-border;
     border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
-    padding: ($base-spacing / 3) ($base-spacing / 2);
+    padding: ($base-spacing / 3) ($base-spacing / 2) + 0.5;
+
+    .details{
+      font-family: $helvetica;
+      font-weight: lighter;
+      color: #5D5D5D;
+      font-size: 0.9em;
+      a{
+        text-decoration: none;
+        color: #5D5D5D;
+      }
+      a:hover{
+        color: #939393;
+      }
+    }
   }
 
   .card-copy {

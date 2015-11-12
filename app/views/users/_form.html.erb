@@ -1,3 +1,4 @@
+<div class="login-boxes">
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
@@ -26,8 +27,8 @@
     <strong><%= f.label :hourly_rate %></strong>
     <%= f.number_field :hourly_rate, :class => 'text_field', :step => 0.01 %>
   </p>
+</div>
   <p>
-    <%= f.submit 'Sign Up For ArtTrack' %>
+    <%= f.submit 'Submit' %>
   </p>
-  <p>For existing users, log in <%= link_to "here", login_path %></p>
 <% end %>
