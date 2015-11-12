@@ -19,4 +19,24 @@ class SalesChannelTest < ActiveSupport::TestCase
     refute results.include?(sc1)
     assert results.include?(sc2)
   end
+
+  test "amount by channel returns channel sales info" do
+    SalesChannel.destroy_all
+
+    sc1 = SalesChannel.create!(user_id: 1, name: "The Van", description: "Down By thE RiVer")
+    sc2 = SalesChannel.create!(user_id: 1, name: "Super Festival", description: "down BY th RIVER")
+
+    Sale.create!(project_id: 1, sales_channel_id: sc1.id, gross: 100, net: 80, date: Date.today - rand(1..5).days)
+    Sale.create!(project_id: 2, sales_channel_id: sc2.id, gross: 300, net: 250, date: Date.today - rand(1..5).days)
+
+    expected = [{"label": "The Van",
+              "value": 100,
+              "color": "#e92473"},
+              {"label": "Super Festival",
+              "value": 300,
+              "color": "#6ccd61"}]
+    results = SalesChannel.amount_by_channel
+
+    assert_equal expected, results
+  end
 end

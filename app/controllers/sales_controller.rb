@@ -33,6 +33,9 @@ class SalesController < ApplicationController
   # GET /sales/1/edit
   def edit
     @sales_channels = SalesChannel.where(user_id: @current_user.id)
+    @sales = Sale.includes(:sales_channel, :project).joins(:project)
+        .where(projects: {user_id: @current_user.id})
+        .order(date: :desc)
   end
 
   # POST /sales

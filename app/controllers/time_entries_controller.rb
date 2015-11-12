@@ -40,8 +40,9 @@ class TimeEntriesController < ApplicationController
 
   # DELETE /time_entries/1
   def destroy
+    project_id = @time_entry.project_id
     @time_entry.destroy
-    redirect_to time_entries_url, notice: 'Time entry was successfully destroyed.'
+    redirect_to time_entries_url(id: project_id), notice: 'Time entry was successfully destroyed.'
   end
 
   def clock_in

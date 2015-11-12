@@ -67,10 +67,11 @@ class TimeEntriesControllerTest < ActionController::TestCase
   end
 
   test "should destroy time_entry" do
+    project_id = @time_entry.project_id
     assert_difference('TimeEntry.count', -1) do
       delete :destroy, id: @time_entry
     end
 
-    assert_redirected_to time_entries_path
+    assert_redirected_to time_entries_path(id: project_id)
   end
 end
