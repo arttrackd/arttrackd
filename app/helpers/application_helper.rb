@@ -14,7 +14,7 @@ module ApplicationHelper
   end
 
   def current_time_entry
-    last_entry = TimeEntry.where(user_id = @current_user.id).last
+    last_entry = TimeEntry.where(project: Project.where(user_id: @current_user.id)).last
     return nil if last_entry.stop_time
     @current_time_entry ||= last_entry
   end
