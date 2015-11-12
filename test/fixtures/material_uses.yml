@@ -4,14 +4,10 @@ one:
   id: 1
   material_purchase_id: 1
   project_id: 1
-  name: MyString
-  description: MyText
   units: 9
 
 two:
   id: 2
   material_purchase_id: 1
   project_id: 1
-  name: MyString
-  description: MyText
   units: 9
