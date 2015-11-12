@@ -1,5 +1,4 @@
-
-<h1>My Time Entries</h1>
+<div class="title">My Time Entries</div>
 <% @time_entries.each do |time_entry| %>
   <div class="time-entry-index-start-time">Start: <%= time_entry.start_time %></div>
     <div class="time-entry-index-stop-time"> Stop: <%= time_entry.stop_time %></div>
@@ -8,10 +7,8 @@
       <div class="time-in-words"><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></div>
     <% end %>
 
-  <div class="time-entry-index-edit">
-    <%= link_to 'Show', time_entry %>
+    <%= link_to 'Details', time_entry %> | 
     <%= link_to 'Edit', edit_time_entry_path(time_entry) %>
-    <%= link_to 'Destroy', time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div><hr >
+    <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
   <br>
 <% end %>

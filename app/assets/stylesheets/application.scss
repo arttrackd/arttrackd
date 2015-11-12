@@ -57,7 +57,7 @@
  }
 
  .blue{
-   padding-top: 32px;
+   padding-top: 0px;
    background-color: #ccc;
  }
 
@@ -155,8 +155,8 @@ h3 > a:hover{
   background: #354652;
   min-height: 100vh;
   position: fixed;
-  margin-top: -32px;
-  padding-bottom: 44px;
+  margin-top: 0px;
+  padding-bottom: 96px;
 }
 
 .sidebar-center{
@@ -800,7 +800,7 @@ $warning-color: #F1DCB2 !default;
   @include flash($warning-color);
 }
 .flash-shift{
-  padding-top: 44px;
+  padding-top: 96px;
 }
 // Parallax Window
 
