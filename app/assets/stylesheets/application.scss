@@ -53,7 +53,7 @@
 
  .blue{
    padding-top: 32px;
-   background-color: #3DC7DD;
+   background-color: #ccc;
  }
 
  .page-wrap {
@@ -124,7 +124,7 @@ h3{
 h3 > a{
   color: #eee;
   text-decoration: none;
-  background-color: transparentize(#5D5D5D, 0.3);
+  background-color: #3DC7DD;
   border-radius: 1em;
   padding-top: 0.3em;
   padding-left: 0.5em;
@@ -135,8 +135,10 @@ h3 > a{
 .sidebar-column{
   @include span-columns(2 of 12);
   background: #354652;
-  height: 100vh;
+  min-height: 100vh;
   position: fixed;
+  margin-top: -32px;
+  padding-bottom: 44px;
 }
 
 .sidebar-center{
@@ -173,11 +175,15 @@ h3 > a{
   color: white;
 }
 
+.profile-image {
+  border-radius: 50%;
+}
+
 .profile-img-padding{
-  padding-top: 1em;
+  padding-top: 3em;
   padding-bottom: 1em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+  padding-left: 3.6em;
+  padding-right: 3.6em;
 }
 
 .dashboard-names{
@@ -245,7 +251,8 @@ h3 > a{
   text-align: center;
   font-size: 0.9em;
   color: #5D5D5D;
-  background-color: #3DC7DD;
+  background-color: #ccc;
+  min-height: 100vh;
 }
 
 .site-footer > a{
@@ -731,7 +738,9 @@ $warning-color: #F1DCB2 !default;
 .flash-warning {
   @include flash($warning-color);
 }
-
+.flash-shift{
+  padding-top: 44px;
+}
 // Parallax Window
 
 $parallax-window-height: 30em;
