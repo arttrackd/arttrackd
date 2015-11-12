@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112195052) do
+ActiveRecord::Schema.define(version: 20151112214015) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,9 +31,13 @@ ActiveRecord::Schema.define(version: 20151112195052) do
     t.string   "name"
     t.decimal  "cost"
     t.decimal  "units"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.decimal  "units_remaining"
+    t.string   "receipt_file_name"
+    t.string   "receipt_content_type"
+    t.integer  "receipt_file_size"
+    t.datetime "receipt_updated_at"
   end
 
   add_index "material_purchases", ["user_id"], name: "index_material_purchases_on_user_id"
