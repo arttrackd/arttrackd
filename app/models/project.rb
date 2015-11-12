@@ -25,7 +25,6 @@ class Project < ActiveRecord::Base
     total_material_cost + time_expense
   end
 
-
   def total_material_cost
     # project = Project.joins(:material_uses).where('material_purchase_id' => material_purchases.id).includes(:material_purchases)
     # project.material_uses.where(material_purchase_id: project.user.material_purchases)

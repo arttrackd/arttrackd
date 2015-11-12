@@ -5,7 +5,7 @@
    <%= submit_tag "Search", name: nil%>
  <% end %>
 </div>
-<h3><%= link_to 'New Business Expense', new_business_expense_path %></h3>
+<h3><%= link_to 'New Business Expense', new_business_expense_path %> <%= link_to 'See Project Costs Breakdowns', project_costs_path %></h3>
 <% if @business_expenses %>
    <% @business_expenses.each do |business_expense| %>
    <div class="cards">

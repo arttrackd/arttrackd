@@ -5,26 +5,8 @@
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if logged_in? %>
           <li class="nav-link"><%= link_to 'ArtTrack Home', root_path %></li>
-          <li class="nav-link more"><%= link_to 'Projects', 'javascript:void(0)' %>
-            <ul class="submenu">
-              <li><%= link_to 'New Project', new_project_path %></li>
-              <li><%= link_to 'All Projects', projects_path %></li>
-              <li><%= link_to 'Sold Projects', projects_path(sold: true) %></li>
-            </ul>
-          </li>
-          <li class="nav-link more"><%= link_to 'Sales', 'javascript:void(0)' %>
-            <ul class="submenu">
-              <li><%= link_to 'View All Sales', sales_path %></li>
-              <li><%= link_to 'Sales Channels', sales_channels_path %></li>
-            </ul>
-          </li>
-          <li class="nav-link more"><%= link_to 'Costs', 'javascript:void(0)' %>
-            <ul class="submenu">
-              <li><%= link_to 'Business Expenses', business_expenses_path %></li>
-              <li><%= link_to 'Materials Inventory', material_purchases_path %></li>
-              <li><%= link_to 'Project Costs', project_costs_path %></li>
-            </ul>
-          </li>
+
+        
           <li class="nav-link more"><%= link_to 'Goals', 'javascript:void(0)' %>
             <ul class="submenu">
               <li><%= link_to 'New Sales Goal', new_sales_goal_path %></li>

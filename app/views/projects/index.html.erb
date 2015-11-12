@@ -1,19 +1,19 @@
 <div class="title">
-My Projects
+My <% if params[:sold] %>Sold<% else %><% end %> Projects
 <%= form_tag projects_path, method: :get do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
 </div>
-<h3><%= link_to 'Add New Project', new_project_path %></h3>
+<h3><%= link_to 'Add New Project', new_project_path %> <% if !params[:sold] %><%= link_to 'See Sold Projects', projects_path(sold: true) %><% else %><%= link_to 'See All Projects', projects_path %><% end %> <%= link_to 'See Project Costs Breakdowns', project_costs_path %></h3>
 <% if @projects %>
   <% @projects.each do |project| %>
   <div class="cards">
     <div class="card">
       <div class="card-header">
         <h2><%= project.name %></h2>
-        <h3><%= project.description %></h3>
         <div class="details">
+          <p><%= project.description %></p>
           <%= link_to 'Details', project %>
           <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(project) %>
           <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: project.id) %>
