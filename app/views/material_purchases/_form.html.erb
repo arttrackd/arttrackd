@@ -27,8 +27,8 @@
     <%= f.number_field :units, :class => 'text_field', :step => 'any'%>
   </div>
   <div class="field">
-    <%= f.label :units %><br>
-    <%= f.number_field :units, :class => 'text_field', :step => 'any'%>
+    <%= f.label :receipt, "Upload a receipt for this purchase" %><br>
+    <%= f.file_field :receipt %>
   </div>
 
   <div class="actions">
