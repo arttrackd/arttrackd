@@ -823,7 +823,7 @@ $parallax-background-height: $parallax-window-height * 2;
 }
 
 .parallax-background {
-  background: url("clay.jpg") repeat;
+  background: image-url("clay.jpg") repeat;
   background-position: top;
   background-size: cover;
   background-color: beige;
