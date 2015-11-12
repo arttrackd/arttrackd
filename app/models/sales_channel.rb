@@ -10,7 +10,7 @@ class SalesChannel < ActiveRecord::Base
 
   def self.amount_by_channel
     items = []
-    colors = ["#e92473", "#6ccd61", "#111"]
+    colors = ["#4DF36F", "#4FEAFF", "#5D5FF1", "#CE4085"]
     channels = SalesChannel.all
     channel_ids = channels.pluck(:id)
     sales = Sale.where('sales_channel_id IN (?)', channel_ids)
