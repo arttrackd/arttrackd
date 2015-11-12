@@ -22,7 +22,7 @@ class SalesChannelTest < ActiveSupport::TestCase
 
   test "amount by channel returns channel sales info" do
     SalesChannel.destroy_all
-    
+
     sc1 = SalesChannel.create!(user_id: 1, name: "The Van", description: "Down By thE RiVer")
     sc2 = SalesChannel.create!(user_id: 1, name: "Super Festival", description: "down BY th RIVER")
 
