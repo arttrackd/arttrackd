@@ -20,7 +20,7 @@ class MaterialPurchasesControllerTest < ActionController::TestCase
 
   test "should create material_purchase" do
     assert_difference('MaterialPurchase.count') do
-      post :create, material_purchase: { cost: @material_purchase.cost, description: @material_purchase.description, name: @material_purchase.name, units: @material_purchase.units, user_id: @material_purchase.user_id }
+      post :create, material_purchase: { cost: @material_purchase.cost, name: @material_purchase.name, units: @material_purchase.units, user_id: @material_purchase.user_id }
     end
 
     assert_redirected_to material_purchase_path(assigns(:material_purchase))
@@ -37,7 +37,7 @@ class MaterialPurchasesControllerTest < ActionController::TestCase
   end
 
   test "should update material_purchase" do
-    patch :update, id: @material_purchase, material_purchase: { cost: @material_purchase.cost, description: @material_purchase.description, name: @material_purchase.name, units: @material_purchase.units, user_id: @material_purchase.user_id }
+    patch :update, id: @material_purchase, material_purchase: { cost: @material_purchase.cost, name: @material_purchase.name, units: @material_purchase.units, user_id: @material_purchase.user_id }
     assert_redirected_to material_purchase_path(assigns(:material_purchase))
   end
 
