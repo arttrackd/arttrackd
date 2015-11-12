@@ -13,6 +13,7 @@
 
   <div class="field">
     <%= f.hidden_field :project_id, value: @sale.project_id || params[:project_id] %>
+    <%= f.hidden_field :user_id, value: @sale.user_id || @current_user.id %>
   </div>
   <div class="field">
     <%= f.label :gross, value: "Sale Amount" %><br>
