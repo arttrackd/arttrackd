@@ -23,7 +23,7 @@
                 <div class="details">
                   <%= material_use.name %>
                   <%= material_use.units %>
-                  <%= number_to_currency(project.total_material_cost/material_use.units) %>
+                  <%= number_to_currency(material_use.cost) %>
                 </div>
                 <% end %>
               <% else %>
