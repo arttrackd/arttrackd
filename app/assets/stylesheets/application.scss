@@ -177,10 +177,13 @@ h3 > a:hover{
 }
 
 .sidebar-icon {
-  height: 1.5em;
-  width: 1.5em;
+  height: 2em;
+  width: 2em;
   margin-right: 1em;
-  color: white;
+  background-color: #CAB9AD;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  border-radius: 1em;
 }
 
 .sidebar-link{
@@ -261,6 +264,10 @@ h3 > a:hover{
 .highlight-left-border:hover{
   border-left: 0.25em solid #83E6F1;
   background-color: #475E6D;
+}
+
+.fix-centering {
+  vertical-align: 0.7em;
 }
 //Awesome Footer
 .page-wrap:after {
