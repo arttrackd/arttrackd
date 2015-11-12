@@ -43,6 +43,6 @@ class Project < ActiveRecord::Base
 
   def self.search(q)
     search =  "%#{q}%"
-    Project.where("projects.name LIKE ? OR projects.description LIKE ?", search, search)
+    Project.where("projects.name LIKE LOWER(?) OR projects.description LIKE LOWER(?)", search, search)
   end
 end
