@@ -28,7 +28,7 @@ SalesChannel.create!(user_id: 1, name: "Super Festival", description: "Circus Te
 
 BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month")
 
-MaterialPurchase.create!(user_id: 1, name: "Canvas", cost: 30, units: 3, units_remaining: 3)
+MaterialPurchase.create!(user_id: 1, name: "Canvas", cost: 30, units: 16, units_remaining: 16)
 
 MaterialUse.create!(material_purchase_id: 1, project_id: 1, units: 1, user_id: 1)
 
@@ -81,7 +81,7 @@ end
 end
 
 500.times do
-  units = Faker::Number.between(0, 30)
+  units = Faker::Number.between(16, 30)
   MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, cost: Faker::Number.between(0, 50), units: units, units_remaining: units)
 end
 

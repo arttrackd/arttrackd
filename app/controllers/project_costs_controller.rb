@@ -28,6 +28,7 @@ class ProjectCostsController < ApplicationController
   # POST /project_costs
   def create
     @project_cost = ProjectCost.new(project_cost_params)
+
     if @project_cost.save
       redirect_to @project_cost, notice: 'Project cost was successfully created.'
     else

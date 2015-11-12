@@ -91,3 +91,27 @@ h1 {
     background-color: gray;
   }
 }
+
+.stopwatch {
+   display: inline-block;
+   background-color: #333333;
+   padding: 5px;
+   margin: 5px;
+ }
+ .stopwatch span {
+   font-family: $helvetica;
+   font-weight: normal;
+   display: block;
+   color: #FFF;
+ }
+ .stopwatch a {
+   padding-right: 5px;
+   text-decoration: none;
+ }
+
+ .stopwatch-text {
+   font-family: $helvetica;
+   font-weight: normal;
+   display: block;
+   color: #FFF;
+ }

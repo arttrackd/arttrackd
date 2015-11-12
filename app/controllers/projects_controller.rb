@@ -35,7 +35,6 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project.user = @current_user
-    @project.material_uses.first.name = MaterialPurchase.find(params[:project][:material_uses_attributes]["0"][:material_purchase_id]).name
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
@@ -76,23 +75,10 @@ class ProjectsController < ApplicationController
       end
     end
 
-    # def set_material_use_names
-    #   material_use_ids = params[:project][:material_uses_attributes]
-    #   (1..100).each do |x|
-    #     if material_use_ids[x.to_s]
-    #       @project.material_uses[x].name = MaterialPurchase.find(material_use_ids[x.to_s][:material_purchase_id]).name
-    #     else
-    #       break
-    #     end
-    #   end
-    #   byebug
-    #   @project.save
-    # end
-
     # Only allow a trusted parameter "white list" through.
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
-      project_costs_attributes: [:id, :cost_type, :amount, :_destroy],
+      project_costs_attributes: [:id, :cost_type, :amount, :user_id, :_destroy],
       material_uses_attributes: [:id, :material_purchase_id, :project_id, :user_id, :units, :_destroy])
     end
 end

@@ -1,7 +1,6 @@
 class MaterialUsesController < ApplicationController
   before_action :require_login
   before_action :set_material_use, only: [:show, :edit, :update, :destroy]
-  before_action :set_material_name, only: [:create, :update]
 
   # GET /material_uses
   def index
@@ -68,6 +67,6 @@ class MaterialUsesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def material_use_params
-      params.require(:material_use).permit(:material_purchase_id, :project_id, :name, :description, :units)
+      params.require(:material_use).permit(:user_id, :material_purchase_id, :project_id, :units)
     end
 end
