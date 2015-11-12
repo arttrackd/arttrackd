@@ -8,26 +8,27 @@
   </head>
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="container">
       <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
+        <div class="flash-shift flash-notice"><%= flash[:notice] %></div>
       <% end %>
       <% if flash[:alert] %>
-        <div class="alert"><%= flash[:alert] %></div>
+        <div class="flash-shift flash-alert"><%= flash[:alert] %></div>
       <% end %>
       <% if flash[:warning] %>
-        <div class="warning"><%= flash[:warning] %></div>
+        <div class="flash-shift flash-warning"><%= flash[:warning] %></div>
       <% end %>
       <% if flash[:error] %>
-        <div class="error"><%= flash[:error] %></div>
+        <div class="flash-shift flash-error"><%= flash[:error] %></div>
       <% end %>
       <% if flash[:success] %>
-        <div class="success"><%= flash[:success] %></div>
+        <div class="flash-shift flash-success"><%= flash[:success] %></div>
       <% end %>
-      <div class="page-wrap">
-        <%= yield %>
+      <div class="page-wrap blue">
+        <%= render 'layouts/sidebar' %>
+        <div class="dashboard-right">
+          <%= yield %>
+        </div>
       </div>
-  </div>
-  <%= render 'layouts/awesome_footer' %>
+    <%= render 'layouts/awesome_footer' %>
   </body>
 </html>

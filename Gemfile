@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Use bourbon and neat for beautiful styling
 gem 'bourbon'
 gem 'neat'
+
 #Use faker to add starting data
 gem 'faker'
 # Use jquery as the JavaScript library

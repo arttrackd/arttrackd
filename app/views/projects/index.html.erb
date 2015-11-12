@@ -1,48 +1,55 @@
-
+<div class="title">
+My Projects
 <%= form_tag projects_path, method: :get do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
-
-<div class="link-to-new-project"><%= link_to 'New Project', new_project_path %></div>
-
-<h1>Listing Projects for <%= @current_user.name %></h1>
-
-<% @projects.each do |project| %>
-  <div class="project-index-name"><%= project.name %></div>
-  <div class="project-index-desc gd"><%= project.description %></div>
-  <br />
-  <% if project.sales.length > 0 %>
-    <div class"project-index-sales">
-      <% project.sales.each do |sale| %>
-        <div class = "project-index-row">
-          <div class="project-index-desc gd"> </div>
-          <div class="project-index-gross gd">
-            Sold for: <%= number_to_currency(sale.gross) %>
-          </div>
-          <div class="project-index-saledate gd">
-            <%= sale.date.strftime("%B %d, %Y") %></br>
-          </div>
+</div>
+<h3><%= link_to 'Add New Project', new_project_path %></h3>
+<% if @projects %>
+  <% @projects.each do |project| %>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header">
+        <h2><%= project.name %></h2>
+        <h3><%= project.description %></h3>
+        <div class="details">
+          <%= link_to 'Details', project %>
+          <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(project) %>
+          <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), project, method: :delete, data: { confirm: 'Are you sure?' } unless project.sales.length > 0 %>
         </div>
-      <% end %>
-    </div>
-
-  <% else %>
-
-    <div class"project-index-sales">
-      <div class = "project-index-row">
-        <div class="project-index-desc gd"> </div>
-        <div class="project-index-gross gd">In Stock</div>
-        <div class="project-index-saledate gd">Estimated Value: <br><%= number_to_currency(project.estimated_value)%></div>
+      </div>
+      <div class="index-card">
+        <% if project.sales.length > 0 %>
+          <% project.sales.each do |sale| %>
+            <div class = "project-index-row">
+              <div class="project-index-desc gd"> </div>
+              <div class="project-index-gross gd">
+                Sold for: <%= number_to_currency(sale.gross) %>
+              </div>
+              <div class="project-index-saledate gd">
+                <%= sale.date.strftime("%B %d, %Y") %></br>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class"project-index-sales">
+          <div class = "project-index-row">
+            <div class="project-index-desc gd"> </div>
+            <div class="project-index-gross gd">In Stock</div>
+            <div class="project-index-saledate gd">Estimated Value: <br>
+              <% if project.material_uses.length > 0 && !project.material_uses.first.material_purchase.nil? %>
+              <%= number_to_currency((project.estimated_value) + (project.total_material_cost)) %>
+              <% else %>
+                <%= number_to_currency(project.estimated_value.to_i)%>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
-  <% end %>
-  <div class="project-index-edit">
-    <%= link_to 'Mark as Sold', new_sale_path(project_id: project.id) %>
-    <%= link_to 'Show', project %>
-    <%= link_to 'Edit', edit_project_path(project) %>
-    <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } unless project.sales.length > 0 %>
   </div>
-  <br>
-  <hr />
+<% end %>
+<% else %>
 <% end %>

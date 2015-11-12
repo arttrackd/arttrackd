@@ -5,9 +5,10 @@ class MaterialUsesController < ApplicationController
   # GET /material_uses
   def index
     if params[:search]
-      @material_uses = material_use_scope.search(params[:search])
+      mu = material_use_scope
+      @projects = MaterialUse.search(mu, params[:search])
     else
-      @material_uses = material_use_scope
+      @projects = Project.where(user_id: @current_user.id)
     end
   end
 
@@ -53,7 +54,7 @@ class MaterialUsesController < ApplicationController
   private
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def material_use_scope
-      MaterialUse.where(user_id: @current_user.id)
+      MaterialUse.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_use
@@ -66,6 +67,6 @@ class MaterialUsesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def material_use_params
-      params.require(:material_use).permit(:material_purchase_id, :project_id, :name, :description, :units)
+      params.require(:material_use).permit(:user_id, :material_purchase_id, :project_id, :units)
     end
 end

@@ -15,17 +15,6 @@
     <%= f.hidden_field :material_purchase_id, value: @material_use.material_purchase_id || "" %>
   </div>
   <div class="field">
-    <%= f.hidden_field :project_id, value: @material_use.project_id || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: @material_use.name || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, value: @material_use.description || "" %>
-  </div>
-  <div class="field">
     <%= f.label :units %><br>
     <%= f.number_field :units, :class => 'text_field', :step => 0.01, value: @material_use.units || "" %>
   </div>

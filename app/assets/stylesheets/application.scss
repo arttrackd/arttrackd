@@ -25,10 +25,80 @@
  @import "material_uses";
  @import "project_costs";
  @import "sales_channels";
+ @import "session";
+ html, body {
+   padding: 0;
+   margin: 0;
+ }
+ //Index pages
+ .detail-box{
+   background-color: red;
+ }
+ .title{
+   color: white;
+   font-family: $helvetica;
+   font-size: 2.25em;
+   margin-top: 0.5em;
+   margin-bottom: 1em;
+   margin-left: 0.5em;
+ }
+ .index-icon {
+   height: 1.1em;
+   width: 1.1em;
+   margin-left: 1em;
+ }
+ //Containers
+ .outer-container{
+   @include span-columns(12);
+ }
+
+ .container{
+   @include outer-container(90%);
+ }
+
+ .blue{
+   padding-top: 32px;
+   background-color: #ccc;
+ }
+
+ .page-wrap {
+   @include outer-container(100%);
+ }
+//Splash pages
+.some-height-padding{
+  padding-top: 0.6em;
+  padding-bottom: 0.5em;
+}
+
+.login-boxes{
+  text-align: left;
+  padding-left: 5.5em;
+}
+
+.smaller-percent{
+  width: 22%;
+  margin: auto;
+}
+
+#clock-out-nav{
+  color: #F29500;
+}
+.background-ghost{
+  opacity: 0.75;
+}
+//General sitewide stuff
+p{
+  font-family: $helvetica;
+}
+
+a{
+  font-family: $helvetica;
+  color: inherit;
+}
 
 h1{
   font-family: $helvetica;
-  font-size: 1.3em;
+  font-size: 2em;
   margin-top: .1em;
   margin-bottom: .1em;
   font-weight: normal;
@@ -42,36 +112,164 @@ h1 > a{
 h2{
   font-family: $helvetica;
   font-weight: normal;
-  font-size: 1em;
+  font-size: 1.5em;
   margin-top: .4em;
   margin-bottom: 0em;
 }
 
+h2 > a{
+  text-decoration: none;
+  color: black;
+}
+
 h3{
   font-family: $helvetica;
-  font-size: 0.9em;
+  font-size: 1em;
   margin-top: .1em;
-  margin-bottom: .1em;
+  margin-bottom: 1em;
   color: #5D5D5D;
   text-decoration: none;
-  padding-left: 0.3em;
-  padding-top: 0.3em;
+  padding-left: 1em;
+  padding-top: 0em;
   font-weight: normal;
 }
 
 h3 > a{
-  color: #5D5D5D;
+  color: #eee;
+  text-decoration: none;
+  background-color: #3DC7DD;
+  border-radius: 0.3em;
+  padding-top: 0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.4em;
+  border: 1px solid #21A6BB;
+}
+
+h3 > a:hover{
+  background-color: #21A6BB;
+}
+// Sidebar 4 Lyfe
+.sidebar-column{
+  @include span-columns(2 of 12);
+  background: #354652;
+  min-height: 100vh;
+  position: fixed;
+  margin-top: -32px;
+  padding-bottom: 44px;
+}
+
+.sidebar-center{
+  font-family: $helvetica;
+  font-size: 1em;
+  background-color: #354652;
+  margin: auto;
+  text-align: center;
+  color: #ccc;
+}
+
+.sidebar-center > a{
   text-decoration: none;
 }
 
-.container{
-  @include outer-container(90%);
+.sidebar-center > a:hover{
+  color: white;
 }
 
-.page-wrap {
-  @include outer-container(100%);
+.sidebar-icon {
+  height: 2em;
+  width: 2em;
+  margin-right: 1em;
+  background-color: #CAB9AD;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  border-radius: 1em;
 }
 
+.sidebar-link{
+  padding-top: 1em;
+  padding-left: 2em;
+  padding-bottom: 1em;
+  font-family: $helvetica;
+  font-size: 1em;
+}
+
+.sidebar-link > a{
+  text-decoration: none;
+  color: #ccc;
+}
+
+.sidebar-link > a:hover {
+  color: white;
+}
+
+.profile-image {
+  border-radius: 50%;
+}
+
+.profile-img-padding{
+  padding-top: 3em;
+  padding-bottom: 1em;
+  padding-left: 3.6em;
+  padding-right: 3.6em;
+}
+
+.dashboard-names{
+  @include span-columns(12);
+  padding: 0em 1em 0em 1em;
+}
+
+.dashboard-column{
+  @include span-columns(12);
+  padding: 0em;
+  border-bottom: .1em solid #C9C9C9;
+}
+
+.dashboard-column > a{
+  text-decoration: none;
+  font-size: .7em;
+  color: #5D5D5D;
+  padding-left: 1em;
+}
+
+.dashboard-right{
+  @include span-columns(10);
+  @include omega;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-bottom: 1em;
+  padding-left: 1em;
+  float:right;
+}
+
+.dashboard-goals{
+  margin-top: 5%;
+  border-top: .1em solid white;
+}
+
+.progress-meter .background {
+  fill: #354652;
+}
+
+.progress-meter .foreground {
+  fill: #6CCD61;
+}
+
+.progress-meter text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.highlight-left-border:hover{
+  border-left: 0.25em solid #83E6F1;
+  background-color: #475E6D;
+}
+
+.fix-centering {
+  vertical-align: 0.7em;
+}
+//Awesome Footer
 .page-wrap:after {
   content: "";
   display: block;
@@ -79,16 +277,21 @@ h3 > a{
 
 .site-footer{
   @include row();
-  padding: 5em;
-  color: #5D5D5D;;
+  padding: 3em;
   clear: both;
   font-family: $helvetica;
-  margin-top: 2em;
   text-align: center;
-  font-size: 0.7em;
-  @include background-image(linear-gradient(#F8F8F8, #FFFFFF));
+  font-size: 0.9em;
+  color: #5D5D5D;
+  background-color: #ccc;
+  min-height: 100vh;
 }
 
+.site-footer > a{
+  text-decoration: none;
+  color: black;
+}
+//Bourbon
 header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
@@ -115,6 +318,8 @@ header.navigation {
   min-height: $navigation-height;
   width: 100%;
   z-index: 999;
+  position: fixed;
+  text-align: center;
 
   .navigation-wrapper {
     @include clearfix;
@@ -195,7 +400,7 @@ header.navigation {
     background: $navigation-background;
     display: block;
     line-height: $navigation-height;
-    overflow: hidden;
+    overflow: visible;
     padding-right: 0.8em;
     text-align: right;
     width: 100%;
@@ -419,6 +624,273 @@ header.navigation {
         @include box-sizing(border-box);
         display: block;
       }
+    }
+  }
+}
+
+// Cards
+
+.cards {
+  @include display(flex);
+  @include flex-wrap(wrap);
+  @include justify-content(space-between);
+}
+
+.card {
+  $base-border-color: #354652 !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $card-border-color: $base-border-color;
+  $card-border: 1px solid $card-border-color;
+  $card-background: $card-border-color;
+  $card-header-background: $card-background;
+  $card-margin: 1em;
+  $card-image-hover-opacity: 0.7;
+  $card-image-hover-color: white;
+
+  @include flex-basis(15em);
+  @include flex-grow(1);
+  @include transition (all 0.2s ease-in-out);
+  background-color: $card-background;
+  border-radius: $base-border-radius;
+  //border: $card-border;
+  //box-shadow: 0 2px 4px darken(black, 10%);
+  margin: 0 $card-margin $base-spacing $card-margin;
+  position: relative;
+  min-width: 400px;
+  position: relative;
+
+  .index-card{
+    @include span-columns(12);
+    background-color: white;
+    p{
+      font-family: $helvetica;
+      margin-top: 0em;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+  }
+
+  .login{
+    background-color: white;
+  }
+
+  .card-image {
+    text-align: center;
+    margin: auto;
+    overflow: hidden;
+    height: 150px;
+    max-height: 150px;
+    background-color: $card-image-hover-color;
+
+    img {
+      @include transition (all 0.2s ease-in-out);
+      border-top-left-radius: $base-border-radius;
+      border-top-right-radius: $base-border-radius;
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  .card-header {
+    @include transition (all 0.2s ease-in-out);
+    background-color: white;
+    //border-bottom: $card-border;
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    padding: ($base-spacing / 3) ($base-spacing / 2) + 0.5;
+
+    .details{
+      font-family: $helvetica;
+      font-weight: lighter;
+      color: #5D5D5D;
+      font-size: 0.9em;
+      a{
+        text-decoration: none;
+        color: #5D5D5D;
+      }
+      a:hover{
+        color: #939393;
+      }
+    }
+  }
+
+  .card-copy {
+    font-size: 1em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+    background-color: #354652;
+    color: white;
+    font-weight: 300;
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+    a {
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: $card-image-hover-opacity;
+    }
+  }
+
+  &:active {
+    background-color: $card-background;
+
+    .card-header {
+      background-color: $card-background;
+    }
+  }
+}
+
+// Flashes
+
+$base-spacing: 1.5em !default;
+$alert-color: #fff6bf !default;
+$error-color: #fbe3e4 !default;
+$notice-color: #e5edf8 !default;
+$success-color: #e6efc2 !default;
+$warning-color: #F1DCB2 !default;
+
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  margin-bottom: 0;
+  padding: $base-spacing / 2;
+  text-align: center;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}
+
+.flash-alert {
+  @include flash($alert-color);
+}
+
+.flash-error {
+  @include flash($error-color);
+}
+
+.flash-notice {
+  @include flash($notice-color);
+}
+
+.flash-success {
+  @include flash($success-color);
+}
+
+.flash-warning {
+  @include flash($warning-color);
+}
+.flash-shift{
+  padding-top: 44px;
+}
+// Parallax Window
+
+$parallax-window-height: 30em;
+$parallax-background-height: $parallax-window-height * 2;
+
+.parallax-window {
+  max-height: $parallax-window-height * 1.5;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.parallax-static-content {
+  color: black;
+  padding: 8em 0;
+  position: relative;
+  z-index: 9;
+}
+
+.parallax-background {
+  background: url("clay.jpg") repeat;
+  background-position: top;
+  background-size: cover;
+  background-color: beige;
+  height: $parallax-background-height;
+  left: 0;
+  position: absolute;
+  top: - $parallax-window-height / 3;
+  width: 100%;
+}
+
+// Based on http://codepen.io/skeurentjes/
+
+// Image Gradient Overlay
+
+.image-gradient-dynamic {
+  $image-gradient-color-top: white;
+  $transparency-top: 0.9;
+  $image-gradient-color-bottom: green;
+  $transparency-bottom: 0.6;
+  $vertical-angle: 0deg;
+  $image-gradient-color-left: teal;
+  $transparency-left: 0.8;
+  $image-gradient-color-right: yellow;
+  $transparency-right: 0.8;
+  $horizontal-angle: 90deg;
+
+  line-height: 0;
+  position: relative;
+  width: 100%;
+
+  img {
+   height: auto;
+   left: 0;
+   position: relative;
+   top: 0;
+   width: 100%;
+  }
+
+  .copy {
+    @include transform(translate(-50%, -50%));
+    left: 50%;
+    margin: auto;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    z-index: 999;
+
+    p {
+      color: white;
+      line-height: 1.5em;
+      padding: 1em 2em;
+      position: relative;
+    }
+  }
+
+  .overlay {
+    @include linear-gradient($vertical-angle, transparentize($image-gradient-color-top, $transparency-top),
+      transparentize($image-gradient-color-bottom, $transparency-bottom));
+    display: block;
+    @include position(absolute, 0px 0px 0px 0px);
+
+    &:after {
+      @include linear-gradient($horizontal-angle, transparentize($image-gradient-color-left, $transparency-left),
+        transparentize($image-gradient-color-right, $transparency-right));
+      @include position(absolute, 0px 0px 0px 0px);
+      content: '';
+      display: block;
     }
   }
 }

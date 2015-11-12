@@ -16,7 +16,8 @@
 }
 
 .goal-index-success{
-  @include span-columns(3);
+  @include span-columns(12);
+  padding: 1em;
 }
 
 .goal-index-end-time{
@@ -46,112 +47,8 @@
   @include omega();
 }
 
-.link-to-new-goal{
-  @include span-columns(12);
-  @include omega();
-
-}
-.goal-active{
-  @include span-columns(12);
-  @include omega();
-  padding-left: 35%;
-  font-size: 2em;
-}
-
-.goal-inactive{
-  @include span-columns(12);
-  @include omega();
-  padding-left: 35%;
-  padding-top: 10%;
-  font-size: 2em;
-}
-h1 {
-  font-family: American Typewriter;
-  font-size: 35pt;
-}
-
-.goal-index-edit {
-  a {
-    color: white;
-    font-family: American Typewriter;
-    font-weight: lighter;
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
-    padding: 5px;
-    border: 1px solid darkgray;
-    border-radius: 5px;
-    background-color: #333;
-  }
-}
-
-.goal-index-amount {
-  font-family: Baskerville;
-}
-
-.gd {
-  margin-top: 5px; margin-bottom: 5px;
-  display: inline-block;
-}
-
-.new-goal {
-  a {
-    color: white;
-    font-family: American Typewriter;
-    font-weight: lighter;
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
-    padding: 5px;
-    border: 1px solid darkgray;
-    border-radius: 5px;
-    background-color: #006300;
-    float: right;
-  }
-}
-
-h1 {
-  font-family: American Typewriter;
-  font-size: 35pt;
-}
-
-.show-goal-edit {
-  a {
-    color: white;
-    font-family: American Typewriter;
-    font-weight: lighter;
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 3px; margin-top: 3px; margin-bottom: 8px;
-    padding: 5px;
-    border: 1px solid darkgray;
-    border-radius: 5px;
-    background-color: #333;
-  }
-}
-
 .show-goal-amount {
-  font-family: Baskerville;
-}
-
-.gd {
-  margin-top: 5px; margin-bottom: 5px;
-  display: inline-block;
-}
-
-.edit-back {
-  a {
-    color: white;
-    font-family: American Typewriter;
-    font-weight: lighter;
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 3px; margin-top: 20px; margin-bottom: 3px;
-    padding: 5px;
-    border: 1px solid darkgray;
-    border-radius: 5px;
-    background-color: #333;
-  }
+  font-family: $helvetica;
 }
 
 .progress-bar-indication {

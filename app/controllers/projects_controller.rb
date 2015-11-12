@@ -45,6 +45,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   def update
     if @project.update(project_params)
+      @project.save
       redirect_to @project, notice: 'Project was successfully updated.'
     else
       render :edit
@@ -77,7 +78,7 @@ class ProjectsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
-      project_costs_attributes: [:id, :cost_type, :amount, :_destroy],
-      material_uses_attributes: [:id, :material_purchase_id, :project_id, :name, :description,  :units, :_destroy])
+      project_costs_attributes: [:id, :cost_type, :amount, :user_id, :_destroy],
+      material_uses_attributes: [:id, :material_purchase_id, :project_id, :user_id, :units, :_destroy])
     end
 end

@@ -1,23 +1,23 @@
+//Donut
 $(function() {
-  var donutGraph = d3.select("#donut-graph");
-  if(donutGraph.length > 0) {
-    var width = 960,
-        height = 500,
+  var donutGraph = d3.selectAll(".donut-graph");
+  if(donutGraph[0].length > 0) {
+    var width = 240,
+        height = 240,
         twoPi = 2 * Math.PI,
         progress = 0,
-        //total = 1308573, // must be hard-coded if server doesn't report Content-Length
         formatPercent = d3.format(".0%");
 
     var arc = d3.svg.arc()
         .startAngle(0)
-        .innerRadius(90)
-        .outerRadius(120);
+        .innerRadius(40)
+        .outerRadius(50);
 
-    var svg = d3.select("#donut-graph").append("svg")
+    var svg = d3.selectAll(".donut-graph").append("svg")
         .attr("width", width)
         .attr("height", height)
       .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .attr("transform", "translate(" + width / 2 + "," + height / 3 + ")");
 
     var meter = svg.append("g")
         .attr("class", "progress-meter");
@@ -35,7 +35,7 @@ $(function() {
 
 
     var x = donutGraph.attr("data-percentage");
-    var i = d3.interpolate(progress,  x / 1);
+    var i = d3.interpolate(progress, x);
     d3.transition().tween("progress", function() {
       return function(t) {
         progress = i(t);
@@ -45,3 +45,73 @@ $(function() {
     });
   }
 });
+$(function(){
+  if (d3.selectAll("#pieChart").length > 0) {
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: '/sales_channels/get_data',
+      dataType: 'json',
+      data: "{}",
+      success: function (received_data) {
+        draw_pie(received_data);
+      },
+      error: function (result) {
+      }
+    });
+  }
+});
+
+//Pie
+function draw_pie(data_to_draw){
+  var pieChart = d3.selectAll("#pieChart");
+  if (pieChart[0].length > 0){
+    var stuff = pieChart.pieData;
+    var pie = new d3pie("pieChart", {
+      "size": {
+        "canvasHeight": 150,
+        "canvasWidth": 300,
+        "pieOuterRadius": "75%"
+      },
+      "data": {
+        "sortOrder": "value-desc",
+        "content": data_to_draw
+      },
+      "labels": {
+        "outer": {
+          "pieDistance": 10
+        },
+        "mainLabel": {
+          "fontSize": 11
+        },
+        "percentage": {
+          "color": "#ffffff",
+          "decimalPlaces": 0
+        },
+        "value": {
+          "color": "#adadad",
+          "fontSize": 11
+        },
+        "lines": {
+          "enabled": true
+        },
+        "truncation": {
+          "enabled": true
+        }
+      },
+      "effects": {
+        "pullOutSegmentOnClick": {
+          "effect": "linear",
+          "speed": 400,
+          "size": 8
+        }
+      },
+      "misc": {
+        "gradient": {
+          "enabled": false,
+          "percentage": 100
+        }
+      }
+    });
+  }
+}

@@ -14,7 +14,7 @@ class MaterialUsesControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:material_uses)
+    assert_not_nil assigns(:projects)
   end
 
   test "should get new" do
@@ -23,8 +23,9 @@ class MaterialUsesControllerTest < ActionController::TestCase
   end
 
   test "should create material_use" do
+    mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 100, units_remaining: 100)
     assert_difference('MaterialUse.count') do
-      post :create, material_use: { description: @material_use.description, material_purchase_id: 1, name: @material_use.name, project_id: 1, units: 1 }
+      post :create, material_use: { user_id: 1, material_purchase_id: mp.id, project_id: 1, units: 1 }
     end
 
     assert_redirected_to material_use_path(assigns(:material_use))
@@ -41,7 +42,8 @@ class MaterialUsesControllerTest < ActionController::TestCase
   end
 
   test "should update material_use" do
-    patch :update, id: @material_use, material_use: { description: @material_use.description, material_purchase_id: @material_use.material_purchase_id, name: @material_use.name, project_id: @material_use.project_id, units: @material_use.units }
+    mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 100, units_remaining: 100)
+    patch :update, id: @material_use, material_use: {  material_purchase_id: mp.id, project_id: @material_use.project_id, units: @material_use.units }
     assert_redirected_to material_use_path(assigns(:material_use))
   end
 

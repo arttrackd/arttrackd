@@ -38,7 +38,7 @@ class SalesController < ApplicationController
   # POST /sales
   def create
     @sale = Sale.new(sale_params)
-
+    @sale.net = @sale.net_for_julie
     if @sale.save
       redirect_to @sale, notice: 'Sale record was successfully created.'
     else
@@ -49,6 +49,8 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   def update
     if @sale.update(sale_params)
+      @sale.net = @sale.net_for_julie
+      @sale.save
       redirect_to @sale, notice: 'Sale record was successfully updated.'
     else
       render :edit
@@ -82,7 +84,7 @@ class SalesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def sale_params
-      params.require(:sale).permit(:sales_channel_id, :project_id, :gross, :date)
+      params.require(:sale).permit(:user_id, :sales_channel_id, :project_id, :gross, :date)
     end
 
     def update_goals

@@ -5,6 +5,11 @@ class Sale < ActiveRecord::Base
   validates :gross, presence: true
   validates :date, presence: true
 
+
+  def net_for_julie
+    gross - project.total_expenses
+  end
+
   def self.search(q)
     search =  "%#{q}%"
     Sale.includes(:project).where(project_id: Project.search(Project, q).pluck(:id))

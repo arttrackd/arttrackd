@@ -84,14 +84,14 @@
 }
 
 h1 {
-  font-family: American Typewriter;
+  font-weight: lighter;
   font-size: 35pt;
 }
 
 .project-index-edit {
   a {
     color: white;
-    font-family: American Typewriter;
+    font-weight: lighter;
     font-weight: lighter;
     display: inline-block;
     text-decoration: none;
@@ -115,7 +115,7 @@ h1 {
 .link-to-new-project {
   a {
     color: white;
-    font-family: American Typewriter;
+    font-weight: lighter;
     font-weight: lighter;
     display: inline-block;
     text-decoration: none;
@@ -123,7 +123,7 @@ h1 {
     padding: 5px;
     border: 1px solid darkgray;
     border-radius: 5px;
-    background-color: #006300;
+    
     float: right;
   }
 }

@@ -8,7 +8,6 @@
   </head>
   <body>
     <%= render 'layouts/navbar' %>
-    <div class="page-wrap">
       <% if flash[:notice] %>
         <div class="notice"><%= flash[:notice] %></div>
       <% end %>
@@ -24,10 +23,7 @@
       <% if flash[:success] %>
         <div class="success"><%= flash[:success] %></div>
       <% end %>
-      <div class="page-wrap">
         <%= yield %>
-      </div>
-  </div>
   <%= render 'layouts/awesome_footer' %>
   </body>
 </html>
