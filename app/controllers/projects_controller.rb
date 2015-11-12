@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   def create
     @project = Project.new(project_params)
-    @project.user = @current_user
+    @project.user_id = @current_user.id
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else

@@ -1,6 +1,6 @@
 <div class="sidebar-column">
   <div class="profile-img-padding">
-    <%= link_to (image_tag asset_url('track.png'), class: "profile-image", alt: "Profile Picture"), profile_path %>
+    <%= link_to (image_tag @current_user.avatar.url(:medium), class: "profile-image", alt: "Profile Picture"), profile_path %>
   </div>
   <div class="sidebar-center"><%= link_to @current_user.name, profile_path %></div></br>
   <div class="highlight-left-border sidebar-link">
