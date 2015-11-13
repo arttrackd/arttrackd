@@ -5,6 +5,6 @@
 <div class="goal-show-success">Achieved: <%= @sales_goal.success %></div>
 
 <div class="edit-back">
-  <%= link_to 'Edit', edit_sales_goal_path(@sales_goal) %> |
+  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sales_goal_path(@sales_goal) %> |
   <%= link_to 'Back to Sales Goals', sales_goals_path %>
 </div>

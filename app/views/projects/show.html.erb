@@ -24,7 +24,8 @@
   <div class="project-show-name"> Materials </div>
   <% @project.material_uses.each do |material| %>
     <div class="project-show-material-name"><%= material.name %></div>
-    <div class="project-show-material-units">Units: <%= material.units %></div>
+    <div class="project-show-material-units">Units: <%= material.units %></br>
+    Cost: <%= material_use.cost %></div>
     <br />
   <% end %>
 </div>
@@ -40,7 +41,7 @@
 </div>
 
 <div class="edit-back">
-  <%= link_to 'Mark as Sold', new_sale_path(project_id: @project.id) %> |
-  <%= link_to 'Edit', edit_project_path(@project) %> |
-  <%= link_to 'Back', projects_path %>
+  <%= link_to (image_tag asset_url('sold.png'), class: "index-icon"), new_sale_path(project_id: @project.id) %> |
+  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(@project) %> |
+  <%= link_to 'Back to All Projects', projects_path %>
 </div>

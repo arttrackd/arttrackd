@@ -6,6 +6,6 @@
 <div class="material-show-units">Receipt:<%= image_tag @material_purchase.receipt.url%></div>
 <% end %>
 <div class="edit-back">
-  <%= link_to 'Edit', edit_material_purchase_path(@material_purchase) %> |
+  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_material_purchase_path(@material_purchase) %> |
   <%= link_to 'Back to Materials Inventory', material_purchases_path %>
 </div>

@@ -4,5 +4,5 @@
 
 <div class="edit-back">
   <%= link_to 'Details', @time_entry %> |
-  <%= link_to 'Back to Time Entries', time_entries_path %>
+  <%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %>
 </div>

@@ -1,6 +1,8 @@
 // Place all the styles related to the sales_goals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//Sales goals progress meter
 .goal-index-amount{
   @include span-columns(12);
   @include omega();
@@ -56,15 +58,15 @@
   $base-border-radius: 3px !default;
   $base-background-color: white !default;
   $base-line-height: 1.5em !default;
-  $action-color: #477DCA !default;
+  $action-color: #36b85d !default;
   $progress-border-color: $base-border-color;
   $progress-border: 1px solid $progress-border-color;
   $progress-meter-border-color: $action-color;
   $progress-meter-border: 1px solid darken($progress-meter-border-color, 15%);
   $progress-meter-color: $progress-meter-border-color;
   $progress-background: darken($base-background-color, 5);
-  $progress-animation-duration: 0.7s;
-  $progress-color: white;
+  $progress-animation-duration: 3s;
+  $progress-color: #eee;
 
   background-color: $progress-background;
   border-radius: $base-border-radius;
