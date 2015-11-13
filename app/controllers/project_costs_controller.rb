@@ -16,10 +16,6 @@ class ProjectCostsController < ApplicationController
   def show
   end
 
-  # GET /project_costs/new
-  def new
-    @project_cost = ProjectCost.new
-  end
 
   # GET /project_costs/1/edit
   def edit

@@ -12,17 +12,9 @@ class MaterialUsesController < ApplicationController
     end
   end
 
-  # GET /material_uses/1
-  def show
-  end
-
   # GET /material_uses/new
   def new
     @material_use = MaterialUse.new
-  end
-
-  # GET /material_uses/1/edit
-  def edit
   end
 
   # POST /material_uses
