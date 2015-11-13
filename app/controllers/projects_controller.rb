@@ -38,7 +38,8 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project, notice: 'Project was successfully created.'
     else
-      render :new
+      flash[:error] = "Missing required fields"
+      redirect_to new_project_path
     end
   end
 
@@ -48,7 +49,8 @@ class ProjectsController < ApplicationController
       @project.save
       redirect_to @project, notice: 'Project was successfully updated.'
     else
-      render :edit
+      flash[:error] = "Missing required fields"
+      redirect_to edit_project_path
     end
   end
 
