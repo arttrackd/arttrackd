@@ -11,17 +11,6 @@ class MaterialUsesControllerTest < ActionController::TestCase
     session[:user_id] = @current_user.id
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:projects)
-  end
-
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create material_use" do
     mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 100, units_remaining: 100)
     assert_difference('MaterialUse.count') do
@@ -29,16 +18,6 @@ class MaterialUsesControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to material_use_path(assigns(:material_use))
-  end
-
-  test "should show material_use" do
-    get :show, id: @material_use
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @material_use
-    assert_response :success
   end
 
   test "should update material_use" do

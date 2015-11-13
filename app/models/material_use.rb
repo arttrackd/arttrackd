@@ -33,4 +33,8 @@ class MaterialUse < ActiveRecord::Base
 
     #MaterialUse.where('name LIKE ? OR description LIKE ?', search, search)
   end
+
+  def cost
+    units * (material_purchase.cost / material_purchase.units)
+  end
 end
