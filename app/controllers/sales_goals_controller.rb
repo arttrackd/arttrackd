@@ -34,21 +34,28 @@ class SalesGoalsController < ApplicationController
     @sales_goal.user = @current_user
     unless params[:number].blank?
       @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
-    end
-    if @sales_goal.save
-      redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
+      if @sales_goal.save
+        redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
+      else
+      redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
+      end
     else
-      render :new
+      redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
     end
   end
 
   # PATCH/PUT /sales_goals/1
   def update
-    @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
-    if @sales_goal.update(sales_goal_params)
-      redirect_to @sales_goal, notice: 'Sales goal was successfully updated.'
+    unless params[:number].blank?
+      if @sales_goal.update(sales_goal_params)
+        @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
+        redirect_to @sales_goal, notice: 'Sales goal was successfully updated.' if @sales_goal.save
+        render :edit
+      else
+        redirect_to edit_sales_goal_path
+      end
     else
-      render :edit
+      redirect_to edit_sales_goal_path
     end
   end
 
