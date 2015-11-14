@@ -15,7 +15,26 @@
 //= require_tree .
 //= require d3
 
+
+$('.add-material-button').click(function(){
+  $('.material-fields').show()
+  $('.material-fields').last().clone('.material-fields').last().appendTo('.material-form').hide();
+
+
+})
+
+
+function cloneMaterialFields(){
+  var fields = $(".material-fields");
+  fields.last().show();
+  fields.last().clone('fields').last().appendTo('.material-form');
+  fields.last().hide();
+}
+
+
 $(document).ready(function () {
+  $(".add-material-button").on("click", cloneMaterialFields);
+  $(".material-fields").last().hide();
   $(".sidebar-column").height($(document).height());
 
   $('.accordion-tabs-minimal').each(function(index) {

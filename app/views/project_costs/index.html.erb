@@ -5,6 +5,8 @@
     <%= submit_tag "Search", name: nil%>
   <% end %>
 </div>
+<% @projects = Project.includes(:project_costs).where(user_id: @current_user.id) %>
+
 <% if @projects %>
   <% @projects.each do |project| %>
     <div class="cards">

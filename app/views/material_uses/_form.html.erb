@@ -10,15 +10,29 @@
       </ul>
     </div>
   <% end %>
+  <br />
+  <%= f.fields_for :material_uses do |f| %>
+    <div class="field">
+      <%= f.hidden_field :project_id, value: params[:project_id] || nil  %>
+      <%= f.hidden_field :user_id, value: @current_user.id  %>
+    </div>
+    <div class="field">
+      <%= f.label :material_purchase_id, value: "Material" %><br>
+      <%= f.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
+    </div>
+    <div class="field">
+      <%= f.label :units %><br>
+      <%= f.number_field :units %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :_destroy %><br>
+      <%= f.hidden_field :_destroy %>
+    </div>
+    <div class="actions">
+      <%= f.submit%>
+    </div>
 
-  <div class="field">
-    <%= f.hidden_field :material_purchase_id, value: @material_use.material_purchase_id || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :units %><br>
-    <%= f.number_field :units, :class => 'text_field', :step => 0.01, value: @material_use.units || "" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <hr />
+  <% end %>
+
 <% end %>

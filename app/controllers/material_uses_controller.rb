@@ -19,10 +19,12 @@ class MaterialUsesController < ApplicationController
   # GET /material_uses/new
   def new
     @material_use = MaterialUse.new
+    @project = Project.where(user_id: @current_user.id)
   end
 
   # GET /material_uses/1/edit
   def edit
+    @project = Project.where(user_id: @current_user.id)
   end
 
   # POST /material_uses
@@ -66,6 +68,6 @@ class MaterialUsesController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def material_use_params
-      params.require(:material_use).permit(:user_id, :material_purchase_id, :project_id, :units)
+      params.require(:material_use).permit(:user_id, :material_purchase_id, :project_id, :units, :_delete)
     end
 end
