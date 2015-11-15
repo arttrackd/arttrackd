@@ -26,10 +26,7 @@
   <div><h4> Materials: </h4></div>
   <div class="material-form">
     <%= f.fields_for :material_uses do |ff| %>
-      <div class="field">
-        <%= ff.hidden_field :project_id, value: @project.id  %>
-        <%= ff.hidden_field :user_id, value: @current_user.id  %>
-      </div>
+    <div class = "material-fields">
       <div class="field">
         <%= ff.label :material_purchase_id, value: "Material" %><br>
         <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
@@ -38,9 +35,11 @@
         <%= ff.label :units %><br>
         <%= ff.number_field :units %>
       </div>
+    </div>
       <hr />
     <% end %>
   </div>
+  <p class="add-material-button">Add Material </p>
 
   <div><h4> Project Costs: </h4></div>
   <div class="project-cost-form" id="project-cost-form">

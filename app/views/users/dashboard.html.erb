@@ -11,7 +11,7 @@
         </div>
     <% else %>
       <div class="card-copy">
-        <h3><%= link_to 'Add a Sales Goal', new_sales_goal_path %></h3>
+        <%= link_to 'Add a Sales Goal', new_sales_goal_path %>
       </div>
     <% end %>
   </div>
@@ -24,20 +24,19 @@
       <p>Active Sales Channels</p>
     </div>
   </div>
-  
+
   <div class="card">
     <div class="card-header">
       <h1><%= link_to 'My Projects', projects_path %></h1>
     </div>
     <div class="card-copy">
       <% if @projects.length > 0 %>
-      <% @projects.each do |project| %>
-        <p><%= link_to project.name, project %></p>
+        <% @projects.each do |project| %>
+          <p><%= link_to project.name, project %></p>
+        <% end %>
       <% end %>
       <p><%= link_to '. . .', projects_path %></p>
     </div>
-    <% else %>
-    <% end %>
   </div>
 
   <div class="card">
@@ -46,13 +45,12 @@
     </div>
     <div class="card-copy">
       <% if @sales.length > 0 %>
-      <% @sales.each do |sale| %>
-        <p><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></p>
+        <% @sales.each do |sale| %>
+          <p><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></p>
+        <% end %>
       <% end %>
-      <p><%= link_to '. . .', sales_path %></p>
+    <p><%= link_to '. . .', sales_path %></p>
     </div>
-    <% else %>
-    <% end %>
   </div>
 
 </div>
