@@ -11,7 +11,6 @@ class MaterialUse < ActiveRecord::Base
 
   delegate :name,                 to: :material_purchase
 
-  after_save :subtract_units_used_from_remaining
 
   def enough_in_stock
     unless MaterialPurchase.find(material_purchase_id).units_remaining >= units
@@ -19,11 +18,6 @@ class MaterialUse < ActiveRecord::Base
     end
   end
 
-  def subtract_units_used_from_remaining
-    if enough_in_stock
-      MaterialPurchase.find(material_purchase_id).units_remaining = MaterialPurchase.find(material_purchase_id).units_remaining - units
-    end
-  end
 
   def self.search(mu, q)
     search =  "%#{q}%"
