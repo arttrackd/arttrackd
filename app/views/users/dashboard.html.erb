@@ -6,12 +6,15 @@
       <div class="card-image">
         <div class="donut-graph" data-percentage="<%= @percent_completion %>"></div>
       </div>
-        <div class="card-copy">
-          <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
-        </div>
-    <% else %>
       <div class="card-copy">
+        <p>Goal: <%= "#{number_to_currency(@goal.amount)} in sales by #{@goal.end_time.strftime("%B %d, %Y")}" %></p>
+      </div>
+    <% else %>
+      <div class="card-image">
         <%= link_to 'Add a Sales Goal', new_sales_goal_path %>
+      </div>
+      <div class="card-copy">
+        <p>Latest Sales Goal</p>
       </div>
     <% end %>
   </div>
