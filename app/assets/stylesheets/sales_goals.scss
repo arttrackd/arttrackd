@@ -55,9 +55,9 @@
 
 .progress-bar-indication {
   $base-border-color: gainsboro !default;
-  $base-border-radius: 3px !default;
+  $base-border-radius: 0px !default;
   $base-background-color: white !default;
-  $base-line-height: 1.5em !default;
+  $base-line-height: 0em !default;
   $action-color: #36b85d !default;
   $progress-border-color: $base-border-color;
   $progress-border: 1px solid $progress-border-color;
@@ -79,13 +79,13 @@
     @include box-sizing(border-box);
     background-color: $progress-meter-color;
     background-repeat: repeat-x;
-    background-size: 40px 40px;
+    background-size: 0.1em;
     border-bottom-right-radius: 0;
-    border-radius: $base-border-radius /1.5;
+    border-radius: 0;
     border-top-right-radius: 0;
     border: $progress-meter-border;
     display: block;
-    height: 100%;
+    height: 50%;
     max-width: 100%;
   }
 
@@ -93,7 +93,7 @@
     color: $progress-color;
     line-height: $base-line-height;
     margin: 0;
-    padding: .1em .5em;
+    padding: 1em 5em 0em 0em;
     text-shadow: 0 0 1px black;
   }
 }

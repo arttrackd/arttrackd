@@ -30,10 +30,13 @@
     <%= f.label :hourly_rate %>
     <%= f.number_field :hourly_rate, :class => 'text_field', :step => 0.01 %>
   </p>
+  <% if logged_in? %>
   <p>
-    <strong><%= f.label :avatar %></strong>
+    <%= f.label :update_avatar %>
     <%= f.file_field :avatar %>
   </p>
+  <% else %>
+  <% end %>
 </div>
   <p>
     <%= f.submit 'Submit' %>

@@ -25,10 +25,10 @@ My <% if params[:sold] %>Sold<% else %><% end %> Projects
             <div class = "project-index-row">
               <div class="project-index-desc gd"> </div>
               <div class="project-index-gross gd">
-                Sold for: <%= number_to_currency(sale.gross) %>
+                <p>Sold for: <%= number_to_currency(sale.gross) %></p>
               </div>
               <div class="project-index-saledate gd">
-                <%= sale.date.strftime("%B %d, %Y") %></br>
+                <p><%= sale.date.strftime("%B %d, %Y") %></p>
               </div>
             </div>
           <% end %>
@@ -36,13 +36,13 @@ My <% if params[:sold] %>Sold<% else %><% end %> Projects
           <div class"project-index-sales">
           <div class = "project-index-row">
             <div class="project-index-desc gd"> </div>
-            <div class="project-index-gross gd">In Stock</div>
-            <div class="project-index-saledate gd">Estimated Value: <br>
+            <div class="project-index-gross gd"><p>In Stock</p></div>
+            <div class="project-index-saledate gd"><p>Estimated Value: <br>
               <% if project.material_uses.length > 0 && !project.material_uses.first.material_purchase.nil? %>
               <%= number_to_currency((project.estimated_value) + (project.total_material_cost)) %>
               <% else %>
                 <%= number_to_currency(project.estimated_value.to_i)%>
-              <% end %>
+              <% end %></p>
               </div>
             </div>
           </div>

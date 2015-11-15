@@ -32,7 +32,7 @@
  }
  //Index pages
  .title{
-   color: white;
+   color: #333;
    font-family: $helvetica;
    font-size: 2.25em;
    margin-top: 0.5em;
@@ -66,7 +66,7 @@
 
  .blue{
    padding-top: 0px;
-   background-color: #ccc;
+   background-color: #ddebee;
 }
 
  .page-wrap {
@@ -306,7 +306,7 @@ h3 > a:hover{
   text-align: center;
   font-size: 0.9em;
   color: #5D5D5D;
-  background-color: #ccc;
+  background-color: #ddebee;
   min-height: 100vh;
 }
 
@@ -584,7 +584,7 @@ header.navigation {
 $base-spacing: 1.5em !default;
 $alert-color: #fff6bf !default;
 $error-color: #fbe3e4 !default;
-$notice-color: #e5edf8 !default;
+$notice-color: #e6efc2 !default;
 $success-color: #e6efc2 !default;
 $warning-color: #F1DCB2 !default;
 
@@ -595,6 +595,7 @@ $warning-color: #F1DCB2 !default;
   margin-bottom: 0;
   padding: $base-spacing / 2;
   text-align: center;
+  border-bottom: 1px solid darken($color, 5%);
 
   a {
     color: darken($color, 70%);
