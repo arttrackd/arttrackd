@@ -2,7 +2,7 @@
 <div class="title">Goal: <%= number_to_currency(@sales_goal.amount) %></div>
 <div class="goal-show-length">Duration: <%= @sales_goal.length_of_time %></div>
 <div class="goal-show-start-time">Started: <%= @sales_goal.start_time %></div>
-<div class="goal-show-success">Achieved: <%= @sales_goal.success %></div>
+<div class="goal-show-success"><% if @sales_goal.success %>Achieved<% else %>Not Achieved<% end %></div>
 
 <div class="edit-back">
   <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sales_goal_path(@sales_goal) %> |

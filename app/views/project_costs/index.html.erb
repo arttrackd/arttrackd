@@ -5,15 +5,14 @@
     <%= submit_tag "Search", name: nil%>
   <% end %>
 </div>
-<h3><%= link_to 'Add New Project', new_project_path %> <%= link_to 'See All Projects', projects_path %> <%= link_to 'See Sold Projects', projects_path(sold: true) %> <%= link_to 'See Business Expenses', business_expenses_path %></h3>
+<h3><%= link_to 'Add New Project', new_project_path %> <%= link_to 'See All Projects', projects_path %> <%= link_to 'See Sold Projects', projects_path(sold: true) %> </h3>
 <% if @projects %>
   <% @projects.each do |project| %>
     <div class="cards">
       <div class="card">
         <div class="card-header">
-          <h2>Costs for <%= project.name %>:</h2>
+          <h2>Costs for <%= link_to project.name, project %>:</h2>
           <div class="details">
-          <%= link_to 'Details', project %>
           <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(project) %>
           <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), project, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div></br>

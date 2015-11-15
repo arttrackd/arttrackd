@@ -2,10 +2,14 @@
 <div class="title"><%= @material_purchase.name %></div>
 <div class="material-show-cost">Cost: <%= number_to_currency(@material_purchase.cost) %></div>
 <div class="material-show-units">Units: <%= @material_purchase.units %></div>
-<% if @material_purchase.receipt %>
-<div class="material-show-units">Receipt:<%= image_tag @material_purchase.receipt.url%></div>
-<% end %>
-<div class="edit-back">
+<% if @material_purchase.receipt.instance.receipt_updated_at != nil %>
+  <div class="material-show-units">Receipt:<%= image_tag @material_purchase.receipt.url%></div>
+  <div class="edit-back">
+  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_material_purchase_path(@material_purchase) %> | 
+<% else %>
+  <div class="edit-back">
   <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_material_purchase_path(@material_purchase) %> |
+  <%= link_to 'Add a Receipt Image', edit_material_purchase_path %> |
+<% end %>
   <%= link_to 'Back to Materials Inventory', material_purchases_path %>
 </div>

@@ -11,12 +11,11 @@ My <% if params[:sold] %>Sold<% else %><% end %> Projects
   <div class="cards">
     <div class="card">
       <div class="card-header">
-        <h2><%= project.name %></h2>
+        <h2><%= link_to project.name, project %></h2>
         <div class="details">
-          <p><%= project.description %></p>
-          <%= link_to 'Details', project %>
+          <p><%= link_to project.description, project %></p>
           <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(project) %>
-          <%= link_to (image_tag asset_url('sold.png'), class: "index-icon"), new_sale_path(project_id: project.id) %>
+          <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: project.id) %>
           <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), project, method: :delete, data: { confirm: 'Are you sure?' } unless project.sales.length > 0 %>
         </div>
       </div>

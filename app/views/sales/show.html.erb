@@ -1,9 +1,9 @@
 
-<div class="title"> <%= @sale.project.name %></div>
+<div class="title"> <%= link_to @sale.project.name, @sale.project %></div>
 <div class="sale-show-gross">Sold for: <%= number_to_currency(@sale.gross) %></div>
 <div class="sale-show-date">Sold on: <%= @sale.date %></div>
 <% if @sale.sales_channel %>
-  <div class="sale-show-date">Sold at: <%= @sale.sales_channel.name %></div>
+  <div class="sale-show-date">Sold at: <%= link_to @sale.sales_channel.name, @sale.sales_channel %></div>
   <div class="edit-back">
 <% else %>
   <div class="edit-back">
