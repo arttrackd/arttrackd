@@ -1,14 +1,18 @@
-
-<div class="title"> <%= link_to @sale.project.name, @sale.project %></div>
-<div class="sale-show-gross">Sold for: <%= number_to_currency(@sale.gross) %></div>
-<div class="sale-show-date">Sold on: <%= @sale.date %></div>
-<% if @sale.sales_channel %>
-  <div class="sale-show-date">Sold at: <%= link_to @sale.sales_channel.name, @sale.sales_channel %></div>
-  <div class="edit-back">
-<% else %>
-  <div class="edit-back">
-  <%= link_to 'Add a Sales Channel', new_sales_channel_path(sale_id: @sale.id) %> |
-<% end %>
-  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sale_path(@sale) %> |
-  <%= link_to 'Back to Sales', sales_path %>
+<div class="title"></div>
+<div class="cards">
+  <div class="card">
+    <div class="card-header"><h1><%= link_to @sale.project.name, @sale.project %> Sale</h1></div>
+    <div class="index-card">
+      <p>Sold for: <%= number_to_currency(@sale.gross) %></p>
+      <p>Sold on: <%= @sale.date.strftime("%B %d, %Y") %></p>
+      <% if @sale.sales_channel %>
+        <p>Sold at: <%= link_to @sale.sales_channel.name, @sale.sales_channel %></p>
+      <% else %>
+        <%= link_to 'Add a Sales Channel', new_sales_channel_path(sale_id: @sale.id) %> |
+      <% end %>
+      <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sale_path(@sale) %>
+      <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @sale, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Back to Sales', sales_path %>
+    </div>
+  </div>
 </div>

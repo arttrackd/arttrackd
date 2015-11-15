@@ -34,7 +34,7 @@
  .title{
    color: #333;
    font-family: $helvetica;
-   font-size: 2.25em;
+   font-size: 2em;
    margin-top: 0.5em;
    margin-bottom: 1em;
    margin-left: 0.5em;
@@ -115,7 +115,7 @@ a{
 
 h1{
   font-family: $helvetica;
-  font-size: 2em;
+  font-size: 1.8em;
   margin-top: .1em;
   margin-bottom: .1em;
   font-weight: normal;
@@ -167,6 +167,26 @@ h3 > a{
 
 h3 > a:hover{
   background-color: #21A6BB;
+}
+
+h4 {
+  font-family: $helvetica;
+  font-size: 1.3em;
+  padding-left: 4.9em;
+  padding-top: 0.5em;
+  font-weight: normal;
+  margin-bottom: 1em;
+  margin-top: 0em;
+}
+
+h5{
+  font-family: $helvetica;
+  font-size: 1.3em;
+  padding-left: 0.7em;
+  padding-top: 0.5em;
+  font-weight: normal;
+  margin-bottom: 1em;
+  margin-top: 0em;
 }
 // Sidebar 4 Lyfe
 .sidebar-column{
@@ -561,7 +581,6 @@ header.navigation {
     }
   }
 
-  &:focus,
   &:hover {
     cursor: pointer;
 
@@ -571,10 +590,8 @@ header.navigation {
   }
 
   &:active {
-    background-color: $card-background;
 
     .card-header {
-      background-color: $card-background;
     }
   }
 }

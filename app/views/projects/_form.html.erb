@@ -13,54 +13,63 @@
   <div class="field">
     <%= f.hidden_field :user_id, value: @project.user_id || @current_user.id %>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: @project.name || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, value: @project.description || "" %>
-  </div>
-  <br>
 
-  <div><h4> Materials: </h4></div>
-  <div class="material-form">
-    <%= f.fields_for :material_uses do |ff| %>
-      <div class="field">
-        <%= ff.hidden_field :project_id, value: @project.id  %>
-        <%= ff.hidden_field :user_id, value: @current_user.id  %>
-      </div>
-      <div class="field">
-        <%= ff.label :material_purchase_id, value: "Material" %><br>
-        <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
-      </div>
-      <div class="field">
-        <%= ff.label :units %><br>
-        <%= ff.number_field :units %>
-      </div>
-      <hr />
-    <% end %>
-  </div>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="index-card">
+        <div class="field">
+          <div><h5> Details: </h4></div>
+          <div class="field">
+            <p><%= f.label :name %></br>
+            <%= f.text_field :name, value: @project.name || "" %></p>
+          </div>
+          <div class="field">
+            <p><%= f.label :description %></br>
+            <%= f.text_area :description, value: @project.description || "" %></p>
+          </div></br>
 
-  <div><h4> Project Costs: </h4></div>
-  <div class="project-cost-form" id="project-cost-form">
-    <%= f.fields_for :project_costs do |ff| %>
-      <div class = "project-cost-fields">
-        <div class="field">
-          <%= ff.label :cost_type %><br>
-          <%= ff.text_field :cost_type %>
-        </div>
-        <div class="field">
-          <%= ff.label :amount %><br>
-          <%= ff.number_field :amount %>
-        </div>
+          <div><h4> Materials: </h4></div>
+          <div class="material-form">
+            <%= f.fields_for :material_uses do |ff| %>
+              <div class="field">
+                <%= ff.hidden_field :project_id, value: @project.id  %>
+                <%= ff.hidden_field :user_id, value: @current_user.id  %>
+              </div>
+              <div class="field">
+                <p><%= ff.label :material_purchase_id, value: "Material" %></br>
+                <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %></p>
+              </div>
+              <div class="field">
+                <p><%= ff.label :units %></br>
+                <%= ff.number_field :units %><p>
+              </div>
+            <% end %>
+          </div></br>
+
+          <div><h5> Project Costs: </h5></div>
+          <div class="project-cost-form" id="project-cost-form">
+            <%= f.fields_for :project_costs do |ff| %>
+              <div class = "project-cost-fields">
+                <div class="field">
+                  <p><%= ff.label :cost_type %></br>
+                  <%= ff.text_field :cost_type %></p>
+                </div>
+                <div class="field">
+                  <p><%= ff.label :amount %></br>
+                  <%= ff.number_field :amount %></p>
+                </div>
+            </div>
+
+            <% end %>
+          </div>
+          <p class="add-project-button">Add Project Cost </p>
+
+          <div class="actions">
+            <p><%= f.submit %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <% end %>
   </div>
-  <p class="add-project-button">Add Project Cost </p>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

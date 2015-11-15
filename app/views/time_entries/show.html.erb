@@ -1,9 +1,18 @@
-<div class="title"><%= @time_entry.project.name %></div>
-<p>Start time: <%= @time_entry.start_time.strftime("%B %d, %Y, %I:%M%P") %></p>
-<p>Stop time: <%= @time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P") %></p>
-<p><%= @time_entry.date %></p>
-
-<div class="edit-back">
-  <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(@time_entry) %> |
-  <%= link_to 'Back to Time Entries', time_entries_path %>
+<div class="title"></div>
+<div class="cards">
+  <div class="card">
+    <div class="card-header">
+      <h2>Time Entry for <%= @time_entry.project.name %></h2>
+    </div>
+    <div class="index-card">
+      <p>Start time: <%= @time_entry.start_time.strftime("%B %d, %Y, %I:%M%P") %></p>
+      <p>Stop time: <%= @time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P") %></p>
+      <p><%= @time_entry.date %></p>
+      <div class="details">
+        <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(@time_entry) %>
+        <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %>
+      </div>
+    </div>
+  </div>
 </div>
