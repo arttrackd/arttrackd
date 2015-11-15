@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :require_login
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  after_action  :update_inventory, only: [:create, :update]
 
   # GET /projects
   def index
@@ -74,6 +75,12 @@ class ProjectsController < ApplicationController
         @project = project_scope.find(params[:id])
       rescue
         redirect_to dashboard_user_path(@current_user.id), notice: "Not found."
+      end
+    end
+    def update_inventory
+      @project.material_uses.each do |material_use|
+        material_use.material_purchase.units_remaining = material_use.material_purchase.update_stock
+        material_use.material_purchase.save
       end
     end
 

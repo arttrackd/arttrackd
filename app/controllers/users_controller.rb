@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to dashboard_user_path(@user.id) unless @user == @current_user
-    @projects = Project.where('user_id = ?', @user.id).limit(5)
+    @projects = Project.where('user_id = ?', @user.id).order(updated_at: :desc).limit(5)
     @sales = Sale.where('user_id = ?', @user.id).order(date: :desc, created_at: :desc).limit(5)
     @goal = SalesGoal.where('user_id = ?', @user.id).last
     if @user.sales_goals.length > 0

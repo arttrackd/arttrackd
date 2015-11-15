@@ -7,15 +7,9 @@ class MaterialPurchase < ActiveRecord::Base
   validates :cost, presence: true
   validates :units, presence: true
 
-  def all_that_remains
-    total_units_used = MaterialUse.where(material_purchase_id: id).pluck(:units)
-    if units_remaining > total_units_used.sum
-
-      units_remaining -= total_units_used.sum
-      units_remaining >= 0
-    else
-
-    end
+  def update_stock
+    total_units_used = MaterialUse.where(material_purchase_id: id).pluck(:units).sum
+    units - total_units_used
   end
 
   def self.search(q)

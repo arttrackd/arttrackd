@@ -16,11 +16,11 @@
   </div>
   <div class="field">
     <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time, value: @time_entry.start_time || "" %>
+    <%= f.datetime_select :start_time, value: @time_entry.start_time.strftime("%B %d, %Y") || "" %>
   </div>
   <div class="field">
     <%= f.label :stop_time %><br>
-    <%= f.datetime_select :stop_time, value: @time_entry.stop_time || "" %>
+    <%= f.datetime_select :stop_time, value: @time_entry.stop_time.strftime("%B %d, %Y") || "" %>
   </div>
   <div class="field">
     <%= f.label :date %><br>

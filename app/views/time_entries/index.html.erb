@@ -1,14 +1,14 @@
 <div class="title">My Time Entries</div>
 <% @time_entries.each do |time_entry| %>
-  <div class="time-entry-index-start-time">Start: <%= time_entry.start_time %></div>
-    <div class="time-entry-index-stop-time"> Stop: <%= time_entry.stop_time %></div>
+  <div class="time-entry-index-start-time">Start: <%= time_entry.start_time.strftime("%B %d, %Y, %I:%M%P") %></div>
+    <div class="time-entry-index-stop-time"> Stop: <%= time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P") %></div>
   </br>
     <% if time_entry.start_time && time_entry.stop_time %>
       <div class="time-in-words"><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time, except: :seconds) %></div>
     <% end %>
 
-    <%= link_to 'Details', time_entry %> | 
-    <%= link_to 'Edit', edit_time_entry_path(time_entry) %>
+    <%= link_to 'Details', time_entry %> |
+    <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(time_entry) %>
     <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
   <br>
 <% end %>
