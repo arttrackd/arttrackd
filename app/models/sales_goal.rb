@@ -1,10 +1,15 @@
 class SalesGoal < ActiveRecord::Base
   belongs_to :user
   has_one :sales_channel
-  validates :amount, presence: true
+  validates :amount, presence: true, numericality: {greater_than: 0}
   validates :length_of_time, presence: true
   validates :start_time, presence: true
   validates :end_time, presence: true
+  validate :end_time_greater_start_time
+
+  def end_time_greater_start_time
+    end_time > start_time
+  end
 
   def self.update_goals(user_id)
     goals = SalesGoal.where('user_id = ?', user_id)

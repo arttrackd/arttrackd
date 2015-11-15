@@ -6,7 +6,7 @@ class MaterialUse < ActiveRecord::Base
   # validates :name, presence: true
   validates :user,                presence: true
   validates :material_purchase,   presence: true
-  validates :units,               presence: true
+  validates :units,               presence: true, numericality: {greater_than: 0}
   validate :enough_in_stock, on: [:create, :update]
 
   delegate :name,                 to: :material_purchase
