@@ -15,7 +15,30 @@
 //= require_tree .
 //= require d3
 
+
+
+
+function cloneProjectCostFields(){
+  var fields = $(".project-cost-fields");
+  fields.last().show();
+  fields.last().clone(fields).last().appendTo(".project-cost-form").hide();
+  changeFieldNames(".project-cost-fields > div > input");
+}
+
+function changeFieldNames(selector){
+  fields = $(selector).slice(-2);
+  number = fields[0].name.match(/\d/)
+  number = parseInt(number) + 1
+
+  for (var i = 0; i < fields.length; i++){
+    fields[i].name = fields[i].name.replace(/\d/, number)
+    fields[i].id = fields[i].id.replace(/\d/, number)
+  }
+}
+
 $(document).ready(function () {
+  $(".add-project-button").on("click", cloneProjectCostFields);
+  $(".project-cost-fields").last().hide();
   $(".sidebar-column").height($(document).height());
 
   $('.accordion-tabs-minimal').each(function(index) {

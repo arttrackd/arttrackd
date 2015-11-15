@@ -43,19 +43,22 @@
   </div>
 
   <div><h4> Project Costs: </h4></div>
-  <div class="material-form">
+  <div class="project-cost-form" id="project-cost-form">
     <%= f.fields_for :project_costs do |ff| %>
-      <div class="field">
-        <%= ff.label :cost_type %><br>
-        <%= ff.text_field :cost_type %>
-      </div>
-      <div class="field">
-        <%= ff.label :amount %><br>
-        <%= ff.number_field :amount %>
-      </div>
-      <hr />
+      <div class = "project-cost-fields">
+        <div class="field">
+          <%= ff.label :cost_type %><br>
+          <%= ff.text_field :cost_type %>
+        </div>
+        <div class="field">
+          <%= ff.label :amount %><br>
+          <%= ff.number_field :amount %>
+        </div>
+    </div>
+
     <% end %>
   </div>
+  <p class="add-project-button">Add Project Cost </p>
 
   <div class="actions">
     <%= f.submit %>

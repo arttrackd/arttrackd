@@ -2,6 +2,7 @@ class SalesGoalsController < ApplicationController
   before_action :require_login
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
   before_action :validate_user, only: [:show, :edit, :update, :destroy]
+  before_action :check_time_set, only: [:create, :update]
 
   # GET /sales_goals
   def index
@@ -34,21 +35,27 @@ class SalesGoalsController < ApplicationController
     @sales_goal.user = @current_user
     unless params[:number].blank?
       @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
-    end
-    if @sales_goal.save
-      redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
+      if @sales_goal.save
+        redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
+      else
+      redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
+      end
     else
-      render :new
+      redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
     end
   end
 
   # PATCH/PUT /sales_goals/1
   def update
-    @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
     if @sales_goal.update(sales_goal_params)
-      redirect_to @sales_goal, notice: 'Sales goal was successfully updated.'
+      @sales_goal.end_time = @sales_goal.start_time + eval(@sales_goal.length_of_time.tr(' ','.'))
+      if @sales_goal.save
+        redirect_to @sales_goal, notice: 'Sales goal was successfully updated.'
+      else
+        redirect_to edit_sales_goal_path
+      end
     else
-      render :edit
+      redirect_to edit_sales_goal_path
     end
   end
 
@@ -72,10 +79,14 @@ class SalesGoalsController < ApplicationController
       end
     end
 
+    def check_time_set
+      redirect_to edit_sales_goal_path if params[:number].blank?
+    end
+
     # Only allow a trusted parameter "white list" through.
     def sales_goal_params
       params[:sales_goal][:length_of_time] = "#{params[:number]} #{params[:units]}"
-      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time)
+      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time, :sales_channel_id)
     end
 
     def validate_user

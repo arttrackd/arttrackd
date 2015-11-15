@@ -22,4 +22,13 @@ class MaterialUseTest < ActiveSupport::TestCase
   #   results = MaterialUse.search(pc, "West")
   #   refute results.include?(project1)
   # end
+
+  test "check enough items in stock" do
+    mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 10, units_remaining: 10)
+    mu = MaterialUse.new(user_id: 1, units: 6, material_purchase_id: mp.id)
+    assert mu.enough_in_stock
+
+    mu2 = MaterialUse.new(user_id: 1, units: 11, material_purchase_id: mp.id)
+    refute mu2.enough_in_stock
+  end
 end

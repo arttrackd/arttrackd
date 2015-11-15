@@ -33,4 +33,11 @@ class MaterialUsesControllerTest < ActionController::TestCase
 
     assert_redirected_to material_uses_path
   end
+
+  test "cannot create material use if not enough in stock" do
+    assert_no_difference('MaterialUse.count') do
+      mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 10, units_remaining: 10)
+      MaterialUse.create(user_id: 1, units: 11, material_purchase_id: mp.id)
+    end
+  end
 end

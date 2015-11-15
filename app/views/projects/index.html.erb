@@ -38,11 +38,7 @@ My <% if params[:sold] %>Sold<% else %><% end %> Projects
             <div class="project-index-desc gd"> </div>
             <div class="project-index-gross gd"><p>In Stock</p></div>
             <div class="project-index-saledate gd"><p>Estimated Value: <br>
-              <% if project.material_uses.length > 0 && !project.material_uses.first.material_purchase.nil? %>
-              <%= number_to_currency((project.estimated_value) + (project.total_material_cost)) %>
-              <% else %>
-                <%= number_to_currency(project.estimated_value.to_i)%>
-              <% end %></p>
+                <%= number_to_currency(project.estimated_value)%></p>
               </div>
             </div>
           </div>
