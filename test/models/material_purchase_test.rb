@@ -16,6 +16,4 @@ class MaterialPurchaseTest < ActiveSupport::TestCase
     refute results.include?(mp1)
     assert results.include?(mp2)
   end
-
-  test ""
 end
