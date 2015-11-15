@@ -2,21 +2,6 @@ class MaterialUsesController < ApplicationController
   before_action :require_login
   before_action :set_material_use, only: [:show, :edit, :update, :destroy]
 
-  # GET /material_uses
-  def index
-    if params[:search]
-      mu = material_use_scope
-      @projects = MaterialUse.search(mu, params[:search])
-    else
-      @projects = Project.where(user_id: @current_user.id)
-    end
-  end
-
-  # GET /material_uses/new
-  def new
-    @material_use = MaterialUse.new
-  end
-
   # POST /material_uses
   def create
     @material_use = MaterialUse.new(material_use_params)

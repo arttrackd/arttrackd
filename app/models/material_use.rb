@@ -7,7 +7,7 @@ class MaterialUse < ActiveRecord::Base
   validates :user,                presence: true
   validates :material_purchase,   presence: true
   validates :units,               presence: true
-  validate :enough_in_stock, on: :create
+  validate :enough_in_stock, on: [:create, :update]
 
   delegate :name,                 to: :material_purchase
 
@@ -15,6 +15,9 @@ class MaterialUse < ActiveRecord::Base
   def enough_in_stock
     unless MaterialPurchase.find(material_purchase_id).units_remaining >= units
       errors.add(:units, "|| There are only #{MaterialPurchase.find(material_purchase_id).units_remaining} in stock" )
+      false
+    else
+      true
     end
   end
 
