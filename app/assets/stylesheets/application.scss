@@ -484,6 +484,11 @@ header.navigation {
 
   // The nav items
 
+  .nav-icon{
+    height: 50px;
+    width: 50px;
+  }
+
   ul li.nav-link {
     background: $navigation-background;
     display: inline;
