@@ -26,6 +26,10 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
+ @font-face {
+   font-family: "The Dream";
+   src: url(/vendor/assets/fonts/thedream.otf) format("truetype");
+}
  html, body {
    padding: 0;
    margin: 0;
@@ -95,6 +99,7 @@
 .login-boxes{
   text-align: left;
   padding-left: 0em;
+  background-color: rgba(255, 255, 255, 1)
 }
 
 .smaller-percent{
@@ -387,6 +392,7 @@ header.navigation {
   float: left;
 
   .navigation-left{
+    padding-left: 1%;
     float: left;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -396,11 +402,12 @@ header.navigation {
     }
   }
 
-  .navigation-left >a{
+  .navigation-left > a{
     text-decoration: none;
   }
 
   .navigation-right{
+    padding-right: 1%;
     float: right;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -412,13 +419,6 @@ header.navigation {
 
   .navigation-right >a{
     text-decoration: none;
-  }
-
-  .navigation-wrapper {
-    @include clearfix;
-    @include outer-container;
-    position: relative;
-    z-index: 9999;
   }
 
   .logo {
@@ -463,11 +463,11 @@ header.navigation {
   }
 
   ul.navigation-menu {
-    clear: both;
+    // clear: both;
     display: none;
-    margin: 0 auto;
+    // margin: 0 auto;
     overflow: visible;
-    padding: 0;
+    // padding: 0;
     width: 100%;
     z-index: 9999;
 
