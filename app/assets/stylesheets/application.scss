@@ -302,8 +302,12 @@ h6{
   margin-top: 5%;
   border-top: .1em solid white;
 }
+.start-of-line{
+  @include span-columns(6);
+}
 
 .end-of-line{
+  @include span-columns(6);
   @include omega;
 }
 
