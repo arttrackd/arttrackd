@@ -620,7 +620,6 @@ header.navigation {
   .card-header {
     @include transition (all 0.2s ease-in-out);
     background-color: white;
-    margin-top: 1em;
     //border-bottom: $card-border;
     //border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
