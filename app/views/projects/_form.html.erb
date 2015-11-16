@@ -10,63 +10,6 @@
       </ul>
     </div>
   <% end %>
-<<<<<<< HEAD
-  <div class="field">
-    <%= f.hidden_field :user_id, value: @project.user_id || @current_user.id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: @project.name || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, value: @project.description || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :_destroy %><br>
-    <%= f.check_box :_destroy %>
-  </div>
-  <br>
-
-  <div><h4> Materials: </h4></div>
-  <div class="material-form">
-    <%= f.fields_for :material_uses do |ff| %>
-      <div class="material-fields">
-        <div class="field asd">
-          <%= ff.hidden_field :project_id, value: @project.id  %>
-          <%= ff.hidden_field :user_id, value: @current_user.id  %>
-        </div>
-        <div class="field asdf">
-          <%= ff.label :material_purchase_id, value: "Material" %><br>
-          <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
-        </div>
-        <div class="field asdfg">
-          <%= ff.label :units %><br>
-          <%= ff.number_field :units %>
-
-          <%= ff.check_box :_destroy %><%= ff.label :_destroy, "Remove from #{@project.name}" %><br>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  <button type="button" class="add-material-button ">Add Material</button>
-
-  <div><h4> Project Costs: </h4></div>
-  <div class="project-form">
-    <%= f.fields_for :project_costs do |ff| %>
-      <div class="field">
-        <%= ff.label :cost_type %><br>
-        <%= ff.text_field :cost_type %>
-      </div>
-      <div class="field">
-        <%= ff.label :amount %><br>
-        <%= ff.number_field :amount %>
-        <%= ff.check_box :_destroy %><%= ff.label :_destroy, "Remove from #{@project.name}" %><br>
-      </div>
-      <hr />
-    <% end %>
-  </div>
-=======
 
   <div class="cards">
     <div class="card">
@@ -117,7 +60,6 @@
             <% end %>
           </div>
           <p class="add-project-button">Add Project Cost </p>
->>>>>>> 0f383a968da5bbc27a132925dc25389e7f9b939b
 
           <div class="actions">
             <p><%= f.submit %></p>

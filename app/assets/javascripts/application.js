@@ -20,35 +20,32 @@ function cloneMaterialFields(){
   var fields = $(".material-fields");
   fields.last().show();
   fields.last().clone(fields).last().appendTo('.material-form').hide();
-  changeUnits(".material-fields > div > input");
-  changeMaterial(".material-fields > div > select");
+  changeFieldNames(".material-fields > div > input, .material-fields > div > select" );
 }
 
+function cloneProjectCostFields(){
+  var fields = $(".project-cost-fields");
+  fields.last().show();
+  fields.last().clone(fields).last().appendTo(".project-cost-form").hide();
+  changeFieldNames(".project-cost-fields > div > p > input");
+}
 
-function changeUnits(selector){
-  number = $(selector).slice(-5)[0].name.match(/\d/)
+function changeFieldNames(selector){
+  fields = $(selector).slice(-2);
+  number = fields[0].name.match(/\d/)
   number = parseInt(number) + 1
 
-  for (var i = 0; i < $(selector).slice(-3).length; i++){
-    $(selector).slice(-3)[i].name = $(selector).slice(-3)[i].name.replace(/\d/, number)
-    $(selector).slice(-3)[i].id = $(selector).slice(-3)[i].id.replace(/\d/, number)
+  for (var i = 0; i < fields.length; i++){
+    fields[i].name = fields[i].name.replace(/\d/, number)
+    fields[i].id = fields[i].id.replace(/\d/, number)
   }
 }
-
-function changeMaterial(selector){
-  count = $(selector)[0].name.match(/\d/)
-  count = parseInt(count) + 1
-
-  for (var i = 0; i < $(selector).length; i++){
-    $(selector)[i].name = $(selector)[i].name.replace(/\d/, count)
-    $(selector)[i].id = $(selector)[i].id.replace(/\d/, count)
-  }
-}
-
 
 $(document).ready(function () {
+  $(".add-project-button").on("click", cloneProjectCostFields);
   $(".add-material-button").on("click", cloneMaterialFields);
   $(".material-fields").last().hide();
+  $(".project-cost-fields").last().hide();
   $(".sidebar-column").height($(document).height());
 
   $('.accordion-tabs-minimal').each(function(index) {
