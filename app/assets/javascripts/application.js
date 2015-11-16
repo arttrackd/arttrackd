@@ -16,20 +16,39 @@
 //= require d3
 
 
-$('.add-material-button').click(function(){
-  $('.material-fields').show()
-  $('.material-fields').last().clone('.material-fields').last().appendTo('.material-form').hide();
-
-
-})
-
-
 function cloneMaterialFields(){
   var fields = $(".material-fields");
   fields.last().show();
-  fields.last().clone('fields').last().appendTo('.material-form');
-  fields.last().hide();
+  fields.last().clone(fields).last().appendTo('.material-form').hide();
+  changeUnits(".material-fields > div > input");
+  changeMaterial(".material-fields > div > select");
 }
+
+
+
+function changeUnits(selector){
+  number = $(selector).slice(-5)[0].name.match(/\d/)
+  number = parseInt(number) + 1
+
+  for (var i = 0; i < $(selector).slice(-3).length; i++){
+    $(selector).slice(-3)[i].name = $(selector).slice(-3)[i].name.replace(/\d/, number)
+    $(selector).slice(-3)[i].id = $(selector).slice(-3)[i].id.replace(/\d/, number)
+  }
+}
+
+function changeMaterial(selector){
+  count = $(selector)[0].name.match(/\d/)
+  count = parseInt(count) + 1
+
+  for (var i = 0; i < $(selector).length; i++){
+    $(selector)[i].name = $(selector)[i].name.replace(/\d/, count)
+    $(selector)[i].id = $(selector)[i].id.replace(/\d/, count)
+  }
+}
+
+
+
+
 
 
 $(document).ready(function () {
