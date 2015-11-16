@@ -87,7 +87,7 @@ class ProjectsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def project_params
       params.require(:project).permit(:user_id, :name, :description,
-      project_costs_attributes: [:id, :cost_type, :amount, :user_id, :_destroy],
+      project_costs_attributes: [:id, :cost_type, :amount, :user_id, :project_id, :_destroy],
       material_uses_attributes: [:id, :material_purchase_id, :project_id, :user_id, :units, :_destroy])
     end
 end
