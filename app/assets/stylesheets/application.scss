@@ -90,31 +90,46 @@
   width: 100%;
 }
 
+.login-window{
+  // opacity: .75;
+}
+
+// .opaque{
+//   background-color: rgba(255, 0, 0, .75);
+//   opacity: .75;
+// }
+
 .some-height-padding{
   padding-top: 0.6em;
   padding-bottom: 0.5em;
   padding-left: 6.5em;
 }
 
-.login-boxes{
+.login-form{
   text-align: left;
   padding-left: 0em;
-  background-color: rgba(255, 255, 255, 1)
+  // opacity: 1;
 }
 
-.smaller-percent{
-  width: 22%;
-  margin: auto;
+#login-boxes{
+  // background-color: rgba(0, 255, 255, 1);
+  // opacity: 1;
 }
+
+// .smaller-percent{
+//   width: 22%;
+//   margin: auto;
+// }
 
 #clock-out-nav{
-  color: #F29500;
+  color: #53C6E0;
 }
+
 .background-ghost{
+  padding-left: 36%;
   padding-top: 15%;
-  padding-left: 20%;
   position: absolute;
-  opacity: 0.75;
+  //opacity: .75;
 }
 //General sitewide stuff
 p{
@@ -365,7 +380,7 @@ header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
   $action-color: #477DCA !default;
-  $dark-gray: #333 !default;
+  $dark-gray: #364653 !default;
   $large-screen: em(860) !default;
   $navigation-padding: 1em;
   $navigation-background: $dark-gray;
