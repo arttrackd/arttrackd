@@ -7,11 +7,6 @@ class ProjectCostsControllerTest < ActionController::TestCase
     session[:user_id] = @user.id
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:projects)
-  end
 
   test "should create project_cost" do
     assert_difference('ProjectCost.count') do

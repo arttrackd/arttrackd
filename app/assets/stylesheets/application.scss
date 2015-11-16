@@ -188,6 +188,15 @@ h5{
   margin-bottom: 1em;
   margin-top: 0em;
 }
+h6{
+  font-family: $helvetica;
+  font-size: 1.7em;
+  padding-left: 0.6em;
+  padding-top: 0.5em;
+  font-weight: 400;
+  margin-bottom: 0.2em;
+  margin-top: 0em;
+}
 // Sidebar 4 Lyfe
 .sidebar-column{
   @include span-columns(2 of 12);
@@ -510,6 +519,24 @@ header.navigation {
   min-width: 400px;
   position: relative;
 
+  .clock-card{
+    @include span-columns(6);
+    margin: 1em;
+    padding: 1em;
+  }
+  .project-show-card{
+    @include span-columns(6);
+    background-color: white;
+    p{
+      font-family: $helvetica;
+      margin-top: 0em;
+      margin-left: 1em;
+      margin-bottom: 1em;
+    }
+    h1{
+      margin-left: 0.5em;
+    }
+  }
   .index-card{
     @include span-columns(12);
     background-color: white;

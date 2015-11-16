@@ -8,7 +8,7 @@ class ProjectCostsController < ApplicationController
       pc = project_cost_scope
       @projects = ProjectCost.search(pc, params[:search])
     else
-      @projects = Project.includes(:project_costs).where(user: @current_user)
+      @projects = pc
     end
   end
 

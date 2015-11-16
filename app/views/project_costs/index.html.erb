@@ -5,6 +5,8 @@
     <%= submit_tag "Search", name: nil%>
   <% end %>
 </div>
+<% @projects = Project.includes(:project_costs).where(user_id: @current_user.id) %>
+
 <h3><%= link_to 'Add New Project', new_project_path %> <%= link_to 'See All Projects', projects_path %> <%= link_to 'See Sold Projects', projects_path(sold: true) %> </h3>
 <% if @projects %>
   <% @projects.each do |project| %>
@@ -18,28 +20,28 @@
           </div></br>
             <% if project.material_uses.length > 0 && project.project_costs.length > 0 %>
               <% if project.material_uses.length > 0 %>
-              <% project.material_uses.each do |material_use| %>
-                <div class="details">
-                  <%= material_use.name %>
-                  <%= material_use.units %>
-                  <%= number_to_currency(material_use.cost) %>
-                </div>
+                <% project.material_uses.each do |material_use| %>
+                  <div class="details">
+                    <%= material_use.name %>
+                    <%= material_use.units %>
+                    <%= number_to_currency(material_use.cost) %>
+                  </div>
                 <% end %>
               <% else %>
-              <% end %>
-              <% if project.project_costs.length > 0 %>
-                <% project.project_costs.each do |project_cost| %>
-                  <div class="details">
-                    <%= project_cost.cost_type %>
-                    <%= number_to_currency(project_cost.amount) %>
-                  </div>
-                <% end %></br>
-              <% else %>
-              <% end %>
+            <% end %>
+            <% if project.project_costs.length > 0 %>
+              <% project.project_costs.each do |project_cost| %>
+                <div class="details">
+                  <%= project_cost.cost_type %>
+                  <%= number_to_currency(project_cost.amount) %>
+                </div>
+              <% end %></br>
             <% else %>
-          <div class="details">
-            <p>There are no current projects costs.</p>
-          </div>
+            <% end %>
+          <% else %>
+            <div class="details">
+              <p>There are no current projects costs.</p>
+            </div>
           <% end %>
         </div>
       </div>

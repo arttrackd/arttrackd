@@ -2,7 +2,6 @@
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
-
       <ul>
         <% @project.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -15,20 +14,19 @@
     <div class="card">
       <div class="card-header"></div>
       <div class="index-card">
+        <div><h5> Details: </h4></div>
         <div class="field">
-          <div><h5> Details: </h4></div>
-          <div class="field">
-            <p><%= f.label :name %></br>
-            <%= f.text_field :name, value: @project.name || "" %></p>
-          </div>
-          <div class="field">
-            <p><%= f.label :description %></br>
-            <%= f.text_area :description, value: @project.description || "" %></p>
-          </div></br>
+          <p><%= f.label :name %></br>
+          <%= f.text_field :name, value: @project.name || "" %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :description %></br>
+          <%= f.text_area :description, value: @project.description || "" %></p>
+        </div></br>
 
-          <div class="material-form">
-            <div><h5> Materials: </h5></div>
-            <%= f.fields_for :material_uses do |ff| %>
+        <div><h4> Materials: </h4></div>
+        <div class="material-form">
+          <%= f.fields_for :material_uses do |ff| %>
             <div class = "material-fields">
               <div class="field">
                 <p><%= ff.label :material_purchase_id, value: "Material" %><br>
@@ -39,34 +37,30 @@
                 <%= ff.number_field :units %></p>
               </div>
             </div>
-            <% end %>
-          </div>
-          <div class="form-button"><p class="add-material-button">Add Material </p></div>
+          <% end %>
+          <button type="button" class="add-material-button form-button">Add Material </button>
+        </div>
 
-
-          <div class="project-cost-form" id="project-cost-form">
-            <div><h5> Project Costs: </h5></div>
-            <%= f.fields_for :project_costs do |ff| %>
-              <div class = "project-cost-fields">
-                <div class="field">
-                  <p><%= ff.label :cost_type %></br>
-                  <%= ff.text_field :cost_type %></p>
-                </div>
-                <div class="field">
-                  <p><%= ff.label :amount %></br>
-                  <%= ff.number_field :amount %></p>
-                </div>
+        <div><h5> Project Costs: </h5></div>
+        <div class="project-cost-form" id="project-cost-form">
+          <%= f.fields_for :project_costs do |ff| %>
+            <div class = "project-cost-fields">
+              <div class="field">
+                <%= ff.label :cost_type %></br>
+                <%= ff.text_field :cost_type %>
+              </div>
+              <div class="field">
+                <%= ff.label :amount %></br>
+                <%= ff.number_field :amount %>
+              </div>
             </div>
-
-            <% end %>
-          </div>
-          <div class="form-button"><p class="add-project-button">Add Project Cost </p></div>
-
-          <div class="actions">
-            <p><%= f.submit %></p>
-          </div>
-        <% end %>
+          <% end %>
+          <button type="button" class="add-project-button form-button">Add Project Cost </button>
+        </div>
+        <div class="actions">
+          <p><%= f.submit %></p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

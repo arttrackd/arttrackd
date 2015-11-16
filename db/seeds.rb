@@ -86,7 +86,7 @@ end
 end
 
 100.times do
-  MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, units: Faker::Number.between(0, 15), user_id: [1,2,3,4,5].sample)
+  MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, units: Faker::Number.between(1, 15), user_id: [1,2,3,4,5].sample)
 end
 
 100.times do
