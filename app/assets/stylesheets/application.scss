@@ -762,3 +762,21 @@ $warning-color: #F1DCB2 !default;
     }
   }
 }
+
+// Search bar style
+
+  .search-button {
+    height: 2.5em;
+    width: 2.5em;
+    margin-bottom: -0.8em;
+    margin-left: -1em;
+    background-color: #C23822;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    padding: 0.2em;
+    border-bottom-right-radius: 15%;
+    border-top-right-radius: 15%;
+  }
+  .search-button:hover{
+    background-color: #822617;
+  }
