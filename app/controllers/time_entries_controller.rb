@@ -61,7 +61,7 @@ class TimeEntriesController < ApplicationController
     @time_entry = TimeEntry.where('project_id = ?', params[:time_entry][:project_id]).last
     if @time_entry.stop_time
       redirect_to project_path(@time_entry.project_id),
-        alert: 'You must clock in first!'
+        alert: 'You must clock in before clocking out.'
     else
       start = @time_entry.start_time
       @time_entry.update(stop_time: Time.zone.now,

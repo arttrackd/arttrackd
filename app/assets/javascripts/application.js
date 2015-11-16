@@ -20,14 +20,14 @@ function cloneMaterialFields(){
   var fields = $(".material-fields");
   fields.last().show();
   fields.last().clone(fields).last().appendTo('.material-form').hide();
-  changeFieldNames(".material-fields > div > input");
+  changeFieldNames(".material-fields > div > input, .material-fields > div > select" );
 }
 
 function cloneProjectCostFields(){
   var fields = $(".project-cost-fields");
   fields.last().show();
   fields.last().clone(fields).last().appendTo(".project-cost-form").hide();
-  changeFieldNames(".project-cost-fields > div > input");
+  changeFieldNames(".project-cost-fields > div > p > input");
 }
 
 function changeFieldNames(selector){

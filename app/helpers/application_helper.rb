@@ -10,7 +10,7 @@ module ApplicationHelper
   end
 
   def clocked_in?
-    current_time_entry
+    @current_user.projects.length == 0 ? nil : current_time_entry
   end
 
   def current_time_entry

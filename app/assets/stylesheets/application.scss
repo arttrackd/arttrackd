@@ -32,22 +32,28 @@
  }
  //Index pages
  .title{
-   color: white;
+   color: #333;
    font-family: $helvetica;
-   font-size: 2.25em;
+   font-size: 2em;
    margin-top: 0.5em;
    margin-bottom: 1em;
    margin-left: 0.5em;
  }
+ .title >a{
+   text-decoration: none;
+ }
  .index-icon {
    height: 1.1em;
    width: 1.1em;
-   margin-left: 1em;
+   margin-left: 0.2em;
+   margin-right: 0.8em;
  }
  .sold-icon {
    height: 2.2em;
    width: 2.2em;
-   margin-left: 1em;
+   margin-left: 0.2em;
+   margin-right: 0.8em;
+   transform: translate(0em, 0.7em);
  }
  //Containers
  .outer-container{
@@ -60,8 +66,8 @@
 
  .blue{
    padding-top: 0px;
-   background-color: #ccc;
- }
+   background-color: #ddebee;
+}
 
  .page-wrap {
    @include outer-container(100%);
@@ -109,7 +115,7 @@ a{
 
 h1{
   font-family: $helvetica;
-  font-size: 2em;
+  font-size: 1.8em;
   margin-top: .1em;
   margin-bottom: .1em;
   font-weight: normal;
@@ -133,6 +139,10 @@ h2 > a{
   color: black;
 }
 
+h2 > a:hover{
+  color: #5D5D5D;
+}
+
 h3{
   font-family: $helvetica;
   font-size: 1em;
@@ -149,16 +159,34 @@ h3 > a{
   color: #eee;
   text-decoration: none;
   background-color: #3DC7DD;
-  border-radius: 0.3em;
   padding-top: 0.3em;
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-bottom: 0.4em;
-  border: 1px solid #21A6BB;
 }
 
 h3 > a:hover{
   background-color: #21A6BB;
+}
+
+h4 {
+  font-family: $helvetica;
+  font-size: 1.3em;
+  padding-left: 4.9em;
+  padding-top: 0.5em;
+  font-weight: normal;
+  margin-bottom: 1em;
+  margin-top: 0em;
+}
+
+h5{
+  font-family: $helvetica;
+  font-size: 1.3em;
+  padding-left: 0.7em;
+  padding-top: 0.5em;
+  font-weight: normal;
+  margin-bottom: 1em;
+  margin-top: 0em;
 }
 // Sidebar 4 Lyfe
 .sidebar-column{
@@ -250,7 +278,6 @@ h3 > a:hover{
   padding-top: 2em;
   padding-right: 1em;
   padding-bottom: 1em;
-  padding-left: 1em;
   float:right;
 }
 
@@ -299,7 +326,7 @@ h3 > a:hover{
   text-align: center;
   font-size: 0.9em;
   color: #5D5D5D;
-  background-color: #ccc;
+  background-color: #ddebee;
   min-height: 100vh;
 }
 
@@ -519,7 +546,7 @@ header.navigation {
     @include transition (all 0.2s ease-in-out);
     background-color: white;
     //border-bottom: $card-border;
-    border-radius: $base-border-radius $base-border-radius 0 0;
+    //border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
     padding: ($base-spacing / 3) ($base-spacing / 2) + 0.5;
 
@@ -554,7 +581,6 @@ header.navigation {
     }
   }
 
-  &:focus,
   &:hover {
     cursor: pointer;
 
@@ -564,10 +590,8 @@ header.navigation {
   }
 
   &:active {
-    background-color: $card-background;
 
     .card-header {
-      background-color: $card-background;
     }
   }
 }
@@ -577,7 +601,7 @@ header.navigation {
 $base-spacing: 1.5em !default;
 $alert-color: #fff6bf !default;
 $error-color: #fbe3e4 !default;
-$notice-color: #e5edf8 !default;
+$notice-color: #e6efc2 !default;
 $success-color: #e6efc2 !default;
 $warning-color: #F1DCB2 !default;
 
@@ -588,6 +612,7 @@ $warning-color: #F1DCB2 !default;
   margin-bottom: 0;
   padding: $base-spacing / 2;
   text-align: center;
+  border-bottom: 1px solid darken($color, 5%);
 
   a {
     color: darken($color, 70%);

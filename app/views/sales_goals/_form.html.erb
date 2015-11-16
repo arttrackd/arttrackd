@@ -11,30 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="index-card">
+        <div class="field">
+          <p><%= f.label :amount %></br>
+          <%= f.number_field :amount %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :start_time, 'Start date' %></br>
+          <%= f.date_select :start_time %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :length_of_time, 'How long?'%></br>
+          <%= number_field_tag :number %>
+          <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %></p>
+        </div>
+        <% if :sales_channels %>
+        <div class="field">
+          <p><%= f.label :sales_channel %></br>
+          <%= f.collection_select(:sales_channel_id, @sales_channels, :id, :name, prompt: true)%></p>
+        </div>
+        <% end %>
+        <div class="actions">
+          <p><%= f.submit %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <br />
-  <div class="field">
-    <%= f.label :start_time, 'Start date' %><br>
-    <%= f.date_select :start_time %>
-  </div>
-  <br />
-  <div class="field">
-    <%= f.label :length_of_time, 'How long?'%><br>
-    <%= number_field_tag :number %>
-    <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %>
-  </div>
-  <br />
-  <% if :sales_channels %>
-  <div class="field">
-    <%= f.label :sales_channel %><br>
-    <%= f.collection_select(:sales_channel_id, @sales_channels, :id, :name, prompt: true)%>
-  </div>
-  <% end %>
-  <br />
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -11,19 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-
-    <%= f.hidden_field :user_id, value: @sales_channel.user_id || @current_user.id %>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="index-card">
+        <div class="field">
+          <%= f.hidden_field :user_id, value: @sales_channel.user_id || @current_user.id %>
+        </div>
+        <div class="field">
+          <p><%= f.label :name %></br>
+          <%= f.text_field :name, value: @sales_channel.name || "" %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :description %></br>
+          <%= f.text_area :description, value: @sales_channel.description || "" %></p>
+        </div>
+        <div class="actions">
+          <p><%= f.submit %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: @sales_channel.name || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, value: @sales_channel.description || "" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

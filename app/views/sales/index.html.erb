@@ -11,23 +11,22 @@
   <div class="cards">
     <div class="card">
       <div class="card-header">
-        <h2><%= sale.project.name %></h2>
+        <h2><%= link_to sale.project.name, sale %></h2>
           <div class="details">
             <% if sale.sales_channel %>
-              Sold at: <%= sale.sales_channel.name %>
+              Sold at: <%= link_to sale.sales_channel.name, sale.sales_channel %>
             <% else %>
               Sales channel not specified, <%= link_to 'click to add', edit_sale_path(sale) %>
             <% end %></br>
-            <%= link_to 'Details', sale %>
             <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sale_path(sale) %>
             <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), sale, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
         <div class="index-card">
           <div class"sales-index-sales">
-          <div class="sales-index-gross gd"> Sold for: <%= number_to_currency(sale.gross) %></div>
-          <div class="sales-index-net gd"> Net Profit: <%= number_to_currency(sale.net) %></div>
-          <div class="sales-index-date gd">  Sale date: <%= sale.date.strftime("%B %d, %Y") %></div>
+          <div class="sales-index-gross gd"><p> Sold for: <%= number_to_currency(sale.gross) %></p></div>
+          <div class="sales-index-net gd"><p> Net Profit: <%= number_to_currency(sale.net) %></p></div>
+          <div class="sales-index-date gd"><p>  Sale date: <%= sale.date.strftime("%B %d, %Y") %></p></div>
           </div>
         </div>
       </div>
