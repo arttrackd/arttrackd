@@ -42,14 +42,14 @@
   <div class="card">
     <div class="clock-card">
       <div class="card-header">
-        <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
-        <%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @project.id}), method: :patch, id: "clock-out" %>
+        <p></p></br>
+        <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %>
+        <%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @project.id}), method: :patch, id: "clock-out" %><p></p>
         <div class="details">
           <p><% if @project_time > 0 %>
             You have worked on this project for
             <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %>
             <% @time_entries.each do |time_entry| %>
-
               <h2>Worked on: <%= link_to time_entry.start_time.strftime("%B %d"), time_entry %></br>
               <div class="details">
                 <% if time_entry.start_time && time_entry.stop_time %>
@@ -58,9 +58,9 @@
                 <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(time_entry) %>
                 <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
-
             <% end %>
-            <p><%= link_to 'View Time Entries', time_entries_path(id: @project.id) %></p>
+            <p />
+            <h3><%= link_to 'View Time Entries', time_entries_path(id: @project.id), id: "view-time-entries" %></h3>
           <% else %>
               You have not worked on this project yet.
           <% end%>

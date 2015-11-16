@@ -2,7 +2,7 @@ class SalesGoalsController < ApplicationController
   before_action :require_login
   before_action :set_sales_goal, only: [:show, :edit, :update, :destroy]
   before_action :validate_user, only: [:show, :edit, :update, :destroy]
-  before_action :check_time_set, only: [:create, :update]
+  before_action :check_time_set, only: [:update]
 
   # GET /sales_goals
   def index
@@ -38,7 +38,7 @@ class SalesGoalsController < ApplicationController
       if @sales_goal.save
         redirect_to @sales_goal, notice: 'Sales goal was successfully created.'
       else
-      redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
+        redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
       end
     else
       redirect_to new_sales_goal_path, error: 'You must specify an amount and length of time.'
@@ -91,7 +91,7 @@ class SalesGoalsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def sales_goal_params
       params[:sales_goal][:length_of_time] = "#{params[:number]} #{params[:units]}"
-      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time, :sales_channel_id)
+      params.require(:sales_goal).permit(:user_id, :amount, :length_of_time, :start_time, :sales_channel_id, :number, :units)
     end
 
     def validate_user

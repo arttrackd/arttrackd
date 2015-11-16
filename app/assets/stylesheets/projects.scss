@@ -2,6 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#clock-in{
+  background-color: #53C6E0;
+  color: #FFF;
+  padding: 1em 2em;
+  transform: translate(2em, 2em);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+
+#clock-out{
+  background-color: #53C6E0;
+  color: #FFF;
+  padding: 1em 2em;
+  margin: 0.9em;
+  transform: translate(2em, 2em);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+
+}
+
 .project-index-name{
   @include span-columns(12);
   @include omega();
@@ -139,4 +163,8 @@ h1 {
 
 .project-index-row{
   @include row();
+}
+
+#view-time-entries{
+  color: #FFF;
 }

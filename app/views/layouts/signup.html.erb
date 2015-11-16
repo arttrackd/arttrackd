@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Arttrackd</title>
+    <title>Arttrack</title>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
@@ -24,7 +24,7 @@
         <div class="success"><%= flash[:success] %></div>
       <% end %>
         <%= yield %>
-        <%= link_to (image_tag asset_url('clay.jpeg'), class: "login-image") %>
+        <%= link_to (image_tag asset_url('clay.jpg'), class: "login-image") %>
   <%= render 'layouts/awesome_footer' %>
   </body>
 </html>

@@ -23,10 +23,10 @@
           <p><%= f.label :description %></br>
           <%= f.text_area :description, value: @project.description || "" %></p>
         </div></br>
-
-        <div><h4> Materials: </h4></div>
-        <div class="material-form">
-          <%= f.fields_for :material_uses do |ff| %>
+          <div><h4> Materials: </h4></div>
+          <div class="material-form">
+            <div><h5> Materials: </h5></div>
+            <%= f.fields_for :material_uses do |ff| %>
             <div class = "material-fields">
               <div class="field">
                 <p><%= ff.label :material_purchase_id, value: "Material" %><br>
