@@ -45,14 +45,13 @@
           <%= f.fields_for :project_costs do |ff| %>
             <div class = "project-cost-fields">
               <div class="field">
-                <%= ff.label :cost_type %></br>
-                <%= ff.text_field :cost_type %>
+                <p><%= ff.label :cost_type %></br>
+                <%= ff.text_field :cost_type %></p>
               </div>
               <div class="field">
-                <%= ff.label :amount %></br>
-                <%= ff.number_field :amount %>
+                <p><%= ff.label :amount %></br>
+                <%= ff.number_field :amount %></p>
               </div>
-              <br />
             </div>
           <% end %>
         </div>
