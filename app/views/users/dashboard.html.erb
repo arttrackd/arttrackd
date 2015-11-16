@@ -11,10 +11,9 @@
       </div>
     <% else %>
       <div class="card-image">
-        <%= link_to 'Add a Sales Goal', new_sales_goal_path %>
       </div>
       <div class="card-copy">
-        <p>Latest Sales Goal</p>
+        <p><%= link_to 'Add a Sales Goal', new_sales_goal_path %></p>
       </div>
     <% end %>
   </div>
@@ -39,7 +38,7 @@
         <% end %>
       <p><%= link_to '. . .', projects_path %></p>
     <% else %>
-      <h3><%= link_to 'Create a Project', new_project_path %></h3>
+      <p><%= link_to 'Create a Project', new_project_path %></p>
     <% end %>
     </div>
   </div>
@@ -55,7 +54,7 @@
         <% end %>
       <p><%= link_to '. . .', sales_path %></p>
     <% else %>
-      <h3><%= link_to 'View Projects', projects_path %></h3>
+      <p><%= link_to 'View Projects', projects_path %></p>
     <% end %>
     </div>
   </div>
