@@ -48,6 +48,14 @@
    margin-left: 0.2em;
    margin-right: 0.8em;
  }
+ .card-header-icon {
+   height: 1.1em;
+   width: 1.1em;
+   margin-left: 0.2em;
+   margin-right: 0.2em;
+   margin-top: -1em;
+   transform: translate(0em, 0.2em);
+ }
  .sold-icon {
    height: 2.2em;
    width: 2.2em;
@@ -372,6 +380,35 @@ header.navigation {
   z-index: 999;
   position: fixed;
   text-align: center;
+  float: left;
+
+  .navigation-left{
+    float: left;
+    line-height: $navigation-height;
+    color: $navigation-color;
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  .navigation-left >a{
+    text-decoration: none;
+  }
+
+  .navigation-right{
+    float: right;
+    line-height: $navigation-height;
+    color: $navigation-color;
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  .navigation-right >a{
+    text-decoration: none;
+  }
 
   .navigation-wrapper {
     @include clearfix;
@@ -594,7 +631,7 @@ header.navigation {
 
   .card-copy {
     font-size: 1em;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.05em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
     background-color: #354652;
     color: white;
@@ -733,3 +770,21 @@ $warning-color: #F1DCB2 !default;
     }
   }
 }
+
+// Search bar style
+
+  .search-button {
+    height: 2.5em;
+    width: 2.5em;
+    margin-bottom: -0.8em;
+    margin-left: -1em;
+    background-color: #C23822;
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+    padding: 0.5em;
+    border-bottom-right-radius: 15%;
+    border-top-right-radius: 15%;
+  }
+  .search-button:hover{
+    background-color: #822617;
+  }
