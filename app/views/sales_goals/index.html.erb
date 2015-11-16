@@ -1,4 +1,4 @@
-<h1 class="title goal-active">My Current Sales Goals</h1>
+<h1 class="title goal-active"><%= image_tag asset_url('goals.png'), class: "card-header-icon" %>My Current Sales Goals</h1>
 <h3><%= link_to 'New Sales Goal', new_sales_goal_path %></h3>
 <% if @goals %>
   <% @goals.each do |goal| %>
