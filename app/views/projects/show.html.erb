@@ -33,7 +33,8 @@
       <div class="edit-back">
         <p><%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: @project.id) %>
         <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(@project) %>
-        <%= link_to 'Back to All Projects', projects_path %></p>
+        <br />
+        <button type="button"><%= link_to 'Back to All Projects', projects_path %></button></p>
       </div>
     </div>
     </div>
