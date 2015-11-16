@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :project_costs
   has_many :sales
   has_secure_password
-  has_attached_file :avatar, styles: { medium: "300x300>#", thumb: "100x100>" } 
+  has_attached_file :avatar, styles: { medium: "300x300>#", thumb: "100x100>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   validates :name, presence: true
   validates :email, presence: true,
@@ -26,5 +26,5 @@ class User < ActiveRecord::Base
       }
   validates :password, length: { minimum: 8 }, allow_nil: true
   validates :hourly_rate, presence: true, numericality: {greater_than: 0}
-
+  attr_accessor :avatar_file_name
 end
