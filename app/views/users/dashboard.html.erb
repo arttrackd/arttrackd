@@ -37,7 +37,7 @@
         <% @projects.each do |project| %>
           <p><%= link_to project.name, project %></p>
         <% end %>
-      <p><%= link_to '. . .', projects_path %></p>
+      <p><%= link_to '(See All)', projects_path %></p>
     <% else %>
       <p><%= link_to 'Create a Project', new_project_path %></p>
     <% end %>
@@ -53,7 +53,7 @@
         <% @sales.each do |sale| %>
           <p><%= link_to sale.project.name, sale %>: <%= number_to_currency(sale.gross) %></p>
         <% end %>
-      <p><%= link_to '. . .', sales_path %></p>
+      <p><%= link_to '(See All)', sales_path %></p>
     <% else %>
       <p><%= link_to 'View Projects', projects_path %></p>
     <% end %>

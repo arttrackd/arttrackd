@@ -10,12 +10,12 @@ class SalesChannel < ActiveRecord::Base
 
   def self.amount_by_channel
     items = []
-    colors = ["#4DF36F", "#4FEAFF", "#5D5FF1", "#CE4085"]
+    colors = ["#590012", "#007353", "#C97300", "#1D579B", "#61009F", "#667578"]
 
     channels = SalesChannel.all
     channel_ids = channels.pluck(:id)
     sales = Sale.where('sales_channel_id IN (?)', channel_ids)
-    i = 0
+    i = 1
     channels.each do |channel|
       applicable_sales = sales.select{|sale| sale.sales_channel_id == channel.id}
       sum_of_sales = applicable_sales.map{|sale| sale.gross}.reduce(:+)
@@ -24,7 +24,7 @@ class SalesChannel < ActiveRecord::Base
                 "value": sum_of_sales.to_f,
                 "color": colors[i]}
       i+=1
-      i%=4
+      i%=6
     end
     items
   end
