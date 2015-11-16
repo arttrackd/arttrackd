@@ -600,12 +600,20 @@ header.navigation {
     background-color: white;
   }
 
+  .donut-graph{
+    padding-top: 10%;
+  }
+
+  #pieChart{
+    margin-bottom: 8%;
+  }
+
   .card-image {
     text-align: center;
     margin: auto;
     overflow: hidden;
-    height: 150px;
-    max-height: 150px;
+    height: 250px;
+    max-height: 250px;
     background-color: $card-image-hover-color;
 
     img {
