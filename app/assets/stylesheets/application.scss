@@ -372,6 +372,35 @@ header.navigation {
   z-index: 999;
   position: fixed;
   text-align: center;
+  float: left;
+
+  .navigation-left{
+    float: left;
+    line-height: $navigation-height;
+    color: $navigation-color;
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  .navigation-left >a{
+    text-decoration: none;
+  }
+
+  .navigation-right{
+    float: right;
+    line-height: $navigation-height;
+    color: $navigation-color;
+    &:focus,
+    &:hover {
+      color: $navigation-color-hover;
+    }
+  }
+
+  .navigation-right >a{
+    text-decoration: none;
+  }
 
   .navigation-wrapper {
     @include clearfix;
