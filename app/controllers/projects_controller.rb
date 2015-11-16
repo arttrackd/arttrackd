@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   def show
     @project_time = @project.total_time
+    @time_entries = TimeEntry.where('project_id = ?', @project.id)
+
   end
 
   # GET /projects/new
