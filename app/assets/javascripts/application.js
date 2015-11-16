@@ -15,12 +15,11 @@
 //= require_tree .
 //= require d3
 
-
 function cloneMaterialFields(){
   var fields = $(".material-fields");
   fields.last().show();
   fields.last().clone(fields).last().appendTo('.material-form').hide();
-  changeFieldNames(".material-fields > div > input, .material-fields > div > select" );
+  changeFieldNames(".material-fields > div > p > input, .material-fields > div > p > select" );
 }
 
 function cloneProjectCostFields(){

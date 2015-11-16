@@ -31,12 +31,12 @@
             <%= f.fields_for :material_uses do |ff| %>
             <div class = "material-fields">
               <div class="field">
-                <%= ff.label :material_purchase_id, value: "Material" %><br>
-                <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
+                <p><%= ff.label :material_purchase_id, value: "Material" %><br>
+                <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %></p>
               </div>
               <div class="field">
-                <%= ff.label :units %><br>
-                <%= ff.number_field :units %>
+                <p><%= ff.label :units %><br>
+                <%= ff.number_field :units %></p>
               </div>
             </div>
             <% end %>
