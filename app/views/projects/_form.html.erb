@@ -40,7 +40,7 @@
               </div>
             </div>
             <% end %>
-            <p class="add-material-button">Add Material </p>
+            <button type="button" class="add-material-button">Add Material </button>
           </div>
 
           <div><h5> Project Costs: </h5></div>
@@ -55,12 +55,11 @@
                   <p><%= ff.label :amount %></br>
                   <%= ff.number_field :amount %></p>
                 </div>
+              </div>
             </div>
-
             <% end %>
+            <button type="button" class="add-project-button">Add Project Cost </button>
           </div>
-          <p class="add-project-button">Add Project Cost </p>
-
           <div class="actions">
             <p><%= f.submit %></p>
           </div>
