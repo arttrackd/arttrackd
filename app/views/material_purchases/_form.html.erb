@@ -11,22 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.hidden_field :user_id, value: @material_purchase.user_id || @current_user.id %>
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"></div>
+      <div class="index-card">
+        <div class="field">
+          <%= f.hidden_field :user_id, value: @current_user.id %>
+        </div>
+        <div class="field">
+          <p><%= f.label :name %></br>
+          <%= f.text_field :name %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :cost %></br>
+          <%= f.number_field :cost, :class => 'text_field', :step => 0.01 %></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :units %></br>
+          <%= f.number_field :units, :class => 'text_field', :step => 'any'%></p>
+        </div>
+        <div class="field">
+          <p><%= f.label :receipt, "Upload a receipt for this purchase" %></br>
+          <%= f.file_field :receipt %></p>
+        </div>
+
+        <div class="actions">
+          <p><%= f.submit 'Update Inventory' %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name, value: @material_purchase.name || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :cost %><br>
-    <%= f.number_field :cost, :class => 'text_field', :step => 0.01, value: @material_purchase.cost || "" %>
-  </div>
-  <div class="field">
-    <%= f.label :units %><br>
-    <%= f.number_field :units, :class => 'text_field', :step => 'any', value: @material_purchase.units || "" %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

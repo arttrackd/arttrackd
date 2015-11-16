@@ -30,11 +30,11 @@ class SalesChannelTest < ActiveSupport::TestCase
     Sale.create!(project_id: 2, sales_channel_id: sc2.id, gross: 300, net: 250, date: Date.today - rand(1..5).days)
 
     expected = [{"label": "The Van",
-              "value": 100,
-              "color": "#e92473"},
+              "value": 100.0,
+              "color": "#4DF36F"},
               {"label": "Super Festival",
-              "value": 300,
-              "color": "#6ccd61"}]
+              "value": 300.0,
+              "color": "#4FEAFF"}]
     results = SalesChannel.amount_by_channel
 
     assert_equal expected, results

@@ -16,10 +16,6 @@ class ProjectCostsController < ApplicationController
   def show
   end
 
-  # GET /project_costs/new
-  def new
-    @project_cost = ProjectCost.new
-  end
 
   # GET /project_costs/1/edit
   def edit
@@ -28,7 +24,7 @@ class ProjectCostsController < ApplicationController
   # POST /project_costs
   def create
     @project_cost = ProjectCost.new(project_cost_params)
-
+    @project_cost.user_id = @current_user.id
     if @project_cost.save
       redirect_to @project_cost, notice: 'Project cost was successfully created.'
     else

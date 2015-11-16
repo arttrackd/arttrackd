@@ -25,7 +25,6 @@ function cloneMaterialFields(){
 }
 
 
-
 function changeUnits(selector){
   number = $(selector).slice(-5)[0].name.match(/\d/)
   number = parseInt(number) + 1
@@ -45,10 +44,6 @@ function changeMaterial(selector){
     $(selector)[i].id = $(selector)[i].id.replace(/\d/, count)
   }
 }
-
-
-
-
 
 
 $(document).ready(function () {

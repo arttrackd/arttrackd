@@ -27,6 +27,7 @@ class MaterialUsesController < ApplicationController
     @project = Project.where(user_id: @current_user.id)
   end
 
+
   # POST /material_uses
   def create
     @material_use = MaterialUse.new(material_use_params)

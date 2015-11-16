@@ -1,9 +1,14 @@
-
-<div class="title"><%= @sales_channel.name %></div>
-
-<div class="sales-channel-index-description"><%= @sales_channel.description %></div>
-
-<div class="edit-back">
-  <%= link_to 'Edit', edit_sales_channel_path(@sales_channel) %> |
-  <%= link_to 'Back to Sales Channels', sales_channels_path %>
+<div class="title"></div>
+<div class="cards">
+  <div class="card">
+    <div class="card-header"><h2><%= @sales_channel.name %></h2></div>
+    <div class="index-card">
+      <p><%= @sales_channel.description %></p>
+      <div class="details">
+        <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sales_channel_path(@sales_channel) %>
+        <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Back to Sales Channels', sales_channels_path %>
+      </div>
+    </div>
+  </div>
 </div>

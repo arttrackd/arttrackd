@@ -1,21 +1,21 @@
 <div class="title">
-My Projects
+My <% if params[:sold] %>Sold<% else %><% end %> Projects
 <%= form_tag projects_path, method: :get do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", name: nil%>
 <% end %>
 </div>
-<h3><%= link_to 'Add New Project', new_project_path %></h3>
+<h3><%= link_to 'Add New Project', new_project_path %> <% if !params[:sold] %><%= link_to 'See Sold Projects', projects_path(sold: true) %><% else %><%= link_to 'See All Projects', projects_path %><% end %> <%= link_to 'See Project Costs Breakdowns', project_costs_path %></h3>
 <% if @projects %>
   <% @projects.each do |project| %>
   <div class="cards">
     <div class="card">
       <div class="card-header">
-        <h2><%= project.name %></h2>
-        <h3><%= project.description %></h3>
+        <h2><%= link_to project.name, project %></h2>
         <div class="details">
-          <%= link_to 'Details', project %>
+          <p><%= link_to project.description, project %></p>
           <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(project) %>
+          <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: project.id) %>
           <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), project, method: :delete, data: { confirm: 'Are you sure?' } unless project.sales.length > 0 %>
         </div>
       </div>
@@ -25,10 +25,10 @@ My Projects
             <div class = "project-index-row">
               <div class="project-index-desc gd"> </div>
               <div class="project-index-gross gd">
-                Sold for: <%= number_to_currency(sale.gross) %>
+                <p>Sold for: <%= number_to_currency(sale.gross) %></p>
               </div>
               <div class="project-index-saledate gd">
-                <%= sale.date.strftime("%B %d, %Y") %></br>
+                <p><%= sale.date.strftime("%B %d, %Y") %></p>
               </div>
             </div>
           <% end %>
@@ -36,13 +36,9 @@ My Projects
           <div class"project-index-sales">
           <div class = "project-index-row">
             <div class="project-index-desc gd"> </div>
-            <div class="project-index-gross gd">In Stock</div>
-            <div class="project-index-saledate gd">Estimated Value: <br>
-              <% if project.material_uses.length > 0 && !project.material_uses.first.material_purchase.nil? %>
-              <%= number_to_currency((project.estimated_value) + (project.total_material_cost)) %>
-              <% else %>
-                <%= number_to_currency(project.estimated_value.to_i)%>
-              <% end %>
+            <div class="project-index-gross gd"><p>In Stock</p></div>
+            <div class="project-index-saledate gd"><p>Estimated Value: <br>
+                <%= number_to_currency(project.estimated_value)%></p>
               </div>
             </div>
           </div>

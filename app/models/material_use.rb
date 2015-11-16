@@ -4,26 +4,23 @@ class MaterialUse < ActiveRecord::Base
   belongs_to :user
 
   # validates :name, presence: true
-  validates :user,                presence: true
   validates :material_purchase,   presence: true
-  validates :units,               presence: true
-  # validate :enough_in_stock, on: :create
+
+  validates :units,               presence: true, numericality: {greater_than: 0}
+  validate :enough_in_stock, on: [:create, :update]
 
   delegate :name,                 to: :material_purchase
 
-  after_save :subtract_units_used_from_remaining
 
   def enough_in_stock
     unless MaterialPurchase.find(material_purchase_id).units_remaining >= units
       errors.add(:units, "|| There are only #{MaterialPurchase.find(material_purchase_id).units_remaining} in stock" )
+      false
+    else
+      true
     end
   end
 
-  def subtract_units_used_from_remaining
-    if enough_in_stock
-      MaterialPurchase.find(material_purchase_id).units_remaining = MaterialPurchase.find(material_purchase_id).units_remaining - units
-    end
-  end
 
   def self.search(mu, q)
     search =  "%#{q}%"
@@ -32,5 +29,9 @@ class MaterialUse < ActiveRecord::Base
     Project.where(project_search)
 
     #MaterialUse.where('name LIKE ? OR description LIKE ?', search, search)
+  end
+
+  def cost
+    units * (material_purchase.cost / material_purchase.units)
   end
 end

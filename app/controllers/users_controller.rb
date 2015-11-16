@@ -53,8 +53,8 @@ class UsersController < ApplicationController
 
   def dashboard
     redirect_to dashboard_user_path(@user.id) unless @user == @current_user
-    @projects = Project.where('user_id = ?', @user.id).limit(5)
-    @sales = Sale.where('user_id = ?', @user.id).limit(5)
+    @projects = Project.where('user_id = ?', @user.id).order(updated_at: :desc).limit(5)
+    @sales = Sale.where('user_id = ?', @user.id).order(date: :desc, created_at: :desc).limit(5)
     @goal = SalesGoal.where('user_id = ?', @user.id).last
     if @user.sales_goals.length > 0
       @percent_completion = SalesGoal.percent_completion(@goal)
@@ -75,6 +75,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :public_profile, :time_zone, :hourly_rate)
+      params.require(:user).permit(:name, :email, :password, :public_profile, :time_zone, :hourly_rate, :avatar)
     end
 end

@@ -2,7 +2,8 @@ class ProjectCost < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   validates :cost_type, presence: true
-  validates :amount, presence: true
+  validates :amount, presence: true, numericality: {greater_than: 0}
+  validates :project_id, presence: true
 
   # def self.search(q, user_id)
   #   projects = Project.where("user_id = ? AND name LIKE ?", user_id, q)

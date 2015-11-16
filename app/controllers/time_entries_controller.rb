@@ -46,17 +46,22 @@ class TimeEntriesController < ApplicationController
   end
 
   def clock_in
-    @time_entry = TimeEntry.new(time_entry_params)
-    @time_entry.start_time = Time.zone.now
-    @time_entry.save
-    redirect_to project_path(@time_entry.project_id), notice: "Time entry started"
+    unless clocked_in?
+      @time_entry = TimeEntry.new(time_entry_params)
+      @time_entry.start_time = Time.zone.now
+      @time_entry.save
+      redirect_to project_path(@time_entry.project_id), notice: "Time entry started"
+    else
+      flash[:error] = "You must clock out before clocking in again."
+      redirect_to project_path(time_entry_params[:project_id])
+    end
   end
 
   def clock_out
     @time_entry = TimeEntry.where('project_id = ?', params[:time_entry][:project_id]).last
     if @time_entry.stop_time
       redirect_to project_path(@time_entry.project_id),
-        alert: 'You must clock in first!'
+        alert: 'You must clock in before clocking out.'
     else
       start = @time_entry.start_time
       @time_entry.update(stop_time: Time.zone.now,

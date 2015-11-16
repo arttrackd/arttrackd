@@ -2,7 +2,7 @@ class Sale < ActiveRecord::Base
   belongs_to :project
   belongs_to :user
   belongs_to :sales_channel
-  validates :gross, presence: true
+  validates :gross, presence: true, numericality: {greater_than: 0}
   validates :date, presence: true
 
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111164303) do
+ActiveRecord::Schema.define(version: 20151112214015) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -31,9 +31,13 @@ ActiveRecord::Schema.define(version: 20151111164303) do
     t.string   "name"
     t.decimal  "cost"
     t.decimal  "units"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.decimal  "units_remaining"
+    t.string   "receipt_file_name"
+    t.string   "receipt_content_type"
+    t.integer  "receipt_file_size"
+    t.datetime "receipt_updated_at"
   end
 
   add_index "material_purchases", ["user_id"], name: "index_material_purchases_on_user_id"
@@ -122,11 +126,15 @@ ActiveRecord::Schema.define(version: 20151111164303) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.boolean  "public_profile",  default: false
-    t.string   "time_zone",       default: "Eastern Time (US & Canada)"
-    t.decimal  "hourly_rate",     default: 20.0
-    t.datetime "created_at",                                             null: false
-    t.datetime "updated_at",                                             null: false
+    t.boolean  "public_profile",      default: false
+    t.string   "time_zone",           default: "Eastern Time (US & Canada)"
+    t.decimal  "hourly_rate",         default: 20.0
+    t.datetime "created_at",                                                 null: false
+    t.datetime "updated_at",                                                 null: false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

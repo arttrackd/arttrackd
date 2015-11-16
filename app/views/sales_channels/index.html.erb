@@ -11,9 +11,8 @@
     <div class="cards">
       <div class="card">
         <div class="card-header">
-          <h2><%= sales_channel.name %></h2>
+          <h2><%= link_to sales_channel.name, sales_channel %></h2>
           <div class="details">
-            <%= link_to 'Details', sales_channel %>
             <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sales_channel_path(sales_channel) %>
             <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>

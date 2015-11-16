@@ -17,11 +17,11 @@ Project.create!(user_id: 2, name: "ASfhasfga", description: "Some stuff with som
 Project.create!(user_id: 3, name: "Cheeseburger", description: "You forgot the pie")
 
 
-Sale.create(project_id: 1, sales_channel_id: 1, gross: 100, date: Date.today - rand(1..990).days)
-Sale.create(project_id: 1, sales_channel_id: 1, gross: 600, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 1, sales_channel_id: 2, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 2, sales_channel_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
-Sale.create!(project_id: 3, sales_channel_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
+Sale.create(user_id: rand(1..5), project_id: 1, sales_channel_id: 1, gross: 100, date: Date.today - rand(1..990).days)
+Sale.create(user_id: rand(1..5), project_id: 1, sales_channel_id: 1, gross: 600, date: Date.today - rand(1..990).days)
+Sale.create!(user_id: rand(1..5), project_id: 1, sales_channel_id: 2, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
+Sale.create!(user_id: rand(1..5), project_id: 2, sales_channel_id: 2, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
+Sale.create!(user_id: rand(1..5), project_id: 3, sales_channel_id: 3, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
 
 SalesChannel.create!(user_id: 1, name: "Super Festival", description: "Circus Tents")
@@ -43,7 +43,7 @@ sales = Sale.all
 material_purchases = MaterialPurchase.all
 
 100.times do
-  gross_sale = Faker::Number.between(100, 100000) / 100.00
+  gross_sale = Faker::Number.between(100, 10000) / 100.00
   project_id = projects.sample.id
   user_id = Project.find(project_id).user_id
   Sale.create!(project_id: project_id, user_id: user_id, sales_channel_id: rand(1..7), gross: gross_sale,

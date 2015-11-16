@@ -13,11 +13,6 @@ class ProjectCostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:projects)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
   test "should create project_cost" do
     assert_difference('ProjectCost.count') do
       post :create, project_cost: { amount: @project_cost.amount, cost_type: @project_cost.cost_type, project_id: @project_cost.project_id }

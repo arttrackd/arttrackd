@@ -1,5 +1,5 @@
       <div class="profile-image-column">
-        <%= image_tag asset_url('track.png'), class: "profile-image" %>
+        <%= image_tag @current_user.avatar.url(:medium), class: "profile-image" %>
       </div>
       <div class="profile-middle-column">
         <h1><%= @current_user.name %></h1>

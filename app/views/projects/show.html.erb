@@ -1,46 +1,53 @@
 
 <div class="title"> <%= @project.name %></div>
-<br>
-<div class="project-show-description"><%= @project.description %></div>
+<div class="cards">
+  <div class="card">
+    <div class="card-header"></div>
+    <div class="index-card"><div class="project-show-description"><%= @project.description %></div>
 
-<div class="project-show-time">
-<div class="clock-in-clock-out">
+      <div class="project-show-time">
+      <div class="clock-in-clock-out">
 
-    <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
-    <%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @project.id}), method: :patch, id: "clock-out" %>
-</div>
-  <% if @project_time > 0 %>
-    You have worked on this project for
-    <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %>
-    <p>
-      <div class="link-to-new-time-entry"><%= link_to 'View Time Entries', time_entries_path(id: @project.id) %></div>
-    </p>
-  <% else %>
-      You have not worked on this project yet.
-  <% end%>
-</div>
+          <%= link_to 'Clock In', clock_in_time_entries_path(time_entry: {project_id: @project.id}), method: :post, id: "clock-in" %> |
+          <%= link_to 'Clock Out', clock_out_time_entries_path(time_entry: {project_id: @project.id}), method: :patch, id: "clock-out" %>
+      </div>
+        <% if @project_time > 0 %>
+          You have worked on this project for
+          <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %>
+          <p>
+            <div class="link-to-new-time-entry"><%= link_to 'View Time Entries', time_entries_path(id: @project.id) %></div>
+          </p>
+        <% else %>
+            You have not worked on this project yet.
+        <% end%>
+      </div>
 
-<div>
-  <div class="project-show-name"> Materials </div>
-  <% @project.material_uses.each do |material| %>
-    <div class="project-show-material-name"><%= material.name %></div>
-    <div class="project-show-material-units">Units: <%= material.units %></div>
-    <br />
-  <% end %>
-</div>
+      <div>
+        <div class="project-show-name"> Materials </div>
+        <% @project.material_uses.each do |material| %>
+          <div class="project-show-material-name"><%= material.name %></div>
+          <div class="project-show-material-units">Units: <%= material.units %></br>
+          Cost: <%= number_to_currency(material.cost) %></div>
+          <br />
+        <% end %>
+      </div>
 
 
-<div>
-  <div class="project-show-cost-name">Costs unique to your project (Shipping/Handling, Commission, Licensing, Etc.)</div>
-  <% @project.project_costs.each do |cost| %>
-    <div class="project-show-cost-type"><%= cost.cost_type %></div>
-    <div class="project-show-cost-ammount">Cost: <%= number_to_currency(cost.amount) %></div>
-    <br />
-  <% end %>
-</div>
+      <div>
+        <div class="project-show-cost-name">Costs unique to your project (Shipping/Handling, Commission, Licensing, Etc.)</div>
+        <% @project.project_costs.each do |cost| %>
+          <div class="project-show-cost-type"><%= cost.cost_type %></div>
+          <div class="project-show-cost-ammount">Cost: <%= number_to_currency(cost.amount) %></div>
+          <br />
+        <% end %>
+      </div>
 
-<div class="edit-back">
-  <%= link_to 'Mark as Sold', new_sale_path(project_id: @project.id) %> |
-  <%= link_to 'Edit', edit_project_path(@project) %> |
-  <%= link_to 'Back', projects_path %>
+      <div class="edit-back">
+        <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: @project.id) %>
+        <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(@project) %>
+        <%= link_to 'Back to All Projects', projects_path %>
+      </div>
+
+    </div>
+  </div>
 </div>

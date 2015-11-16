@@ -22,20 +22,27 @@ class Project < ActiveRecord::Base
   end
 
   def total_expenses
-    total_material_cost + time_expense
+    total_material_cost + time_expense + total_other_expenses
   end
-
 
   def total_material_cost
     # project = Project.joins(:material_uses).where('material_purchase_id' => material_purchases.id).includes(:material_purchases)
     # project.material_uses.where(material_purchase_id: project.user.material_purchases)
-    if material_uses.length > 0
-      cost = material_uses.map{|x|  x.material_purchase.cost}
-      units = material_uses.map{|x|  x.material_purchase.units}
-      total_units = material_uses.map {|x| x.units}
+    materials = MaterialUse.includes(:material_purchase).where(project_id: id)
+    if materials.length > 0
+      cost = materials.map{|x|  x.material_purchase.cost}
+      units = materials.map{|x|  x.material_purchase.units}
+      total_units = materials.map {|x| x.units}
 
-      total = (cost.sum/units.sum) * total_units.sum
-      total.to_i
+      (cost.sum/units.sum) * total_units.sum
+    else
+      0
+    end
+  end
+
+  def total_other_expenses
+    if project_costs.length > 0
+      project_costs.map{|cost| cost.amount}.reduce(:+)
     else
       0
     end
