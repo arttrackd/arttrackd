@@ -362,7 +362,7 @@ header.navigation {
   $action-color: #477DCA !default;
   $dark-gray: #333 !default;
   $large-screen: em(860) !default;
-  $navigation-padding: 1em;
+  $navigation-padding: 0em;
   $navigation-background: $dark-gray;
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
@@ -424,7 +424,6 @@ header.navigation {
   .logo {
     float: left;
     max-height: $navigation-height;
-    padding-left: $navigation-padding;
     padding-right: 2em;
 
     img {
@@ -564,6 +563,7 @@ header.navigation {
   position: relative;
   min-width: 400px;
   position: relative;
+  margin-top: 1em;
 
   .clock-card{
     @include span-columns(6);
@@ -573,6 +573,7 @@ header.navigation {
   .project-show-card{
     @include span-columns(6);
     background-color: white;
+    margin-top: 1em;
     p{
       font-family: $helvetica;
       margin-top: 0em;
@@ -618,6 +619,7 @@ header.navigation {
   .card-header {
     @include transition (all 0.2s ease-in-out);
     background-color: white;
+    margin-top: 1em;
     //border-bottom: $card-border;
     //border-radius: $base-border-radius $base-border-radius 0 0;
     font-weight: bold;
@@ -625,7 +627,6 @@ header.navigation {
 
     .details{
       font-family: $helvetica;
-      font-weight: lighter;
       color: #5D5D5D;
       font-size: 0.9em;
       a{
@@ -682,8 +683,9 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  margin-bottom: 0;
+  position: absolute;
   padding: $base-spacing / 2;
+  margin-left: 40em;
   text-align: center;
   border-bottom: 1px solid darken($color, 5%);
 

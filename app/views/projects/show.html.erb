@@ -59,7 +59,8 @@
                 <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
               </div>
             <% end %>
-            <h3><%= link_to 'View Time Entries', time_entries_path(id: @project.id) %></h3>
+            <br />
+            <%= link_to 'View All Time Entries', time_entries_path(id: @project.id),id: "view-time-entries" %>
 
           <% else %>
               You have not worked on this project yet.
