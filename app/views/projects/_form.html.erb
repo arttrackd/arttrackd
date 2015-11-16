@@ -26,8 +26,8 @@
             <%= f.text_area :description, value: @project.description || "" %></p>
           </div></br>
 
-          <div><h5> Materials: </h5></div>
           <div class="material-form">
+            <div><h5> Materials: </h5></div>
             <%= f.fields_for :material_uses do |ff| %>
             <div class = "material-fields">
               <div class="field">
@@ -40,11 +40,12 @@
               </div>
             </div>
             <% end %>
-            <p class="add-material-button">Add Material </p>
           </div>
+          <div class="form-button"><p class="add-material-button">Add Material </p></div>
 
-          <div><h5> Project Costs: </h5></div>
+
           <div class="project-cost-form" id="project-cost-form">
+            <div><h5> Project Costs: </h5></div>
             <%= f.fields_for :project_costs do |ff| %>
               <div class = "project-cost-fields">
                 <div class="field">
@@ -59,7 +60,7 @@
 
             <% end %>
           </div>
-          <p class="add-project-button">Add Project Cost </p>
+          <div class="form-button"><p class="add-project-button">Add Project Cost </p></div>
 
           <div class="actions">
             <p><%= f.submit %></p>
