@@ -1,5 +1,4 @@
 <header class="navigation" role="banner">
-  <div class="navigation-wrapper">
     <% if logged_in? %>
       <div class="navigation-left">
        <%= link_to image_tag("ArtTrack.png", size: "175x30", class: "logo"), root_path%>
@@ -20,5 +19,4 @@
     <% else %>
       <div class="navigation-left"><%= link_to 'ArtTrack', root_path %></div>
     <% end %>
-  </div>
 </header>
