@@ -80,7 +80,12 @@ class SalesGoalsController < ApplicationController
     end
 
     def check_time_set
-      redirect_to edit_sales_goal_path if params[:number].blank?
+      if params[:id]
+        redirect_to edit_sales_goal_path if params[:number].blank?
+      else
+        flash[:error] = "Fields were left blank"
+        redirect_to new_sales_goal_path if params[:number].blank?
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
