@@ -94,10 +94,16 @@
   // opacity: .75;
 }
 
-// .opaque{
-//   background-color: rgba(255, 0, 0, .75);
+.opaque{
+  background-color: rgba(255, 0, 0, .75);
 //   opacity: .75;
-// }
+}
+
+div.no-ghost {
+  input {
+    opacity: 1;
+  }
+}
 
 .some-height-padding{
   padding-top: 0.6em;
