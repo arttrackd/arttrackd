@@ -31,10 +31,10 @@ class SalesChannelTest < ActiveSupport::TestCase
 
     expected = [{"label": "The Van",
               "value": 100.0,
-              "color": "#4DF36F"},
+              "color": "#007353"},
               {"label": "Super Festival",
               "value": 300.0,
-              "color": "#4FEAFF"}]
+              "color": "#C97300"}]
     results = SalesChannel.amount_by_channel
 
     assert_equal expected, results
