@@ -13,20 +13,20 @@
     <div class="cards">
       <div class="card">
         <div class="card-header material-purchase-index-row">
+
           <div class="material-purchase-index-card-title">
             <h2><%= link_to material_purchase.name, material_purchase %></h2>
-          </div>
-          <div class="material-purchase-index-icons"
             <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_material_purchase_path(material_purchase) %>
           </div>
+
           <div class="index-card">
             <h3>
-              Units remaining: <%= material_purchase.units_remaining %><br />
+              Units remaining: <%= proper_decimal(material_purchase.units_remaining) %><br />
               Cost per unit: <%= number_to_currency(material_purchase.cost_per_unit) %>
             </h3>
           </div>
+          
         </div>
-
       </div>
     </div>
   <% end %>

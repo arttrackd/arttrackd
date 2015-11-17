@@ -6,11 +6,11 @@ class SalesGoalsController < ApplicationController
 
   # GET /sales_goals
   def index
-    if params[:success]
-      @goals = sales_goal_scope.order(start_time: :desc)
-      @goals = @goals.select{|goal| goal.success == true} if params[:success]
+    if params[:inactive]
+      @goals = sales_goal_scope.where('end_time < ?', Date.today).order(start_time: :desc)
+      # @goals = @goals.select{|goal| goal.success == true} if params[:success]
     else
-      @goals = sales_goal_scope.order(start_time: :desc)
+      @goals = sales_goal_scope.where('end_time >= ?', Date.today).order(start_time: :desc)
     end
   end
 

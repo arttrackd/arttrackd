@@ -65,14 +65,9 @@ h1 {
 
 
 .material-purchase-index-card-title{
-  // @include span-columns(10);
   h2{
     @include span-columns(10);
   }
-}
-
-.material-purchase-index-icons{
-  
 }
 
 .material-purchase-index-row{

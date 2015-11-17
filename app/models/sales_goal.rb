@@ -44,4 +44,8 @@ class SalesGoal < ActiveRecord::Base
     return sum_of_sales(sales) / goal.amount if sales.length > 0
     return 0
   end
+
+  def days_remaining
+    (end_time - Date.today).to_i
+  end
 end
