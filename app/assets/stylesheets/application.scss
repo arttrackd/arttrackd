@@ -51,6 +51,8 @@
    width: 1.1em;
    margin-left: 0.2em;
    margin-right: 0.8em;
+   margin-top: 1em;
+   float: right;
  }
  .card-header-icon {
    height: 1.1em;
@@ -609,6 +611,9 @@ header.navigation {
       margin-left: 1em;
       margin-bottom: 1em;
     }
+    h3{
+      padding-left: 0;
+    }
   }
 
   .login{
@@ -645,6 +650,7 @@ header.navigation {
       font-weight: lighter;
       color: #5D5D5D;
       font-size: 0.9em;
+      background-color: white;
       a{
         text-decoration: none;
         color: #5D5D5D;

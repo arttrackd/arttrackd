@@ -12,6 +12,10 @@ class MaterialPurchase < ActiveRecord::Base
     units - total_units_used
   end
 
+  def cost_per_unit
+    cost / units
+  end
+
   def self.search(q)
     q = "%#{q}%"
     MaterialPurchase.where("name LIKE LOWER(?)", q).order(:name)
