@@ -43,7 +43,7 @@ class SalesController < ApplicationController
     @sale = Sale.new(sale_params)
     @sale.net = @sale.net_for_julie
     if @sale.save
-      redirect_to @sale, notice: 'Sale record was successfully created.'
+      redirect_to sales_path, notice: 'Sale record was successfully created.'
     else
       render :new
     end

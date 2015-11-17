@@ -30,6 +30,43 @@
    font-family: "The Dream";
    src: asset-url('thedream.otf') format("truetype");
 }
+ .sales-money-good{
+   color:#2DBA59;
+ }
+ .sales-money-bad{
+   color:#CB1F0D;
+ }
+ .padding-overload{
+   margin-left: -.60em;
+ }
+ .padding-overload2{
+   margin-left: -.15em;
+ }
+ .padding-underload{
+   padding-left: 1em;
+ }
+
+#view-time-entries{
+  background-color: #53C6E0;
+  color: #FFF;
+  padding: .25em .7em;
+  font-size: 16px;
+  margin: 0.5em;
+  transform: translate(2em, 2em);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+
+#view-time-entries:hover{
+  background-color: #21A6BB;
+}
+
+ h1 span{
+   margin-left: 3.5%;
+ }
+
  html, body {
    padding: 0;
    margin: 0;
@@ -42,15 +79,19 @@
    margin-top: 0.5em;
    margin-bottom: 1em;
    margin-left: 0.5em;
+   img{
+     margin-left: -.2em;
+   }
  }
  .title >a{
+
    text-decoration: none;
  }
  .index-icon {
    height: 1.1em;
    width: 1.1em;
    margin-left: 0.2em;
-   margin-right: 0.8em;
+   margin-right: 1em;
    margin-top: 1em;
    float: right;
  }
@@ -68,6 +109,7 @@
    margin-left: 0.2em;
    margin-right: 0.8em;
    transform: translate(0em, 0.7em);
+   float: right;
  }
  //Containers
  .outer-container{
@@ -168,6 +210,7 @@ h2{
   font-size: 1.5em;
   margin-top: .4em;
   margin-bottom: 0em;
+  color: black;
 }
 
 h2 > a{
@@ -186,7 +229,6 @@ h3{
   margin-bottom: 1em;
   color: #5D5D5D;
   text-decoration: none;
-  padding-left: 1em;
   padding-top: 0em;
   font-weight: normal;
 }
@@ -199,6 +241,7 @@ h3 > a{
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-bottom: 0.4em;
+  margin-left: 1em;
 }
 
 h3 > a:hover{
@@ -321,7 +364,7 @@ h6{
   @include span-columns(10);
   @include omega;
   padding-top: 2em;
-  padding-right: 1em;
+  padding-right: 1.7em;
   padding-bottom: 1em;
   float:right;
 }
@@ -390,7 +433,7 @@ header.navigation {
   $action-color: #477DCA !default;
   $dark-gray: #364653 !default;
   $large-screen: em(860) !default;
-  $navigation-padding: 1em;
+  $navigation-padding: 0em;
   $navigation-background: $dark-gray;
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
@@ -447,7 +490,6 @@ header.navigation {
   .logo {
     float: left;
     max-height: $navigation-height;
-    padding-left: $navigation-padding;
     padding-right: 2em;
     // font-family: "The Dream";
     // font-size: 2em;
@@ -507,6 +549,11 @@ header.navigation {
   }
 
   // The nav items
+
+  .nav-icon{
+    height: 50px;
+    width: 50px;
+  }
 
   ul li.nav-link {
     background: $navigation-background;
@@ -583,6 +630,7 @@ header.navigation {
   position: relative;
   min-width: 400px;
   position: relative;
+  margin-top: 1em;
 
   .clock-card{
     @include span-columns(6);
@@ -592,6 +640,7 @@ header.navigation {
   .project-show-card{
     @include span-columns(6);
     background-color: white;
+    margin-top: 1em;
     p{
       font-family: $helvetica;
       margin-top: 0em;
@@ -620,12 +669,20 @@ header.navigation {
     background-color: white;
   }
 
+  .donut-graph{
+    padding-top: 10%;
+  }
+
+  #pieChart{
+    margin-bottom: 8%;
+  }
+
   .card-image {
     text-align: center;
     margin: auto;
     overflow: hidden;
-    height: 150px;
-    max-height: 150px;
+    height: 250px;
+    max-height: 250px;
     background-color: $card-image-hover-color;
 
     img {
@@ -647,7 +704,6 @@ header.navigation {
 
     .details{
       font-family: $helvetica;
-      font-weight: lighter;
       color: #5D5D5D;
       font-size: 0.9em;
       background-color: white;
@@ -657,6 +713,9 @@ header.navigation {
       }
       a:hover{
         color: #939393;
+      }
+      h3{
+        padding-left: 0;
       }
     }
   }
@@ -705,8 +764,9 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  margin-bottom: 0;
+  position: absolute;
   padding: $base-spacing / 2;
+  margin-left: 40em;
   text-align: center;
   border-bottom: 1px solid darken($color, 5%);
 

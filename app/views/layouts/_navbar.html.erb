@@ -1,8 +1,8 @@
 <header class="navigation" role="banner">
+  <div class="navigation-left">
+    <%= link_to 'ArtTrack', root_path, class: "logo" %>
+  </div>
   <% if logged_in? %>
-    <div class="navigation-left">
-      <%= link_to 'ArtTrack', root_path, class: "logo" %>
-    </div>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if clocked_in? %>
@@ -15,7 +15,5 @@
         </div>
       </ul>
     </nav>
-  <% else %>
-    <div class="navigation-left"><%= link_to 'ArtTrack', root_path %></div>
   <% end %>
 </header>

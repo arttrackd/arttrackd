@@ -2,17 +2,15 @@
 <div class="cards">
   <div class="card">
     <div class="card-header">
-      <h1><%= @business_expense.name %></h1>
-    </div>
+      <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_business_expense_path(@business_expense) %>
+      <h2><%= @business_expense.name.capitalize%></h2>
+      <br />
     <div class="index-card">
-      <p><%= @business_expense.description %></p>
-      <p>Amount: <%= number_to_currency(@business_expense.amount) %> </p>
-      <p><% if @business_expense.recurring %>Recurring<% else %>Not recurring<% end %></vp>
-      <div class="details">
-        <p><%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_business_expense_path(@business_expense) %>
-        <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @business_expense, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Back to Business Expenses', business_expenses_path %></p>
-      </div>
+      <h3><%= @business_expense.description.capitalize %></h3>
+      <h3>Amount: <%= number_to_currency(@business_expense.amount) %> </h3>
     </div>
+      <p><%= link_to 'Back to Business Expenses', business_expenses_path, id: "view-time-entries" %></p>
   </div>
+</div>
+
 </div>

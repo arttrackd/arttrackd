@@ -10,8 +10,8 @@ $(function() {
 
     var arc = d3.svg.arc()
         .startAngle(0)
-        .innerRadius(40)
-        .outerRadius(50);
+        .innerRadius(60)
+        .outerRadius(80);
 
     var svg = d3.selectAll(".donut-graph").append("svg")
         .attr("width", width)
@@ -69,8 +69,8 @@ function draw_pie(data_to_draw){
     var stuff = pieChart.pieData;
     var pie = new d3pie("pieChart", {
       "size": {
-        "canvasHeight": 150,
-        "canvasWidth": 300,
+        "canvasHeight": 255,
+        "canvasWidth": 375,
         "pieOuterRadius": "75%"
       },
       "data": {
