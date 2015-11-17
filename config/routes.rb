@@ -52,7 +52,6 @@ Rails.application.routes.draw do
     end
   end
   resources :users do
-    resources :avatars
     member do
       get 'dashboard'
     end

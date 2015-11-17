@@ -26,5 +26,5 @@ class User < ActiveRecord::Base
       }
   validates :password, length: { minimum: 8 }, allow_nil: true
   validates :hourly_rate, presence: true, numericality: {greater_than: 0}
-  attr_accessor :avatar_file_name
+
 end

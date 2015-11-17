@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-    @user = User.new(create_user_params)
+    @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
       redirect_to profile_path, notice: 'User was successfully created.'
@@ -78,7 +78,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password, :public_profile, :time_zone, :hourly_rate, :avatar)
     end
 
-    def create_user_params
-      params.require(:user).permit(:name, :email, :password, :public_profile, :time_zone, :hourly_rate, avatar: "/public/avatars/medium/missing.png")
-    end
 end
