@@ -16,7 +16,8 @@
         <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: project.id) %>
         <h2><%= link_to project.name, project %></h2>
         <div class="details">
-          <p><%= link_to project.description, project %></p>
+          <h3><%=  project.description%></h3>
+          <h2>Total Revenues: <%= number_to_currency(project.sales.map{|x| x.gross}.sum)%></h2>
         </div>
       </div>
       <div class="index-card">

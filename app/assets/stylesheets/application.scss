@@ -26,6 +26,11 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
+
+ h1 span{
+   margin-left: 3.5%;
+ }
+
  html, body {
    padding: 0;
    margin: 0;
@@ -144,6 +149,8 @@ h2{
   font-size: 1.5em;
   margin-top: .4em;
   margin-bottom: 0em;
+  color: black;
+
 }
 
 h2 > a{
@@ -597,6 +604,9 @@ header.navigation {
       margin-left: 1em;
       margin-bottom: 1em;
     }
+    h3{
+      padding-left: 0;
+    }
   }
 
   .login{
@@ -646,6 +656,9 @@ header.navigation {
       }
       a:hover{
         color: #939393;
+      }
+      h3{
+        padding-left: 0;
       }
     }
   }
