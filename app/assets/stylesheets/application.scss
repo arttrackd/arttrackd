@@ -28,7 +28,7 @@
  @import "session";
  @font-face {
    font-family: "The Dream";
-   src: url(/vendor/assets/fonts/thedream.otf) format("truetype");
+   src: asset-url('thedream.otf') format("truetype");
 }
  html, body {
    padding: 0;
@@ -441,7 +441,8 @@ header.navigation {
     max-height: $navigation-height;
     padding-left: $navigation-padding;
     padding-right: 2em;
-
+    // font-family: "The Dream";
+    // font-size: 2em;
     img {
       max-height: $navigation-height;
       padding: 0.8em 0;

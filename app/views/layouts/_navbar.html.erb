@@ -1,9 +1,8 @@
 <header class="navigation" role="banner">
   <% if logged_in? %>
     <div class="navigation-left">
-      <%= link_to 'ArtTrack', root_path %>
+      <%= link_to 'ArtTrack', root_path, class: "logo" %>
     </div>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
         <% if clocked_in? %>
