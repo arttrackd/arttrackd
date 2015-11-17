@@ -37,6 +37,7 @@ MaterialPurchase.create!(user_id: 1, name: "16x24 Canvas", cost: 65, units: 16, 
 MaterialPurchase.create!(user_id: 1, name: "18x24 Canvas", cost: 30, units: 2, units_remaining: 2)
 MaterialPurchase.create!(user_id: 1, name: "24x36 Canvas", cost: 24, units: 1, units_remaining: 1)
 MaterialPurchase.create!(user_id: 1, name: "48x60 Canvas", cost: 55, units: 1, units_remaining: 1)
+MaterialPurchase.create!(user_id: 1, name: "Alizarin Crimson oil paint", cost: 12, units: 1, units_remaining: 0.6)
 
 ProjectCost.create!(user_id: 1, project_id: 1, cost_type: "Shipping and handling", amount: 12)
 
