@@ -26,6 +26,10 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
+ @font-face {
+   font-family: "The Dream";
+   src: asset-url('thedream.otf') format("truetype");
+}
  html, body {
    padding: 0;
    margin: 0;
@@ -86,30 +90,52 @@
   width: 100%;
 }
 
+.login-window{
+  // opacity: .75;
+}
+
+.opaque{
+  background-color: rgba(255, 0, 0, .75);
+//   opacity: .75;
+}
+
+div.no-ghost {
+  input {
+    opacity: 1;
+  }
+}
+
 .some-height-padding{
   padding-top: 0.6em;
   padding-bottom: 0.5em;
   padding-left: 6.5em;
 }
 
-.login-boxes{
+.login-form{
   text-align: left;
   padding-left: 0em;
+  // opacity: 1;
 }
 
-.smaller-percent{
-  width: 22%;
-  margin: auto;
+#login-boxes{
+  // background-color: rgba(0, 255, 255, 1);
+  // opacity: 1;
 }
+
+// .smaller-percent{
+//   width: 22%;
+//   margin: auto;
+// }
 
 #clock-out-nav{
-  color: #F29500;
+  color: #53C6E0;
 }
+
 .background-ghost{
+  padding-left: 36%;
   padding-top: 15%;
-  padding-left: 20%;
   position: absolute;
-  opacity: 0.75;
+  //opacity: .75;
 }
 //General sitewide stuff
 p{
@@ -360,7 +386,7 @@ header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
   $action-color: #477DCA !default;
-  $dark-gray: #333 !default;
+  $dark-gray: #364653 !default;
   $large-screen: em(860) !default;
   $navigation-padding: 1em;
   $navigation-background: $dark-gray;
@@ -387,6 +413,7 @@ header.navigation {
   float: left;
 
   .navigation-left{
+    padding-left: 1%;
     float: left;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -396,11 +423,12 @@ header.navigation {
     }
   }
 
-  .navigation-left >a{
+  .navigation-left > a{
     text-decoration: none;
   }
 
   .navigation-right{
+    padding-right: 1%;
     float: right;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -414,19 +442,13 @@ header.navigation {
     text-decoration: none;
   }
 
-  .navigation-wrapper {
-    @include clearfix;
-    @include outer-container;
-    position: relative;
-    z-index: 9999;
-  }
-
   .logo {
     float: left;
     max-height: $navigation-height;
     padding-left: $navigation-padding;
     padding-right: 2em;
-
+    // font-family: "The Dream";
+    // font-size: 2em;
     img {
       max-height: $navigation-height;
       padding: 0.8em 0;
@@ -463,11 +485,11 @@ header.navigation {
   }
 
   ul.navigation-menu {
-    clear: both;
+    // clear: both;
     display: none;
-    margin: 0 auto;
+    // margin: 0 auto;
     overflow: visible;
-    padding: 0;
+    // padding: 0;
     width: 100%;
     z-index: 9999;
 
