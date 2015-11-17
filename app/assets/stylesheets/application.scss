@@ -30,6 +30,11 @@
    font-family: "The Dream";
    src: asset-url('thedream.otf') format("truetype");
 }
+
+ h1 span{
+   margin-left: 3.5%;
+ }
+
  html, body {
    padding: 0;
    margin: 0;
@@ -44,13 +49,16 @@
    margin-left: 0.5em;
  }
  .title >a{
+
    text-decoration: none;
  }
  .index-icon {
    height: 1.1em;
    width: 1.1em;
    margin-left: 0.2em;
-   margin-right: 0.8em;
+   margin-right: 1em;
+   margin-top: 1em;
+   float: right;
  }
  .card-header-icon {
    height: 1.1em;
@@ -66,6 +74,7 @@
    margin-left: 0.2em;
    margin-right: 0.8em;
    transform: translate(0em, 0.7em);
+   float: right;
  }
  //Containers
  .outer-container{
@@ -166,6 +175,8 @@ h2{
   font-size: 1.5em;
   margin-top: .4em;
   margin-bottom: 0em;
+  color: black;
+
 }
 
 h2 > a{
@@ -319,7 +330,7 @@ h6{
   @include span-columns(10);
   @include omega;
   padding-top: 2em;
-  padding-right: 1em;
+  padding-right: 1.7em;
   padding-bottom: 1em;
   float:right;
 }
@@ -388,7 +399,7 @@ header.navigation {
   $action-color: #477DCA !default;
   $dark-gray: #364653 !default;
   $large-screen: em(860) !default;
-  $navigation-padding: 1em;
+  $navigation-padding: 0em;
   $navigation-background: $dark-gray;
   $navigation-color: transparentize(white, 0.3);
   $navigation-color-hover: white;
@@ -445,7 +456,6 @@ header.navigation {
   .logo {
     float: left;
     max-height: $navigation-height;
-    padding-left: $navigation-padding;
     padding-right: 2em;
     // font-family: "The Dream";
     // font-size: 2em;
@@ -505,6 +515,11 @@ header.navigation {
   }
 
   // The nav items
+
+  .nav-icon{
+    height: 50px;
+    width: 50px;
+  }
 
   ul li.nav-link {
     background: $navigation-background;
@@ -581,6 +596,7 @@ header.navigation {
   position: relative;
   min-width: 400px;
   position: relative;
+  margin-top: 1em;
 
   .clock-card{
     @include span-columns(6);
@@ -590,6 +606,7 @@ header.navigation {
   .project-show-card{
     @include span-columns(6);
     background-color: white;
+    margin-top: 1em;
     p{
       font-family: $helvetica;
       margin-top: 0em;
@@ -609,18 +626,29 @@ header.navigation {
       margin-left: 1em;
       margin-bottom: 1em;
     }
+    h3{
+      padding-left: 0;
+    }
   }
 
   .login{
     background-color: white;
   }
 
+  .donut-graph{
+    padding-top: 10%;
+  }
+
+  #pieChart{
+    margin-bottom: 8%;
+  }
+
   .card-image {
     text-align: center;
     margin: auto;
     overflow: hidden;
-    height: 150px;
-    max-height: 150px;
+    height: 250px;
+    max-height: 250px;
     background-color: $card-image-hover-color;
 
     img {
@@ -642,7 +670,6 @@ header.navigation {
 
     .details{
       font-family: $helvetica;
-      font-weight: lighter;
       color: #5D5D5D;
       font-size: 0.9em;
       a{
@@ -651,6 +678,9 @@ header.navigation {
       }
       a:hover{
         color: #939393;
+      }
+      h3{
+        padding-left: 0;
       }
     }
   }
@@ -699,8 +729,9 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  margin-bottom: 0;
+  position: absolute;
   padding: $base-spacing / 2;
+  margin-left: 40em;
   text-align: center;
   border-bottom: 1px solid darken($color, 5%);
 

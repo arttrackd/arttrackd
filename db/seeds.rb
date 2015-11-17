@@ -11,7 +11,7 @@ User.create!(name: "Phil", email: "Phil_is_awesome@yeah.com", password: "passwor
 User.create!(name: "Kevin", email: "kevin@hotmail.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Dead", email: "DeamonKiller@hunter.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 
-Project.create(user_id: 1, name: "Fire on the Mountaintop", description: "Landscape, oil painting, 24x36")
+Project.create!(user_id: 1, name: "Fire on the Mountaintop", description: "Landscape, oil painting, 24x36")
 Project.create!(user_id: 1, name: "Portrait of the Artist", description: "Self portrait, acrylic painting, 16x24")
 Project.create!(user_id: 1, name: "Still Life with Fruit", description: "Still life, oil painting, 18x24")
 Project.create!(user_id: 1, name: "Still Life with Fruit Print", description: "9x12 glossy print")
@@ -29,7 +29,13 @@ Sale.create!(user_id: 1, project_id: 1, sales_channel_id: 5, gross: 5300.23, net
 
 BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month")
 
+MaterialPurchase.create!(user_id: 1, name: "4x6 Canvas", cost: 24, units: 16, units_remaining: 16)
 MaterialPurchase.create!(user_id: 1, name: "8x10 Canvas", cost: 30, units: 16, units_remaining: 16)
+MaterialPurchase.create!(user_id: 1, name: "9x12 Canvas", cost: 32, units: 16, units_remaining: 16)
+MaterialPurchase.create!(user_id: 1, name: "16x24 Canvas", cost: 65, units: 16, units_remaining: 16)
+MaterialPurchase.create!(user_id: 1, name: "18x24 Canvas", cost: 30, units: 2, units_remaining: 2)
+MaterialPurchase.create!(user_id: 1, name: "24x36 Canvas", cost: 24, units: 1, units_remaining: 1)
+MaterialPurchase.create!(user_id: 1, name: "48x60 Canvas", cost: 55, units: 1, units_remaining: 1)
 
 ProjectCost.create!(user_id: 1, project_id: 1, cost_type: "Shipping and handling", amount: 12)
 

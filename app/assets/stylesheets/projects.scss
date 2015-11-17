@@ -5,7 +5,7 @@
 #clock-in{
   background-color: #53C6E0;
   color: #FFF;
-  padding: 1em 2em;
+  padding: .5em 1em;
   transform: translate(2em, 2em);
   text-transform: uppercase;
   text-decoration: none;
@@ -13,17 +13,41 @@
   letter-spacing: 0.1em;
 }
 
+#clock-in:hover{
+  background-color: #21A6BB;
+}
+
 #clock-out{
   background-color: #53C6E0;
   color: #FFF;
-  padding: 1em 2em;
+  padding: .5em 1em;
   margin: 0.9em;
   transform: translate(2em, 2em);
   text-transform: uppercase;
   text-decoration: none;
   font-weight: 200;
   letter-spacing: 0.1em;
+}
 
+#clock-out:hover{
+  background-color: #21A6BB;
+}
+
+#view-time-entries{
+  background-color: #53C6E0;
+  color: #FFF;
+  padding: .25em .7em;
+  font-size: 16px;
+  margin: 0.5em;
+  transform: translate(2em, 2em);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+}
+
+#view-time-entries:hover{
+  background-color: #21A6BB;
 }
 
 .project-index-name{
@@ -101,15 +125,15 @@
   @include omega;
 }
 
-.material-form{
-  padding-left: 8%;
-  padding-right: 68%;
+.add-material-button{
+  margin-left: 8%;
 }
 
-.project-cost-form{
-  padding-left: 8%;
-  padding-right: 68%;
+.add-project-button{
+  margin-left: 8%;
+  margin-bottom: 2%;
 }
+
 
 .form-button{
   padding-left: 8%;
@@ -163,8 +187,4 @@ h1 {
 
 .project-index-row{
   @include row();
-}
-
-#view-time-entries{
-  color: #FFF;
 }

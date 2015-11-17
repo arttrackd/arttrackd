@@ -17,7 +17,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   def show
     @project_time = @project.total_time
+<<<<<<< HEAD
     @time_entries = TimeEntry.where('project_id = ?', @project.id).order(:date).reverse.slice(0..4)
+=======
+    @time_entries = TimeEntry.where('project_id = ?', @project.id).order(:date)
+>>>>>>> 33b6276a1a4f194eab2fce9601d39c02ce1a9e07
   end
 
   # GET /projects/new
