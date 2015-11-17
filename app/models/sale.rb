@@ -12,6 +12,6 @@ class Sale < ActiveRecord::Base
 
   def self.search(q)
     search =  "%#{q}%"
-    Sale.includes(:project).where(project_id: Project.search(Project, q).pluck(:id))
+    Sale.includes(:project).where(project_id: Project.search(q).pluck(:id))
   end
 end
