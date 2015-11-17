@@ -6,11 +6,11 @@
       <div class="details">
         <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(@project) %>
         <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: @project.id) %>
-        <h1><%= @project.name %></h1>
-        <h3><%= @project.description %></h3>
+        <h2><%= @project.name %></h2>
+        <h3><%= @project.description.capitalize %></h3>
       </div>
       <div class="details">
-        <h1> Materials </h1>
+        <h2> Materials </h2>
         <% if @project.material_uses.length > 0 %>
           <% @project.material_uses.each do |material| %>
             <h3><%= material.name %></br>
@@ -21,8 +21,7 @@
           <h3>No materials are applied to this project.</h3>
         <% end %>
 
-        <h1>Project Costs</h1>
-        <h3>Costs unique to your project (Shipping/Handling, Commission, Licensing, Etc.)</h3>
+        <h2>Project Costs</h2>
         <% if @project.project_costs.length > 0 %>
           <% @project.project_costs.each do |cost| %>
             <h3><%= cost.cost_type %></br>
@@ -32,8 +31,17 @@
           <h3>No costs are applied to this project.</h3>
         <% end %>
 
-      <div class="edit-back">
-        <br />
+      <h2>Sales</h2>
+      <div class="index-card padding-underload ">
+        <% if @project.sales.length > 0 %>
+          <% @project.sales.each do |sale| %>
+            <h3>Sold on <%= sale.date.strftime("%B %d, %Y") %> for <%= number_to_currency(sale.gross) %></h3>
+          <% end %>
+        <% else %>
+          <h3>In Stock</h3><br />
+          <h3>Estimated Value: <br>
+            <%= number_to_currency(@project.estimated_value)%></h3>
+        <% end %>
         <p><%= link_to 'Back to All Projects', projects_path, id: "view-time-entries" %></p>
       </div>
     </div>
@@ -67,5 +75,4 @@
       </div>
     </div>
   </div>
-
 </div>

@@ -77,7 +77,7 @@ end
 end
 
 50.times do
-  BusinessExpense.create!(user_id: [1,2,3,4,5].sample, name: Faker::Address.city_suffix + " bill", description: Faker::Address.city_suffix, amount: Faker::Number.between(0, 10000), recurring: true, duration: (Faker::Number.between(1, 31).to_s + " days"))
+  BusinessExpense.create!(user_id: [1,2,3,4,5].sample, name: Faker::Address.city_suffix + " bill", description: Faker::Address.city_suffix, amount: Faker::Number.between(0, 10000), recurring: true, duration: (Faker::Number.between(1, 31).to_s + " days"), date: Faker::Date.backward(rand(1..100)))
 end
 
 500.times do
@@ -90,5 +90,5 @@ end
 end
 
 100.times do
-  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Commerce.product_name, amount: Faker::Number.between(0, 100), user_id: [1,2,3,4,5].sample)
+  ProjectCost.create!(project_id: projects.sample.id, cost_type: Faker::Commerce.product_name, amount: Faker::Number.between(1, 100), user_id: [1,2,3,4,5].sample)
 end

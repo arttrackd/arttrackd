@@ -13,13 +13,13 @@
       <div class="card-header">
         <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sale_path(sale) %>
         <h2><%= link_to sale.project.name, sale %></h2>
-          <h3><span class="padding-overload">
+          <h3>
             <% if sale.sales_channel %>
               Sold at: <%= sale.sales_channel.name%> on <%= sale.date.strftime("%B %d, %Y") %>
             <% else %>
               Sales channel not specified, <%= link_to 'click to add', edit_sale_path(sale) %>
             <% end %></br>
-          </span></h3>
+          </h3>
       </div>
         <div class="index-card">
           <div class"sales-index-sales">
