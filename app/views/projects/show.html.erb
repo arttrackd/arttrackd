@@ -51,19 +51,6 @@
             <h3>You have worked on <%= @project.name %> for
             <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %></h3>
             <% @time_entries.each do |time_entry| %>
-<<<<<<< HEAD
-              <h2>Worked on: <%= link_to time_entry.start_time.strftime("%B %d"), time_entry %></br>
-              <div class="details">
-                <% if time_entry.start_time && time_entry.stop_time %>
-                  <p><%= link_to distance_of_time_in_words(time_entry.stop_time, time_entry.start_time), time_entry %></p>
-                <% end %>
-                <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(time_entry) %>
-                <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
-              </div>
-            <% end %>
-            <p />
-            <h3><%= link_to 'View Time Entries', time_entries_path(id: @project.id), id: "view-time-entries" %></h3>
-=======
               <h1><span> Worked on: <%= link_to time_entry.start_time.strftime("%B %d"), time_entry %></span></h1>
               <% if time_entry.start_time && time_entry.stop_time %>
                 <h3><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time) %></h3>
@@ -71,8 +58,6 @@
             <% end %>
             <br />
             <%= link_to 'View All Time Entries', time_entries_path(id: @project.id),id: "view-time-entries" %>
-
->>>>>>> 33b6276a1a4f194eab2fce9601d39c02ce1a9e07
           <% else %>
               You have not worked on this project yet.
           <% end%>

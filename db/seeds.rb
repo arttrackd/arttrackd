@@ -16,6 +16,7 @@ Project.create!(user_id: 1, name: "Portrait of the Artist", description: "Self p
 Project.create!(user_id: 1, name: "Still Life with Fruit", description: "Still life, oil painting, 18x24")
 Project.create!(user_id: 1, name: "Still Life with Fruit Print", description: "9x12 glossy print")
 Project.create!(user_id: 1, name: "Still Life with Fruit Small Print", description: "4x6 matte print")
+Project.create!(user_id: 1, name: "Collie Portrait", description: "Dog portrait, acrylic painting, 8x10")
 
 Sale.create!(user_id: 1, project_id: 5, sales_channel_id: 1, gross: 100, net: 77.84, date: Date.today - rand(1..990).days)
 Sale.create!(user_id: 1, project_id: 5, sales_channel_id: 3, gross: 100, net: 77.84, date: Date.today - rand(1..990).days)
@@ -24,8 +25,8 @@ Sale.create!(user_id: 1, project_id: 4, sales_channel_id: 3, gross: 200, net: 10
 Sale.create!(user_id: 1, project_id: 4, sales_channel_id: 2, gross: 200, net: 109.09, date: Date.today - rand(1..990).days)
 Sale.create!(user_id: 1, project_id: 4, sales_channel_id: 1, gross: 200, net: 109.09, date: Date.today - rand(1..990).days)
 Sale.create!(user_id: 1, project_id: 3, sales_channel_id: 7, gross: 500.23, net: 245.87, date: Date.today - rand(1..990).days)
-Sale.create!(user_id: 1, project_id: 2, sales_channel_id: 6, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
-Sale.create!(user_id: 1, project_id: 1, sales_channel_id: 5, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
+Sale.create!(user_id: 1, project_id: 2, sales_channel_id: 5, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
+Sale.create!(user_id: 1, project_id: 1, sales_channel_id: 6, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
 BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month")
 
