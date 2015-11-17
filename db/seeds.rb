@@ -43,7 +43,7 @@ ProjectCost.create!(user_id: 1, project_id: 1, cost_type: "Shipping and handling
 
 projects = Project.all
 
-200.times do
+50.times do
   start = Faker::Time.backward(rand(1..100))
   stop = start + (rand(1..10)).hours
   TimeEntry.create!(project_id: projects.sample.id, start_time: start, stop_time: stop, total_time: stop.to_i - start.to_i, date: start.to_date )
