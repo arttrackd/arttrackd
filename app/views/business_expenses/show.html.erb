@@ -8,7 +8,9 @@
     <div class="index-card">
       <h3><%= @business_expense.description.capitalize %></h3>
       <h3><%= number_to_currency(@business_expense.amount) %> </h3>
-      <h3>Due on <%= @business_expense.date.strftime("%B %d, %Y") %></h3>
+      <% if @business_expense.date %>
+        <h3>Due on <%= @business_expense.date.strftime("%B %d, %Y") %></h3>
+      <% end %>
     </div>
       <h3><%= link_to 'Back to Business Expenses', business_expenses_path, class: "project-show-buttons" %></h3>
   </div>
