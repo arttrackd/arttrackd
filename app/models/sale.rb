@@ -6,7 +6,7 @@ class Sale < ActiveRecord::Base
   validates :date, presence: true
 
 
-  def net_for_julie
+  def net_profit
     gross - project.total_expenses
   end
 

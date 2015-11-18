@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
   end
 
   def estimated_value
-    total_expenses
+    total_expenses + time_expense
   end
 
   def time_expense
@@ -22,7 +22,7 @@ class Project < ActiveRecord::Base
   end
 
   def total_expenses
-    total_material_cost + time_expense + total_other_expenses
+    total_material_cost + total_other_expenses
   end
 
   def total_material_cost

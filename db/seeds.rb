@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(name: "Julie", email: "julie@email.com", password: "password")
+User.create!(name: "Tyler", email: "Tyler@email.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 15)
 User.create!(name: "Angela", email: "angela@email.com", password: "password")
 User.create!(name: "Phil", email: "Phil_is_awesome@yeah.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Kevin", email: "kevin@hotmail.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Dead", email: "DeamonKiller@hunter.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
-User.create!(name: "Tyler", email: "Tyler@email.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 15)
+User.create!(name: "Julie", email: "julie@email.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 15)
 
 
 Project.create!(user_id: 1, name: "Fire on the Mountaintop", description: "Landscape, oil painting, 24x36")
@@ -58,7 +58,5 @@ x = 0
   x += 1
 end
 
-  SalesGoal.create!(user_id: 1, sales_channel_id: [1,2,3,4,5,6,7].sample, amount: Faker::Number.between(0, 10000),
-    length_of_time: (x + y).to_s + " days",
-    start_time: start, end_time: stop)
-end
+SalesGoal.create!(user_id: 1, amount: Faker::Number.between(0, 1000),
+  length_of_time: "10 days", start_time: Date.today, end_time: Date.today + 10.days)

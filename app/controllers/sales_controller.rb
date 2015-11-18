@@ -1,7 +1,6 @@
 class SalesController < ApplicationController
   before_action :require_login
   before_action :set_sale, only: [:show, :edit, :update, :destroy]
-  after_action :net, only: :create #Write this method once we have expenses tables
   after_action :update_goals, only: [:create, :update, :destroy]
   # GET /sales
   def index
@@ -41,7 +40,7 @@ class SalesController < ApplicationController
   # POST /sales
   def create
     @sale = Sale.new(sale_params)
-    @sale.net = @sale.net_for_julie
+    @sale.net = @sale.net_profit
     if @sale.save
       redirect_to sales_path, notice: 'Sale record was successfully created.'
     else
@@ -52,7 +51,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   def update
     if @sale.update(sale_params)
-      @sale.net = @sale.net_for_julie
+      @sale.net = @sale.net_profit
       @sale.save
       redirect_to @sale, notice: 'Sale record was successfully updated.'
     else
@@ -70,10 +69,6 @@ class SalesController < ApplicationController
     # So that people cannot PATCH and DELETE unless they are the @current_user
     def sale_scope
       Sale.where(user_id: @current_user.id)
-    end
-
-    def net
-      return true
     end
 
     # Use callbacks to share common setup or constraints between actions.

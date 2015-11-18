@@ -27,7 +27,7 @@
           <% if sale.net.to_i >= 0 %>
             <div class="sales-index-net gd"><p> <h3><span class="sales-money-good"><%= number_to_currency(sale.net) %> profit</span></h3></p></div>
           <% else %>
-            <div class="sales-index-net gd"><p> <h3><span class="sales-money-bad"><%= number_to_currency(sale.net) %> deficit</span></h3></p></div>
+            <div class="sales-index-net gd"><p> <h3><span class="sales-money-bad"><%= number_to_currency(sale.net) %> loss</span></h3></p></div>
           <% end %>
           </div>
         </div>
