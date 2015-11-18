@@ -5,7 +5,14 @@
   <%= image_submit_tag "search.png", class: "search-button", name: nil %>
 <% end %>
 </div>
-<h3><%= link_to 'Add New Project', new_project_path %> <% if !params[:sold] %><%= link_to 'See Sold Projects', projects_path(sold: true) %><% else %><%= link_to 'See All Projects', projects_path %><% end %> <%= link_to 'See Project Costs Breakdowns', project_costs_path %></h3>
+<h3>
+  <%= link_to 'Add New Project', new_project_path %>
+  <% if !params[:sold] %>
+    <%= link_to 'See Sold Projects', projects_path(sold: true) %>
+  <% else %>
+    <%= link_to 'See All Projects', projects_path %>
+  <% end %>
+</h3>
 <% if @projects.length > 0 %>
   <% @projects.each do |project| %>
 

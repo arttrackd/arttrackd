@@ -26,39 +26,47 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
- @font-face {
-   font-family: "The Dream";
-   src: asset-url('thedream.otf') format("truetype");
+
+.delete-button{
+  color: #FFF;
+  background-color: #C92023;
+  float: right;
+  margin-top: -.3em;
+  margin-right: 1em;
 }
 
-  .destroy-button{
-    color: red;
-    height: 20px;
-    width: 80px;
-  }
+.delete-button:hover{
+  background-color: #AD181B;
+}
 
- .sales-money-good{
-   color:#2DBA59;
- }
- .sales-money-bad{
-   color:#CB1F0D;
- }
- .padding-overload{
-   margin-left: -.60em;
- }
- .padding-overload2{
-   margin-left: -.15em;
- }
- .padding-underload{
-   padding-left: 1em;
- }
+.no-margin{
+  margin-top: 0;
+}
 
- .destroy-action{
-   height: 46px;
-   width: 46px;
-   text-decoration: none;
-   color: red;
- }
+.form-lower-buttons{
+  @include span-columns(12);
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-right: 1em;
+
+
+}
+
+.sales-money-good{
+ color:#2DBA59;
+}
+.sales-money-bad{
+ color:#CB1F0D;
+}
+.padding-overload{
+ margin-left: -.60em;
+}
+.padding-overload2{
+ margin-left: -.15em;
+}
+.padding-underload{
+ padding-left: 1em;
+}
 
 #view-time-entries{
   background-color: #53C6E0;
@@ -265,7 +273,7 @@ h3 > a:hover{
 h4 {
   font-family: $helvetica;
   font-size: 1.3em;
-  padding-left: 4.9em;
+  // padding-left: 4.9em;
   padding-top: 0.5em;
   font-weight: normal;
   margin-bottom: 1em;
@@ -724,7 +732,7 @@ header.navigation {
       background-color: white;
       a{
         text-decoration: none;
-        color: #5D5D5D;
+        color: #EEE;
       }
       a:hover{
         color: #939393;
@@ -781,7 +789,8 @@ $warning-color: #F1DCB2 !default;
   display: block;
   position: absolute;
   padding: $base-spacing / 2;
-  margin-left: 40em;
+  // margin-left: 40em;
+  width: 100%;
   text-align: center;
   border-bottom: 1px solid darken($color, 5%);
 
