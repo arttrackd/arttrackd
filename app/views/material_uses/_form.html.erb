@@ -18,11 +18,11 @@
     </div>
     <div class="field">
       <%= f.label :material_purchase_id, value: "Material" %><br>
-      <%= f.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
+      <%= f.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}), style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
     </div>
     <div class="field">
       <%= f.label :units %><br>
-      <%= f.number_field :units %>
+      <%= f.number_field :units, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
     </div>
     <div class="field">
       <%= f.hidden_field :_destroy %><br>

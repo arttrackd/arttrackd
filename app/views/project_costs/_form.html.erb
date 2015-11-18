@@ -16,11 +16,11 @@
   </div>
   <div class="field">
     <%= f.label :cost_type %><br>
-    <%= f.text_field :cost_type, value: @project_cost.cost_type || "" %>
+    <%= f.text_field :cost_type, value: @project_cost.cost_type || "", style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
   </div>
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: number_to_currency(@project_cost.amount) || "" %>
+    <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: number_to_currency(@project_cost.amount) || "", style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
   </div>
   <div class="actions">
     <%= f.submit %>

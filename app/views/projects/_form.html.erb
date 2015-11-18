@@ -14,26 +14,23 @@
     <div class="card">
       <div class="card-header"></div>
       <div class="index-card">
-        <div><h5> Details: </h4></div>
-        <div class="field">
-          <p><%= f.label :name %></br>
-          <%= f.text_field :name, value: @project.name || "" %></p>
+        <div>
+          <p ><%= f.label :name %></br>
+          <%= f.text_field :name, value: @project.name || "", style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
         </div>
         <div class="field">
           <p><%= f.label :description %></br>
-          <%= f.text_area :description, value: @project.description || "" %></p>
+          <%= f.text_area :description, value: @project.description || "", style:"font-style:italic;height:5.4em;width:40%;border-radius:0em;" %></p>
         </div></br>
           <div><h5> Materials: </h5></div>
           <div class="material-form">
             <%= f.fields_for :material_uses do |ff| %>
             <div class = "material-fields">
               <div class="field">
-                <p><%= ff.label :material_purchase_id, value: "Material" %><br>
-                <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %></p>
-              </div>
-              <div class="field">
-                <p><%= ff.label :units %><br>
-                <%= ff.number_field :units %></p>
+                <p><%= ff.label :material_purchase_id, value: "Material" %>
+                <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;") %>
+                <%= ff.label :units %>
+                <%= ff.number_field :units, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
               </div>
             </div>
           <% end %>
@@ -45,12 +42,10 @@
           <%= f.fields_for :project_costs do |ff| %>
             <div class = "project-cost-fields">
               <div class="field">
-                <p><%= ff.label :cost_type %></br>
-                <%= ff.text_field :cost_type %></p>
-              </div>
-              <div class="field">
-                <p><%= ff.label :amount %></br>
-                <%= ff.number_field :amount %></p>
+                <p><%= ff.label :cost_type %>
+                <%= ff.text_field :cost_type, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
+                <%= ff.label :amount %>
+                <%= ff.number_field :amount, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
               </div>
             </div>
           <% end %>
