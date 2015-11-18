@@ -53,7 +53,7 @@ end
 
 channels = ["Artist website", "Personal Reference", "Etsy website", "Gallery tour", "Shop Gallery", "Downtown Gallery", "Festival Booth"]
 x = 0
-7.times do
+6.times do
   SalesChannel.create!(name: channels[x], description: Faker::Address.street_address, user_id: 1)
   x += 1
 end

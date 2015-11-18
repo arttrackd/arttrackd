@@ -2,10 +2,10 @@
 
 one:
   project_id: 1
-  cost_type: MyString
-  amount: 9.99
+  cost_type: Shipping
+  amount: 15
 
 two:
   project_id: 1
-  cost_type: MyString
-  amount: 9.99
+  cost_type: Licensing
+  amount: 50
