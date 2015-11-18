@@ -17,15 +17,15 @@
       <div class="index-card">
         <div class="field">
           <p><%= f.label :amount %></br>
-          <%= f.number_field :amount, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
+          <%= f.number_field :amount, style:"height:2.7em;width:40%;border-radius:0em;" %></p>
         </div>
         <div class="field">
           <p><%= f.label :start_time, 'Start date' %></br>
-          <%= f.date_select :start_time, style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
+          <%= f.date_select :start_time, style:"height:2.7em;width:40%;border-radius:0em;" %></p>
         </div>
         <div class="field">
           <p><%= f.label :length_of_time, 'How long?'%></br>
-          <%= number_field :number, :name, style: "font-style:italic;height:2.7em;width:40%;border-radius:0em;" %>
+          <%= number_field :number, :name, style: "height:2.7em;width:40%;border-radius:0em;" %>
           <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %></p>
         </div>
         <% if :sales_channels %>

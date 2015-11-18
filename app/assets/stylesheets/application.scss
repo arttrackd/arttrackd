@@ -787,7 +787,7 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  position: absolute;
+  // position: absolute;
   padding: $base-spacing / 2;
   // margin-left: 40em;
   width: 100%;
@@ -825,7 +825,8 @@ $warning-color: #F1DCB2 !default;
   @include flash($warning-color);
 }
 .flash-shift{
-  padding-top: 44px;
+  font-family: $helvetica;
+  margin-bottom: -30px;
 }
 
 // Image Gradient Overlay
@@ -889,30 +890,27 @@ $warning-color: #F1DCB2 !default;
 
 // Search bar style
 
-  .search-button {
-    height: 2.5em;
-    width: 2.5em;
-    margin-bottom: -0.8em;
-    margin-left: -1em;
-    background-color: #C23822;
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
-    padding: 0.5em;
-    border-bottom-right-radius: 15%;
-    border-top-right-radius: 15%;
-  }
-  .search-button:hover{
-    background-color: #822617;
-  }
+.search-button {
+  height: 2.5em;
+  width: 2.5em;
+  margin-bottom: -0.8em;
+  margin-left: -1em;
+  background-color: #C23822;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  padding: 0.5em;
+  border-bottom-right-radius: 15%;
+  border-top-right-radius: 15%;
+}
+.search-button:hover{
+  background-color: #822617;
+}
 
+label.stat-label {
+  display: inline-block;
+  width: 150px;
+}
 
-
-
-  // form style
-
-  .form-style{
-    font-style: italic;
-    height: 8%;
-    width: 40%;
-    border-radius: 0em;
+input {
+  font-size: 2em;
 }

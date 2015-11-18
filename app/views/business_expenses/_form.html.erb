@@ -20,15 +20,15 @@
         </div>
         <div class="field cbp-mc-form">
           <p><%= f.label :name %><br />
-          <%= f.text_field :name, value: @business_expense.name || "", style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
+          <%= f.text_field :name, value: @business_expense.name || "", style:"height:2.7em;width:40%;border-radius:0em;" %></p>
         </div>
         <div class="field cbp-mc-form">
           <p><%= f.label :description %></br>
-          <%= f.text_area :description, value: @business_expense.description || "", style:"font-style:italic;height:5.4em;width:40%;border-radius:0em;" %></p>
+          <%= f.text_area :description, value: @business_expense.description || "", style:"height:5.4em;width:40%;border-radius:0em;" %></p>
         </div>
         <div class="field cbp-mc-form">
           <p><%= f.label :amount %></br>
-          <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: @business_expense.amount || "", style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;" %></p>
+          <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: @business_expense.amount || "", style:"height:2.7em;width:40%;border-radius:0em;" %></p>
         </div>
         <div>
           <p><%= f.submit %></p>

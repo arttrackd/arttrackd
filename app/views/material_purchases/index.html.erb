@@ -1,7 +1,7 @@
 <div class="title">
   <%= image_tag asset_url('p2.png'), class: "card-header-icon" %>My Materials Inventory
   <%= form_tag material_purchases_path, method: :get do %>
-  <%= text_field_tag :search, params[:search], style:"font-style:italic;height:2.7em;width:40%;border-radius:0em;", placeholder:"Enter Search" %>
+  <%= text_field_tag :search, params[:search], style:"height:2.7em;width:40%;border-radius:0em;", placeholder:"Enter Search" %>
   <%= image_submit_tag "search.png", class: "search-button", name: nil %>
   <% end %>
 </div>
