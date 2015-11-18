@@ -25,7 +25,7 @@
         </div>
         <div class="field">
           <p><%= f.label :length_of_time, 'How long?'%></br>
-          <%= number_field :number, :name, style: "height:2.7em;width:40%;border-radius:0em;" %>
+          <%= number_field_tag :number %>
           <%= select_tag :units, options_for_select(["days", "weeks", "months", "years"]) %></p>
         </div>
         <% if :sales_channels %>

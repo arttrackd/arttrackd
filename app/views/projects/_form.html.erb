@@ -28,7 +28,7 @@
           <div class = "material-fields">
             <div class="field">
               <p><%= ff.label :material_purchase_id, value: "Material" %>
-              <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}, style:"height:2.7em;width:40%;border-radius:0em;") %>
+              <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
               <%= ff.label :units %>
               <%= ff.number_field :units%></p>
             </div>
