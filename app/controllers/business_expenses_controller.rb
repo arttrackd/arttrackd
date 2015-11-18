@@ -27,7 +27,7 @@ class BusinessExpensesController < ApplicationController
   # POST /business_expenses
   def create
     @business_expense = BusinessExpense.new(business_expense_params)
-    @business_expense.user = @current_user
+    @business_expense.user_id = @current_user.id
     if @business_expense.save
       redirect_to @business_expense, notice: 'Business expense was successfully created.'
     else

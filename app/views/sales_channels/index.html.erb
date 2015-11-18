@@ -6,18 +6,18 @@
   <% end %>
 </div>
 <h3><%= link_to 'New Sales Channel', new_sales_channel_path %></h3>
-<% if @sales_channels %>
+<% if @sales_channels.length > 0 %>
   <% @sales_channels.each do |sales_channel| %>
     <div class="cards">
       <div class="card">
         <div class="card-header">
           <h2><%= link_to sales_channel.name, sales_channel %></h2>
+        </div>
+        <div class="index-card">
           <div class="details">
             <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_sales_channel_path(sales_channel) %>
             <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), sales_channel, method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
-        </div>
-        <div class="index-card">
           <p><%= sales_channel.description %></p>
         </div>
       </div>

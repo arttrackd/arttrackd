@@ -3,15 +3,15 @@ class ProjectCostsController < ApplicationController
   before_action :set_project_cost, only: [:destroy]
 
   # GET /project_costs
-  # def index
-  #   if params[:search]
-  #     pc = project_cost_scope
-  #     @projects = ProjectCost.search(pc, params[:search])
-  #   else
-  #     @projects = Project.where(user_id: @current_user.id)
-  #   end
-  # end
-  #
+  def index
+    if params[:search]
+      pc = project_cost_scope
+      @projects = ProjectCost.search(pc, params[:search])
+    else
+      @projects = Project.where(user_id: @current_user.id)
+    end
+  end
+
   # # GET /project_costs/1
   # def show
   # end

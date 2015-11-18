@@ -30,7 +30,7 @@ Sale.create!(user_id: 1, project_id: 3, sales_channel_id: 7, gross: 500.23, net:
 Sale.create!(user_id: 1, project_id: 2, sales_channel_id: 5, gross: 1500.23, net: 1245.87, date: Date.today - rand(1..990).days)
 Sale.create!(user_id: 1, project_id: 1, sales_channel_id: 6, gross: 5300.23, net: 2345.87, date: Date.today - rand(1..990).days)
 
-BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month")
+BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly rent", amount: 400, recurring: true, duration: "1 month", date: "Tue, 17 Nov 2015")
 
 MaterialPurchase.create!(user_id: 1, name: "4x6 Canvas", cost: 24, units: 16, units_remaining: 16)
 MaterialPurchase.create!(user_id: 1, name: "8x10 Canvas", cost: 30, units: 16, units_remaining: 16)
