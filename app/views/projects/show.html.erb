@@ -59,7 +59,6 @@
             <h3>You have worked on <%= @project.name %> for
             <%= distance_of_time_in_words( @project_time, 0, except: :seconds) %></h3>
             <% @time_entries.each do |time_entry| %>
-
               <h2><span> Worked on: <%= link_to time_entry.start_time.strftime("%B %d"), time_entry %></span></h2>
               <% if time_entry.start_time && time_entry.stop_time %>
                 <h3><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time) %></h3>

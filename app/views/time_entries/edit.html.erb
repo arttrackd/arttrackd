@@ -4,5 +4,6 @@
 
 <div class="edit-back">
   <%= link_to 'Details', @time_entry %> |
-  <%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %>
+  <%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %> |
+  <%= link_to 'Delete', time_entrie_path, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>

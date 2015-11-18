@@ -30,6 +30,13 @@
    font-family: "The Dream";
    src: asset-url('thedream.otf') format("truetype");
 }
+
+  .destroy-button{
+    color: red;
+    height: 20px;
+    width: 80px;
+  }
+
  .sales-money-good{
    color:#2DBA59;
  }
@@ -44,6 +51,13 @@
  }
  .padding-underload{
    padding-left: 1em;
+ }
+
+ .destroy-action{
+   height: 46px;
+   width: 46px;
+   text-decoration: none;
+   color: red;
  }
 
 #view-time-entries{
