@@ -30,8 +30,6 @@ BusinessExpense.create!(user_id: 1, name: "Studio rent", description: "Monthly r
 
 MaterialPurchase.create!(user_id: 1, name: "Canvas", cost: 30, units: 16, units_remaining: 16)
 
-MaterialUse.create!(material_purchase_id: 1, project_id: 1, units: 1, user_id: 1)
-
 ProjectCost.create!(project_id: 1, cost_type: "Shipping and handling", amount: 12)
 
 150.times do
@@ -71,7 +69,7 @@ end
   y = rand(1..60)
   start = DateTime.now - x.days
   stop = start + y.days
-  SalesGoal.create!(user_id: [1,2,3,4,5].sample,sales_channel_id: [1,2,3,4,5,6,7].sample, amount: Faker::Number.between(0, 10000),
+  SalesGoal.create!(user_id: [1,2,3,4,5].sample,sales_channel_id: [1,2,3,4,5,6,7].sample, amount: Faker::Number.between(1, 10000),
     length_of_time: (x + y).to_s + " days",
     start_time: start, end_time: stop)
 end
@@ -83,10 +81,6 @@ end
 500.times do
   units = Faker::Number.between(16, 50)
   MaterialPurchase.create!(user_id: [1,2,3,4,5].sample, name: Faker::Commerce.product_name, cost: Faker::Number.between(16, 50), units: units, units_remaining: units)
-end
-
-100.times do
-  MaterialUse.create!(material_purchase_id: material_purchases.sample.id, project_id: projects.sample.id, units: Faker::Number.between(1, 15), user_id: [1,2,3,4,5].sample)
 end
 
 100.times do

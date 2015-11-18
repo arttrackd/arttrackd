@@ -2,14 +2,14 @@
 <div class="page-wrap">
 
   <div class="card">
-    <div class="project-show-card">
+    <div class="project-show-card padding-underload">
       <div class="details">
         <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_project_path(@project) %>
         <%= link_to (image_tag asset_url('sold.png'), class: "sold-icon"), new_sale_path(project_id: @project.id) %>
         <h2><%= @project.name %></h2>
         <h3><%= @project.description.capitalize %></h3>
       </div>
-      <div class="details">
+      <div class="index-card">
         <h2> Materials </h2>
         <% if @project.material_uses.length > 0 %>
           <% @project.material_uses.each do |material| %>
@@ -32,7 +32,7 @@
         <% end %>
 
       <h2>Sales</h2>
-      <div class="index-card padding-underload ">
+      <div class="index-card">
         <% if @project.sales.length > 0 %>
           <% @project.sales.each do |sale| %>
             <h3>Sold on <%= sale.date.strftime("%B %d, %Y") %> for <%= number_to_currency(sale.gross) %></h3>
@@ -66,7 +66,6 @@
             <% end %>
             <br />
             <%= link_to 'View All Time Entries', time_entries_path(id: @project.id),id: "view-time-entries" %>
-
           <% else %>
               You have not worked on this project yet.
           <% end%>

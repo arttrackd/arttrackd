@@ -15,9 +15,9 @@
         <h2><%= link_to sale.project.name, sale %></h2>
           <h3>
             <% if sale.sales_channel %>
-              Sold at: <%= sale.sales_channel.name%> on <%= sale.date.strftime("%B %d, %Y") %>
+              Sold at <%= sale.sales_channel.name%> on <%= sale.date.strftime("%B %d, %Y") %>
             <% else %>
-              Sales channel not specified, <%= link_to 'click to add', edit_sale_path(sale) %>
+              Sales channel not specified
             <% end %></br>
           </h3>
       </div>

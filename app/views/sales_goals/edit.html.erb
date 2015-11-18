@@ -4,5 +4,7 @@
 
 <div class="edit-back">
   <%= link_to 'Details', @sales_goal %> |
-  <%= link_to 'Back to Sales Goals', sales_goals_path %>
+  <%= link_to 'Back to Sales Goals', sales_goals_path %> |
+  <%= link_to 'Delete', sales_goal_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
 </div>

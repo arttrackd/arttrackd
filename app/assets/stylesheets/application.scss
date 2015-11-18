@@ -26,6 +26,17 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
+ @font-face {
+   font-family: "The Dream";
+   src: asset-url('thedream.otf') format("truetype");
+}
+
+  .destroy-button{
+    color: red;
+    height: 20px;
+    width: 80px;
+  }
+
  .sales-money-good{
    color:#2DBA59;
  }
@@ -40,6 +51,13 @@
  }
  .padding-underload{
    padding-left: 1em;
+ }
+
+ .destroy-action{
+   height: 46px;
+   width: 46px;
+   text-decoration: none;
+   color: red;
  }
 
 #view-time-entries{
@@ -75,6 +93,9 @@
    margin-top: 0.5em;
    margin-bottom: 1em;
    margin-left: 0.5em;
+   img{
+     margin-left: -.2em;
+   }
  }
  .title >a{
 
@@ -127,30 +148,52 @@
   width: 100%;
 }
 
+.login-window{
+  // opacity: .75;
+}
+
+.opaque{
+  background-color: rgba(255, 0, 0, .75);
+//   opacity: .75;
+}
+
+div.no-ghost {
+  input {
+    opacity: 1;
+  }
+}
+
 .some-height-padding{
   padding-top: 0.6em;
   padding-bottom: 0.5em;
   padding-left: 6.5em;
 }
 
-.login-boxes{
+.login-form{
   text-align: left;
   padding-left: 0em;
+  // opacity: 1;
 }
 
-.smaller-percent{
-  width: 22%;
-  margin: auto;
+#login-boxes{
+  // background-color: rgba(0, 255, 255, 1);
+  // opacity: 1;
 }
+
+// .smaller-percent{
+//   width: 22%;
+//   margin: auto;
+// }
 
 #clock-out-nav{
-  color: #F29500;
+  color: #53C6E0;
 }
+
 .background-ghost{
+  padding-left: 36%;
   padding-top: 15%;
-  padding-left: 20%;
   position: absolute;
-  opacity: 0.75;
+  //opacity: .75;
 }
 //General sitewide stuff
 p{
@@ -182,8 +225,6 @@ h2{
   margin-top: .4em;
   margin-bottom: 0em;
   color: black;
-  padding-left:  .65em;
-
 }
 
 h2 > a{
@@ -204,7 +245,6 @@ h3{
   text-decoration: none;
   padding-top: 0em;
   font-weight: normal;
-  padding-left:  1em;
 }
 
 h3 > a{
@@ -215,6 +255,7 @@ h3 > a{
   padding-left: 0.5em;
   padding-right: 0.5em;
   padding-bottom: 0.4em;
+  margin-left: 1em;
 }
 
 h3 > a:hover{
@@ -404,7 +445,7 @@ header.navigation {
   $base-border-color: gainsboro !default;
   $base-border-radius: 3px !default;
   $action-color: #477DCA !default;
-  $dark-gray: #333 !default;
+  $dark-gray: #364653 !default;
   $large-screen: em(860) !default;
   $navigation-padding: 0em;
   $navigation-background: $dark-gray;
@@ -431,6 +472,7 @@ header.navigation {
   float: left;
 
   .navigation-left{
+    padding-left: 1%;
     float: left;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -440,11 +482,12 @@ header.navigation {
     }
   }
 
-  .navigation-left >a{
+  .navigation-left > a{
     text-decoration: none;
   }
 
   .navigation-right{
+    padding-right: 1%;
     float: right;
     line-height: $navigation-height;
     color: $navigation-color;
@@ -458,18 +501,12 @@ header.navigation {
     text-decoration: none;
   }
 
-  .navigation-wrapper {
-    @include clearfix;
-    @include outer-container;
-    position: relative;
-    z-index: 9999;
-  }
-
   .logo {
     float: left;
     max-height: $navigation-height;
     padding-right: 2em;
-
+    // font-family: "The Dream";
+    // font-size: 2em;
     img {
       max-height: $navigation-height;
       padding: 0.8em 0;
@@ -506,11 +543,11 @@ header.navigation {
   }
 
   ul.navigation-menu {
-    clear: both;
+    // clear: both;
     display: none;
-    margin: 0 auto;
+    // margin: 0 auto;
     overflow: visible;
-    padding: 0;
+    // padding: 0;
     width: 100%;
     z-index: 9999;
 
@@ -683,6 +720,7 @@ header.navigation {
       font-family: $helvetica;
       color: #5D5D5D;
       font-size: 0.9em;
+      background-color: white;
       a{
         text-decoration: none;
         color: #5D5D5D;

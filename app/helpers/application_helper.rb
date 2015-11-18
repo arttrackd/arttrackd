@@ -22,4 +22,8 @@ module ApplicationHelper
       return nil
     end
   end
+
+  def proper_decimal(number)
+    number.to_i == number ? number.floor : number
+  end
 end

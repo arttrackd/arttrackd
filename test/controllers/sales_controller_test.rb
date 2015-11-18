@@ -25,7 +25,7 @@ class SalesControllerTest < ActionController::TestCase
       post :create, sale: { date: @sale.date, gross: @sale.gross, net: @sale.net, project_id: @sale.project_id }
     end
 
-    assert_redirected_to sale_path(assigns(:sale))
+    assert_redirected_to sales_path
   end
 
   test "should show sale" do

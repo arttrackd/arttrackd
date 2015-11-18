@@ -3,11 +3,11 @@
   <div class="card">
     <div class="card-header">
       <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_business_expense_path(@business_expense) %>
-      <h2 class="padding-overload"><%= @business_expense.name.capitalize%></h2>
+      <h2><%= @business_expense.name.capitalize%></h2>
       <br />
     <div class="index-card">
       <h3><%= @business_expense.description.capitalize %></h3>
-      <h3>Amount: <%= number_to_currency(@business_expense.amount) %> </h3>
+      <h3><%= number_to_currency(@business_expense.amount) %> </h3>
     </div>
       <p><%= link_to 'Back to Business Expenses', business_expenses_path, id: "view-time-entries" %></p>
   </div>
