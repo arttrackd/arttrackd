@@ -30,7 +30,10 @@
           <p><%= f.label :amount %></br>
           <%= f.number_field :amount, :class => 'text_field', :step => 0.01, value: @business_expense.amount || ""%></p>
         </div>
-        <div>
+        <div class="field cbp-mc-form">
+          <p><%= f.label :date %></br>
+          <%= f.date_field :date, value: @business_expense.date || ""%></p>
+        </div>
           <p><%= f.submit %></p>
         </div>
       <% end %>
