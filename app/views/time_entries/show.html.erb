@@ -2,17 +2,14 @@
 <div class="cards">
   <div class="card">
     <div class="card-header">
+      <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(@time_entry) %>
       <h2>Time Entry for <%= @time_entry.project.name %></h2>
     </div>
-    <div class="index-card">
-      <p>Start time: <%= @time_entry.start_time.strftime("%B %d, %Y, %I:%M%P") %></p>
-      <p>Stop time: <%= @time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P") %></p>
-      <p><%= @time_entry.date %></p>
-      <div class="details">
-        <p><%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(@time_entry) %>
-        <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %></p>
-      </div>
+    <div class="index-card padding-underload">
+      <h3>Start time: <%= @time_entry.start_time.strftime("%B %d, %Y, %I:%M%P") %></h3>
+      <h3>Stop time: <%= @time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P") %></h3>
+      <h3><%= @time_entry.date %></h3>
+        <h3 class="padding-overload"><%= link_to 'Back to Time Entries', time_entries_path(id: @time_entry.project_id) %></h3>
     </div>
   </div>
 </div>
