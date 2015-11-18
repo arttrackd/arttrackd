@@ -16,11 +16,11 @@
       <div class="index-card">
         <div>
           <p ><%= f.label :name %></br>
-          <%= f.text_field :name, value: @project.name || "", style:"height:2.7em;width:40%;border-radius:0em;" %></p>
+          <%= f.text_field :name, value: @project.name || ""%></p>
         </div>
         <div class="field">
           <p><%= f.label :description %></br>
-          <%= f.text_area :description, value: @project.description || "", style:"height:5.4em;width:40%;border-radius:0em;" %></p>
+          <%= f.text_area :description, value: @project.description || ""%></p>
         </div></br>
         <div><h5> Materials: </h5></div>
         <div class="material-form">
@@ -30,7 +30,7 @@
               <p><%= ff.label :material_purchase_id, value: "Material" %>
               <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}, style:"height:2.7em;width:40%;border-radius:0em;") %>
               <%= ff.label :units %>
-              <%= ff.number_field :units, style:"height:2.7em;width:40%;border-radius:0em;" %></p>
+              <%= ff.number_field :units%></p>
             </div>
           </div>
           <% end %>
@@ -43,9 +43,9 @@
             <div class = "project-cost-fields">
               <div class="field">
                 <p><%= ff.label :cost_type %>
-                <%= ff.text_field :cost_type, style:"height:2.7em;width:40%;border-radius:0em;" %>
+                <%= ff.text_field :cost_type%>
                 <%= ff.label :amount %>
-                <%= ff.number_field :amount, style:"height:2.7em;width:40%;border-radius:0em;" %></p>
+                <%= ff.number_field :amount%></p>
               </div>
             </div>
           <% end %>
