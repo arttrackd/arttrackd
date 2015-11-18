@@ -27,7 +27,8 @@ class MaterialPurchasesController < ApplicationController
   # POST /material_purchases
   def create
     @material_purchase = MaterialPurchase.new(material_purchase_params)
-    @material_purchase.user = @current_user
+    @material_purchase.user_id = @current_user.id
+    @material_purchase.units_remaining = @material_purchase.units
     if @material_purchase.save
       redirect_to @material_purchase, notice: 'Material purchase was successfully created.'
     else

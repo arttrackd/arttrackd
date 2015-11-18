@@ -8,9 +8,10 @@ class ProjectsController < ApplicationController
 
     if params[:search]
       @projects = project_scope.search(params[:search])
+    elsif params[:sold]
+      @projects = project_scope.includes(:sales, :user, :time_entries).order('name').select{|project| project.sales.length > 0}
     else
       @projects = project_scope.includes(:sales, :user, :time_entries).order('name')
-      @projects = @projects.select{|project| project.sales.length > 0} if params[:sold]
     end
   end
 
