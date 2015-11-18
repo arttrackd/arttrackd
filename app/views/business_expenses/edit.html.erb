@@ -2,9 +2,10 @@
 
 <%= render 'form' %>
 
-<div class="edit-back">
-  <%= link_to 'Details', @business_expense %> |
-  <%= link_to 'Back', business_expenses_path %> |
-  <%= link_to 'Delete', business_expense_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+<div class="form-lower-buttons">
+  <h3>
+    <%= link_to 'Details', @business_expense %>
+    <%= link_to 'Back', business_expenses_path %>
+    <%= link_to 'Delete This Expense', business_expense_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-button" %>
+  </h3>
 </div>

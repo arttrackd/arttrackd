@@ -3,9 +3,10 @@
 <%= render 'form' %>
 
 <div class="edit-back">
-  <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), @material_purchase, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'Back to Details', @material_purchase %> |
-  <%= link_to 'Back to Materials Inventory', material_purchases_path %> |
-  <%= link_to 'Delete', material_purchase_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-
+  <div class="form-lower-buttons">
+    <h3>
+      <%= link_to 'Back to Details', @material_purchase %>
+      <%= link_to 'Back to Materials Inventory', material_purchases_path %>
+      <%= link_to 'Delete This Item', material_purchase_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "delete-button" %>
+    </h3>
 </div>
