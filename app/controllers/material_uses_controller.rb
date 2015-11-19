@@ -1,6 +1,6 @@
 class MaterialUsesController < ApplicationController
   before_action :require_login
-  before_action :set_material_use, only: [:show, :edit, :update, :destroy]
+  before_action :set_material_use, only: :destroy
 
   # DELETE /material_uses/1
   def destroy
@@ -9,6 +9,10 @@ class MaterialUsesController < ApplicationController
   end
 
   private
+    # So that people cannot PATCH and DELETE unless they are the @current_user
+    def material_use_scope
+      MaterialUse.where(project_id: Project.where(user_id: @current_user.id).pluck(:id))
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_material_use
       begin

@@ -31,7 +31,7 @@
               <p><%= ff.label :material_purchase_id, value: "Material" %>
               <%= ff.collection_select(:material_purchase_id, @current_user.material_purchases.order(:name), :id, :name, {prompt: "Select Material"}) %>
               <%= ff.label :units %>
-              <%= ff.number_field :units%></p>
+              <%= ff.number_field :units, step: :any%></p>
             </div>
           </div>
           <% end %>
