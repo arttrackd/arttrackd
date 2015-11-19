@@ -1,6 +1,30 @@
 [![Build Status](https://travis-ci.org/arttrackd/arttrackd.svg?branch=master)](https://travis-ci.org/arttrackd/arttrackd)
 [![Coverage Status](https://coveralls.io/repos/arttrackd/arttrackd/badge.svg?branch=master&service=github)](https://coveralls.io/github/arttrackd/arttrackd?branch=master)
 
-#ArtTrackd
+#ArtTrack
 
-## Artist Sales Tracker, Rate Calculator, and Inventory Management Web App
+ArtTrack is an inventory management; projects, sales, and goals tracker; and rate and pricing calculator web app for self employed artists. The artist signs up with their name, email, password, and default hourly rate. All of these and a profile picture can be updated on the profile page later.
+
+##Inventory Management
+
+In the 'My Inventory' section, the artist can enter materials they purchased for use on projects and view a list of all of them. On a material listing, they can upload a receipt image if they want. If the artist enters more than one unit at a time, the app will calculate the price per unit and display that with the material entry. After the artist applies the material to a project, the amount remaining will be updated and displayed.
+
+##Tracking Your Projects
+
+In the 'My Projects' section, the artist can view all of their projects and create new projects. During project creation process, or by editing the project record later, the artist can add materials from their inventory. When creating a project, the artist enters a name, and optionally a description or as many materials or costs unique to the project (such as shipping & handling, licensing fees, or commission) as they want. If the project is sold, the total sales revenue for the project is displayed on the 'My Projects' page. On the specific project's page, there is a time tracking feature using the Clock In and Clock Out buttons.
+
+##Rate and Pricing Calculator
+
+If the project is not sold and there are not any time entries yet, there is an estimated value displayed on the project's page that is a total of the costs of the materials used. When the artist clicks the Clock In button on the specific project's page, a timer appears in the top bar of the screen and a time entry begins for that artist's project. The artist can navigate the website and the timer will persist on every page. On any page, the artist can click the Clock Out button on either the top bar, or on the individual project's page. The time entry is recorded and can be edited later. The time entries are also totaled for easy reference. When the time entry is saved, the estimated value of the project is updated based on the time worked times the hourly rate of the artist. That dollar amount is added to the cost of the materials used, if there are any, to update the estimated value. 
+
+##Tracking Your Sales
+
+The artist can track sales by marking a project as sold from the specific project's page or the 'My Projects' page. The artists enters the gross profit, the date of the sale, and optionally the sales venue. The most recent sale will appear at the top of the 'My Sales' page. The gross sale amount, as well as the net profit, and the sales channel, if applicable, are displayed on the 'My Sales' page. Projects that have been sold cannot be deleted unless their sale records are deleted first. From the 'My Sales' page, the artist can navigate to the 'My Sales Channels' page and add any sales channels they want to apply to a sale later.
+
+##Tracking Your Goals
+
+The artist's most recent goal progress is shown on the 'Dashboard' and every goal is shown on the 'My Goals' page. New sales goals are created on the 'My Goals' page, and are set as a dollar amount to be achieved during a period of time, with an optional sales channel where you want to generate revenue. The 'My Goals' page shows progress towards each goal as a bar graph, and you can toggle to see only ended sales goals, where the end date has passed. The 'Dashboard' shows the latest sales goal as a donut and can express the percentage of the progress towards the goal from 0% to over 100%. The 'Dashboard' shows the percentage of revenue from sales at the sales channel where the artist has had sales, shown as a pie chart. Each sale record created will update these graphs on the 'Dashboard' if applicable.
+
+##Tracking Your Business Costs
+
+The artist can track miscellaneous costs that do not apply to any specific project on the 'My Costs' page (such as studio rent or price of gas to a business related event). The artist sets name, cost, due date, and optional description when they create a new expense.
