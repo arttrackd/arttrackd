@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117182116) do
+ActiveRecord::Schema.define(version: 20151119015854) do
 
   create_table "business_expenses", force: :cascade do |t|
     t.integer  "user_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151117182116) do
 
   add_index "material_uses", ["material_purchase_id"], name: "index_material_uses_on_material_purchase_id"
   add_index "material_uses", ["project_id"], name: "index_material_uses_on_project_id"
+  add_index "material_uses", ["user_id"], name: "index_material_uses_on_user_id"
 
   create_table "project_costs", force: :cascade do |t|
     t.integer  "project_id"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 20151117182116) do
   end
 
   add_index "project_costs", ["project_id"], name: "index_project_costs_on_project_id"
+  add_index "project_costs", ["user_id"], name: "index_project_costs_on_user_id"
 
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20151117182116) do
   end
 
   add_index "sales", ["project_id"], name: "index_sales_on_project_id"
+  add_index "sales", ["user_id"], name: "index_sales_on_user_id"
 
   create_table "sales_channels", force: :cascade do |t|
     t.string   "name"
@@ -96,6 +99,8 @@ ActiveRecord::Schema.define(version: 20151117182116) do
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
   end
+
+  add_index "sales_channels", ["user_id"], name: "index_sales_channels_on_user_id"
 
   create_table "sales_goals", force: :cascade do |t|
     t.integer  "user_id"
@@ -109,6 +114,7 @@ ActiveRecord::Schema.define(version: 20151117182116) do
     t.date     "end_time"
   end
 
+  add_index "sales_goals", ["sales_channel_id"], name: "index_sales_goals_on_sales_channel_id"
   add_index "sales_goals", ["user_id"], name: "index_sales_goals_on_user_id"
 
   create_table "time_entries", force: :cascade do |t|

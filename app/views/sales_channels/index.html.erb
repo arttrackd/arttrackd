@@ -6,7 +6,7 @@
   <% end %>
 </div>
 <h3><%= link_to 'New Sales Channel', new_sales_channel_path %></h3>
-<% if @sales_channels %>
+<% if @sales_channels.length > 0 %>
   <% @sales_channels.each do |sales_channel| %>
     <div class="cards">
       <div class="card">

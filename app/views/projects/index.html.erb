@@ -25,7 +25,7 @@
         <div class="details">
           <br />
           <h3><%=  project.description.capitalize%></h3>
-          <h3>Total Revenues: <%= number_to_currency(project.sales.map{|x| x.gross}.sum)%></h3>
+          <h3>Total Revenue: <%= number_to_currency(project.sales.map{|x| x.gross}.sum)%></h3>
         </div>
       </div>
     </div>
