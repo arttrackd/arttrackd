@@ -11,21 +11,6 @@ class MaterialUsesControllerTest < ActionController::TestCase
     session[:user_id] = @current_user.id
   end
 
-  test "should create material_use" do
-    mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 100, units_remaining: 100)
-    assert_difference('MaterialUse.count') do
-      post :create, material_use: { user_id: 1, material_purchase_id: mp.id, project_id: 1, units: 1 }
-    end
-
-    assert_redirected_to material_use_path(assigns(:material_use))
-  end
-
-  test "should update material_use" do
-    mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 100, units_remaining: 100)
-    patch :update, id: @material_use, material_use: {  material_purchase_id: mp.id, project_id: @material_use.project_id, units: @material_use.units }
-    assert_redirected_to material_use_path(assigns(:material_use))
-  end
-
   test "should destroy material_use" do
     assert_difference('MaterialUse.count', -1) do
       delete :destroy, id: @material_use
@@ -34,10 +19,4 @@ class MaterialUsesControllerTest < ActionController::TestCase
     assert_redirected_to material_uses_path
   end
 
-  test "cannot create material use if not enough in stock" do
-    assert_no_difference('MaterialUse.count') do
-      mp = MaterialPurchase.create!(user_id: 1, name: "Charcoal brush", cost: 200, units: 10, units_remaining: 10)
-      MaterialUse.create(user_id: 1, units: 11, material_purchase_id: mp.id)
-    end
-  end
 end

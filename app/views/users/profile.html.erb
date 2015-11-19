@@ -8,7 +8,7 @@
         <p><%= link_to (image_tag asset_url('edit.png'), size: "20x20"), edit_user_path(@current_user) %></p>
       </div>
       <div class="profile-right-column">
-        <p><label class="stat-label">Sales:</label><%= @sales.count %></p>
+        <p><label class="stat-label">Sales:</label> <%= @sales.count %></p>
         <p><label class="stat-label">Projects:</label> <%= @current_user.projects.count %></p>
         <p><label class="stat-label">Sales goals:</label> <%= @current_user.sales_goals.count %></p>
         <p><label class="stat-label">Goals reached:</label> <%= @current_user.sales_goals.where(success: true).count %></p>
