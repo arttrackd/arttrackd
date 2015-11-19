@@ -35,9 +35,6 @@
 .show-sale-date{
   @include span-columns(6);
 }
-.edit-back{
-  @include span-columns(12);
-}
 
 h1 {
   font-weight: lighter;

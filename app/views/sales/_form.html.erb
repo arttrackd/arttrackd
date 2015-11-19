@@ -21,11 +21,11 @@
         </div>
         <div class="field">
           <p><%= f.label :gross, value: "Sale Amount" %></br>
-          <%= f.number_field :gross, :class => 'text_field', :step => 0.01, value: @sale.gross || "" %></p>
+          <%= f.number_field :gross, :class => 'text_field', :step => 0.01, value: @sale.gross || ""%></p>
         </div>
         <div class="field">
           <p><%= f.label :date, value: "Sale Date" %></br>
-          <%= f.date_select :date, value: @sale.date || "" %></p>
+          <%= f.date_select :date, value: @sale.date || ""%></p>
         </div>
         <div class="field">
           <p><%= f.label :sales_channel_id, value: "Sales Channel" %></br>

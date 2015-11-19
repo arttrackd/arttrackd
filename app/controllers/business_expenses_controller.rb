@@ -66,6 +66,6 @@ class BusinessExpensesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def business_expense_params
-      params.require(:business_expense).permit(:user_id, :name, :description, :amount, :recurring)
+      params.require(:business_expense).permit(:user_id, :name, :description, :amount, :recurring, :date)
     end
 end

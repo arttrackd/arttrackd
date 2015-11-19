@@ -19,7 +19,7 @@
         <h3> Receipt:</h3>
         <%= image_tag @material_purchase.receipt.url%>
       <% else %>
-        <%= link_to 'Add a Receipt', edit_material_purchase_path %><br />
+        <h3 class="padding-overload"><%= link_to 'Add a Receipt', edit_material_purchase_path %></h3>
       <% end %>
     </div>
   </div>

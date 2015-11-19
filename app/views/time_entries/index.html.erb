@@ -3,14 +3,13 @@
 <div class="cards">
   <div class="card">
     <div class="card-header">
+      <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(time_entry) %>
       <h2>Start: <%= link_to time_entry.start_time.strftime("%B %d, %Y, %I:%M%P"), time_entry %></br>
       Stop: <%= link_to time_entry.stop_time.strftime("%B %d, %Y, %I:%M%P"), time_entry %></h2>
       <div class="details">
         <% if time_entry.start_time && time_entry.stop_time %>
-          <p><%= link_to distance_of_time_in_words(time_entry.stop_time, time_entry.start_time), time_entry %></p>
+          <h3><%= distance_of_time_in_words(time_entry.stop_time, time_entry.start_time)%></h3>
         <% end %>
-        <%= link_to (image_tag asset_url('edit.png'), class: "index-icon"), edit_time_entry_path(time_entry) %>
-        <%= link_to (image_tag asset_url('destroy.png'), class: "index-icon"), time_entry, method: :delete, data: { confirm: 'Are you sure?' } %>
       </div>
     </div>
   </div>

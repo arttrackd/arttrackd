@@ -26,39 +26,47 @@
  @import "project_costs";
  @import "sales_channels";
  @import "session";
- @font-face {
-   font-family: "The Dream";
-   src: asset-url('thedream.otf') format("truetype");
+
+.delete-button{
+  color: #FFF;
+  background-color: #C92023;
+  float: right;
+  margin-top: -.3em;
+  margin-right: 1em;
 }
 
-  .destroy-button{
-    color: red;
-    height: 20px;
-    width: 80px;
-  }
+.delete-button:hover{
+  background-color: #AD181B;
+}
 
- .sales-money-good{
-   color:#2DBA59;
- }
- .sales-money-bad{
-   color:#CB1F0D;
- }
- .padding-overload{
-   margin-left: -.60em;
- }
- .padding-overload2{
-   margin-left: -.15em;
- }
- .padding-underload{
-   padding-left: 1em;
- }
+.no-margin{
+  margin-top: 0;
+}
 
- .destroy-action{
-   height: 46px;
-   width: 46px;
-   text-decoration: none;
-   color: red;
- }
+.form-lower-buttons{
+  @include span-columns(12);
+  margin-top: .5em;
+  margin-bottom: .5em;
+  margin-right: 1em;
+
+
+}
+
+.sales-money-good{
+ color:#2DBA59;
+}
+.sales-money-bad{
+ color:#CB1F0D;
+}
+.padding-overload{
+ margin-left: -1em;
+}
+.padding-overload2{
+ margin-left: -.15em;
+}
+.padding-underload{
+ padding-left: 1em;
+}
 
 #view-time-entries{
   background-color: #53C6E0;
@@ -196,6 +204,48 @@ div.no-ghost {
   //opacity: .75;
 }
 //General sitewide stuff
+input[type=submit]{
+  font-family: $helvetica;
+  font-size: 1em;
+  margin-top: .1em;
+  margin-bottom: 1em;
+  // margin-left: 1em;
+  text-decoration: none;
+  font-weight: normal;
+  color: #eee;
+  text-decoration: none;
+  background-color: #3DC7DD;
+  padding-top: 0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.4em;
+  border: none;
+  max-width: 25%;
+}
+
+select{
+  font-size: 14px;
+}
+
+button[type=button]{
+  font-family: $helvetica;
+  font-size: 1em;
+  margin-top: .1em;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  text-decoration: none;
+  font-weight: normal;
+  color: #eee;
+  text-decoration: none;
+  background-color: #3DC7DD;
+  padding-top: 0.3em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-bottom: 0.4em;
+  border: none;
+  max-width: 20%;
+}
+
 p{
   font-family: $helvetica;
 }
@@ -265,7 +315,7 @@ h3 > a:hover{
 h4 {
   font-family: $helvetica;
   font-size: 1.3em;
-  padding-left: 4.9em;
+  // padding-left: 4.9em;
   padding-top: 0.5em;
   font-weight: normal;
   margin-bottom: 1em;
@@ -650,6 +700,7 @@ header.navigation {
     @include span-columns(6);
     margin-left: 1em;
     padding-left: 1em;
+    margin-top: 1em;
   }
   .project-show-card{
     @include span-columns(6);
@@ -723,7 +774,7 @@ header.navigation {
       background-color: white;
       a{
         text-decoration: none;
-        color: #5D5D5D;
+        color: #EEE;
       }
       a:hover{
         color: #939393;
@@ -778,9 +829,10 @@ $warning-color: #F1DCB2 !default;
   background-color: $color;
   color: darken($color, 60%);
   display: block;
-  position: absolute;
+  // position: absolute;
   padding: $base-spacing / 2;
-  margin-left: 40em;
+  // margin-left: 40em;
+  width: 100%;
   text-align: center;
   border-bottom: 1px solid darken($color, 5%);
 
@@ -815,7 +867,8 @@ $warning-color: #F1DCB2 !default;
   @include flash($warning-color);
 }
 .flash-shift{
-  padding-top: 44px;
+  font-family: $helvetica;
+  margin-bottom: -15px;
 }
 
 // Image Gradient Overlay
@@ -879,18 +932,37 @@ $warning-color: #F1DCB2 !default;
 
 // Search bar style
 
-  .search-button {
-    height: 2.5em;
-    width: 2.5em;
-    margin-bottom: -0.8em;
-    margin-left: -1em;
-    background-color: #C23822;
-    filter: invert(100%);
-    -webkit-filter: invert(100%);
-    padding: 0.5em;
-    border-bottom-right-radius: 15%;
-    border-top-right-radius: 15%;
-  }
-  .search-button:hover{
-    background-color: #822617;
-  }
+.search-button {
+  height: 2.5em;
+  width: 2.5em;
+  margin-bottom: -0.8em;
+  margin-left: -1em;
+  background-color: #C23822;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+  padding: 0.5em;
+  border-bottom-right-radius: 15%;
+  border-top-right-radius: 15%;
+}
+.search-button:hover{
+  background-color: #822617;
+}
+
+label.stat-label {
+  display: inline-block;
+  width: 150px;
+}
+
+input {
+  font-size: 14px;
+  width: 40%;
+}
+
+#search{
+  height: 2.5em;
+}
+
+textarea {
+  font-size: 14px;
+  width: 40%;
+}

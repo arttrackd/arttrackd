@@ -4,13 +4,15 @@
 
 #clock-in{
   background-color: #53C6E0;
-  color: #FFF;
+  color: #EEE;
   padding: .5em 1em;
+  margin-bottom: 5em;
   transform: translate(2em, 2em);
   text-transform: uppercase;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: normal;
   letter-spacing: 0.1em;
+  font-family: $helvetica;
 }
 
 #clock-in:hover{
@@ -19,14 +21,21 @@
 
 #clock-out{
   background-color: #53C6E0;
-  color: #FFF;
+  color: #EEE;
   padding: .5em 1em;
-  margin: 0.9em;
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 5em;
   transform: translate(2em, 2em);
   text-transform: uppercase;
   text-decoration: none;
-  font-weight: 200;
+  font-weight: normal;
   letter-spacing: 0.1em;
+}
+
+.clock-buttons{
+  margin-top: 1em;
+  margin-bottom: 1.5em;
 }
 
 #clock-out:hover{
@@ -50,6 +59,12 @@
   background-color: #21A6BB;
 }
 
+#time-entry{
+  background-color: #FFF;
+  color: #5d5d5d;
+  padding-left: 1%;
+  margin-left: 0;
+}
 .project-index-name{
   @include span-columns(12);
   @include omega();
@@ -125,12 +140,16 @@
   @include omega;
 }
 
+.project-show-buttons{
+  margin-left: 0;
+}
+
 .add-material-button{
-  margin-left: 8%;
+  margin-left: 1.4%;
 }
 
 .add-project-button{
-  margin-left: 8%;
+  margin-left: 1.4%;
   margin-bottom: 2%;
 }
 
