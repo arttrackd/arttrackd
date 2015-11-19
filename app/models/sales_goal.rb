@@ -46,6 +46,10 @@ class SalesGoal < ActiveRecord::Base
   end
 
   def days_remaining
-    (end_time - Date.today).to_i
+    begin
+      (end_time - Date.today).to_i
+    rescue
+      ""
+    end
   end
 end

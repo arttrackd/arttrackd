@@ -30,7 +30,7 @@ class MaterialPurchasesController < ApplicationController
     @material_purchase.user_id = @current_user.id
     @material_purchase.units_remaining = @material_purchase.units
     if @material_purchase.save
-      redirect_to @material_purchase, notice: 'Material purchase was successfully created.'
+      redirect_to material_purchases_path, notice: 'Inventory item was successfully created.'
     else
       render :new
     end
@@ -39,7 +39,7 @@ class MaterialPurchasesController < ApplicationController
   # PATCH/PUT /material_purchases/1
   def update
     if @material_purchase.update(material_purchase_params)
-      redirect_to @material_purchase, notice: 'Material purchase was successfully updated.'
+      redirect_to @material_purchase, notice: 'Inventory item was successfully updated.'
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class MaterialPurchasesController < ApplicationController
   # DELETE /material_purchases/1
   def destroy
     @material_purchase.destroy
-    redirect_to material_purchases_url, notice: 'Material purchase was successfully destroyed.'
+    redirect_to material_purchases_url, notice: 'Inventory item was successfully destroyed.'
   end
 
   private

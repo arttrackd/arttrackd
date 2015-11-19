@@ -23,7 +23,7 @@ class MaterialPurchasesControllerTest < ActionController::TestCase
       post :create, material_purchase: { cost: @material_purchase.cost, name: @material_purchase.name, units: @material_purchase.units, user_id: @material_purchase.user_id }
     end
 
-    assert_redirected_to material_purchase_path(assigns(:material_purchase))
+    assert_redirected_to material_purchases_path
   end
 
   test "should show material_purchase" do
