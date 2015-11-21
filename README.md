@@ -3,7 +3,11 @@
 
 #ArtTrack
 
-ArtTrack is an inventory management; projects, sales, and goals tracker; and rate and pricing calculator web app for self employed artists. The artist signs up with their name, email, password, and default hourly rate. All of these and a profile picture can be updated on the profile page later.
+ArtTrack is a business management tool for self employed artists. It provides the artist with the ability to create and work on projects, manage inventory, create and track sales of projects, set income goals for all sales or just sales from a specific venue, and view at-a-glance data about their overall business performance. Getting started is easy: Just sign up with your name, email, password and set your hourly rate. Then, if you'd like, view your profile and set a custom profile picture.
+
+![The dashboard provides an overview of your recent business activity.](http://i.imgur.com/GHCIXbe.png)
+
+
 
 Features
 + [Inventory Management](#inventory-management)
@@ -23,7 +27,7 @@ In the 'My Projects' section, the artist can view all of their projects and crea
 
 ##<a id="rate-and-pricing-calculator">Rate and Pricing Calculator</a>
 
-If the project is not sold and there are not any time entries yet, there is an estimated value displayed on the project's page that is a total of the costs of the materials used. When the artist clicks the Clock In button on the specific project's page, a timer appears in the top bar of the screen and a time entry begins for that artist's project. The artist can navigate the website and the timer will persist on every page. On any page, the artist can click the Clock Out button on either the top bar, or on the individual project's page. The time entry is recorded and can be edited later. The time entries are also totaled for easy reference. When the time entry is saved, the estimated value of the project is updated based on the time worked times the hourly rate of the artist. That dollar amount is added to the cost of the materials used, if there are any, to update the estimated value. 
+If the project is not sold and there are not any time entries yet, there is an estimated value displayed on the project's page that is a total of the costs of the materials used. When the artist clicks the Clock In button on the specific project's page, a timer appears in the top bar of the screen and a time entry begins for that artist's project. The artist can navigate the website and the timer will persist on every page. On any page, the artist can click the Clock Out button on either the top bar, or on the individual project's page. The time entry is recorded and can be edited later. The time entries are also totaled for easy reference. When the time entry is saved, the estimated value of the project is updated based on the time worked times the hourly rate of the artist. That dollar amount is added to the cost of the materials used, if there are any, to update the estimated value.
 
 ##<a id="tracking-your-sales">Tracking Your Sales</a>
 
