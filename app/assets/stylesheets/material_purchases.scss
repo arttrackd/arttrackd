@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.no_inventory {
+  color: red;
+  display: inline;
+}
+
+.inventory {
+  color: green;
+  display: inline;
+}
+
 .material-index-name{
   @include span-columns(12);
   @include omega();

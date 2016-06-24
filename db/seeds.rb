@@ -11,7 +11,7 @@ User.create!(name: "Phil", email: "Phil_is_awesome@yeah.com", password: "passwor
 User.create!(name: "Kevin", email: "kevin@hotmail.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Dead", email: "DeamonKiller@hunter.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 12.33)
 User.create!(name: "Julie", email: "julie@email.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 15)
-
+User.create!(name: "Blake", email: "blake@email.com", password: "password", public_profile: false, time_zone: "Eastern Time (US & Canada)", hourly_rate: 33)
 
 Project.create!(user_id: 1, name: "Fire on the Mountaintop", description: "Landscape, oil painting, 24x36")
 Project.create!(user_id: 1, name: "Portrait of the Artist", description: "Self portrait, acrylic painting, 16x24")

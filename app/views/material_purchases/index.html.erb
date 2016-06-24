@@ -21,11 +21,18 @@
 
           <div class="index-card">
             <h3>
-              Units remaining: <%= proper_decimal(material_purchase.units_remaining) %><br />
+              Units remaining:
+              <%if proper_decimal(material_purchase.units_remaining) == 0 %>
+                <div class="no_inventory"> <%= proper_decimal(material_purchase.units_remaining)%> </div>
+              <% else %>
+                <div class="inventory"> <%= proper_decimal(material_purchase.units_remaining)%> </div>
+              <% end %>
+
+              <br />
               Cost per unit: <%= number_to_currency(material_purchase.cost_per_unit) %>
             </h3>
           </div>
-          
+
         </div>
       </div>
     </div>
